@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>House of Builders — We don't advise the future. We operate it.</title>
+<meta name="description" content="House of Builders makes companies run on AI — then turns what works into products and ventures it co-owns. Agentic AI services, spin-offs and co-owned ventures, built in the Gulf.">
+<meta property="og:title" content="House of Builders">
+<meta property="og:description" content="We don't advise the future. We operate it. Agentic AI services · spin-offs · co-owned ventures.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23283238'/%3E%3Crect x='11' y='11' width='10' height='10' fill='%23B0CBE8' transform='rotate(45 16 16)'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{ --petrol:#283238; --deep:#1F262B; --panel:#2D383F; --ink:#14191D; --text:#B0CBE8; --white:#FFFFFF; --line:rgba(255,255,255,0.13); --dim:rgba(176,203,232,0.55); }
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'IBM Plex Sans',sans-serif;background:var(--petrol);color:var(--text);-webkit-font-smoothing:antialiased}
+.mono{font-family:'Space Mono',monospace}
+.wm{font-weight:500;letter-spacing:-0.04em;color:var(--white)}
+.wm .dot{display:inline-block;width:6px;height:6px;background:var(--text);transform:rotate(45deg);margin-left:3px;vertical-align:middle}
+/* nav */
+#nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:26px;padding:16px 6vw;background:rgba(20,25,29,0.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+#nav .wm{font-size:19px}
+#nav a{color:var(--text);text-decoration:none;font-size:13.5px}
+#nav a:hover{color:var(--white)}
+#nav .links{margin-left:auto;display:flex;gap:24px;align-items:center}
+#nav .cta{background:var(--text);color:var(--ink);font-weight:700;border-radius:999px;padding:9px 20px;font-size:13px}
+@media(max-width:760px){#nav .links a:not(.cta){display:none}}
+/* sections */
+section{padding:110px 6vw 90px;border-bottom:1px solid rgba(255,255,255,0.05);position:relative}
+.kick{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text);margin-bottom:18px}
+h1{font-size:clamp(34px,6vw,68px);font-weight:300;color:var(--white);letter-spacing:-0.02em;line-height:1.04;max-width:17ch}
+h1 b{font-weight:600}
+h2{font-size:clamp(26px,3.8vw,44px);font-weight:300;color:var(--white);letter-spacing:-0.02em;line-height:1.1;max-width:22ch}
+h2 b{font-weight:600}
+.lead{font-size:clamp(16px,1.7vw,19px);font-weight:300;line-height:1.55;color:var(--text);max-width:62ch;margin-top:22px}
+.lead b{color:var(--white);font-weight:500}
+.msg{margin-top:28px;font-size:15px;color:var(--white);font-weight:500;border-left:3px solid var(--text);padding-left:16px;max-width:56ch;line-height:1.5}
+.btn{display:inline-block;background:var(--text);color:var(--ink);font-weight:700;border-radius:999px;padding:14px 30px;font-size:15px;text-decoration:none;margin-top:32px}
+.btn.g{background:none;border:1px solid var(--line);color:var(--text);font-weight:500;margin-left:12px}
+.btn.g:hover{border-color:var(--text);color:var(--white)}
+/* hero */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:130px}
+#hero .sub{font-size:clamp(17px,2vw,21px);margin-top:26px;max-width:56ch;line-height:1.5;color:var(--text)}
+#hero .sub b{color:var(--white)}
+/* layer slabs */
+.stack{display:flex;flex-direction:column;gap:14px;margin-top:38px;max-width:1000px}
+.slab{display:flex;gap:22px;align-items:flex-start;padding:24px 28px;border:1px solid var(--line);border-radius:16px;background:rgba(20,25,29,0.4)}
+.slab .ln{font-family:'Space Mono',monospace;font-size:15px;color:var(--white);font-weight:700;min-width:42px}
+.slab .st{font-size:19px;color:var(--white);font-weight:600;margin-bottom:5px}
+.slab .sd{font-size:14.5px;color:var(--text);line-height:1.5;max-width:70ch}
+.slab .sd b{color:var(--white)}
+/* timeline */
+.tl{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px;max-width:1100px}
+@media(max-width:900px){.tl{grid-template-columns:1fr}.tl:before{display:none}}
+.tl:before{content:'';position:absolute;top:30px;left:8%;right:8%;height:3px;border-radius:3px;background:linear-gradient(90deg,#B0CBE8 0%,#B0CBE8 62%,rgba(176,203,232,0.15) 100%)}
+.tln{text-align:center;position:relative}
+.tln .dot2{width:60px;height:60px;border-radius:50%;background:var(--panel);border:2px solid var(--text);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto;position:relative;z-index:1}
+.tln.ghost .dot2{border-style:dashed;border-color:rgba(176,203,232,0.4)}
+.tln .mo{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--dim);margin-top:12px}
+.tln .tt{font-size:17px;color:var(--white);font-weight:600;margin-top:4px}
+.tln .td{font-size:12.5px;color:var(--text);margin-top:6px;line-height:1.45;max-width:24ch;margin-left:auto;margin-right:auto}
+.tln .td b{color:var(--white)}
+/* cards */
+.cards{display:grid;gap:16px;margin-top:38px}
+.cards.c3{grid-template-columns:repeat(3,1fr)}
+.cards.c2{grid-template-columns:repeat(2,1fr);max-width:1000px}
+@media(max-width:860px){.cards.c3,.cards.c2{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px 28px;display:flex;flex-direction:column}
+.card .t{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--white);font-weight:700;margin-bottom:12px}
+.card p{font-size:14.5px;line-height:1.55;color:var(--text)}
+.card p b{color:var(--white);font-weight:500}
+.card .go{margin-top:auto;padding-top:18px}
+.card .go a{color:var(--white);text-decoration:none;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;border-bottom:1px solid rgba(176,203,232,0.5);padding-bottom:2px}
+/* mac */
+.macbook{max-width:880px;margin:44px 0 0}
+.macscreen{background:#0d1114;border:2px solid #3a4750;border-bottom:none;border-radius:16px 16px 0 0;padding:16px 16px 12px;position:relative}
+.macscreen:before{content:'';position:absolute;top:7px;left:50%;transform:translateX(-50%);width:7px;height:7px;border-radius:50%;background:#3a4750}
+.macscreen img{width:100%;border-radius:8px;display:block}
+.macbase{height:16px;background:linear-gradient(180deg,#3a4750,#242c31);border-radius:0 0 14px 14px;position:relative}
+.macbase:before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:7px;background:#1a2025;border-radius:0 0 8px 8px}
+.maccap{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(176,203,232,0.55);margin-top:14px;text-align:center}
+/* proof figs */
+.fig{margin-top:36px;display:flex;gap:44px;flex-wrap:wrap}
+.fig .f .n{font-size:clamp(28px,3.4vw,42px);font-weight:200;color:var(--white);letter-spacing:-0.02em;line-height:1}
+.fig .f .l{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim);margin-top:8px;max-width:22ch}
+/* score strip */
+.scorestrip{display:flex;align-items:center;gap:30px;margin-top:36px;padding:26px 30px;border:1px solid var(--line);border-radius:16px;background:rgba(20,25,29,0.4);max-width:900px;flex-wrap:wrap}
+.dial{width:110px;height:110px;border-radius:50%;background:conic-gradient(var(--white) 0deg 220deg, rgba(255,255,255,0.09) 220deg 360deg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.dial .in{width:84px;height:84px;border-radius:50%;background:var(--panel);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.dial .n{font-size:26px;font-weight:300;color:var(--white)}
+.dial .d{font-family:'Space Mono',monospace;font-size:7px;letter-spacing:0.1em;color:var(--dim);text-transform:uppercase}
+.illus{display:inline-block;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(176,203,232,0.5);border:1px solid var(--line);border-radius:999px;padding:4px 11px;margin-top:20px}
+/* footer */
+footer{padding:60px 6vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+footer .wm{font-size:20px}
+footer .fr{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim);text-align:right;line-height:2}
+footer a{color:var(--text);text-decoration:none}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wm">House of Builders<span class="dot"></span></div>
+  <div class="links">
+    <a href="#products">Agents</a>
+    <a href="#how">How we work</a>
+    <a href="#who">Who we work with</a>
+    <a href="#ventures">Ventures</a>
+    <a class="cta" href="mailto:peter@houseofbuilders.ai?subject=Let's%20talk">Talk to us</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="kick">▸ House of Builders · Dubai — Abu Dhabi</div>
+  <h1>We don't advise the future.<br><b>We operate it.</b></h1>
+  <div class="sub">House of Builders makes companies <b>run on AI</b> — then turns what works into products and ventures it co-owns. Built in the Gulf, <b>sovereign by design</b>.</div>
+  <div>
+    <a class="btn" href="mailto:peter@houseofbuilders.ai?subject=Let's%20talk">Talk to us</a>
+    <a class="btn g" href="#how">How we work ↓</a>
+  </div>
+  <div class="mono" style="margin-top:22px;font-size:12px;letter-spacing:0.08em;color:var(--dim)">✉ <a href="mailto:peter@houseofbuilders.ai" style="color:var(--text);text-decoration:none">peter@houseofbuilders.ai</a></div>
+</section>
+
+<!-- THE SHIFT -->
+<section>
+  <div class="kick">▸ Why now</div>
+  <h2>Technology stopped being the differentiator. <b>Operating on it is.</b></h2>
+  <div class="lead">AI made building software cheap — everyone has the same tools now. What separates winners is how deeply AI actually <b>runs the work</b>: the proposals, the approvals, the reconciliations, the reports. Companies carrying legacy systems and manual processes will feel it first. <b>Almost nobody is building companies future-proofed for this. That's the gap we fill.</b></div>
+</section>
+
+<!-- WHAT WE DO · 3 LAYERS -->
+<section id="what">
+  <div class="kick">▸ What we do · three layers</div>
+  <h2>Three layers. <b>Each one feeds the next.</b></h2>
+  <div class="stack">
+    <div class="slab"><div class="ln">01</div><div><div class="st">Agentic AI services — we map your organisation, then automate it</div><div class="sd">A supervised workforce of AI agents takes on your repetitive, rule-based work inside <b>your existing systems</b> — nothing migrated, everything logged. Humans decide, agents do.</div></div></div>
+    <div class="slab"><div class="ln">02</div><div><div class="st">Spin-offs — what works for many becomes a product</div><div class="sd">When the same solution proves itself across clients, it becomes its own company — with an <b>operating CEO holding real founder equity</b>, and the clients who proved it able to hold a piece.</div></div></div>
+    <div class="slab"><div class="ln">03</div><div><div class="st">Ventures — co-owned, built on partners' assets</div><div class="sd">Hardware, infrastructure and licensed businesses, built through JV or acquisition — <b>the asset owner keeps the lead position</b>, and proven global technology gets a real operating partner in the Gulf.</div></div></div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="kick">▸ The agents · what we deploy</div>
+  <h2>Named agents, <b>already at work.</b></h2>
+  <div class="lead">These aren't concepts — versions of these agents run in production across our founders' companies today. Every new client is a <b>replication, not an experiment</b>: deployed in weeks, tuned to your business.</div>
+  <div class="cards c3">
+    <div class="card"><div class="t">📋 The Quote Agent</div><div class="mono" style="font-size:9px;letter-spacing:0.1em;color:#9BC49B;margin:-6px 0 10px">● IN PRODUCTION · REPLICATES PER CLIENT</div><p>Reads every past proposal and win/loss, watches live data, and turns an enquiry into <b>priced options the same morning</b> — a human reviews and sends.</p></div>
+    <div class="card"><div class="t">💰 The Collections Agent</div><div class="mono" style="font-size:9px;letter-spacing:0.1em;color:#9BC49B;margin:-6px 0 10px">● IN PRODUCTION · REPLICATES PER CLIENT</div><p>Chases every invoice on time, tone-matched per account, reconciles payments — and escalates <b>only the one that truly needs you</b>.</p></div>
+    <div class="card"><div class="t">📊 The Reporting Agent</div><div class="mono" style="font-size:9px;letter-spacing:0.1em;color:#9BC49B;margin:-6px 0 10px">● IN PRODUCTION · REPLICATES PER CLIENT</div><p>Reads your systems continuously — month-end answers exist <b>Monday morning</b>, drillable, with the why attached.</p></div>
+    <div class="card"><div class="t">📈 The Pricing Engine</div><div class="mono" style="font-size:9px;letter-spacing:0.1em;color:#9BC49B;margin:-6px 0 10px">● IN PRODUCTION · REPLICATES PER CLIENT</div><p>Prices capacity — screens, rooms, slots — from live demand, audience and occupancy, inside <b>human-set floors</b>, every change logged.</p></div>
+    <div class="card"><div class="t">🧮 The CAPEX Brain</div><div class="mono" style="font-size:9px;letter-spacing:0.1em;color:#9BC49B;margin:-6px 0 10px">● IN PRODUCTION · REPLICATES PER CLIENT</div><p>Models every site or asset: <b>replace the equipment or innovate around it</b> — a ranked plan that recalculates as prices move.</p></div>
+    <div class="card"><div class="t">✅ The Approvals Agent</div><div class="mono" style="font-size:9px;letter-spacing:0.1em;color:#9BC49B;margin:-6px 0 10px">● IN PRODUCTION · REPLICATES PER CLIENT</div><p>Compliance checks, filings and permits — prepared, submitted and tracked, in <b>English and Arabic</b>, with a full audit trail.</p></div>
+  </div>
+  <span class="illus">running today across our founders' companies · deployed for each client inside their own systems</span>
+</section>
+
+<!-- HOW WE START (customers) -->
+<section id="how">
+  <div class="kick">▸ How we start · for enterprises &amp; government</div>
+  <h2>We start small: <b>three months, one workflow, you judge it.</b></h2>
+  <div class="tl">
+    <div class="tln"><div class="dot2">👂</div><div class="mo">Month 1</div><div class="tt">We listen</div><div class="td">The teams behind your highest-value workflows. English + Arabic.</div></div>
+    <div class="tln"><div class="dot2">🗺️</div><div class="mo">Month 1–2</div><div class="tt">We map</div><div class="td">Data + systems, connected in place. <b>Nothing migrated.</b></div></div>
+    <div class="tln"><div class="dot2">⚡</div><div class="mo">Month 2–3</div><div class="tt">One workflow LIVE</div><div class="td">In production, measured against the manual baseline.</div></div>
+    <div class="tln ghost"><div class="dot2">🤝</div><div class="mo">After</div><div class="tt">You judge</div><div class="td">Full scope defined together — <b>from evidence, not slides.</b></div></div>
+  </div>
+  <div class="cards c2">
+    <div class="card"><div class="t">Where we come in</div><p>Inside the systems you already run — ERP, spreadsheets, messaging — through <b>secure, permissioned access</b>, the way open banking connects apps to accounts. For sensitive work, the AI models run <b>on your own infrastructure</b>: your data never leaves your walls.</p></div>
+    <div class="card"><div class="t">How we measure</div><p>Every engagement carries a simple score from 0 to 100 — <b>how much of the work runs agentically</b>. It climbs as agents take on more, and it keeps both sides honest about progress. A measure, not a promise.</p></div>
+  </div>
+</section>
+
+<!-- WHY TRUST US -->
+<section id="trust">
+  <div class="kick">▸ Why trust us</div>
+  <h2>Because we already run companies this way — <b>our own.</b></h2>
+  <div class="lead">Our founders didn't read about this. One helped build <b>Hub71, Abu Dhabi's global tech ecosystem</b> — seeing from the inside why startups, funds and venture builders succeed or fail — then built a retail business run almost entirely by an AI workforce. The other founded an AI engineering company whose own operations run on the exact stack we deploy. Together, today:</div>
+  <div class="macbook">
+    <div class="macscreen"><img src="img/hob-cockpit.png" alt="the HoB cockpit"></div>
+    <div class="macbase"></div>
+    <div class="maccap">the HoB cockpit · a customer's view · illustrative</div>
+  </div>
+  <div class="fig">
+    <div class="f"><div class="n">24+</div><div class="l">clients served by agents across our founders' companies</div></div>
+    <div class="f"><div class="n">1,842</div><div class="l">tickets resolved</div></div>
+    <div class="f"><div class="n">316</div><div class="l">builds shipped</div></div>
+    <div class="f"><div class="n">99.98%</div><div class="l">uptime</div></div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="kick">▸ The team</div>
+  <h2>Built by <b>operators, not advisors.</b></h2>
+  <div class="cards c2">
+    <div class="card"><div style="display:flex;align-items:center;gap:16px;margin-bottom:14px"><img src="img/peter.jpg" alt="Peter Abou Hachem" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid var(--text)"><div><div style="font-size:18px;color:var(--white);font-weight:600">Peter Abou Hachem</div><div class="mono" style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim)">Founder &amp; CEO</div></div></div>
+    <p>Led growth &amp; strategy at <b>Hub71</b> — helping Abu Dhabi become a global tech hub and helping government and enterprises innovate. Saw from the inside why startups, funds and venture builders succeed or fail — then built his own company, run almost entirely by an AI workforce.</p></div>
+    <div class="card"><div style="display:flex;align-items:center;gap:16px;margin-bottom:14px"><div style="width:64px;height:64px;border-radius:50%;background:rgba(176,203,232,0.15);border:2px solid var(--text);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--white);font-weight:600">K</div><div><div style="font-size:18px;color:var(--white);font-weight:600">Karim Makarem</div><div class="mono" style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim)">Co-founder · Head of Tech &amp; AI</div></div></div>
+    <p>Founder of an AI engineering company serving enterprise clients across the region; has built and led large technical teams. Owns HoB's agentic platform and its <b>sovereign architecture</b> — models on your infrastructure, data that never leaves.</p></div>
+  </div>
+</section>
+
+<!-- WHO WE WORK WITH -->
+<section id="who">
+  <div class="kick">▸ Who we work with</div>
+  <h2>Three doors. <b>Pick yours.</b></h2>
+  <div class="cards c3">
+    <div class="card">
+      <div class="t">🏢 Enterprises &amp; government</div>
+      <p><b>Run on AI.</b> We map your organisation, automate what pays first, and hand you a cockpit where you watch it work — sovereign, auditable, inside your own walls.</p>
+      <div class="go"><a href="mailto:peter@houseofbuilders.ai?subject=Enterprise%20—%20let's%20talk">Start a conversation →</a></div>
+    </div>
+    <div class="card">
+      <div class="t">🌏 VCs &amp; global tech companies</div>
+      <p><b>Enter the Gulf with an operator.</b> Joint ventures and soft-landing for proven technology — we bring the local channels, the compliance path and the operating hand your portfolio needs here.</p>
+      <div class="go"><a href="mailto:peter@houseofbuilders.ai?subject=JV%20%2F%20market%20entry">Explore a JV →</a></div>
+    </div>
+    <div class="card">
+      <div class="t">🔨 Founders &amp; operators</div>
+      <p><b>Run one of our spin-offs.</b> Our ventures are born with paying customers and real founder equity for the operator who runs them. If you build fast and own outcomes, talk to us.</p>
+      <div class="go"><a href="mailto:peter@houseofbuilders.ai?subject=Founder%20—%20spin-offs">Run a venture →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- VENTURES -->
+<section id="ventures">
+  <div class="kick">▸ Ventures · layer 3 in the wild</div>
+  <h2>Example: a power bill <b>becoming a business.</b></h2>
+  <div class="lead">Media operators run networks of always-on screens — a heavy electricity bill on assets they already own. Batteries replace generators. Off-grid solar powers remote sites. An AI ranks every site: <b>upgrade the equipment, or innovate around it.</b> The asset owner keeps the lead — and a cost line becomes a revenue line. That's what a House of Builders venture looks like.</div>
+  <span class="illus">illustrative — ventures are structured per partner</span>
+</section>
+
+<!-- CLOSING CTA -->
+<section style="text-align:left">
+  <div class="kick">▸ Next step</div>
+  <h2>Someone in your market will run on agents first. <b>Decide if it's you.</b></h2>
+  <div class="lead">The first mover gets the lower costs, the faster answers — and the headline. Every quarter you wait, someone else's agents are learning your market. One conversation tells you what's possible; <b>one quarter proves it in production.</b></div>
+  <a class="btn" href="mailto:peter@houseofbuilders.ai?subject=Moving%20first">Move first →</a>
+</section>
+
+<footer>
+  <div class="wm">House of Builders<span class="dot"></span></div>
+  <div class="fr">
+    <a href="mailto:peter@houseofbuilders.ai">peter@houseofbuilders.ai</a><br>
+    Dubai · Abu Dhabi · © 2026 House of Builders
+  </div>
+</footer>
+
+</body>
+</html>
