@@ -72,6 +72,48 @@ h2 b{font-weight:600}
 .card p b{color:var(--white);font-weight:500}
 .card .go{margin-top:auto;padding-top:18px}
 .card .go a{color:var(--white);text-decoration:none;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;border-bottom:1px solid rgba(176,203,232,0.5);padding-bottom:2px}
+/* animated agent cards */
+.acards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+@media(max-width:900px){.acards{grid-template-columns:1fr}}
+.acard{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;transition:transform .25s,border-color .25s;overflow:hidden}
+.acard:hover{transform:translateY(-4px);border-color:rgba(176,203,232,0.5)}
+.acard .ahd{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.acard .aic{width:40px;height:40px;border-radius:11px;background:rgba(176,203,232,0.1);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.acard .at{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--white);font-weight:700}
+.acard .mini{background:var(--ink);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px 16px;height:118px;margin-bottom:16px;position:relative;overflow:hidden}
+.acard p{font-size:13.5px;line-height:1.5;color:var(--text)}
+.acard p b{color:var(--white)}
+/* vignette primitives */
+.vrow{display:flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:10px;color:var(--text);padding:4px 0;opacity:0}
+.vrow .vc{width:13px;height:13px;border-radius:4px;border:1.5px solid rgba(176,203,232,0.4);display:flex;align-items:center;justify-content:center;font-size:9px;color:#B0CBE8;flex-shrink:0}
+.vbar{height:9px;border-radius:5px;background:rgba(176,203,232,0.25);position:relative;overflow:hidden;flex:1}
+.vbar i{position:absolute;inset:0;background:#B0CBE8;border-radius:5px;transform-origin:left;transform:scaleX(0)}
+@keyframes vin{0%,8%{opacity:0;transform:translateY(4px)}14%,86%{opacity:1;transform:none}94%,100%{opacity:0}}
+@keyframes vfill{0%,15%{transform:scaleX(0)}45%,86%{transform:scaleX(1)}95%,100%{transform:scaleX(0)}}
+@keyframes vpulse{0%,100%{opacity:0.35}50%{opacity:1}}
+.q1{animation:vin 7s .2s infinite}.q2{animation:vin 7s 1.1s infinite}.q3{animation:vin 7s 2s infinite}.q4{animation:vin 7s 3s infinite}
+.q1 .vbar i{animation:vfill 7s .3s infinite}.q2 .vbar i{animation:vfill 7s 1.2s infinite}.q3 .vbar i{animation:vfill 7s 2.1s infinite}
+.dots{display:inline-flex;gap:3px;margin-left:4px}
+.dots i{width:4px;height:4px;border-radius:50%;background:#B0CBE8;animation:vpulse 1.2s infinite}
+.dots i:nth-child(2){animation-delay:.2s}.dots i:nth-child(3){animation-delay:.4s}
+/* chart draw */
+.vchart{position:absolute;inset:14px 16px}
+.vchart path{stroke:#B0CBE8;stroke-width:2;fill:none;stroke-dasharray:220;stroke-dashoffset:220;animation:vdraw 6s infinite}
+@keyframes vdraw{0%,10%{stroke-dashoffset:220}55%,88%{stroke-dashoffset:0}96%,100%{stroke-dashoffset:220}}
+.vtag{position:absolute;font-family:'Space Mono',monospace;font-size:9px;color:#14191D;background:#B0CBE8;padding:3px 8px;border-radius:5px;font-weight:700;opacity:0;animation:vin 6s 2.6s infinite}
+/* stamp */
+@keyframes vstamp{0%,20%{opacity:0;transform:scale(1.6) rotate(-8deg)}30%,86%{opacity:1;transform:scale(1) rotate(-8deg)}94%,100%{opacity:0}}
+.vdoc{display:flex;align-items:center;justify-content:space-between;gap:8px;font-family:'Space Mono',monospace;font-size:10px;color:var(--text);padding:5px 0;opacity:0}
+.vdoc .stamp{font-size:8.5px;letter-spacing:0.08em;border:1.5px solid #B0CBE8;color:#B0CBE8;border-radius:4px;padding:2px 7px;opacity:0}
+.a1{animation:vin 7.5s .2s infinite}.a2{animation:vin 7.5s 1.4s infinite}.a3{animation:vin 7.5s 2.6s infinite}
+.a1 .stamp{animation:vstamp 7.5s .9s infinite}.a2 .stamp{animation:vstamp 7.5s 2.1s infinite}.a3 .stamp{animation:vstamp 7.5s 3.3s infinite}
+/* scales / capex */
+@keyframes vweigh{0%,100%{transform:rotate(0)}25%{transform:rotate(-4deg)}75%{transform:rotate(4deg)}}
+.vopt{display:flex;gap:10px;height:100%;align-items:stretch}
+.vopt .vo{flex:1;border:1.5px solid rgba(176,203,232,0.3);border-radius:9px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:0.06em;color:var(--text);gap:6px;text-align:center;padding:8px}
+@keyframes vwin{0%,40%{border-color:rgba(176,203,232,0.3);background:none}55%,88%{border-color:#B0CBE8;background:rgba(176,203,232,0.12)}96%,100%{border-color:rgba(176,203,232,0.3);background:none}}
+.vo.win{animation:vwin 6.5s infinite}
+.vo .pct{font-size:15px;color:#fff;font-weight:700}
 /* mac */
 .macbook{max-width:880px;margin:44px 0 0}
 .macscreen{background:#0d1114;border:2px solid #3a4750;border-bottom:none;border-radius:16px 16px 0 0;padding:16px 16px 12px;position:relative}
@@ -204,13 +246,50 @@ footer a{color:var(--text);text-decoration:none}
   <div class="kick">▸ The agents · what we deploy</div>
   <h2>Named agents, <b>already at work.</b></h2>
   <div class="lead">These aren't concepts — versions of these agents run in production across our portfolio of companies today. Every new client is a <b>replication, not an experiment</b>: deployed in weeks, tuned to your business.</div>
-  <div class="cards c3">
-    <div class="card"><div class="t">📋 The Quote Agent</div><div class="mono" style="font-size:9px;letter-spacing:0.1em;color:#9BC49B;margin:-6px 0 10px">● IN PRODUCTION · REPLICATES PER CLIENT</div><p>Reads every past proposal and win/loss, watches live data, and turns an enquiry into <b>priced options the same morning</b> — a human reviews and sends.</p></div>
-    <div class="card"><div class="t">💰 The Collections Agent</div><div class="mono" style="font-size:9px;letter-spacing:0.1em;color:#9BC49B;margin:-6px 0 10px">● IN PRODUCTION · REPLICATES PER CLIENT</div><p>Chases every invoice on time, tone-matched per account, reconciles payments — and escalates <b>only the one that truly needs you</b>.</p></div>
-    <div class="card"><div class="t">📊 The Reporting Agent</div><div class="mono" style="font-size:9px;letter-spacing:0.1em;color:#9BC49B;margin:-6px 0 10px">● IN PRODUCTION · REPLICATES PER CLIENT</div><p>Reads your systems continuously — month-end answers exist <b>Monday morning</b>, drillable, with the why attached.</p></div>
-    <div class="card"><div class="t">📈 The Pricing Engine</div><div class="mono" style="font-size:9px;letter-spacing:0.1em;color:#9BC49B;margin:-6px 0 10px">● IN PRODUCTION · REPLICATES PER CLIENT</div><p>Prices capacity — screens, rooms, slots — from live demand, audience and occupancy, inside <b>human-set floors</b>, every change logged.</p></div>
-    <div class="card"><div class="t">🧮 The CAPEX Brain</div><div class="mono" style="font-size:9px;letter-spacing:0.1em;color:#9BC49B;margin:-6px 0 10px">● IN PRODUCTION · REPLICATES PER CLIENT</div><p>Models every site or asset: <b>replace the equipment or innovate around it</b> — a ranked plan that recalculates as prices move.</p></div>
-    <div class="card"><div class="t">✅ The Approvals Agent</div><div class="mono" style="font-size:9px;letter-spacing:0.1em;color:#9BC49B;margin:-6px 0 10px">● IN PRODUCTION · REPLICATES PER CLIENT</div><p>Compliance checks, filings and permits — prepared, submitted and tracked, in <b>English and Arabic</b>, with a full audit trail.</p></div>
+  <div class="acards">
+    <div class="acard"><div class="ahd"><div class="aic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B0CBE8" stroke-width="1.6" stroke-linecap="round"><path d="M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></div><div class="at">The Quote Agent</div></div>
+      <div class="mini">
+        <div class="vrow q1"><span style="min-width:56px">ENQUIRY</span><div class="vbar"><i></i></div></div>
+        <div class="vrow q2"><span style="min-width:56px">HISTORY</span><div class="vbar"><i></i></div></div>
+        <div class="vrow q3"><span style="min-width:56px">PRICING</span><div class="vbar"><i></i></div></div>
+        <div class="vrow q4"><span class="vc">✓</span><span>3 options ready — review &amp; send<span class="dots"><i></i><i></i><i></i></span></span></div>
+      </div>
+      <p>Reads every past proposal and win, watches live data — <b>priced options the same morning.</b></p></div>
+    <div class="acard"><div class="ahd"><div class="aic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B0CBE8" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 5-5.5"/></svg></div><div class="at">The Collections Agent</div></div>
+      <div class="mini">
+        <div class="vrow q1"><span class="vc">✓</span><span>INV-2214 · reminder sent</span></div>
+        <div class="vrow q2"><span class="vc">✓</span><span>INV-2215 · payment matched</span></div>
+        <div class="vrow q3"><span class="vc">✓</span><span>INV-2216 · reconciled</span></div>
+        <div class="vrow q4"><span class="vc" style="border-color:#E8736A;color:#E8736A">!</span><span>INV-2217 · case file → <b style="color:#fff">your call</b></span></div>
+      </div>
+      <p>Chases on time, tone-matched, reconciles everything — <b>escalates only what needs you.</b></p></div>
+    <div class="acard"><div class="ahd"><div class="aic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B0CBE8" stroke-width="1.6" stroke-linecap="round"><path d="M4 20V9M10 20V4M16 20v-8M21 20H3"/></svg></div><div class="at">The Reporting Agent</div></div>
+      <div class="mini">
+        <div class="vrow q1"><span style="min-width:56px">SALES</span><div class="vbar"><i></i></div></div>
+        <div class="vrow q2"><span style="min-width:56px">COSTS</span><div class="vbar"><i></i></div></div>
+        <div class="vrow q3"><span style="min-width:56px">CASH</span><div class="vbar"><i></i></div></div>
+        <div class="vrow q4"><span class="vc">✓</span><span>board pack ready — Monday 8am</span></div>
+      </div>
+      <p>Reads your systems continuously — <b>answers exist before you ask</b>, drillable, with the why.</p></div>
+    <div class="acard"><div class="ahd"><div class="aic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B0CBE8" stroke-width="1.6" stroke-linecap="round"><path d="M3 17l5-5 4 3 8-8"/><path d="M15 7h5v5"/></svg></div><div class="at">The Pricing Engine</div></div>
+      <div class="mini">
+        <svg class="vchart" viewBox="0 0 200 80" preserveAspectRatio="none"><path d="M0,68 C30,64 40,50 62,52 S100,30 125,32 S170,14 200,10"/></svg>
+        <span class="vtag" style="right:8px;top:6px">yield ↑</span>
+      </div>
+      <p>Prices capacity from live demand and occupancy — <b>inside human-set floors</b>, every change logged.</p></div>
+    <div class="acard"><div class="ahd"><div class="aic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B0CBE8" stroke-width="1.6" stroke-linecap="round"><path d="M12 3v18M4 7l8-4 8 4"/><path d="M6 7l-3 6a3.5 3.5 0 0 0 7 0L7 7M18 7l-3 6a3.5 3.5 0 0 0 7 0l-3-6"/></svg></div><div class="at">The CAPEX Brain</div></div>
+      <div class="mini"><div class="vopt">
+        <div class="vo">REPLACE<br>equipment<span class="pct">4.2y</span>payback</div>
+        <div class="vo win">INNOVATE<br>around it<span class="pct">1.8y</span>payback</div>
+      </div></div>
+      <p>Models every site: <b>replace or innovate</b> — a ranked plan that recalculates as prices move.</p></div>
+    <div class="acard"><div class="ahd"><div class="aic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B0CBE8" stroke-width="1.6" stroke-linecap="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/><path d="M9 12l2 2 4-4.5"/></svg></div><div class="at">The Approvals Agent</div></div>
+      <div class="mini">
+        <div class="vdoc a1"><span>contract-114 · checked EN+AR</span><span class="stamp">FILED</span></div>
+        <div class="vdoc a2"><span>permit-registration · prepared</span><span class="stamp">SUBMITTED</span></div>
+        <div class="vdoc a3"><span>compliance pack · verified</span><span class="stamp">APPROVED</span></div>
+      </div>
+      <p>Filings and permits prepared, submitted, tracked — <b>English and Arabic</b>, full audit trail.</p></div>
   </div>
   <div class="moreagents"><b>The library keeps growing:</b> reconciliation, onboarding, procurement, compliance monitoring, scheduling, inventory, filings, contract reading, escalations — and whatever your operation needs next. <b style="color:#fff">We don't sell agents. We take over workflows</b> — if the work is repetitive and rule-based, an agent can own it.</div>
   <span class="illus">running today across our portfolio of companies · deployed for each client inside their own systems</span>
