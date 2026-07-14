@@ -91,6 +91,48 @@ h2 b{font-weight:600}
 .dial .n{font-size:26px;font-weight:300;color:var(--white)}
 .dial .d{font-family:'Space Mono',monospace;font-size:7px;letter-spacing:0.1em;color:var(--dim);text-transform:uppercase}
 .illus{display:inline-block;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(176,203,232,0.5);border:1px solid var(--line);border-radius:999px;padding:4px 11px;margin-top:20px}
+
+/* journey manual→autopilot */
+.journey{margin-top:54px;max-width:980px}
+.jtrack{position:relative;height:10px;border-radius:6px;background:rgba(255,255,255,0.08);overflow:hidden}
+.jtrack i{position:absolute;inset:0;width:100%;border-radius:6px;background:linear-gradient(90deg,rgba(176,203,232,0.25),#B0CBE8 60%,#fff);transform-origin:left;animation:jfill 3.2s ease-out forwards}
+@keyframes jfill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.jstages{display:grid;grid-template-columns:1fr 1fr 1fr;margin-top:16px;gap:12px}
+.jst .jn{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--dim)}
+.jst .jt{font-size:17px;color:var(--white);font-weight:600;margin-top:3px}
+.jst .jd{font-size:12.5px;color:var(--text);margin-top:4px;line-height:1.45;max-width:26ch}
+.jst:nth-child(3) .jt{color:#fff}
+.jscore{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--dim);display:flex;justify-content:space-between;margin-top:8px}
+/* systems connect */
+.sysgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:38px;max-width:1000px}
+@media(max-width:860px){.sysgrid{grid-template-columns:1fr}}
+.syscard{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px 26px}
+.syscard .diagram{display:flex;align-items:center;justify-content:center;gap:18px;padding:18px 0 22px}
+.syscard .col{display:flex;flex-direction:column;gap:10px}
+.syscard .sysic{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center}
+.syscard .sysic img{width:22px;height:22px}
+.syscard .hub{width:52px;height:52px;background:var(--ink);border:1px solid var(--text);border-radius:13px;display:flex;align-items:center;justify-content:center}
+.syscard .hub span{display:block;width:16px;height:16px;background:var(--text);transform:rotate(45deg)}
+.syscard .wire{width:34px;height:1px;background:repeating-linear-gradient(90deg,var(--text) 0 4px,transparent 4px 8px);opacity:0.6}
+.syscard .t{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--white);font-weight:700;margin-bottom:8px}
+.syscard p{font-size:13.5px;line-height:1.5;color:var(--text)}
+.syscard p b{color:var(--white)}
+/* animated cockpit slideshow */
+.macscreen{aspect-ratio:16/9.35}
+.macscreen .slide{position:absolute;inset:16px 16px 12px;border-radius:8px;overflow:hidden;opacity:0;animation:ckcycle 16s infinite}
+.macscreen .slide img{width:100%;height:100%;object-fit:cover;object-position:top}
+.macscreen .slide:nth-child(2){animation-delay:0s}
+.macscreen .slide:nth-child(3){animation-delay:4s}
+.macscreen .slide:nth-child(4){animation-delay:8s}
+.macscreen .slide:nth-child(5){animation-delay:12s}
+@keyframes ckcycle{0%{opacity:0}3%{opacity:1}25%{opacity:1}31%{opacity:0}100%{opacity:0}}
+/* score dial small */
+.dial{width:120px;height:120px;border-radius:50%;background:conic-gradient(#fff 0deg 220deg, rgba(255,255,255,0.09) 220deg 360deg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.dial .in{width:92px;height:92px;border-radius:50%;background:var(--panel);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.dial .n{font-size:28px;font-weight:300;color:var(--white)}
+.dial .d{font-family:'Space Mono',monospace;font-size:7px;letter-spacing:0.1em;color:var(--dim);text-transform:uppercase}
+.moreagents{margin-top:22px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.06em;color:var(--dim);line-height:2;max-width:900px}
+.moreagents b{color:var(--text);font-weight:400}
 /* footer */
 footer{padding:60px 6vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
 footer .wm{font-size:20px}
@@ -107,7 +149,7 @@ footer a{color:var(--text);text-decoration:none}
     <a href="#how">How we work</a>
     <a href="#who">Who we work with</a>
     <a href="#ventures">Ventures</a>
-    <a class="cta" href="mailto:peter@houseofbuilders.ai?subject=Let's%20talk">Talk to us</a>
+    <a class="cta" href="mailto:hello@houseofbuilders.ai?subject=Let's%20talk">Talk to us</a>
   </div>
 </nav>
 
@@ -117,10 +159,19 @@ footer a{color:var(--text);text-decoration:none}
   <h1>We don't advise the future.<br><b>We operate it.</b></h1>
   <div class="sub">House of Builders makes companies <b>run on AI</b> — then turns what works into products and ventures it co-owns. Built in the Gulf, <b>sovereign by design</b>.</div>
   <div>
-    <a class="btn" href="mailto:peter@houseofbuilders.ai?subject=Let's%20talk">Talk to us</a>
+    <a class="btn" href="mailto:hello@houseofbuilders.ai?subject=Let's%20talk">Talk to us</a>
     <a class="btn g" href="#how">How we work ↓</a>
   </div>
-  <div class="mono" style="margin-top:22px;font-size:12px;letter-spacing:0.08em;color:var(--dim)">✉ <a href="mailto:peter@houseofbuilders.ai" style="color:var(--text);text-decoration:none">peter@houseofbuilders.ai</a></div>
+  <div class="mono" style="margin-top:22px;font-size:12px;letter-spacing:0.08em;color:var(--dim)">✉ <a href="mailto:hello@houseofbuilders.ai" style="color:var(--text);text-decoration:none">hello@houseofbuilders.ai</a></div>
+  <div class="journey">
+    <div class="jtrack"><i></i></div>
+    <div class="jscore"><span>0</span><span>the journey we run — measured every step</span><span>100</span></div>
+    <div class="jstages">
+      <div class="jst"><div class="jn">stage 1</div><div class="jt">Manual</div><div class="jd">People carry every task. Slow, expensive, error-prone.</div></div>
+      <div class="jst"><div class="jn">stage 2</div><div class="jt">Copilot</div><div class="jd">AI assists — people still drive every step.</div></div>
+      <div class="jst"><div class="jn">stage 3</div><div class="jt">Agentic</div><div class="jd">Agents do the work. <b style="color:#fff">People decide.</b> Everything logged.</div></div>
+    </div>
+  </div>
 </section>
 
 <!-- THE SHIFT -->
@@ -145,7 +196,7 @@ footer a{color:var(--text);text-decoration:none}
 <section id="products">
   <div class="kick">▸ The agents · what we deploy</div>
   <h2>Named agents, <b>already at work.</b></h2>
-  <div class="lead">These aren't concepts — versions of these agents run in production across our founders' companies today. Every new client is a <b>replication, not an experiment</b>: deployed in weeks, tuned to your business.</div>
+  <div class="lead">These aren't concepts — versions of these agents run in production across our portfolio of companies today. Every new client is a <b>replication, not an experiment</b>: deployed in weeks, tuned to your business.</div>
   <div class="cards c3">
     <div class="card"><div class="t">📋 The Quote Agent</div><div class="mono" style="font-size:9px;letter-spacing:0.1em;color:#9BC49B;margin:-6px 0 10px">● IN PRODUCTION · REPLICATES PER CLIENT</div><p>Reads every past proposal and win/loss, watches live data, and turns an enquiry into <b>priced options the same morning</b> — a human reviews and sends.</p></div>
     <div class="card"><div class="t">💰 The Collections Agent</div><div class="mono" style="font-size:9px;letter-spacing:0.1em;color:#9BC49B;margin:-6px 0 10px">● IN PRODUCTION · REPLICATES PER CLIENT</div><p>Chases every invoice on time, tone-matched per account, reconciles payments — and escalates <b>only the one that truly needs you</b>.</p></div>
@@ -154,7 +205,8 @@ footer a{color:var(--text);text-decoration:none}
     <div class="card"><div class="t">🧮 The CAPEX Brain</div><div class="mono" style="font-size:9px;letter-spacing:0.1em;color:#9BC49B;margin:-6px 0 10px">● IN PRODUCTION · REPLICATES PER CLIENT</div><p>Models every site or asset: <b>replace the equipment or innovate around it</b> — a ranked plan that recalculates as prices move.</p></div>
     <div class="card"><div class="t">✅ The Approvals Agent</div><div class="mono" style="font-size:9px;letter-spacing:0.1em;color:#9BC49B;margin:-6px 0 10px">● IN PRODUCTION · REPLICATES PER CLIENT</div><p>Compliance checks, filings and permits — prepared, submitted and tracked, in <b>English and Arabic</b>, with a full audit trail.</p></div>
   </div>
-  <span class="illus">running today across our founders' companies · deployed for each client inside their own systems</span>
+  <div class="moreagents"><b>+ 10 more in the library:</b> The Reconciliation Agent · The Onboarding Agent · The Procurement Agent · The Compliance Monitor · The Scheduling Agent · The Inventory Agent · The Filing Agent · The Contract Reader · The Data-Entry Agent · The Escalation Agent</div>
+  <span class="illus">running today across our portfolio of companies · deployed for each client inside their own systems</span>
 </section>
 
 <!-- HOW WE START (customers) -->
@@ -169,22 +221,61 @@ footer a{color:var(--text);text-decoration:none}
   </div>
   <div class="cards c2">
     <div class="card"><div class="t">Where we come in</div><p>Inside the systems you already run — ERP, spreadsheets, messaging — through <b>secure, permissioned access</b>, the way open banking connects apps to accounts. For sensitive work, the AI models run <b>on your own infrastructure</b>: your data never leaves your walls.</p></div>
-    <div class="card"><div class="t">How we measure</div><p>Every engagement carries a simple score from 0 to 100 — <b>how much of the work runs agentically</b>. It climbs as agents take on more, and it keeps both sides honest about progress. A measure, not a promise.</p></div>
+    <div class="card"><div class="t">How we measure</div><div style="display:flex;gap:22px;align-items:center"><div class="dial"><div class="in"><div class="n">61</div><div class="d">agentic score</div></div></div><p style="flex:1">Every engagement carries a simple score from 0 to 100 — <b>how much of the work runs agentically</b>. It climbs as agents take on more, and it keeps both sides honest about progress. A measure, not a promise.</p></div></div>
+  </div>
+</section>
+
+<!-- SYSTEMS -->
+<section id="systems">
+  <div class="kick">▸ Your systems stay · we plug in</div>
+  <h2>No new platform. No migration. <b>Your teams, amplified.</b></h2>
+  <div class="sysgrid">
+    <div class="syscard">
+      <div class="diagram">
+        <div class="col"><div class="sysic"><img src="https://www.google.com/s2/favicons?domain=sap.com&sz=64"></div><div class="sysic"><img src="https://www.google.com/s2/favicons?domain=oracle.com&sz=64"></div><div class="sysic"><img src="https://www.google.com/s2/favicons?domain=microsoft.com&sz=64"></div></div>
+        <div class="wire"></div><div class="hub"><span></span></div><div class="wire"></div>
+        <div class="col"><div class="sysic"><img src="https://www.google.com/s2/favicons?domain=salesforce.com&sz=64"></div><div class="sysic"><img src="https://www.google.com/s2/favicons?domain=slack.com&sz=64"></div><div class="sysic"><img src="https://www.google.com/s2/favicons?domain=notion.so&sz=64"></div></div>
+      </div>
+      <div class="t">Works inside what you already run</div>
+      <p>ERP, CRM, spreadsheets, messaging — agents operate <b>inside your existing stack</b>. No new platform for your team to learn, nothing to migrate.</p>
+    </div>
+    <div class="syscard">
+      <div class="diagram">
+        <div class="col"><div class="sysic"><img src="https://www.google.com/s2/favicons?domain=gmail.com&sz=64"></div><div class="sysic"><img src="https://www.google.com/s2/favicons?domain=whatsapp.com&sz=64"></div></div>
+        <div class="wire"></div><div class="hub"><span></span></div><div class="wire"></div>
+        <div class="col"><div class="sysic"><img src="https://www.google.com/s2/favicons?domain=atlassian.com&sz=64"></div><div class="sysic"><img src="https://www.google.com/s2/favicons?domain=sharepoint.com&sz=64"></div></div>
+      </div>
+      <div class="t">Secure, permissioned, logged</div>
+      <p>Connections work like open banking: agents see <b>only what they're allowed to see</b>, act only where they're allowed to act — and every action is written down.</p>
+    </div>
+    <div class="syscard">
+      <div class="t">Your people get leverage, not replacement</div>
+      <p>The repetitive work moves to agents; the judgment stays with your team. The practical effect: <b>each person operates at several times their previous capacity</b> — the same team, a different ceiling.</p>
+    </div>
+    <div class="syscard">
+      <div class="t">Managed after launch</div>
+      <p>We monitor the agents, improve how they work, and keep them current — <b>you never manage the technology yourself</b>. It's an operating service, not a software handover.</p>
+    </div>
   </div>
 </section>
 
 <!-- WHY TRUST US -->
 <section id="trust">
   <div class="kick">▸ Why trust us</div>
-  <h2>Because we already run companies this way — <b>our own.</b></h2>
-  <div class="lead">Our founders didn't read about this. One helped build <b>Hub71, Abu Dhabi's global tech ecosystem</b> — seeing from the inside why startups, funds and venture builders succeed or fail — then built a retail business run almost entirely by an AI workforce. The other founded an AI engineering company whose own operations run on the exact stack we deploy. Together, today:</div>
+  <h2>Because we already run companies this way — <b>across our portfolio.</b></h2>
+  <div class="lead">We don't sell what we haven't lived. Our founders have built inside one of the world's fastest-growing tech ecosystems, advised governments and global enterprises on innovation, and founded companies that run on the exact stack we deploy — from consumer businesses operated end-to-end by AI workforces to engineering firms serving international brands. Across that portfolio, today:</div>
   <div class="macbook">
-    <div class="macscreen"><img src="img/hob-cockpit.png" alt="the HoB cockpit"></div>
+    <div class="macscreen" style="position:relative"><img src="img/cockpit-1.png" alt="the HoB cockpit" style="visibility:hidden">
+      <div class="slide"><img src="img/cockpit-1.png" alt="cockpit overview"></div>
+      <div class="slide"><img src="img/cockpit-2.png" alt="agents at work"></div>
+      <div class="slide"><img src="img/cockpit-3.png" alt="approvals pipeline"></div>
+      <div class="slide"><img src="img/cockpit-4.png" alt="finance live"></div>
+    </div>
     <div class="macbase"></div>
-    <div class="maccap">the HoB cockpit · a customer's view · illustrative</div>
+    <div class="maccap">the HoB cockpit · live rotation: overview → agents working → approvals → finance · illustrative</div>
   </div>
   <div class="fig">
-    <div class="f"><div class="n">24+</div><div class="l">clients served by agents across our founders' companies</div></div>
+    <div class="f"><div class="n">24+</div><div class="l">clients served by agents across the portfolio</div></div>
     <div class="f"><div class="n">1,842</div><div class="l">tickets resolved</div></div>
     <div class="f"><div class="n">316</div><div class="l">builds shipped</div></div>
     <div class="f"><div class="n">99.98%</div><div class="l">uptime</div></div>
@@ -211,17 +302,17 @@ footer a{color:var(--text);text-decoration:none}
     <div class="card">
       <div class="t">🏢 Enterprises &amp; government</div>
       <p><b>Run on AI.</b> We map your organisation, automate what pays first, and hand you a cockpit where you watch it work — sovereign, auditable, inside your own walls.</p>
-      <div class="go"><a href="mailto:peter@houseofbuilders.ai?subject=Enterprise%20—%20let's%20talk">Start a conversation →</a></div>
+      <div class="go"><a href="mailto:hello@houseofbuilders.ai?subject=Enterprise%20—%20let's%20talk">Start a conversation →</a></div>
     </div>
     <div class="card">
       <div class="t">🌏 VCs &amp; global tech companies</div>
       <p><b>Enter the Gulf with an operator.</b> Joint ventures and soft-landing for proven technology — we bring the local channels, the compliance path and the operating hand your portfolio needs here.</p>
-      <div class="go"><a href="mailto:peter@houseofbuilders.ai?subject=JV%20%2F%20market%20entry">Explore a JV →</a></div>
+      <div class="go"><a href="mailto:hello@houseofbuilders.ai?subject=JV%20%2F%20market%20entry">Explore a JV →</a></div>
     </div>
     <div class="card">
       <div class="t">🔨 Founders &amp; operators</div>
       <p><b>Run one of our spin-offs.</b> Our ventures are born with paying customers and real founder equity for the operator who runs them. If you build fast and own outcomes, talk to us.</p>
-      <div class="go"><a href="mailto:peter@houseofbuilders.ai?subject=Founder%20—%20spin-offs">Run a venture →</a></div>
+      <div class="go"><a href="mailto:hello@houseofbuilders.ai?subject=Founder%20—%20spin-offs">Run a venture →</a></div>
     </div>
   </div>
 </section>
@@ -239,13 +330,13 @@ footer a{color:var(--text);text-decoration:none}
   <div class="kick">▸ Next step</div>
   <h2>Someone in your market will run on agents first. <b>Decide if it's you.</b></h2>
   <div class="lead">The first mover gets the lower costs, the faster answers — and the headline. Every quarter you wait, someone else's agents are learning your market. One conversation tells you what's possible; <b>one quarter proves it in production.</b></div>
-  <a class="btn" href="mailto:peter@houseofbuilders.ai?subject=Moving%20first">Move first →</a>
+  <a class="btn" href="mailto:hello@houseofbuilders.ai?subject=Moving%20first">Move first →</a>
 </section>
 
 <footer>
   <div class="wm">House of Builders<span class="dot"></span></div>
   <div class="fr">
-    <a href="mailto:peter@houseofbuilders.ai">peter@houseofbuilders.ai</a><br>
+    <a href="mailto:hello@houseofbuilders.ai">hello@houseofbuilders.ai</a><br>
     Dubai · Abu Dhabi · © 2026 House of Builders
   </div>
 </footer>
