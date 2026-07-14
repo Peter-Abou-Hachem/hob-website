@@ -1,0 +1,175 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--petrol:#283238;--deep:#1F262B;--panel:#2D383F;--ink:#14191D;--text:#B0CBE8;--white:#FFF;--line:rgba(255,255,255,0.14);--dim:rgba(176,203,232,0.55);--bad:#E8736A}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'IBM Plex Sans',sans-serif;background:#111}
+.mono{font-family:'Space Mono',monospace}
+.frame{width:1920px;height:1080px;background:var(--deep);display:flex;flex-direction:column;padding:0;overflow:hidden;margin-bottom:30px}
+.top{height:88px;background:rgba(20,25,29,0.85);border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 48px;gap:30px;flex-shrink:0}
+.wm{font-weight:500;letter-spacing:-0.04em;color:var(--white);font-size:30px}
+.wm .dot{display:inline-block;width:9px;height:9px;background:var(--text);transform:rotate(45deg);margin-left:5px}
+.ten{font-family:'Space Mono',monospace;font-size:16px;letter-spacing:0.14em;color:var(--text);text-transform:uppercase;padding:10px 22px;border:1px solid var(--line);border-radius:999px}
+.ten b{color:var(--white)}
+.live{margin-left:auto;display:flex;align-items:center;gap:12px;font-family:'Space Mono',monospace;font-size:15px;letter-spacing:0.14em;color:var(--text)}
+.live .p{width:12px;height:12px;border-radius:50%;background:var(--text)}
+.body{flex:1;padding:44px 48px;display:flex;flex-direction:column;min-height:0}
+.h{font-size:44px;font-weight:300;color:var(--white);letter-spacing:-0.02em;margin-bottom:34px}
+.h b{font-weight:600}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:26px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px 30px}
+.kpi .v{font-size:52px;font-weight:200;color:var(--white)}
+.kpi .v small{font-size:22px;color:var(--text)}
+.kpi .k{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim);margin-top:8px}
+.agrow{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.ag{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+.ag .n{display:flex;align-items:center;gap:10px;font-size:23px;color:var(--white);font-weight:600}
+.ag .n i{width:11px;height:11px;border-radius:50%;background:var(--text);font-style:normal}
+.ag .r{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--dim);margin:6px 0 12px}
+.ag .w{font-size:17px;color:var(--text);line-height:1.45}
+.feed{flex:1;margin-top:22px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px 32px;display:flex;flex-direction:column;justify-content:space-around}
+.fe{display:flex;gap:20px;align-items:baseline;font-size:22px;color:var(--text)}
+.fe .t{font-family:'Space Mono',monospace;font-size:15px;color:var(--dim);min-width:80px}
+.fe b{color:#fff}
+.fe .d{width:10px;height:10px;border-radius:50%;background:var(--text);align-self:center;flex-shrink:0}
+.strip{margin-top:22px;background:rgba(176,203,232,0.08);border:1px solid rgba(176,203,232,0.35);border-radius:14px;padding:20px 28px;font-size:22px;color:var(--white)}
+.strip b{font-weight:700}
+/* chat */
+.chat{flex:1;display:flex;flex-direction:column;gap:22px;min-height:0}
+.bub{max-width:62%;padding:22px 28px;border-radius:20px;font-size:26px;line-height:1.45}
+.bub.me{align-self:flex-end;background:rgba(176,203,232,0.92);color:#14191D;border-bottom-right-radius:6px;font-weight:500}
+.bub.ag{align-self:flex-start;background:rgba(20,25,29,0.6);border:1px solid var(--line);color:var(--text);border-bottom-left-radius:6px}
+.bub.ag b{color:#fff}
+.ah{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--dim);font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:0.08em}
+.ah .s{width:10px;height:10px;border-radius:50%;background:var(--text)}
+.tbl{margin-top:16px;border:1px solid rgba(255,255,255,0.1);border-radius:12px;overflow:hidden;font-size:21px}
+.tbl .r{display:flex;justify-content:space-between;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,0.06);gap:30px}
+.tbl .r:last-child{border:none}
+.tbl b{color:#fff}
+.chips{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.chip{font-family:'Space Mono',monospace;font-size:13px;padding:7px 14px;border-radius:7px;background:rgba(176,203,232,0.12);color:var(--text)}
+.btns{display:flex;gap:12px;margin-top:16px}
+.btn{font-family:'Space Mono',monospace;font-size:15px;letter-spacing:0.05em;padding:14px 26px;border-radius:11px;background:var(--text);color:#14191D;font-weight:700}
+.btn.g{background:none;border:1px solid var(--line);color:var(--text);font-weight:400}
+/* flow */
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin-bottom:28px}
+.fs{background:rgba(20,25,29,0.45);padding:28px 30px;border-right:1px solid rgba(255,255,255,0.07)}
+.fs:last-child{border:none}
+.fs .t{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim);margin-bottom:10px}
+.fs .v{font-size:26px;color:var(--white);font-weight:600;line-height:1.2;margin-bottom:8px}
+.fs .d{font-size:17px;color:var(--text);line-height:1.45}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;flex:1}
+.opt{border:1px solid var(--line);border-radius:16px;padding:30px;background:rgba(20,25,29,0.5)}
+.opt.rec{border-color:rgba(255,255,255,0.5);background:rgba(176,203,232,0.07)}
+.opt .t{display:flex;justify-content:space-between;font-size:24px;color:var(--white);font-weight:700;margin-bottom:14px}
+.opt .tag{font-family:'Space Mono',monospace;font-size:13px;padding:6px 12px;border-radius:6px;background:rgba(176,203,232,0.15);color:var(--text)}
+.opt .d{font-size:19px;color:var(--text);line-height:1.5}
+.opt .d b{color:#fff}
+/* collections */
+.two{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;flex:1}
+.pan{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px 32px}
+.pan .pt{font-family:'Space Mono',monospace;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;color:var(--white);font-weight:700;margin-bottom:20px}
+.row{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.07);font-size:22px;gap:20px}
+.row:last-child{border:none}
+.row b{color:var(--white)}
+.tag2{font-family:'Space Mono',monospace;font-size:13px;padding:7px 13px;border-radius:7px;background:rgba(176,203,232,0.14);color:var(--text);white-space:nowrap}
+.tag2.rd{background:rgba(232,115,106,0.18);color:var(--bad)}
+.bar{margin-bottom:20px}
+.bar .l{display:flex;justify-content:space-between;font-size:20px;margin-bottom:8px}
+.bar .l b{color:#fff}
+.bar .tr{height:14px;background:rgba(255,255,255,0.08);border-radius:8px}
+.bar .fl{height:14px;border-radius:8px;background:var(--text)}
+</style></head><body>
+
+<div class="frame" id="g1">
+  <div class="top"><div class="wm">HoB<span class="dot"></span></div><div class="ten">tenant · <b>GULF ENTERPRISE</b></div><div class="live"><div class="p"></div>16 AGENTS ACTIVE</div></div>
+  <div class="body">
+    <div class="h">Good morning. <b>2,140 tasks ran overnight — 5 need a human.</b></div>
+    <div class="kpis">
+      <div class="kpi"><div class="v">61<small>/100</small></div><div class="k">agentic score</div></div>
+      <div class="kpi"><div class="v">2,140</div><div class="k">tasks overnight</div></div>
+      <div class="kpi"><div class="v">5</div><div class="k">need a decision</div></div>
+      <div class="kpi"><div class="v">100%</div><div class="k">actions logged</div></div>
+    </div>
+    <div class="agrow">
+      <div class="ag"><div class="n"><i></i>Sami</div><div class="r">finance</div><div class="w">38 invoices out · 9 payments matched</div></div>
+      <div class="ag"><div class="n"><i></i>Dana</div><div class="r">quotes</div><div class="w">3 proposals priced, ready for review</div></div>
+      <div class="ag"><div class="n"><i></i>Omar</div><div class="r">operations</div><div class="w">schedule rebuilt · 3 conflicts solved</div></div>
+      <div class="ag"><div class="n"><i></i>Rana</div><div class="r">compliance</div><div class="w">14 checks passed · 1 flagged to legal</div></div>
+      <div class="ag"><div class="n"><i></i>Adel</div><div class="r">reporting</div><div class="w">board pack drafted itself overnight</div></div>
+      <div class="ag"><div class="n"><i></i>Lina</div><div class="r">orders</div><div class="w">61 orders confirmed · 2 exceptions</div></div>
+    </div>
+    <div class="feed">
+      <div class="fe"><div class="d"></div><div class="t">07:41</div><div><b>Dana</b> priced proposal #1174 — three options, margins guarded</div></div>
+      <div class="fe"><div class="d"></div><div class="t">07:58</div><div><b>Sami</b> matched a misreferenced payment · AED 84k reconciled</div></div>
+      <div class="fe"><div class="d"></div><div class="t">08:10</div><div><b>Rana</b> filed 2 compliance checks · full audit trail attached</div></div>
+      <div class="fe"><div class="d"></div><div class="t">08:22</div><div><b>Omar</b> resolved a schedule conflict — no human needed</div></div>
+    </div>
+    <div class="strip"><b>Humans decide. Agents do.</b> Everything on this screen is logged and auditable.</div>
+  </div>
+</div>
+
+<div class="frame" id="g2">
+  <div class="top"><div class="wm">HoB<span class="dot"></span></div><div class="ten">tenant · <b>GULF ENTERPRISE</b></div><div class="live"><div class="p"></div>ASK YOUR AGENTS</div></div>
+  <div class="body">
+    <div class="chat">
+      <div class="bub me">Sami — which customers are overdue right now?</div>
+      <div style="max-width:70%">
+        <div class="ah"><div class="s"></div>Sami · finance agent · answered in 4 seconds</div>
+        <div class="bub ag" style="max-width:100%;margin-top:10px"><b>Three accounts past 60 days</b> — AED 940k total. Reminders already sent to two; one needs your call:
+          <div class="tbl">
+            <div class="r"><span><b>Account A</b> · 92 days</span><span>AED 480k · <b>escalation drafted</b></span></div>
+            <div class="r"><span>Account B · 71 days</span><span>AED 260k · reminder sent</span></div>
+          </div>
+          <div class="chips"><span class="chip">✓ queried ERP</span><span class="chip">✓ matched payments</span><span class="chip">✓ drafted reminders</span></div>
+          <div class="btns"><span class="btn">Approve escalation</span><span class="btn g">Open case file</span></div>
+        </div>
+      </div>
+      <div class="bub me">And prepare the numbers summary for tomorrow's board call.</div>
+      <div style="max-width:70%">
+        <div class="ah"><div class="s"></div>Sami · working with the reporting agent</div>
+        <div class="bub ag" style="max-width:100%;margin-top:10px">Done — <b>4 pages, live figures, variances explained.</b> In your inbox and on this cockpit.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="frame" id="g3">
+  <div class="top"><div class="wm">HoB<span class="dot"></span></div><div class="ten">tenant · <b>GULF ENTERPRISE</b></div><div class="live"><div class="p"></div>THE QUOTE AGENT</div></div>
+  <div class="body">
+    <div class="h">Enquiry at 8:05. <b>Three priced options by 9:00.</b></div>
+    <div class="flow">
+      <div class="fs"><div class="t">08:05 · in</div><div class="v">Enquiry lands</div><div class="d">requirements extracted · buyer matched to 38 similar deals</div></div>
+      <div class="fs"><div class="t">08:12 · context</div><div class="v">History read</div><div class="d">every past proposal, win/loss and margin — already known</div></div>
+      <div class="fs"><div class="t">08:31 · built</div><div class="v">Options priced</div><div class="d">live availability + costs · margin floors respected</div></div>
+      <div class="fs"><div class="t">08:52 · ready</div><div class="v">Human sends</div><div class="d">one click · tracked from the moment it lands</div></div>
+    </div>
+    <div class="opts">
+      <div class="opt"><div class="t">ESSENTIAL <span class="tag">READY</span></div><div class="d">Core scope · fastest start<br><b>margin ✓ floor</b></div></div>
+      <div class="opt rec"><div class="t">RECOMMENDED ★ <span class="tag">READY</span></div><div class="d">Matches <b>84%</b> of what this buyer profile chose before<br><b>margin ✓ floor</b></div></div>
+      <div class="opt"><div class="t">PREMIUM <span class="tag">READY</span></div><div class="d">Full scope + service tier<br><b>margin ✓ floor</b></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="frame" id="g4">
+  <div class="top"><div class="wm">HoB<span class="dot"></span></div><div class="ten">tenant · <b>GULF ENTERPRISE</b></div><div class="live"><div class="p"></div>COLLECTIONS · LIVE</div></div>
+  <div class="body">
+    <div class="h">Every invoice chased on time. <b>Only one needs you.</b></div>
+    <div class="two">
+      <div class="pan"><div class="pt">▸ The agent's morning</div>
+        <div class="row"><span><b>31 invoices issued</b> — sent same day</span><span class="tag2">DONE</span></div>
+        <div class="row"><span><b>14 reminders</b> — tone-matched per account</span><span class="tag2">SENT</span></div>
+        <div class="row"><span><b>9 payments matched</b> — incl. 2 partial</span><span class="tag2">RECONCILED</span></div>
+        <div class="row"><span><b>1 stuck account</b> — case file ready</span><span class="tag2 rd">YOUR CALL</span></div>
+      </div>
+      <div class="pan"><div class="pt">▸ Receivables · live</div>
+        <div class="bar"><div class="l"><span>Current</span><b>72%</b></div><div class="tr"><div class="fl" style="width:72%"></div></div></div>
+        <div class="bar"><div class="l"><span>31–60 days</span><b>19%</b></div><div class="tr"><div class="fl" style="width:19%"></div></div></div>
+        <div class="bar"><div class="l"><span>61–90 days</span><b>6%</b></div><div class="tr"><div class="fl" style="width:6%"></div></div></div>
+        <div class="bar"><div class="l"><span>90+ days</span><b>3%</b></div><div class="tr"><div class="fl" style="width:3%;background:var(--bad)"></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

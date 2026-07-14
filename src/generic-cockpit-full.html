@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{ --petrol:#283238; --deep:#1F262B; --panel:#2D383F; --ink:#14191D; --text:#B0CBE8; --white:#FFFFFF; --line:rgba(255,255,255,0.12); --ok:#B0CBE8; --warn:rgba(255,255,255,0.85); --bad:#E8736A; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'IBM Plex Sans',sans-serif;background:#111;color:var(--text);font-size:13px;line-height:1.45}
+.mono{font-family:'Space Mono',monospace}
+.frame{width:1920px;height:1080px;background:var(--deep);display:flex;flex-direction:column;overflow:hidden;position:relative;margin-bottom:40px}
+.topbar{height:60px;background:rgba(20,25,29,0.85);border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 32px;gap:26px;flex-shrink:0}
+.wm{font-weight:500;letter-spacing:-0.04em;color:var(--white);font-size:19px}
+.wm .dot{display:inline-block;width:6px;height:6px;background:var(--text);transform:rotate(45deg);margin-left:3px}
+.tenant{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--text);text-transform:uppercase;padding:6px 14px;border:1px solid var(--line);border-radius:999px}
+.tenant b{color:var(--white)}
+.live{margin-left:auto;display:flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:var(--ok)}
+.live .pulse{width:8px;height:8px;border-radius:50%;background:var(--ok)}
+.userchip{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--text);border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+.main{display:flex;flex:1;min-height:0}
+.rail{width:246px;background:rgba(20,25,29,0.5);border-right:1px solid var(--line);padding:18px 0;flex-shrink:0}
+.rail .rt{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(176,203,232,0.5);padding:0 22px;margin:12px 0 7px}
+.rail a{display:flex;justify-content:space-between;padding:8px 22px;font-size:13px;color:var(--text)}
+.rail a.on{background:rgba(176,203,232,0.1);color:var(--white);border-left:3px solid var(--white)}
+.rail a .b{font-family:'Space Mono',monospace;font-size:9px;background:rgba(176,203,232,0.15);border-radius:3px;padding:1px 7px}
+.rail a .b.ok{color:var(--ok)} .rail a .b.wa{color:var(--warn)}
+.content{flex:1;padding:22px 30px 26px;overflow:hidden;display:flex;flex-direction:column}
+.crumb{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(176,203,232,0.55);margin-bottom:6px}
+.h{font-size:24px;font-weight:300;color:var(--white);letter-spacing:-0.02em;margin-bottom:16px}
+.h b{font-weight:600}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:14px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:13px 16px}
+.kpi .v{font-size:24px;font-weight:300;color:var(--white)}
+.kpi .v small{font-size:12px;color:var(--text)}
+.kpi .k{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(176,203,232,0.6);margin-top:3px}
+.kpi .trend{font-family:'Space Mono',monospace;font-size:9.5px;margin-top:4px}
+.tr-up{color:var(--ok)} .tr-dn{color:var(--bad)} .tr-fl{color:var(--warn)}
+.grid2{display:grid;grid-template-columns:1.5fr 1fr;gap:12px;flex:1;min-height:0}
+.grid2e{display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1;min-height:0}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px 18px;display:flex;flex-direction:column;min-height:0}
+.panel .pt{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--white);font-weight:700;margin-bottom:10px;display:flex;justify-content:space-between}
+.panel .pt span{color:rgba(176,203,232,0.55);font-weight:400}
+.agents{display:grid;grid-template-columns:repeat(6,1fr);gap:9px}
+.ag{background:rgba(20,25,29,0.5);border:1px solid var(--line);border-radius:9px;padding:10px 12px}
+.ag .an{display:flex;align-items:center;gap:7px;font-weight:600;color:var(--white);font-size:12.5px}
+.ag .an .st{width:6px;height:6px;border-radius:50%;background:var(--ok)}
+.ag .ar{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(176,203,232,0.6);margin:2px 0 5px}
+.ag .aw{font-size:10.5px;color:var(--text);line-height:1.4}
+.row{display:flex;justify-content:space-between;align-items:center;padding:7.5px 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:12px;gap:10px}
+.row:last-child{border:none}
+.row b{color:var(--white);font-weight:500}
+.tag{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:0.06em;padding:3px 8px;border-radius:4px;text-transform:uppercase;white-space:nowrap}
+.tag.ok{background:rgba(176,203,232,0.14);color:#B0CBE8} .tag.wa{background:rgba(255,255,255,0.14);color:#FFFFFF} .tag.rd{background:rgba(232,115,106,0.15);color:var(--bad)} .tag.bl{background:rgba(176,203,232,0.14);color:var(--text)}
+.dial{width:130px;height:130px;border-radius:50%;background:conic-gradient(var(--white) 0deg calc(var(--sc)*3.6deg), rgba(255,255,255,0.09) calc(var(--sc)*3.6deg) 360deg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.dial .in{width:100px;height:100px;border-radius:50%;background:var(--panel);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.dial .n{font-size:29px;font-weight:300;color:var(--white)}
+.dial .d{font-family:'Space Mono',monospace;font-size:7.5px;letter-spacing:0.1em;color:rgba(176,203,232,0.6);text-transform:uppercase}
+.bar{margin-bottom:8px}
+.bar .bl2{display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px}
+.bar .bl2 b{color:var(--white)}
+.bar .tr{height:6px;background:rgba(255,255,255,0.08);border-radius:4px}
+.bar .fl{height:6px;border-radius:4px;background:var(--text)}
+.syschips{display:flex;gap:7px;margin-top:9px;flex-wrap:wrap}
+.sys{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.06em;border:1px solid var(--line);border-radius:999px;padding:4px 11px;color:var(--text)}
+.sys b{color:var(--ok)}
+.cap{position:absolute;bottom:0;left:0;right:0;background:#0d1114;border-top:2px solid rgba(176,203,232,0.4);padding:9px 32px;font-family:'Space Mono',monospace;font-size:11.5px;color:var(--warn);letter-spacing:0.08em;z-index:5}
+.flow{display:flex;align-items:stretch;gap:0;margin:4px 0 12px}
+.fstep{flex:1;background:rgba(20,25,29,0.5);border:1px solid var(--line);padding:11px 13px}
+.fstep:first-child{border-radius:9px 0 0 9px}.fstep:last-child{border-radius:0 9px 9px 0}
+.fstep .fs{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(176,203,232,0.6);margin-bottom:3px}
+.fstep .fv{font-size:12px;color:var(--white);font-weight:500}
+.fstep .ft{font-size:10px;color:var(--text);margin-top:2px;line-height:1.35}
+.heat{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;margin:4px 0 8px}
+.hc{height:26px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:8px;color:rgba(20,25,29,0.85);font-weight:700}
+.hlab{display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:8.5px;color:rgba(176,203,232,0.55);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px}
+.ticker{background:rgba(20,25,29,0.6);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.trow{display:grid;grid-template-columns:2fr 1.1fr 0.9fr 0.9fr 0.9fr 1fr;padding:7px 13px;border-bottom:1px solid rgba(255,255,255,0.05);font-size:11px;align-items:center}
+.trow.hd{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(176,203,232,0.55);background:rgba(255,255,255,0.03)}
+.trow:last-child{border:none}
+.trow b{color:var(--white);font-weight:500}
+.trow .mono2{font-family:'Space Mono',monospace;font-size:10.5px}
+.bundle{background:rgba(20,25,29,0.5);border:1px solid var(--line);border-radius:10px;padding:13px 15px;margin-bottom:9px}
+.bundle .bn{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px}
+.bundle .bn b{color:var(--white);font-size:13px}
+.bundle .bn .pr{font-family:'Space Mono',monospace;font-size:12px;color:var(--white)}
+.bundle .bd{font-size:10.5px;color:var(--text);line-height:1.4}
+.bundle .bm{display:flex;gap:14px;margin-top:6px;font-family:'Space Mono',monospace;font-size:9px;color:rgba(176,203,232,0.65)}
+.bundle .bm b{color:var(--ok)}
+.opt{border:1px solid var(--line);border-radius:10px;padding:13px 15px;background:rgba(20,25,29,0.5)}
+.opt.rec{border-color:rgba(255,255,255,0.45);background:rgba(176,203,232,0.06)}
+.opt .on2{display:flex;justify-content:space-between;margin-bottom:6px}
+.opt .on2 b{color:var(--white);font-size:13px}
+.opt .om{font-size:10.5px;color:var(--text);line-height:1.5}
+.opt .om b{color:var(--white)}
+.press{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:4px;flex:1}
+.paper{background:#F4F1EC;color:#14191D;border-radius:10px;padding:24px 26px;display:flex;flex-direction:column}
+.paper .mast{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8a8378;border-bottom:2px solid #14191D;padding-bottom:8px;margin-bottom:12px;display:flex;justify-content:space-between}
+.paper h3{font-size:22px;font-weight:700;letter-spacing:-0.015em;line-height:1.15;margin-bottom:9px}
+.paper p{font-size:11.5px;color:#4a4a45;line-height:1.5}
+.paper .ph{flex:1;min-height:100px;background:linear-gradient(135deg,#283238,#3d4a52);border-radius:6px;margin:11px 0;display:flex;align-items:center;justify-content:center;color:#B0CBE8;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.14em}
+.phones{display:flex;gap:36px;justify-content:center;align-items:flex-end;flex:1}
+.phone{width:290px;height:600px;background:#0d1114;border:10px solid #3a4750;border-radius:44px;padding:16px 13px;display:flex;flex-direction:column;gap:9px}
+.phone .ptop{display:flex;justify-content:space-between;align-items:center}
+.phone .wm{font-size:14px}
+.phone .pill{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:0.1em;color:var(--text);border:1px solid var(--line);border-radius:999px;padding:3px 9px;text-transform:uppercase}
+.phone .pscore{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px;text-align:center}
+.phone .pscore .n{font-size:31px;color:var(--white);font-weight:300}
+.phone .pscore .d{font-family:'Space Mono',monospace;font-size:7.5px;letter-spacing:0.12em;color:rgba(176,203,232,0.6);text-transform:uppercase}
+.phone .pcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.phone .pcard .t{font-family:'Space Mono',monospace;font-size:7.5px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(176,203,232,0.6);margin-bottom:3px}
+.phone .pcard .v{font-size:11.5px;color:var(--white);line-height:1.35}
+.phone .pbtns{margin-top:auto;display:flex;gap:8px}
+.phone .pb{flex:1;text-align:center;font-family:'Space Mono',monospace;font-size:8.5px;padding:9px 0;border-radius:8px;letter-spacing:0.06em}
+.phone .pb.a{background:var(--white);color:var(--ink);font-weight:700}
+.phone .pb.g{border:1px solid var(--line);color:var(--text)}
+.plabel{text-align:center;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text);margin-top:10px}
+.center{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1}
+.press3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;flex:1;min-height:0;align-items:start}
+.clip{background:#FFFFFF;border-radius:8px;overflow:hidden;display:flex;flex-direction:column;color:#111;box-shadow:0 8px 30px rgba(0,0,0,0.45)}
+.clip .chead{padding:12px 16px 9px;border-bottom:1px solid #e5e5e5;display:flex;align-items:center;justify-content:space-between}
+.clip .ab-logo{font-family:'IBM Plex Sans';font-weight:800;font-size:16px;letter-spacing:-0.02em;color:#111}.clip .ab-logo b{color:#E0231C}
+.clip .tn-logo{font-family:Georgia,serif;font-weight:700;font-size:17px;color:#00272B;letter-spacing:0.01em}
+.clip .cnn-logo{display:flex;align-items:center;gap:6px}
+.clip .cnn-box{background:#CC0000;color:#fff;font-family:'IBM Plex Sans';font-weight:800;font-size:14px;padding:3px 7px;letter-spacing:0.5px;border-radius:2px}
+.clip .cnn-biz{font-family:'IBM Plex Sans';font-weight:300;font-size:13px;color:#111;letter-spacing:0.04em}
+.clip .cdate{font-family:'IBM Plex Sans';font-size:8.5px;color:#999;text-transform:uppercase;letter-spacing:0.08em}
+.clip .cimg{height:235px;overflow:hidden;position:relative}
+.clip .cimg img{width:100%;height:100%;object-fit:cover;object-position:top left}
+.clip .ctag{position:absolute;top:9px;left:9px;background:#E0231C;color:#fff;font-family:'IBM Plex Sans';font-weight:700;font-size:8px;letter-spacing:0.1em;padding:3px 8px;text-transform:uppercase}
+.clip .ctag.tn{background:#00272B}.clip .ctag.cnn{background:#CC0000}
+.clip .cbody{padding:13px 16px 14px;display:flex;flex-direction:column;flex:1}
+.clip h4{font-family:'IBM Plex Sans';font-weight:700;font-size:15.5px;line-height:1.22;letter-spacing:-0.01em;margin-bottom:7px;color:#111}
+.clip.tn h4{font-family:Georgia,serif;font-weight:700}
+.clip .cby{font-size:8.5px;color:#999;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px}
+.clip .ctx{font-size:10.5px;color:#555;line-height:1.5}
+.clip .ctx b{color:#111}
+.cal{display:grid;grid-template-columns:repeat(14,1fr);gap:3px;margin-top:6px}
+.cd{height:20px;border-radius:3px;background:rgba(176,203,232,0.14)}
+.cd.b1{background:rgba(176,203,232,0.55)} .cd.b2{background:rgba(255,255,255,0.75)} .cd.fr{background:rgba(232,201,137,0.35)}
+
+.kpi{position:relative;overflow:hidden}
+.kpi .spark{position:absolute;left:0;right:0;bottom:0;height:34px;width:100%;opacity:0.55}
+.kpi .spark path.fill{fill:rgba(176,203,232,0.10)}
+.kpi .spark path.line{fill:none;stroke:#B0CBE8;stroke-width:2}
+.ag{position:relative}
+.ag .util{display:flex;gap:2px;margin-top:7px;align-items:flex-end;height:20px}
+.ag .util i{flex:1;background:rgba(176,203,232,0.30);border-radius:1px;min-height:2px}
+.ag .util i.hi{background:#B0CBE8}
+.feed{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px 18px;display:flex;flex-direction:column;min-height:0}
+.feed .pt{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--white);font-weight:700;margin-bottom:10px;display:flex;justify-content:space-between}
+.feed .pt span{color:var(--ok);font-weight:400}
+.fe{display:flex;gap:10px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:11.5px;align-items:baseline}
+.fe:last-child{border:none}
+.fe .ft2{font-family:'Space Mono',monospace;font-size:9px;color:rgba(176,203,232,0.5);min-width:42px}
+.fe .fa{color:#fff;font-weight:600;min-width:44px}
+.fe .fx{color:var(--text);flex:1}
+.fe .fd{width:6px;height:6px;border-radius:50%;background:var(--ok);flex-shrink:0;align-self:center}
+.railstat{margin:16px 22px 0;padding:12px 14px;background:rgba(176,203,232,0.06);border:1px solid var(--line);border-radius:10px}
+.railstat .rl{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(176,203,232,0.6);margin-bottom:6px}
+.railstat .rv{display:flex;justify-content:space-between;font-size:11px;color:var(--text);padding:3px 0}
+.railstat .rv b{color:#fff}
+.railmini{margin:10px 22px 0;height:40px;display:flex;align-items:flex-end;gap:3px}
+.railmini i{flex:1;background:rgba(176,203,232,0.25);border-radius:1px}
+.railmini i.hi{background:#B0CBE8}
+</style>
+</head>
+<body>
+
+<!-- FRAME 1 · COCKPIT HOME -->
+<div class="frame" id="f1">
+  <div class="topbar"><div class="wm">HoB<span class="dot"></span></div><div class="tenant">tenant · <b>GULF ENTERPRISE</b></div><div class="tenant" style="opacity:0.55;font-size:9px">ILLUSTRATIVE · EXAMPLE DATA</div><div class="live"><div class="pulse"></div>14 AGENTS ACTIVE</div><div class="userchip">Chairman view</div></div>
+  <div class="main">
+    <div class="rail">
+      <div class="rt">▸ Functions</div>
+      <a class="on">Overview <span class="b">LIVE</span></a>
+      <a>Demand &amp; Programmatic <span class="b ok">3</span></a>
+      <a>Planning &amp; Bundles <span class="b ok">2</span></a>
+      <a>Yield &amp; Occupancy <span class="b ok">2</span></a>
+      <a>Content &amp; Approvals <span class="b ok">3</span></a>
+      <a>Finance <span class="b ok">2</span></a>
+      <a>HR &amp; Ops <span class="b ok">2</span></a>
+      <div class="rt">▸ System</div>
+      <a>Audit log</a><a>Approvals queue <span class="b wa">5</span></a><a>Integrations</a><div class="railstat"><div class="rl">▸ system pulse</div><div class="rv"><span>networks live</span><b>4 SSPs</b></div><div class="rv"><span>integrations</span><b>7 green</b></div><div class="rv"><span>agents busy</span><b>14 / 14</b></div></div><div class="railmini"><i class="" style="height:40%"></i><i class="" style="height:55%"></i><i class="hi" style="height:70%"></i><i class="" style="height:50%"></i><i class="hi" style="height:80%"></i><i class="hi" style="height:65%"></i><i class="hi" style="height:90%"></i><i class="" style="height:60%"></i><i class="hi" style="height:75%"></i><i class="hi" style="height:85%"></i><i class="hi" style="height:70%"></i><i class="hi" style="height:95%"></i></div>
+    </div>
+    <div class="content">
+      <div class="crumb">▸ GROUP OVERVIEW · TODAY</div>
+      <div class="h">Good morning. <b>2,140 tasks ran overnight — 5 need a human.</b></div>
+      <div class="kpis">
+        <div class="kpi"><div class="v">61<small>/100</small></div><div class="k">Agentic score</div><div class="trend tr-up">illustrative example</div><svg class="spark" viewBox="0 0 200 34" preserveAspectRatio="none"><path class="fill" d="M0,30 L18,26 L36,27 L54,20 L72,22 L90,14 L108,16 L126,9 L144,11 L162,5 L180,6 L200,3 L200,34 L0,34 Z"/><path class="line" d="M0,30 L18,26 L36,27 L54,20 L72,22 L90,14 L108,16 L126,9 L144,11 L162,5 L180,6 L200,3"/></svg></div>
+        <div class="kpi"><div class="v">AED 9.6M</div><div class="k">Booked · this month</div><div class="trend tr-up">illustrative example</div><svg class="spark" viewBox="0 0 200 34" preserveAspectRatio="none"><path class="fill" d="M0,28 L20,29 L40,22 L60,24 L80,17 L100,19 L120,12 L140,14 L160,8 L180,10 L200,4 L200,34 L0,34 Z"/><path class="line" d="M0,28 L20,29 L40,22 L60,24 L80,17 L100,19 L120,12 L140,14 L160,8 L180,10 L200,4"/></svg></div>
+        <div class="kpi"><div class="v">87%</div><div class="k">Network occupancy</div><div class="trend tr-up">illustrative example</div><svg class="spark" viewBox="0 0 200 34" preserveAspectRatio="none"><path class="fill" d="M0,30 L18,26 L36,27 L54,20 L72,22 L90,14 L108,16 L126,9 L144,11 L162,5 L180,6 L200,3 L200,34 L0,34 Z"/><path class="line" d="M0,30 L18,26 L36,27 L54,20 L72,22 L90,14 L108,16 L126,9 L144,11 L162,5 L180,6 L200,3"/></svg></div>
+        <div class="kpi"><div class="v">73%</div><div class="k">Digital fill rate</div><div class="trend tr-up">3 SSPs live</div><svg class="spark" viewBox="0 0 200 34" preserveAspectRatio="none"><path class="fill" d="M0,28 L20,29 L40,22 L60,24 L80,17 L100,19 L120,12 L140,14 L160,8 L180,10 L200,4 L200,34 L0,34 Z"/><path class="line" d="M0,28 L20,29 L40,22 L60,24 L80,17 L100,19 L120,12 L140,14 L160,8 L180,10 L200,4"/></svg></div>
+        <div class="kpi"><div class="v">41 <small>days</small></div><div class="k">Avg collection</div><div class="trend tr-up">illustrative example</div><svg class="spark" viewBox="0 0 200 34" preserveAspectRatio="none"><path class="fill" d="M0,6 L20,8 L40,7 L60,12 L80,10 L100,15 L120,13 L140,18 L160,16 L180,21 L200,24 L200,34 L0,34 Z"/><path class="line" d="M0,6 L20,8 L40,7 L60,12 L80,10 L100,15 L120,13 L140,18 L160,16 L180,21 L200,24"/></svg></div>
+      </div>
+      <div class="panel" style="flex:0 0 auto"><div class="pt">▸ Your AI workforce <span>named · logged · supervised</span></div>
+        <div class="agents">
+          <div class="ag"><div class="an"><div class="st"></div>Rakan</div><div class="ar">Demand intake</div><div class="aw">2 agency briefs parsed · 6 plans built</div><div class="util"><i class="" style="height:40%"></i><i class="hi" style="height:70%"></i><i class="" style="height:55%"></i><i class="hi" style="height:90%"></i><i class="" style="height:60%"></i><i class="hi" style="height:75%"></i><i class="" style="height:45%"></i><i class="hi" style="height:85%"></i></div></div>
+          <div class="ag"><div class="an"><div class="st"></div>Dana</div><div class="ar">Planning &amp; pricing</div><div class="aw">3 bundle options per brief · margins guarded</div><div class="util"><i class="" style="height:40%"></i><i class="hi" style="height:70%"></i><i class="" style="height:55%"></i><i class="hi" style="height:90%"></i><i class="" style="height:60%"></i><i class="hi" style="height:75%"></i><i class="" style="height:45%"></i><i class="hi" style="height:85%"></i></div></div>
+          <div class="ag"><div class="an"><div class="st"></div>Yousef</div><div class="ar">Yield &amp; programmatic</div><div class="aw">412 bids handled · floors adjusted on 2 routes</div><div class="util"><i class="" style="height:40%"></i><i class="hi" style="height:70%"></i><i class="" style="height:55%"></i><i class="hi" style="height:90%"></i><i class="" style="height:60%"></i><i class="hi" style="height:75%"></i><i class="" style="height:45%"></i><i class="hi" style="height:85%"></i></div></div>
+          <div class="ag"><div class="an"><div class="st"></div>Adel</div><div class="ar">Content compliance</div><div class="aw">14 artworks EN/AR checked</div><div class="util"><i class="" style="height:40%"></i><i class="hi" style="height:70%"></i><i class="" style="height:55%"></i><i class="hi" style="height:90%"></i><i class="" style="height:60%"></i><i class="hi" style="height:75%"></i><i class="" style="height:45%"></i><i class="hi" style="height:85%"></i></div></div>
+          <div class="ag"><div class="an"><div class="st"></div>Munir</div><div class="ar">Municipal approvals</div><div class="aw">6 filed · 2 approved today</div><div class="util"><i class="" style="height:40%"></i><i class="hi" style="height:70%"></i><i class="" style="height:55%"></i><i class="hi" style="height:90%"></i><i class="" style="height:60%"></i><i class="hi" style="height:75%"></i><i class="" style="height:45%"></i><i class="hi" style="height:85%"></i></div></div>
+          <div class="ag"><div class="an"><div class="st"></div>Farah</div><div class="ar">Finance</div><div class="aw">AED 2.3M invoiced · 9 chased</div><div class="util"><i class="" style="height:40%"></i><i class="hi" style="height:70%"></i><i class="" style="height:55%"></i><i class="hi" style="height:90%"></i><i class="" style="height:60%"></i><i class="hi" style="height:75%"></i><i class="" style="height:45%"></i><i class="hi" style="height:85%"></i></div></div>
+        </div>
+        <div class="syschips"><div class="sys">ORACLE ERP <b>·</b></div><div class="sys">AIRTABLE <b>·</b></div><div class="sys">VISTAR SSP <b>·</b></div><div class="sys">HIVESTACK SSP <b>·</b></div><div class="sys">BROADSIGN <b>·</b></div><div class="sys">MS TEAMS <b>·</b></div><div class="sys">MUNICIPALITY PORTAL <b>·</b></div></div>
+      </div>
+      <div class="grid2" style="margin-top:12px;grid-template-columns:1.15fr 1.15fr 1fr">
+        <div class="feed"><div class="pt">▸ Live activity · last 20 min <span>▲ live</span></div><div class="fe"><div class="fd"></div><div class="ft2">07:42</div><div class="fa">Rakan</div><div class="fx">FMCG brief parsed · 3 plans building</div></div><div class="fe"><div class="fd"></div><div class="ft2">07:51</div><div class="fa">Dana</div><div class="fx">priced Balance option · margins guarded</div></div><div class="fe"><div class="fd"></div><div class="ft2">07:58</div><div class="fa">Yousef</div><div class="fx">SZR bridge D-04 won at AED 44 · above floor</div></div><div class="fe"><div class="fd"></div><div class="ft2">08:04</div><div class="fa">Adel</div><div class="fx">14 artworks EN/AR checked · 1 back to client</div></div><div class="fe"><div class="fd"></div><div class="ft2">08:10</div><div class="fa">Munir</div><div class="fx">2 municipal filings approved</div></div><div class="fe"><div class="fd"></div><div class="ft2">08:16</div><div class="fa">Farah</div><div class="fx">AED 2.3M invoiced · proof-of-play attached</div></div><div class="fe"><div class="fd"></div><div class="ft2">08:21</div><div class="fa">Yousef</div><div class="fx">metro route R-2 delivering · prog. guaranteed</div></div><div class="fe"><div class="fd"></div><div class="ft2">08:27</div><div class="fa">Rakan</div><div class="fx">PMP terms drafted for review</div></div></div>
+        <div class="panel"><div class="pt">▸ Needs a human · 5</div>
+          <div class="row"><span><b>Agency brief · AED 1.2M FMCG Q4</b> · plan options ready — pick the recommendation to send</span><span class="tag wa">DEMAND</span></div>
+          <div class="row"><span><b>SZR route floor price</b> · Yousef suggests +8% for Q4 — approve new floor</span><span class="tag wa">YIELD</span></div>
+          <div class="row"><span><b>Bridge B-12 artwork</b> · Arabic copy ambiguity — legal call</span><span class="tag wa">CONTENT</span></div>
+          <div class="row"><span><b>AED 480k · 92 days</b> · escalation drafted to account owner</span><span class="tag rd">FINANCE</span></div>
+          <div class="row"><span><b>PMP deal request</b> · agency wants guaranteed metro package — terms review</span><span class="tag bl">PROGRAMMATIC</span></div>
+        </div>
+        <div class="panel"><div class="pt">▸ Score journey</div>
+          <div style="display:flex;gap:20px;align-items:center;flex:1">
+            <div class="dial" style="--sc:61"><div class="in"><div class="n">61</div><div class="d">agentic score</div></div></div>
+            <div style="flex:1">
+              <div class="bar"><div class="bl2"><span>Finance</span><b>74</b></div><div class="tr"><div class="fl" style="width:74%"></div></div></div>
+              <div class="bar"><div class="bl2"><span>Content &amp; approvals</span><b>68</b></div><div class="tr"><div class="fl" style="width:68%"></div></div></div>
+              <div class="bar"><div class="bl2"><span>Demand &amp; programmatic</span><b>63</b></div><div class="tr"><div class="fl" style="width:63%"></div></div></div>
+              <div class="bar"><div class="bl2"><span>Planning &amp; yield</span><b>58</b></div><div class="tr"><div class="fl" style="width:58%"></div></div></div>
+              <div class="bar" style="margin:0"><div class="bl2"><span>HR &amp; ops</span><b>41</b></div><div class="tr"><div class="fl" style="width:41%"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cap">FRAME 1 / 9 · COCKPIT HOME · the whole operator on one screen — direct sales, programmatic, approvals, cash</div>
+</div>
+
+<!-- FRAME 2 · DEMAND INTAKE · AGENCY BRIEF -->
+<div class="frame" id="f2">
+  <div class="topbar"><div class="wm">HoB<span class="dot"></span></div><div class="tenant">tenant · <b>GULF ENTERPRISE</b></div><div class="tenant" style="opacity:0.55;font-size:9px">ILLUSTRATIVE · EXAMPLE DATA</div><div class="live"><div class="pulse"></div>DEMAND · AGENCY BRIEFS</div><div class="userchip">Sales director view</div></div>
+  <div class="main">
+    <div class="rail">
+      <div class="rt">▸ Functions</div>
+      <a>Overview</a><a class="on">Demand &amp; Programmatic <span class="b ok">3</span></a><a>Planning &amp; Bundles</a><a>Yield &amp; Occupancy</a><a>Content &amp; Approvals</a><a>Finance</a><a>HR &amp; Ops</a>
+    </div>
+    <div class="content">
+      <div class="crumb">▸ DEMAND INTAKE · AGENT: RAKAN · BRIEF #A-2214</div>
+      <div class="h">An agency brief landed at 07:42. <b>By 08:10 there were three plans on the table.</b></div>
+      <div class="flow">
+        <div class="fstep"><div class="fs">07:42 · brief in</div><div class="fv">Media agency email + PDF</div><div class="ft">FMCG beverage · <b style="color:#fff">AED 1.2M</b> · Q4 flight · target: families + commuters</div></div>
+        <div class="fstep"><div class="fs">07:44 · parsed</div><div class="fv">Rakan extracts the ask</div><div class="ft">budget · audience · dates · KPIs · mandatory locations → structured brief</div></div>
+        <div class="fstep"><div class="fs">07:51 · checked</div><div class="fv">Avails + audience match</div><div class="ft">live availability from ERP · audience indices per site · reach curves</div></div>
+        <div class="fstep"><div class="fs">08:10 · planned</div><div class="fv">Dana prices 3 options</div><div class="ft">margin floors respected · discount ladder applied · added value included</div></div>
+        <div class="fstep"><div class="fs">next · human</div><div class="fv">Director picks · agent sends</div><div class="ft">proposal deck auto-generated · agency response tracked</div></div>
+      </div>
+      <div class="grid2e">
+        <div class="panel"><div class="pt">▸ The three options · brief #A-2214</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;flex:1">
+            <div class="opt"><div class="on2"><b>IMPACT</b><span class="tag bl">AED 1.18M</span></div><div class="om"><b>SZR digital route</b> ×10 bridges · 2 weeks<br>+ landmark unipole<br><b>Reach</b> 2.1M/wk · CPM AED 52<br>SOV 25% · AM+PM commute day-parts</div></div>
+            <div class="opt rec"><div class="on2"><b>BALANCE ★</b><span class="tag ok">AED 1.20M</span></div><div class="om"><b>SZR ×6 + mall network ×12</b> · 4 weeks<br>+ metro route package<br><b>Reach</b> 3.4M/wk · CPM AED 38<br>families + commuters both covered</div></div>
+            <div class="opt"><div class="on2"><b>VALUE</b><span class="tag bl">AED 0.98M</span></div><div class="om"><b>Mall network + mupis</b> · 6 weeks<br>+ programmatic top-up at floor<br><b>Reach</b> 2.8M/wk · CPM AED 29<br>longest presence · budget headroom</div></div>
+          </div>
+        </div>
+        <div class="panel"><div class="pt">▸ This week's demand · all sources</div>
+          <div class="row"><span><b>6 agency briefs</b> in · all parsed &amp; planned same-day</span><span class="tag ok">AED 4.6M</span></div>
+          <div class="row"><span><b>2 direct advertisers</b> · renewal proposals drafted</span><span class="tag bl">AED 0.9M</span></div>
+          <div class="row"><span><b>Programmatic demand</b> · 3 SSPs · 412 bid requests/hr avg</span><span class="tag bl">LIVE</span></div>
+          <div class="row"><span><b>1 PMP request</b> · guaranteed metro package · terms to review</span><span class="tag wa">HUMAN</span></div>
+          <div class="row"><span>Proposal → response time</span><span><b>same day</b> <span class="tag ok">EXAMPLE</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cap">FRAME 2 / 9 · DEMAND INTAKE · agency budgets become priced media plans in 30 minutes — humans choose, agents build</div>
+</div>
+
+<!-- FRAME 3 · PROGRAMMATIC / SSP -->
+<div class="frame" id="f3">
+  <div class="topbar"><div class="wm">HoB<span class="dot"></span></div><div class="tenant">tenant · <b>GULF ENTERPRISE</b></div><div class="tenant" style="opacity:0.55;font-size:9px">ILLUSTRATIVE · EXAMPLE DATA</div><div class="live"><div class="pulse"></div>PROGRAMMATIC · SUPPLY SIDE</div><div class="userchip">Yield manager view</div></div>
+  <div class="main">
+    <div class="rail">
+      <div class="rt">▸ Functions</div>
+      <a>Overview</a><a class="on">Demand &amp; Programmatic <span class="b ok">3</span></a><a>Planning &amp; Bundles</a><a>Yield &amp; Occupancy</a><a>Content &amp; Approvals</a><a>Finance</a><a>HR &amp; Ops</a>
+    </div>
+    <div class="content">
+      <div class="crumb">▸ PROGRAMMATIC · AGENT: YOUSEF · SSP CONNECTIONS LIVE</div>
+      <div class="h">Every unsold digital second is on the exchanges. <b>Yousef runs the auction floor.</b></div>
+      <div class="kpis" style="grid-template-columns:repeat(5,1fr)">
+        <div class="kpi"><div class="v">412<small>/hr</small></div><div class="k">Bid requests</div><div class="trend tr-fl">Vistar · Hivestack · Broadsign</div></div>
+        <div class="kpi"><div class="v">73%</div><div class="k">Fill rate · digital</div><div class="trend tr-up">illustrative example</div></div>
+        <div class="kpi"><div class="v">AED 31</div><div class="k">eCPM · blended</div><div class="trend tr-up">illustrative example</div></div>
+        <div class="kpi"><div class="v">4</div><div class="k">PMP deals active</div><div class="trend tr-fl">2 programmatic guaranteed</div></div>
+        <div class="kpi"><div class="v">AED 1.9M</div><div class="k">Programmatic · MTD</div><div class="trend tr-up">illustrative example</div></div>
+      </div>
+      <div class="grid2">
+        <div class="panel"><div class="pt">▸ Live auction activity <span>last 60 min</span></div>
+          <div class="ticker">
+            <div class="trow hd"><span>screen / route</span><span>deal type</span><span>bid</span><span>floor</span><span>result</span><span>buyer type</span></div>
+            <div class="trow"><b>SZR bridge D-04 · PM peak</b><span>Open exchange</span><span class="mono2">AED 44</span><span class="mono2">AED 38</span><span class="tag ok">WON</span><span>Auto brand</span></div>
+            <div class="trow"><b>Mall atrium M-22 · evening</b><span>PMP deal</span><span class="mono2">AED 35</span><span class="mono2">AED 30</span><span class="tag ok">WON</span><span>Fashion retail</span></div>
+            <div class="trow"><b>Metro route R-2 · all day</b><span>Prog. guaranteed</span><span class="mono2">AED 27</span><span class="mono2">—</span><span class="tag bl">DELIVERING</span><span>Bank</span></div>
+            <div class="trow"><b>Mupi cluster C-9 · AM</b><span>Open exchange</span><span class="mono2">AED 18</span><span class="mono2">AED 22</span><span class="tag rd">REJECTED</span><span>below floor</span></div>
+            <div class="trow"><b>SZR bridge B-07 · late night</b><span>Open exchange</span><span class="mono2">AED 24</span><span class="mono2">AED 20*</span><span class="tag ok">WON</span><span>Delivery app</span></div>
+          </div>
+          <div style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(176,203,232,0.55);margin-top:8px">* off-peak floor auto-lowered by rule (occupancy &lt; 40% after 23:00) · every decision logged</div>
+        </div>
+        <div class="panel"><div class="pt">▸ Yousef's rules · human-set, agent-run</div>
+          <div class="row"><span><b>Never undercut direct:</b> exchange floors ≥ rate-card ×0.7</span><span class="tag bl">RULE</span></div>
+          <div class="row"><span><b>Peak protection:</b> AM/PM commute slots reserved for direct until 48h out</span><span class="tag bl">RULE</span></div>
+          <div class="row"><span><b>Backfill:</b> unsold inventory → exchanges at dynamic floor</span><span class="tag bl">RULE</span></div>
+          <div class="row"><span><b>Brand safety:</b> category blocklist per site (schools, mosques proximity)</span><span class="tag bl">RULE</span></div>
+          <div class="row"><span>Floor change &gt; 10% or new PMP</span><span class="tag wa">NEEDS HUMAN</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cap">FRAME 3 / 9 · PROGRAMMATIC · SSP supply, PMP deals, dynamic floors — the demand side pays, the rules protect the rate card</div>
+</div>
+
+<!-- FRAME 4 · PLANNING & BUNDLES -->
+<div class="frame" id="f4">
+  <div class="topbar"><div class="wm">HoB<span class="dot"></span></div><div class="tenant">tenant · <b>GULF ENTERPRISE</b></div><div class="tenant" style="opacity:0.55;font-size:9px">ILLUSTRATIVE · EXAMPLE DATA</div><div class="live"><div class="pulse"></div>PLANNING · PACKAGES</div><div class="userchip">Head of Trading view</div></div>
+  <div class="main">
+    <div class="rail">
+      <div class="rt">▸ Functions</div>
+      <a>Overview</a><a>Demand &amp; Programmatic</a><a class="on">Planning &amp; Bundles <span class="b ok">2</span></a><a>Yield &amp; Occupancy</a><a>Content &amp; Approvals</a><a>Finance</a><a>HR &amp; Ops</a>
+    </div>
+    <div class="content">
+      <div class="crumb">▸ PACKAGING · AGENT: DANA · RATE CARD ENGINE</div>
+      <div class="h">Products, not sites. <b>Dana keeps the packages priced, current, and always in stock.</b></div>
+      <div class="grid2e">
+        <div class="panel"><div class="pt">▸ Live packages <span>auto-repriced weekly</span></div>
+          <div class="bundle"><div class="bn"><b>SZR Power Route</b><span class="pr">AED 480k / 2wk</span></div><div class="bd">10 digital bridges on the main artery · AM+PM commute day-parts · 15s slot in 8-spot loop</div><div class="bm"><span>REACH <b>2.1M/wk</b></span><span>CPM <b>AED 52</b></span><span>AVAIL <b>SEP</b></span><span>MARGIN <b>✓ floor</b></span></div></div>
+          <div class="bundle"><div class="bn"><b>Prime Mall Network</b><span class="pr">AED 320k / 4wk</span></div><div class="bd">28 atrium + concourse screens across 6 malls · family audience index 132 · weekend-weighted rotation</div><div class="bm"><span>REACH <b>1.8M/wk</b></span><span>CPM <b>AED 34</b></span><span>AVAIL <b>NOW</b></span><span>MARGIN <b>✓ floor</b></span></div></div>
+          <div class="bundle"><div class="bn"><b>Metro Route Package</b><span class="pr">AED 260k / 4wk</span></div><div class="bd">Station domination pair + 40 in-line panels along one line · commuter frequency play</div><div class="bm"><span>REACH <b>2.6M/wk</b></span><span>CPM <b>AED 24</b></span><span>AVAIL <b>AUG</b></span><span>MARGIN <b>✓ floor</b></span></div></div>
+          <div class="bundle" style="margin:0"><div class="bn"><b>Event Season Bundle</b><span class="pr">AED 750k / 6wk</span></div><div class="bd">Expo-corridor unipoles + airport road + venue-adjacent digital · built for launch moments · limited slots</div><div class="bm"><span>REACH <b>4.2M/wk</b></span><span>CPM <b>AED 41</b></span><span>AVAIL <b>2 LEFT Q4</b></span><span>MARGIN <b>✓ floor</b></span></div></div>
+        </div>
+        <div class="panel"><div class="pt">▸ How Dana builds &amp; prices</div>
+          <div class="row"><span><b>Composition:</b> route + landmark + indoor mixed to the brief's audience</span><span class="tag bl">AUTO</span></div>
+          <div class="row"><span><b>Pricing:</b> rate card × demand index × seasonality · margin floor per asset class</span><span class="tag bl">AUTO</span></div>
+          <div class="row"><span><b>Discount ladder:</b> volume −10% · multi-period −8% · agency framework −5% · stacked cap 20%</span><span class="tag bl">AUTO</span></div>
+          <div class="row"><span><b>Added value:</b> off-peak bonus spots auto-offered instead of price cuts</span><span class="tag bl">AUTO</span></div>
+          <div class="row"><span>Anything below margin floor</span><span class="tag wa">NEEDS SIGN-OFF</span></div>
+          <div style="margin-top:10px;padding-top:10px;border-top:1px dashed rgba(176,203,232,0.25)">
+            <div class="hlab"><span>PACKAGE MIX · BOOKED REVENUE THIS QUARTER</span></div>
+            <div class="bar"><div class="bl2"><span>Routes (SZR + arteries)</span><b>38%</b></div><div class="tr"><div class="fl" style="width:38%"></div></div></div>
+            <div class="bar"><div class="bl2"><span>Malls + indoor</span><b>27%</b></div><div class="tr"><div class="fl" style="width:27%"></div></div></div>
+            <div class="bar"><div class="bl2"><span>Metro + transit</span><b>19%</b></div><div class="tr"><div class="fl" style="width:19%"></div></div></div>
+            <div class="bar" style="margin:0"><div class="bl2"><span>Events + programmatic</span><b>16%</b></div><div class="tr"><div class="fl" style="width:16%"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cap">FRAME 4 / 9 · PLANNING &amp; BUNDLES · billboards, malls, metro, event corridors — packaged, priced and margin-guarded automatically</div>
+</div>
+
+<!-- FRAME 5 · YIELD & OCCUPANCY -->
+<div class="frame" id="f5">
+  <div class="topbar"><div class="wm">HoB<span class="dot"></span></div><div class="tenant">tenant · <b>GULF ENTERPRISE</b></div><div class="tenant" style="opacity:0.55;font-size:9px">ILLUSTRATIVE · EXAMPLE DATA</div><div class="live"><div class="pulse"></div>YIELD · OCCUPANCY</div><div class="userchip">Commercial director view</div></div>
+  <div class="main">
+    <div class="rail">
+      <div class="rt">▸ Functions</div>
+      <a>Overview</a><a>Demand &amp; Programmatic</a><a>Planning &amp; Bundles</a><a class="on">Yield &amp; Occupancy <span class="b ok">2</span></a><a>Content &amp; Approvals</a><a>Finance</a><a>HR &amp; Ops</a>
+    </div>
+    <div class="content">
+      <div class="crumb">▸ YIELD · OCCUPANCY HEAT · NEXT 12 WEEKS</div>
+      <div class="h">342 assets, 12 weeks ahead. <b>Green is money. Amber is Yousef's to fill.</b></div>
+      <div class="panel" style="flex:0 0 auto">
+        <div class="pt">▸ Occupancy heat by asset class <span>weeks →</span></div>
+        <div class="hlab"><span>SZR + ARTERY ROUTES · 64 faces</span><span>avg 94%</span></div>
+        <div class="heat">
+          <div class="hc" style="background:rgba(176,203,232,0.92);color:#14191D">98</div><div class="hc" style="background:rgba(176,203,232,0.92);color:#14191D">100</div><div class="hc" style="background:rgba(176,203,232,0.92);color:#14191D">96</div><div class="hc" style="background:rgba(176,203,232,0.92);color:#14191D">95</div><div class="hc" style="background:rgba(176,203,232,0.92);color:#14191D">97</div><div class="hc" style="background:rgba(176,203,232,0.92);color:#14191D">92</div><div class="hc" style="background:rgba(176,203,232,0.66);color:#14191D">88</div><div class="hc" style="background:rgba(176,203,232,0.92);color:#14191D">95</div><div class="hc" style="background:rgba(176,203,232,0.92);color:#14191D">99</div><div class="hc" style="background:rgba(176,203,232,0.92);color:#14191D">100</div><div class="hc" style="background:rgba(176,203,232,0.92);color:#14191D">97</div><div class="hc" style="background:rgba(176,203,232,0.66);color:#14191D">89</div>
+        </div>
+        <div class="hlab"><span>MALLS + INDOOR · 96 screens</span><span>avg 82%</span></div>
+        <div class="heat">
+          <div class="hc" style="background:rgba(176,203,232,0.66);color:#14191D">86</div><div class="hc" style="background:rgba(176,203,232,0.66);color:#14191D">84</div><div class="hc" style="background:rgba(176,203,232,0.92);color:#14191D">91</div><div class="hc" style="background:rgba(176,203,232,0.66);color:#14191D">83</div><div class="hc" style="background:rgba(176,203,232,0.40);color:#EAF2FA">76</div><div class="hc" style="background:rgba(176,203,232,0.40);color:#EAF2FA">74</div><div class="hc" style="background:rgba(176,203,232,0.66);color:#14191D">82</div><div class="hc" style="background:rgba(176,203,232,0.66);color:#14191D">85</div><div class="hc" style="background:rgba(176,203,232,0.92);color:#14191D">92</div><div class="hc" style="background:rgba(176,203,232,0.66);color:#14191D">88</div><div class="hc" style="background:rgba(176,203,232,0.40);color:#EAF2FA">78</div><div class="hc" style="background:rgba(176,203,232,0.40);color:#EAF2FA">75</div>
+        </div>
+        <div class="hlab"><span>MUPIS + STREET · 148 faces</span><span>avg 71%</span></div>
+        <div class="heat">
+          <div class="hc" style="background:rgba(176,203,232,0.40);color:#EAF2FA">74</div><div class="hc" style="background:rgba(176,203,232,0.40);color:#EAF2FA">72</div><div class="hc" style="background:rgba(176,203,232,0.20);color:#B0CBE8">66</div><div class="hc" style="background:rgba(176,203,232,0.40);color:#EAF2FA">75</div><div class="hc" style="background:rgba(176,203,232,0.20);color:#B0CBE8">64</div><div class="hc" style="background:rgba(176,203,232,0.20);color:#B0CBE8">62</div><div class="hc" style="background:rgba(176,203,232,0.40);color:#EAF2FA">73</div><div class="hc" style="background:rgba(176,203,232,0.66);color:#14191D">81</div><div class="hc" style="background:rgba(176,203,232,0.40);color:#EAF2FA">77</div><div class="hc" style="background:rgba(176,203,232,0.40);color:#EAF2FA">72</div><div class="hc" style="background:rgba(176,203,232,0.20);color:#B0CBE8">65</div><div class="hc" style="background:rgba(176,203,232,0.20);color:#B0CBE8">61</div>
+        </div>
+        <div class="hlab"><span>METRO + TRANSIT · 34 units</span><span>avg 79%</span></div>
+        <div class="heat">
+          <div class="hc" style="background:rgba(176,203,232,0.66);color:#14191D">84</div><div class="hc" style="background:rgba(176,203,232,0.66);color:#14191D">82</div><div class="hc" style="background:rgba(176,203,232,0.40);color:#EAF2FA">78</div><div class="hc" style="background:rgba(176,203,232,0.40);color:#EAF2FA">74</div><div class="hc" style="background:rgba(176,203,232,0.66);color:#14191D">81</div><div class="hc" style="background:rgba(176,203,232,0.40);color:#EAF2FA">77</div><div class="hc" style="background:rgba(176,203,232,0.40);color:#EAF2FA">76</div><div class="hc" style="background:rgba(176,203,232,0.66);color:#14191D">83</div><div class="hc" style="background:rgba(176,203,232,0.66);color:#14191D">85</div><div class="hc" style="background:rgba(176,203,232,0.40);color:#EAF2FA">79</div><div class="hc" style="background:rgba(176,203,232,0.40);color:#EAF2FA">73</div><div class="hc" style="background:rgba(176,203,232,0.40);color:#EAF2FA">71</div>
+        </div>
+      </div>
+      <div class="grid2e" style="margin-top:12px">
+        <div class="panel"><div class="pt">▸ Yield moves suggested · this week</div>
+          <div class="row"><span><b>SZR Q4 floor +8%</b> · route at 94% with 9 weeks lead — demand supports it</span><span class="tag wa">APPROVE</span></div>
+          <div class="row"><span><b>Mupi weeks 5-6</b> · open exchange floor −12% + push into Value bundles</span><span class="tag bl">AUTO IN RANGE</span></div>
+          <div class="row"><span><b>Mall weeks 5-6 dip</b> · targeted agency offer drafted (family CPG list)</span><span class="tag bl">DRAFTED</span></div>
+        </div>
+        <div class="panel"><div class="pt">▸ What this was before</div>
+          <div class="row"><span>Occupancy visibility</span><span><b>live · 12wk ahead</b> <span class="tag ok">EXAMPLE</span></span></div>
+          <div class="row"><span>Unsold digital seconds</span><span><b>auto-monetized</b> <span class="tag ok">EXAMPLE</span></span></div>
+          <div class="row"><span>Price changes</span><span><b>rule-based, logged</b> <span class="tag ok">EXAMPLE</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cap">FRAME 5 / 9 · YIELD &amp; OCCUPANCY · 12-week heat, dynamic floors, every amber cell worked automatically</div>
+</div>
+
+<!-- FRAME 6 · CONTENT & MUNICIPAL (HERO, kept) -->
+<div class="frame" id="f6">
+  <div class="topbar"><div class="wm">HoB<span class="dot"></span></div><div class="tenant">tenant · <b>GULF ENTERPRISE</b></div><div class="tenant" style="opacity:0.55;font-size:9px">ILLUSTRATIVE · EXAMPLE DATA</div><div class="live"><div class="pulse"></div>CONTENT → APPROVAL PIPELINE</div><div class="userchip">Legal team view</div></div>
+  <div class="main">
+    <div class="rail">
+      <div class="rt">▸ Functions</div>
+      <a>Overview</a><a>Demand &amp; Programmatic</a><a>Planning &amp; Bundles</a><a>Yield &amp; Occupancy</a><a class="on">Content &amp; Approvals <span class="b ok">3</span></a><a>Finance</a><a>HR &amp; Ops</a>
+    </div>
+    <div class="content">
+      <div class="crumb">▸ CONTENT COMPLIANCE → MUNICIPALITY · AGENTS: ADEL + MUNIR</div>
+      <div class="h">Artwork to municipal approval — <b>in days, not weeks.</b></div>
+      <div class="flow">
+        <div class="fstep"><div class="fs">1 · artwork lands</div><div class="fv">Client uploads campaign</div><div class="ft">portal or email — auto-ingested, matched to booking</div></div>
+        <div class="fstep"><div class="fs">2 · Adel checks</div><div class="fv">EN + AR copy · content rules</div><div class="ft">language pair verified · restricted-content scan · category rules per location</div></div>
+        <div class="fstep"><div class="fs">3 · fix loop</div><div class="fv">Issues → back to client</div><div class="ft">exact corrections, bilingual · resubmission tracked</div></div>
+        <div class="fstep"><div class="fs">4 · Munir files</div><div class="fv">Municipality package</div><div class="ft">forms + artwork + site permits · filed to the portal · fee handled</div></div>
+        <div class="fstep"><div class="fs">5 · tracked</div><div class="fv">Approval monitored</div><div class="ft">SLA timer · auto-chase day 3 · human alerted day 5 · go-live scheduled</div></div>
+      </div>
+      <div class="grid2e">
+        <div class="panel"><div class="pt">▸ In the pipeline now · 14</div>
+          <div class="row"><span><b>Beverage brand · SZR route</b> · AR copy corrected on pass 1</span><span class="tag ok">FILED · DAY 1</span></div>
+          <div class="row"><span><b>Bank campaign · 22 mupis</b></span><span class="tag ok">APPROVED · 2 DAYS</span></div>
+          <div class="row"><span><b>Auto brand Q4 · mall screens</b> · missing AR tagline</span><span class="tag wa">BACK TO CLIENT</span></div>
+          <div class="row"><span><b>Telecom teaser · metro line</b> · transit-authority variant prepared</span><span class="tag ok">FILED · DAY 2</span></div>
+          <div class="row"><span><b>Fashion campaign</b> · category rule near school-zone site — swap suggested</span><span class="tag wa">LEGAL REVIEW</span></div>
+        </div>
+        <div class="panel"><div class="pt">▸ This quarter</div>
+          <div class="row"><span>Average artwork-to-approval</span><span><b>2.1 days</b> <span class="tag ok">EXAMPLE</span></span></div>
+          <div class="row"><span>First-pass approval rate</span><span><b>94%</b> <span class="tag ok">EXAMPLE</span></span></div>
+          <div class="row"><span>Launch delays caused by content</span><span><b>0</b> <span class="tag ok">EXAMPLE</span></span></div>
+          <div class="row"><span>Rejected artwork resubmission time</span><span><b>4 hrs</b> <span class="tag ok">EXAMPLE</span></span></div>
+          <div class="row"><span>Every check + filing logged for audit</span><span class="tag bl">100%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cap">FRAME 6 / 9 · THE HERO FLOW · bilingual compliance + municipal filing — the operator's most painful process, fully agentic</div>
+</div>
+
+<!-- FRAME 7 · FINANCE -->
+<div class="frame" id="f7">
+  <div class="topbar"><div class="wm">HoB<span class="dot"></span></div><div class="tenant">tenant · <b>GULF ENTERPRISE</b></div><div class="tenant" style="opacity:0.55;font-size:9px">ILLUSTRATIVE · EXAMPLE DATA</div><div class="live"><div class="pulse"></div>FINANCE</div><div class="userchip">CFO view</div></div>
+  <div class="main">
+    <div class="rail">
+      <div class="rt">▸ Functions</div>
+      <a>Overview</a><a>Demand &amp; Programmatic</a><a>Planning &amp; Bundles</a><a>Yield &amp; Occupancy</a><a>Content &amp; Approvals</a><a class="on">Finance <span class="b ok">2</span></a><a>HR &amp; Ops</a>
+    </div>
+    <div class="content">
+      <div class="crumb">▸ FINANCE · AGENT: FARAH · LIVE FROM ORACLE</div>
+      <div class="h">Campaign live → invoice out same day. <b>Collections chase themselves, agency by agency.</b></div>
+      <div class="kpis" style="grid-template-columns:repeat(4,1fr)">
+        <div class="kpi"><div class="v">AED 2.3M</div><div class="k">Invoiced this week</div><div class="trend tr-up">direct + programmatic recon</div></div>
+        <div class="kpi"><div class="v">41 <small>days</small></div><div class="k">Avg collection</div><div class="trend tr-up">illustrative example</div></div>
+        <div class="kpi"><div class="v">100%</div><div class="k">PO ↔ booking ↔ invoice match</div><div class="trend tr-up">agency POs auto-checked</div></div>
+        <div class="kpi"><div class="v">1</div><div class="k">Escalated to humans</div><div class="trend tr-dn">90+ days · AED 480k</div></div>
+      </div>
+      <div class="grid2e">
+        <div class="panel"><div class="pt">▸ Farah's day</div>
+          <div class="row"><span><b>Campaign #2214 went live</b> → invoice from ERP + proof-of-play report attached</span><span class="tag bl">SENT</span></div>
+          <div class="row"><span><b>Programmatic reconciliation</b> · 3 SSP statements ↔ play logs · AED 412k matched</span><span class="tag bl">DONE</span></div>
+          <div class="row"><span><b>Agency PO check</b> · 6 new bookings · terms vs framework agreements</span><span class="tag bl">CLEAN</span></div>
+          <div class="row"><span><b>9 payment reminders</b> · tone-matched per account history</span><span class="tag bl">SENT</span></div>
+          <div class="row"><span><b>AED 480k · 92 days</b> · escalation drafted for the account owner</span><span class="tag rd">NEEDS HUMAN</span></div>
+        </div>
+        <div class="panel"><div class="pt">▸ Receivables aging · live</div>
+          <div class="bar"><div class="bl2"><span>Current (0-30d)</span><b>AED 6.8M</b></div><div class="tr"><div class="fl" style="width:76%"></div></div></div>
+          <div class="bar"><div class="bl2"><span>31-60 days</span><b>AED 1.4M</b></div><div class="tr"><div class="fl" style="width:22%"></div></div></div>
+          <div class="bar"><div class="bl2"><span>61-90 days</span><b>AED 0.6M</b></div><div class="tr"><div class="fl" style="width:9%"></div></div></div>
+          <div class="bar"><div class="bl2"><span>90+ days</span><b>AED 0.48M</b></div><div class="tr"><div class="fl" style="width:7%;background:var(--bad)"></div></div></div>
+          <div style="margin-top:10px;padding-top:10px;border-top:1px dashed rgba(176,203,232,0.25)">
+            <div class="row"><span>Proof-of-play attached to every digital invoice</span><span class="tag ok">AUTO</span></div>
+            <div class="row"><span>Board pack finance section</span><span class="tag ok">DRAFTS ITSELF</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cap">FRAME 7 / 9 · FINANCE · same-day invoicing with proof-of-play, SSP reconciliation, self-chasing collections</div>
+</div>
+
+<!-- FRAME 8 · SCORE + PRESS -->
+<div class="frame" id="f8">
+  <div class="topbar"><div class="wm">HoB<span class="dot"></span></div><div class="tenant">tenant · <b>GULF ENTERPRISE</b></div><div class="tenant" style="opacity:0.55;font-size:9px">ILLUSTRATIVE · EXAMPLE DATA</div><div class="live"><div class="pulse"></div>THE SCORE · THE STORY</div><div class="userchip">Board view</div></div>
+  <div class="content" style="padding:22px 34px">
+    <div class="crumb">▸ THE JOURNEY · KICKOFF TO TODAY — AND WHAT THE MARKET SEES</div>
+    <div class="h" style="font-size:27px">An example journey: <b>from the teens past 60</b> in one quarter — the region's first media operator past 60.</div>
+    <div style="display:flex;gap:16px;align-items:center;margin-bottom:16px">
+      <div class="dial" style="--sc:14;width:104px;height:104px"><div class="in" style="width:80px;height:80px"><div class="n" style="font-size:22px">14</div><div class="d">kickoff</div></div></div>
+      <div style="flex:1">
+        <div class="bar"><div class="bl2"><span><b>Month 1</b> · discovery · every workflow mapped, sales to municipality</span><b>14 → 22</b></div><div class="tr"><div class="fl" style="width:22%"></div></div></div>
+        <div class="bar"><div class="bl2"><span><b>Month 2</b> · mirror live · first agents on content, finance, demand intake</span><b>22 → 41</b></div><div class="tr"><div class="fl" style="width:41%"></div></div></div>
+        <div class="bar"><div class="bl2"><span><b>Month 3</b> · programmatic + planning + collections in production</span><b>41 → 61</b></div><div class="tr"><div class="fl" style="width:61%"></div></div></div>
+        <div class="bar" style="margin:0"><div class="bl2"><span><b>Next</b> · HR, accounts, full coverage</span><b>target 70+</b></div><div class="tr"><div class="fl" style="width:70%;opacity:0.35"></div></div></div>
+      </div>
+      <div class="dial" style="--sc:61;width:104px;height:104px"><div class="in" style="width:80px;height:80px"><div class="n" style="font-size:22px">61</div><div class="d">today</div></div></div>
+    </div>
+    <div class="press3">
+      <div class="clip">
+        <div class="chead"><div class="ab-logo">arabian<b>business</b></div><div class="cdate">Dubai · Q4 2026</div></div>
+        <div class="cimg"><img src="file:///private/tmp/claude-501/-Users-unfamiliarfamiliar/7746fc6f-a0cd-4075-ab46-9fbdbad6e1cb/scratchpad/hm-wf2-1.png"><div class="ctag">Exclusive</div></div>
+        <div class="cbody">
+          <h4>Hypermedia becomes the region's first AI-native media operator</h4>
+          <div class="cby">By Staff Writer · Media &amp; Marketing</div>
+          <div class="ctx">The Dubai out-of-home giant now runs demand, programmatic trading, municipal approvals and finance through a supervised AI workforce built with <b>House of Builders</b> — cutting campaign launch times from weeks to days.</div>
+        </div>
+      </div>
+      <div class="clip tn">
+        <div class="chead"><div class="tn-logo">The National</div><div class="cdate">Business · Q4 2026</div></div>
+        <div class="cimg"><img src="file:///private/tmp/claude-501/-Users-unfamiliarfamiliar/7746fc6f-a0cd-4075-ab46-9fbdbad6e1cb/scratchpad/hm-wf2-5.png"><div class="ctag tn">Analysis</div></div>
+        <div class="cbody">
+          <h4>Inside the Dubai operator that handed its workflows to an AI workforce — and kept every human in charge</h4>
+          <div class="cby">By Business Desk · Abu Dhabi</div>
+          <div class="ctx">Occupancy visible twelve weeks ahead, floors adjusted by rules, approvals filed by agents. The company's <b>"agentic score" rose from 14 to 61</b> in a single quarter — a benchmark its own advertisers now ask about.</div>
+        </div>
+      </div>
+      <div class="clip">
+        <div class="chead"><div class="cnn-logo"><div class="cnn-box">CNN</div><div class="cnn-biz">business</div></div><div class="cdate">Middle East · Q4 2026</div></div>
+        <div class="cimg"><img src="file:///private/tmp/claude-501/-Users-unfamiliarfamiliar/7746fc6f-a0cd-4075-ab46-9fbdbad6e1cb/scratchpad/hm-wf2-9.png"><div class="ctag cnn">Tech</div></div>
+        <div class="cbody">
+          <h4>'First enterprise in Dubai to go full agentic': how a billboard company rebuilt itself around AI</h4>
+          <div class="cby">CNN Business · Dubai</div>
+          <div class="ctx">From the chairman's phone to the sales floor, the operator runs on named agents with audit trails — and says the playbook, built with House of Builders, is now <b>being requested by its own clients</b>.</div>
+        </div>
+      </div>
+    </div>
+  <div class="cap">FRAME 8 / 9 · SCORE + PRESS · the number the board tracks, and the headline it earns</div>
+</div>
+</div>
+
+<!-- FRAME 9 · ON YOUR PHONE -->
+<div class="frame" id="f9">
+  <div class="topbar"><div class="wm">HoB<span class="dot"></span></div><div class="tenant">tenant · <b>GULF ENTERPRISE</b></div><div class="tenant" style="opacity:0.55;font-size:9px">ILLUSTRATIVE · EXAMPLE DATA</div><div class="live"><div class="pulse"></div>ANYWHERE</div><div class="userchip">All roles</div></div>
+  <div class="content center">
+    <div class="crumb" style="text-align:center">▸ THE COMPANY IN YOUR POCKET</div>
+    <div class="h" style="text-align:center;font-size:30px">On your phone. At your fingertips.<br><b>Chairman to employee.</b></div>
+    <div class="phones">
+      <div>
+        <div class="phone">
+          <div class="ptop"><div class="wm">HoB<span class="dot"></span></div><div class="pill">Chairman</div></div>
+          <div class="pscore"><div class="n">61</div><div class="d">agentic score · live</div></div>
+          <div class="pcard"><div class="t">Today</div><div class="v">2,140 tasks ran · 5 need a decision</div></div>
+          <div class="pcard"><div class="t">Money</div><div class="v">AED 9.6M booked MTD · collections on track</div></div>
+          <div class="pbtns"><div class="pb a">APPROVE 5</div><div class="pb g">DIG IN</div></div>
+        </div>
+        <div class="plabel">Chairman · one glance</div>
+      </div>
+      <div>
+        <div class="phone">
+          <div class="ptop"><div class="wm">HoB<span class="dot"></span></div><div class="pill">Manager</div></div>
+          <div class="pcard"><div class="t">Your function · yield</div><div class="v">SZR floor +8% suggestion waiting on you</div></div>
+          <div class="pcard"><div class="t">Programmatic</div><div class="v">Fill 73% · 4 PMP deals delivering</div></div>
+          <div class="pcard"><div class="t">Occupancy</div><div class="v">Mupi weeks 5-6 amber · plays drafted</div></div>
+          <div class="pbtns"><div class="pb a">DECIDE</div><div class="pb g">HEATMAP</div></div>
+        </div>
+        <div class="plabel">Manager · their function</div>
+      </div>
+      <div>
+        <div class="phone">
+          <div class="ptop"><div class="wm">HoB<span class="dot"></span></div><div class="pill">Employee</div></div>
+          <div class="pcard"><div class="t">Your agent did</div><div class="v">Parsed the FMCG brief · built 3 plan options</div></div>
+          <div class="pcard"><div class="t">For you</div><div class="v">1 agency call · talking points prepared</div></div>
+          <div class="pcard"><div class="t">Ask anything</div><div class="v">"Which routes free up before GITEX?"</div></div>
+          <div class="pbtns"><div class="pb a">MY DAY</div><div class="pb g">ASK</div></div>
+        </div>
+        <div class="plabel">Employee · their day</div>
+      </div>
+    </div>
+  </div>
+  <div class="cap">FRAME 9 / 9 · CLOSING · the same cockpit, three altitudes · chairman, management, every employee</div>
+</div>
+
+
+<!-- FRAME 10 · THE BUILD PROCESS -->
+<div class="frame" id="f10">
+  <div class="topbar"><div class="wm">HoB<span class="dot"></span></div><div class="tenant">tenant · <b>GULF ENTERPRISE</b></div><div class="tenant" style="opacity:0.55;font-size:9px">ILLUSTRATIVE · EXAMPLE DATA</div><div class="live"><div class="pulse"></div>THE BUILD · MONTHS 1-2</div><div class="userchip">Program view</div></div>
+  <div class="content" style="padding:24px 34px">
+    <div class="crumb">▸ HOW WE GET THERE · PROGRAM MANAGER: MUSTAFA WEHBI (HYPERMEDIA) · SHADOWING EVERY STEP</div>
+    <div class="h">First, we listen to the whole company. <b>Then the company has a mirror.</b></div>
+    <div class="flow" style="margin-bottom:14px">
+      <div class="fstep"><div class="fs">1 · Interview</div><div class="fv">82 sessions · 9 functions</div><div class="ft">the teams behind the highest-value workflows · English + Arabic · led by HoB with <b style="color:#fff">Mustafa as project manager</b> scheduling + sitting in</div></div>
+      <div class="fstep"><div class="fs">2 · Transcribe</div><div class="fv">96 hours → structured text</div><div class="ft">every interview auto-transcribed · decisions, handoffs and pain points tagged</div></div>
+      <div class="fstep"><div class="fs">3 · Mirror</div><div class="fv">214 workflows mapped</div><div class="ft">the live mirror of Hypermedia's operations — who does what, how long it takes, what it costs</div></div>
+      <div class="fstep"><div class="fs">4 · Rank</div><div class="fv">Top 12 by payback</div><div class="ft">each lands in a bucket — <b style="color:#fff">cost down · revenue up · speed &amp; scale · risk down</b> — what pays first goes first</div></div>
+    </div>
+    <div class="grid2e" style="flex:1">
+      <div class="panel"><div class="pt">▸ Savings dashboard · run-rate</div>
+        <div class="kpis" style="grid-template-columns:1fr 1fr 1fr;margin-bottom:10px">
+          <div class="kpi"><div class="v">2,300<small> hrs/mo</small></div><div class="k">Manual hours returned</div><div class="trend tr-up">across 9 functions</div></div>
+          <div class="kpi"><div class="v">AED 240k<small>/mo</small></div><div class="k">Cost saved · run-rate</div><div class="trend tr-up">▲ grows with each rollout</div></div>
+          <div class="kpi"><div class="v">12</div><div class="k">People upskilled to operators</div><div class="trend tr-fl">zero redundancies</div></div>
+        </div>
+        <div class="bar"><div class="bl2"><span>Proposal building</span><b>−82% time</b></div><div class="tr"><div class="fl" style="width:82%"></div></div></div>
+        <div class="bar"><div class="bl2"><span>Artwork compliance + filing</span><b>−77%</b></div><div class="tr"><div class="fl" style="width:77%"></div></div></div>
+        <div class="bar"><div class="bl2"><span>Invoicing + reconciliation</span><b>−71%</b></div><div class="tr"><div class="fl" style="width:71%"></div></div></div>
+        <div class="bar" style="margin:0"><div class="bl2"><span>Reporting + board packs</span><b>−64%</b></div><div class="tr"><div class="fl" style="width:64%"></div></div></div>
+      </div>
+      <div class="panel"><div class="pt">▸ Revenue dashboard · what went up</div>
+        <div class="kpis" style="grid-template-columns:1fr 1fr 1fr;margin-bottom:10px">
+          <div class="kpi"><div class="v">+6<small> pts</small></div><div class="k">Occupancy</div><div class="trend tr-up">≈ AED 610k/mo</div></div>
+          <div class="kpi"><div class="v">AED 1.9M</div><div class="k">Programmatic · MTD</div><div class="trend tr-up">illustrative example</div></div>
+          <div class="kpi"><div class="v">+9<small> pts</small></div><div class="k">Proposal win rate</div><div class="trend tr-up">same-day beats 4-day</div></div>
+        </div>
+        <div class="row"><span><b>Faster approvals</b> → campaigns live sooner → more sellable days</span><span class="tag ok">COMPOUNDING</span></div>
+        <div class="row"><span><b>Dynamic floors</b> → dark seconds monetized at protected prices</span><span class="tag ok">NEW REVENUE</span></div>
+        <div class="row"><span><b>Faster collections</b> → cash earlier · less financing cost</span><span class="tag ok">CASH</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="cap">FRAME 10 · THE BUILD PROCESS · interview → transcribe → mirror → rank · Mustafa as PM · savings + revenue visible</div>
+</div>
+
+</body>
+</html>
