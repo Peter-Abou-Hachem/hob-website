@@ -92,17 +92,25 @@ h2 b{font-weight:600}
 .dial .d{font-family:'Space Mono',monospace;font-size:7px;letter-spacing:0.1em;color:var(--dim);text-transform:uppercase}
 .illus{display:inline-block;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(176,203,232,0.5);border:1px solid var(--line);border-radius:999px;padding:4px 11px;margin-top:20px}
 
-/* journey manual→autopilot */
-.journey{margin-top:54px;max-width:980px}
-.jtrack{position:relative;height:10px;border-radius:6px;background:rgba(255,255,255,0.08);overflow:hidden}
-.jtrack i{position:absolute;inset:0;width:100%;border-radius:6px;background:linear-gradient(90deg,rgba(176,203,232,0.25),#B0CBE8 60%,#fff);transform-origin:left;animation:jfill 3.2s ease-out forwards}
-@keyframes jfill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-.jstages{display:grid;grid-template-columns:1fr 1fr 1fr;margin-top:16px;gap:12px}
+/* journey dial */
+@property --jd {syntax:'<angle>';initial-value:0deg;inherits:false}
+.journey{margin-top:52px;display:flex;align-items:center;gap:54px;flex-wrap:wrap;max-width:980px}
+.jdial{width:190px;height:190px;border-radius:50%;background:conic-gradient(#fff 0deg var(--jd), rgba(255,255,255,0.08) var(--jd) 360deg);display:flex;align-items:center;justify-content:center;flex-shrink:0;animation:jspin 2.8s ease-out forwards}
+@keyframes jspin{from{--jd:0deg}to{--jd:245deg}}
+.jdial .in{width:148px;height:148px;border-radius:50%;background:var(--petrol);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.jdial .n{font-size:44px;font-weight:200;color:var(--white);letter-spacing:-0.02em}
+.jdial .n small{font-size:18px;color:var(--dim)}
+.jdial .d{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:0.14em;color:var(--dim);text-transform:uppercase;margin-top:4px;max-width:12ch}
+.jstages{flex:1;min-width:280px;position:relative;padding-left:26px}
+.jstages:before{content:'';position:absolute;left:5px;top:14px;bottom:14px;width:2px;background:linear-gradient(180deg,rgba(176,203,232,0.2),#B0CBE8)}
+.jst{position:relative;padding:12px 0}
+.jst:before{content:'';position:absolute;left:-26px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--petrol);border:2px solid rgba(176,203,232,0.4)}
+.jst:last-child:before{background:#B0CBE8;border-color:#fff}
 .jst .jn{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--dim)}
-.jst .jt{font-size:17px;color:var(--white);font-weight:600;margin-top:3px}
-.jst .jd{font-size:12.5px;color:var(--text);margin-top:4px;line-height:1.45;max-width:26ch}
-.jst:nth-child(3) .jt{color:#fff}
-.jscore{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--dim);display:flex;justify-content:space-between;margin-top:8px}
+.jst .jt{font-size:19px;color:var(--text);font-weight:600;margin-top:2px}
+.jst:last-child .jt{color:#fff}
+.jst .jd2{font-size:13px;color:var(--text);margin-top:3px;line-height:1.45;max-width:44ch;opacity:0.85}
+.jst .jd2 b{color:#fff}
 /* systems connect */
 .sysgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:38px;max-width:1000px}
 @media(max-width:860px){.sysgrid{grid-template-columns:1fr}}
@@ -164,12 +172,11 @@ footer a{color:var(--text);text-decoration:none}
   </div>
   <div class="mono" style="margin-top:22px;font-size:12px;letter-spacing:0.08em;color:var(--dim)">✉ <a href="mailto:hello@houseofbuilders.ai" style="color:var(--text);text-decoration:none">hello@houseofbuilders.ai</a></div>
   <div class="journey">
-    <div class="jtrack"><i></i></div>
-    <div class="jscore"><span>0</span><span>the journey we run — measured every step</span><span>100</span></div>
+    <div class="jdial"><div class="in"><div class="n">0<small>→100</small></div><div class="d">the score we run by</div></div></div>
     <div class="jstages">
-      <div class="jst"><div class="jn">stage 1</div><div class="jt">Manual</div><div class="jd">People carry every task. Slow, expensive, error-prone.</div></div>
-      <div class="jst"><div class="jn">stage 2</div><div class="jt">Copilot</div><div class="jd">AI assists — people still drive every step.</div></div>
-      <div class="jst"><div class="jn">stage 3</div><div class="jt">Agentic</div><div class="jd">Agents do the work. <b style="color:#fff">People decide.</b> Everything logged.</div></div>
+      <div class="jst"><div class="jn">stage 1</div><div class="jt">Manual</div><div class="jd2">People carry every task. Slow, expensive, error-prone.</div></div>
+      <div class="jst"><div class="jn">stage 2</div><div class="jt">Copilot</div><div class="jd2">AI assists — people still drive every step.</div></div>
+      <div class="jst"><div class="jn">stage 3</div><div class="jt">Agentic</div><div class="jd2">Agents do the work. <b>People decide.</b> Everything logged — measured every step of the way.</div></div>
     </div>
   </div>
 </section>
