@@ -123,8 +123,11 @@ h2 b{font-weight:600}
 .macbase:before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:7px;background:#1a2025;border-radius:0 0 8px 8px}
 .maccap{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(176,203,232,0.55);margin-top:14px;text-align:center}
 /* proof figs */
-.fig.big .n{font-size:44px}
-.fig.big .l{font-size:12.5px;line-height:1.4}
+.fig.big{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.fig.big .f{background:rgba(20,25,29,0.55);border:1px solid rgba(176,203,232,0.22);border-radius:18px;padding:26px 24px 22px;text-align:center}
+.fig.big .f .n{font-size:clamp(40px,4.2vw,58px);font-weight:600;font-family:'Space Mono',monospace;color:var(--white)}
+.fig.big .f .l{font-family:'IBM Plex Sans',sans-serif;font-size:14px;letter-spacing:0;text-transform:none;color:var(--text);margin-top:10px;max-width:none;line-height:1.4}
+.fig.big .f .l small{display:block;font-size:11.5px;color:var(--dim);margin-top:6px}
 .fig{margin-top:36px;display:flex;gap:44px;flex-wrap:wrap}
 .fig .f .n{font-size:clamp(28px,3.4vw,42px);font-weight:200;color:var(--white);letter-spacing:-0.02em;line-height:1}
 .fig .f .l{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim);margin-top:8px;max-width:22ch}
@@ -378,11 +381,11 @@ footer a{color:var(--text);text-decoration:none}
   <h2>Because we already run companies this way — <b>across our portfolio.</b></h2>
   <div class="lead"><b>We don't sell what we haven't lived.</b> The stack we deploy for you already runs our own companies. The numbers, across that portfolio today:</div>
   <div class="fig big">
-    <div class="f"><div class="n">4</div><div class="l">industries running today: consumer retail · enterprise services · out-of-home media · pet care &amp; mobility</div></div>
-    <div class="f"><div class="n">500+</div><div class="l">people across operations that run alongside our agents</div></div>
-    <div class="f"><div class="n">150+</div><div class="l">workflows running or mapped across the portfolio</div></div>
-    <div class="f"><div class="n">11 + 20</div><div class="l">physical facilities and vehicles in daily agent-supported operations</div></div>
-    <div class="f"><div class="n">5,000+</div><div class="l">manual hours a month returned to judgment</div></div>
+    <div class="f"><div class="n">4</div><div class="l">industries live<small>retail · services · media · pet &amp; mobility</small></div></div>
+    <div class="f"><div class="n">500+</div><div class="l">people working alongside agents</div></div>
+    <div class="f"><div class="n">150+</div><div class="l">workflows running or mapped</div></div>
+    <div class="f"><div class="n">11+20</div><div class="l">facilities &amp; vehicles<small>in daily agent-supported operations</small></div></div>
+    <div class="f"><div class="n">5,000+</div><div class="l">hours returned monthly<small>to judgment, away from repetition</small></div></div>
   </div>
   <div class="mono" style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim);margin-top:10px">portfolio aggregates · july 2026 · directional — live counters coming</div>
   <div class="lead" style="margin-top:22px;font-size:15px">Running today across consumer retail, enterprise services, out-of-home media, and pet care &amp; mobility — including <b>asset-heavy businesses with on-ground teams</b>. Not one industry: everywhere we already operate.</div>
