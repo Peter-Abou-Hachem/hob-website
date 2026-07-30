@@ -193,6 +193,38 @@ footer{padding:60px 6vw;display:flex;justify-content:space-between;align-items:c
 footer .wm{font-size:20px}
 footer .fr{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim);text-align:right;line-height:2}
 footer a{color:var(--text);text-decoration:none}
+
+/* real systems section */
+.chipx{display:inline-flex;align-items:center;gap:7px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#9BC49B;border:1px solid rgba(155,196,155,0.4);border-radius:999px;padding:5px 12px;font-weight:700}
+.chipx i{display:block;width:6px;height:6px;border-radius:50%;background:#9BC49B;animation:chpulse 2s infinite}
+@keyframes chpulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.feat{display:grid;grid-template-columns:1fr 1.25fr;gap:0;margin-top:40px;background:rgba(20,25,29,0.55);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.feat .fl{padding:36px 38px;display:flex;flex-direction:column}
+.fname{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--white);font-weight:700;margin:18px 0 12px}
+.feat p{font-size:14.5px;line-height:1.6;color:var(--text);max-width:52ch}
+.feat p b{color:var(--white)}
+.sfacts{display:flex;margin-top:auto;padding-top:26px}
+.sfact{flex:1;border-left:1px solid var(--line);padding:2px 16px}
+.sfact:first-child{border-left:none;padding-left:0}
+.sfact .n{font-family:'Space Mono',monospace;font-size:24px;font-weight:700;color:var(--white);line-height:1.1}
+.sfact .l{font-size:11px;letter-spacing:0.04em;text-transform:uppercase;color:var(--dim);margin-top:4px;line-height:1.4}
+.feat .fr{background:var(--ink);border-left:1px solid var(--line);position:relative;min-height:400px}
+.feat .fr img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top left;opacity:0.96}
+.feat .fr .fcap{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(13,18,22,0.95) 55%);padding:36px 20px 12px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--dim);text-align:center}
+.syswrap{overflow:hidden;margin-top:18px}
+.systrack{display:flex;gap:18px;transition:transform .7s cubic-bezier(.4,0,.2,1)}
+.sysc{flex:0 0 calc((100% - 36px)/3);background:rgba(20,25,29,0.55);border:1px solid var(--line);border-radius:20px;padding:30px 30px 26px;display:flex;flex-direction:column}
+.sysc .fname{font-size:12.5px;margin:16px 0 10px}
+.sysc p{font-size:13.5px;line-height:1.55;color:var(--text)}
+.sysc p b{color:var(--white)}
+.sysc .sfacts{padding-top:22px}
+.sysc .sfact .n{font-size:20px}
+.sysc .sfact{padding:2px 12px}
+.sysc .sfact:first-child{padding-left:0}
+.sysdots{display:flex;gap:8px;justify-content:center;margin-top:22px}
+.sysdots i{width:7px;height:7px;border-radius:50%;background:rgba(176,203,232,0.25);cursor:pointer;transition:background .3s}
+.sysdots i.on{background:var(--text)}
+@media(max-width:1000px){.feat{grid-template-columns:1fr}.feat .fr{min-height:300px}.sysc{flex:0 0 100%}}
 </style>
 </head>
 <body>
@@ -263,59 +295,94 @@ footer a{color:var(--text);text-decoration:none}
 
 <!-- PRODUCTS -->
 <section id="products">
-  <div class="kick">▸ The agents · what we deploy</div>
-  <h2>Named agents, <b>already at work.</b></h2>
-  <div class="lead">These aren't concepts — versions of these agents run in production across our portfolio of companies today. Every new client is a <b>replication, not an experiment</b>: deployed in weeks, tuned to your business.</div>
-  <div class="acards">
-    <div class="acard"><div class="ahd"><div class="aic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B0CBE8" stroke-width="1.6" stroke-linecap="round"><path d="M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></div><div class="at">The Quote Agent</div></div>
-      <div class="mini">
-        <div class="vrow q1"><span style="min-width:56px">ENQUIRY</span><div class="vbar"><i></i></div></div>
-        <div class="vrow q2"><span style="min-width:56px">HISTORY</span><div class="vbar"><i></i></div></div>
-        <div class="vrow q3"><span style="min-width:56px">PRICING</span><div class="vbar"><i></i></div></div>
-        <div class="vrow q4"><span class="vc">✓</span><span>3 options ready — review &amp; send<span class="dots"><i></i><i></i><i></i></span></span></div>
+  <div class="kick">▸ The systems · running today</div>
+  <h2>Real systems, <b>in production.</b></h2>
+  <div class="lead">Not concept demos. These are working systems from our build floor and our portfolio of companies: <b>real screens, real counts, live repositories.</b> Every new client starts from here, tuned to their business.</div>
+
+  <div class="feat">
+    <div class="fl">
+      <div><span class="chipx"><i></i>In production</span></div>
+      <div class="fname">The Recruitment Agent</div>
+      <p>Reads every CV against the role, cross-examines the candidate's own claims against it, and attaches evidence to every verdict. It screens what HR systems never could, because it <b>reads the CV itself.</b> Your team hires; it never decides.</p>
+      <div class="sfacts">
+        <div class="sfact"><div class="n">315</div><div class="l">real CVs read &amp; scored</div></div>
+        <div class="sfact"><div class="n">226</div><div class="l">flagged for claims the CV does not back up</div></div>
+        <div class="sfact"><div class="n">4-step</div><div class="l">rubric · every verdict cites its evidence</div></div>
       </div>
-      <p>Reads every past proposal and win, watches live data — <b>priced options the same morning.</b></p></div>
-    <div class="acard"><div class="ahd"><div class="aic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B0CBE8" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 5-5.5"/></svg></div><div class="at">The Collections Agent</div></div>
-      <div class="mini">
-        <div class="vrow q1"><span class="vc">✓</span><span>INV-2214 · reminder sent</span></div>
-        <div class="vrow q2"><span class="vc">✓</span><span>INV-2215 · payment matched</span></div>
-        <div class="vrow q3"><span class="vc">✓</span><span>INV-2216 · reconciled</span></div>
-        <div class="vrow q4"><span class="vc" style="border-color:#E8736A;color:#E8736A">!</span><span>INV-2217 · case file → <b style="color:#fff">your call</b></span></div>
-      </div>
-      <p>Chases on time, tone-matched, reconciles everything — <b>escalates only what needs you.</b></p></div>
-    <div class="acard"><div class="ahd"><div class="aic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B0CBE8" stroke-width="1.6" stroke-linecap="round"><path d="M4 20V9M10 20V4M16 20v-8M21 20H3"/></svg></div><div class="at">The Reporting Agent</div></div>
-      <div class="mini">
-        <div class="vrow q1"><span style="min-width:56px">SALES</span><div class="vbar"><i></i></div></div>
-        <div class="vrow q2"><span style="min-width:56px">COSTS</span><div class="vbar"><i></i></div></div>
-        <div class="vrow q3"><span style="min-width:56px">CASH</span><div class="vbar"><i></i></div></div>
-        <div class="vrow q4"><span class="vc">✓</span><span>board pack ready — Monday 8am</span></div>
-      </div>
-      <p>Reads your systems continuously — <b>answers exist before you ask</b>, drillable, with the why.</p></div>
-    <div class="acard"><div class="ahd"><div class="aic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B0CBE8" stroke-width="1.6" stroke-linecap="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.8-3.2 2.9-5 5.5-5s4.7 1.8 5.5 5"/><path d="M16 8h5M16 12h5M16 16h3"/></svg></div><div class="at">The Recruitment Agent</div></div>
-      <div class="mini">
-        <div class="vrow q1"><span class="vc">✓</span><span>142 applications read overnight</span></div>
-        <div class="vrow q2"><span class="vc">✓</span><span>shortlist of 8 — each with reasons</span></div>
-        <div class="vrow q3"><span class="vc">✓</span><span>interviews proposed &amp; booked</span></div>
-        <div class="vrow q4"><span class="vc" style="border-color:#E8736A;color:#E8736A">!</span><span>final call — <b style="color:#fff">always yours</b></span></div>
-      </div>
-      <p>Reads every application against the role, shortlists with reasons attached — <b>your team hires, it never decides.</b></p></div>
-    <div class="acard"><div class="ahd"><div class="aic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B0CBE8" stroke-width="1.6" stroke-linecap="round"><path d="M3 7h8M3 12h8M3 17h5"/><path d="M14 12h7M18 8l4 4-4 4"/></svg></div><div class="at">The Sales-to-Ops Handoff</div></div>
-      <div class="mini">
-        <div class="vrow q1"><span class="vc">✓</span><span>deal marked WON in the CRM</span></div>
-        <div class="vrow q2"><span class="vc">✓</span><span>ops brief written · schedules booked</span></div>
-        <div class="vrow q3"><span class="vc">✓</span><span>6 systems updated — one entry</span></div>
-        <div class="vrow q4"><span class="vc">✓</span><span>nothing falls between the teams</span></div>
-      </div>
-      <p>One confirmed deal used to mean manual updates in six places — <b>now it happens once, everywhere, instantly.</b></p></div>
-    <div class="acard"><div class="ahd"><div class="aic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B0CBE8" stroke-width="1.6" stroke-linecap="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/><path d="M9 12l2 2 4-4.5"/></svg></div><div class="at">The Approvals Agent</div></div>
-      <div class="mini">
-        <div class="vdoc a1"><span>contract-114 · checked EN+AR</span><span class="stamp">FILED</span></div>
-        <div class="vdoc a2"><span>permit-registration · prepared</span><span class="stamp">SUBMITTED</span></div>
-        <div class="vdoc a3"><span>compliance pack · verified</span><span class="stamp">APPROVED</span></div>
-      </div>
-      <p>Filings and permits prepared, submitted, tracked — <b>English and Arabic</b>, full audit trail.</p></div>
+    </div>
+    <div class="fr">
+      <img src="img/agent-ui.png?v=1" alt="Recruitment agent, live screen">
+      <div class="fcap">actual screen · live counts from a client engagement · identities stay on the build machine</div>
+    </div>
   </div>
-  <div class="moreagents"><b>The library keeps growing:</b> reconciliation, onboarding, procurement, compliance monitoring, scheduling, inventory, filings, contract reading, escalations — and whatever your operation needs next. <b style="color:#fff">We don't sell agents. We take over workflows</b> — if the work is repetitive and rule-based, an agent can own it.</div>
+
+  <div class="syswrap">
+    <div class="systrack" id="systrack">
+      <div class="sysc">
+        <div><span class="chipx"><i></i>In production · daily</span></div>
+        <div class="fname">Company Chat + Agent Builder</div>
+        <p>An operating group runs its day through chat: agents read and write into the ERP under <b>governed permissions</b>, and new agents are assembled from a builder, not coded from scratch. Part of the licensed technology our clients inherit.</p>
+        <div class="sfacts">
+          <div class="sfact"><div class="n">11</div><div class="l">facilities run through it</div></div>
+          <div class="sfact"><div class="n">20+</div><div class="l">vehicles dispatched</div></div>
+          <div class="sfact"><div class="n">200+</div><div class="l">people on the system</div></div>
+        </div>
+      </div>
+      <div class="sysc">
+        <div><span class="chipx"><i></i>In production · 24/7</span></div>
+        <div class="fname">Ops Mission Control</div>
+        <p>A single wall for a multi-client operation: every ticket, build and deadline in one place, agents doing the tracking and the chasing, <b>humans doing the deciding.</b> Built and battle-tested inside a live services business.</p>
+        <div class="sfacts">
+          <div class="sfact"><div class="n">24</div><div class="l">client accounts</div></div>
+          <div class="sfact"><div class="n">1,800+</div><div class="l">tickets handled</div></div>
+          <div class="sfact"><div class="n">316</div><div class="l">builds tracked</div></div>
+        </div>
+      </div>
+      <div class="sysc">
+        <div><span class="chipx"><i></i>In production</span></div>
+        <div class="fname">The Inbox-to-Task Loop</div>
+        <p>Every inbound email is read, understood and turned into a task with an owner and a deadline. Follow-ups are chased until closed. <b>Nothing waits in an inbox, nothing falls through.</b> The quiet workhorse behind the louder systems.</p>
+        <div class="sfacts">
+          <div class="sfact"><div class="n">100%</div><div class="l">of inbound read &amp; routed</div></div>
+          <div class="sfact"><div class="n">0</div><div class="l">threads dropped</div></div>
+          <div class="sfact"><div class="n">24h</div><div class="l">follow-up cycle, automatic</div></div>
+        </div>
+      </div>
+      <div class="sysc">
+        <div><span class="chipx"><i></i>In production · 24/7</span></div>
+        <div class="fname">The Finance Desk</div>
+        <p>Books that read themselves: revenue, stock and cost pulled from the operating systems around the clock, reconciled, and published to one live page. <b>The answer exists before anyone builds a spreadsheet.</b></p>
+        <div class="sfacts">
+          <div class="sfact"><div class="n">3h</div><div class="l">refresh cycle, automatic</div></div>
+          <div class="sfact"><div class="n">1,500+</div><div class="l">stock items tracked live</div></div>
+          <div class="sfact"><div class="n">0</div><div class="l">manual reports produced</div></div>
+        </div>
+      </div>
+      <div class="sysc">
+        <div><span class="chipx"><i></i>In production · daily</span></div>
+        <div class="fname">The Catalogue Scout</div>
+        <p>Watches a supplier universe of <b>188,000 items</b> every day against what the business already carries, flags what's missing and what just dropped, and drafts the order. <b>The business never misses a release.</b></p>
+        <div class="sfacts">
+          <div class="sfact"><div class="n">188K</div><div class="l">items watched daily</div></div>
+          <div class="sfact"><div class="n">1</div><div class="l">weekly digest, auto-drafted</div></div>
+          <div class="sfact"><div class="n">0</div><div class="l">drops missed</div></div>
+        </div>
+      </div>
+      <div class="sysc">
+        <div><span class="chipx"><i></i>In production</span></div>
+        <div class="fname">The Meeting Memory</div>
+        <p>Every recorded call is transcribed, digested and filed where the team works, with decisions and follow-ups routed to their owners. <b>Nothing said in a meeting gets lost</b> — and nobody writes minutes again.</p>
+        <div class="sfacts">
+          <div class="sfact"><div class="n">100%</div><div class="l">of recorded calls digested</div></div>
+          <div class="sfact"><div class="n">min</div><div class="l">from call end to filed notes</div></div>
+          <div class="sfact"><div class="n">0</div><div class="l">minutes written by humans</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="sysdots" id="sysdots"></div>
+  </div>
+
+  <div class="moreagents"><b>What they take over:</b> quotes, collections, reporting, approvals, handoffs, scheduling, reconciliation, filings, escalations. <b style="color:#fff">We don't sell agents. We take over workflows</b> — if the work is repetitive and rule-based, an agent can own it.</div>
   <span class="illus">running today across our portfolio of companies · deployed for each client inside their own systems</span>
 </section>
 
@@ -444,5 +511,33 @@ footer a{color:var(--text);text-decoration:none}
   </div>
 </footer>
 
+
+<script>
+(function(){
+  var track = document.getElementById('systrack');
+  var dotsEl = document.getElementById('sysdots');
+  if(!track) return;
+  var cards = Array.prototype.slice.call(track.children);
+  var N = cards.length;
+  cards.forEach(function(c){ track.appendChild(c.cloneNode(true)); });
+  var idx = 0, paused = false;
+  for (var d = 0; d < N; d++) { var i = document.createElement('i'); if(d===0) i.className='on'; dotsEl.appendChild(i); }
+  var dots = Array.prototype.slice.call(dotsEl.children);
+  dots.forEach(function(dot, di){ dot.addEventListener('click', function(){ idx = di; move(true); }); });
+  function step(){ var card = track.children[0]; var gap = 18; return card.getBoundingClientRect().width + gap; }
+  function move(instantReset){
+    track.style.transition = 'transform .7s cubic-bezier(.4,0,.2,1)';
+    track.style.transform = 'translateX(' + (-idx * step()) + 'px)';
+    dots.forEach(function(dot, di){ dot.className = (di === (idx % N)) ? 'on' : ''; });
+  }
+  track.addEventListener('transitionend', function(){
+    if (idx >= N) { idx = idx % N; track.style.transition = 'none'; track.style.transform = 'translateX(' + (-idx * step()) + 'px)'; }
+  });
+  track.parentElement.addEventListener('mouseenter', function(){ paused = true; });
+  track.parentElement.addEventListener('mouseleave', function(){ paused = false; });
+  setInterval(function(){ if (paused) return; idx++; move(); }, 4200);
+  window.addEventListener('resize', function(){ track.style.transition='none'; track.style.transform='translateX(' + (-(idx % N) * step()) + 'px)'; });
+})();
+</script>
 </body>
 </html>
