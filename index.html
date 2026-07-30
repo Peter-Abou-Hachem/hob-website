@@ -171,11 +171,12 @@ h2 b{font-weight:600}
 .syscard p b{color:var(--white)}
 /* animated cockpit slideshow */
 .macscreen{aspect-ratio:16/9.35}
-.macscreen .slide{position:absolute;inset:16px 16px 12px;border-radius:8px;overflow:hidden;opacity:0;animation:ckcycle 12s infinite}
+.macscreen .slide{position:absolute;inset:16px 16px 12px;border-radius:8px;overflow:hidden;opacity:0;animation:ckcycle 16s infinite}
 .macscreen .slide img{width:100%;height:100%;object-fit:cover;object-position:top}
 .macscreen .slide:nth-child(2){animation-delay:0s}
 .macscreen .slide:nth-child(3){animation-delay:4s}
 .macscreen .slide:nth-child(4){animation-delay:8s}
+.macscreen .slide:nth-child(5){animation-delay:12s}
 @keyframes ckcycle{0%{opacity:0}3%{opacity:1}25%{opacity:1}31%{opacity:0}100%{opacity:0}}
 /* score dial small */
 .dial{width:120px;height:120px;border-radius:50%;background:conic-gradient(#fff 0deg 220deg, rgba(255,255,255,0.09) 220deg 360deg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -238,12 +239,13 @@ footer a{color:var(--text);text-decoration:none}
   <div class="lead">Three numbers that tell you how it's doing, insights that find you, decisions that arrive ready to approve. Nothing new to learn: the AI works underneath, invisibly. <b>The Cockpit becomes your company's map for AI</b> — every workflow, every agent, every decision, one place.</div>
   <div class="macbook">
     <div class="macscreen" style="position:relative"><img src="img/cockpit-1.png" alt="the HoB cockpit" style="visibility:hidden">
-      <div class="slide"><img src="img/cockpit-1.png" alt="three numbers and the living map"></div>
-      <div class="slide"><img src="img/cockpit-2.png" alt="every department, measured"></div>
-      <div class="slide"><img src="img/cockpit-3.png" alt="hours returned and the recruitment agent"></div>
+      <div class="slide"><img src="img/cockpit-1.png" alt="the whole company on one screen"></div>
+      <div class="slide"><img src="img/cockpit-2.png" alt="orbit view — every department a planet"></div>
+      <div class="slide"><img src="img/cockpit-3.png" alt="a workflow, today vs agent-run"></div>
+      <div class="slide"><img src="img/cockpit-4.png" alt="the bot on chat"></div>
     </div>
     <div class="macbase"></div>
-    <div class="maccap">the cockpit · three numbers and the living map → every department, measured → hours returned + the recruitment agent · illustrative demo</div>
+    <div class="maccap">the cockpit, live rotation: the whole company → orbit view → a workflow, today vs agent-run → the bot on chat · client-one screens, anonymized</div>
   </div>
 </section>
 
