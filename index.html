@@ -123,6 +123,8 @@ h2 b{font-weight:600}
 .macbase:before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:7px;background:#1a2025;border-radius:0 0 8px 8px}
 .maccap{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(176,203,232,0.55);margin-top:14px;text-align:center}
 /* proof figs */
+.fig.big .n{font-size:44px}
+.fig.big .l{font-size:12.5px;line-height:1.4}
 .fig{margin-top:36px;display:flex;gap:44px;flex-wrap:wrap}
 .fig .f .n{font-size:clamp(28px,3.4vw,42px);font-weight:200;color:var(--white);letter-spacing:-0.02em;line-height:1}
 .fig .f .l{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim);margin-top:8px;max-width:22ch}
@@ -237,13 +239,13 @@ footer a{color:var(--text);text-decoration:none}
   <div class="lead">Three numbers that tell you how it's doing, insights that find you, decisions that arrive ready to approve. Nothing new to learn: the AI works underneath, invisibly. <b>The Cockpit becomes your company's map for AI</b> — every workflow, every agent, every decision, one place.</div>
   <div class="macbook">
     <div class="macscreen" style="position:relative"><img src="img/cockpit-1.png" alt="the HoB cockpit" style="visibility:hidden">
-      <div class="slide"><img src="img/cockpit-1.png" alt="cockpit overview"></div>
-      <div class="slide"><img src="img/cockpit-2.png" alt="agents at work"></div>
-      <div class="slide"><img src="img/cockpit-3.png" alt="approvals pipeline"></div>
-      <div class="slide"><img src="img/cockpit-4.png" alt="finance live"></div>
+      <div class="slide"><img src="img/cockpit-1.png" alt="the whole company on one screen"></div>
+      <div class="slide"><img src="img/cockpit-2.png" alt="orbit view — every department a planet"></div>
+      <div class="slide"><img src="img/cockpit-3.png" alt="a workflow, today vs agent-run"></div>
+      <div class="slide"><img src="img/cockpit-4.png" alt="the bot on chat"></div>
     </div>
     <div class="macbase"></div>
-    <div class="maccap">the HoB cockpit · live rotation: overview → chat with an agent → the quote agent → collections · illustrative</div>
+    <div class="maccap">the cockpit, live rotation: the whole company → orbit view → a workflow, today vs agent-run → the bot on chat · client-one screens, anonymized</div>
   </div>
 </section>
 
@@ -288,18 +290,22 @@ footer a{color:var(--text);text-decoration:none}
         <div class="vrow q4"><span class="vc">✓</span><span>board pack ready — Monday 8am</span></div>
       </div>
       <p>Reads your systems continuously — <b>answers exist before you ask</b>, drillable, with the why.</p></div>
-    <div class="acard"><div class="ahd"><div class="aic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B0CBE8" stroke-width="1.6" stroke-linecap="round"><path d="M3 17l5-5 4 3 8-8"/><path d="M15 7h5v5"/></svg></div><div class="at">The Pricing Engine</div></div>
+    <div class="acard"><div class="ahd"><div class="aic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B0CBE8" stroke-width="1.6" stroke-linecap="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.8-3.2 2.9-5 5.5-5s4.7 1.8 5.5 5"/><path d="M16 8h5M16 12h5M16 16h3"/></svg></div><div class="at">The Recruitment Agent</div></div>
       <div class="mini">
-        <svg class="vchart" viewBox="0 0 200 80" preserveAspectRatio="none"><path d="M0,68 C30,64 40,50 62,52 S100,30 125,32 S170,14 200,10"/></svg>
-        <span class="vtag" style="right:8px;top:6px">yield ↑</span>
+        <div class="vrow q1"><span class="vc">✓</span><span>142 applications read overnight</span></div>
+        <div class="vrow q2"><span class="vc">✓</span><span>shortlist of 8 — each with reasons</span></div>
+        <div class="vrow q3"><span class="vc">✓</span><span>interviews proposed &amp; booked</span></div>
+        <div class="vrow q4"><span class="vc" style="border-color:#E8736A;color:#E8736A">!</span><span>final call — <b style="color:#fff">always yours</b></span></div>
       </div>
-      <p>Prices capacity from live demand and occupancy — <b>inside human-set floors</b>, every change logged.</p></div>
-    <div class="acard"><div class="ahd"><div class="aic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B0CBE8" stroke-width="1.6" stroke-linecap="round"><path d="M12 3v18M4 7l8-4 8 4"/><path d="M6 7l-3 6a3.5 3.5 0 0 0 7 0L7 7M18 7l-3 6a3.5 3.5 0 0 0 7 0l-3-6"/></svg></div><div class="at">The CAPEX Brain</div></div>
-      <div class="mini"><div class="vopt">
-        <div class="vo">REPLACE<br>equipment<span class="pct">4.2y</span>payback</div>
-        <div class="vo win">INNOVATE<br>around it<span class="pct">1.8y</span>payback</div>
-      </div></div>
-      <p>Models every site: <b>replace or innovate</b> — a ranked plan that recalculates as prices move.</p></div>
+      <p>Reads every application against the role, shortlists with reasons attached — <b>your team hires, it never decides.</b></p></div>
+    <div class="acard"><div class="ahd"><div class="aic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B0CBE8" stroke-width="1.6" stroke-linecap="round"><path d="M3 7h8M3 12h8M3 17h5"/><path d="M14 12h7M18 8l4 4-4 4"/></svg></div><div class="at">The Sales-to-Ops Handoff</div></div>
+      <div class="mini">
+        <div class="vrow q1"><span class="vc">✓</span><span>deal marked WON in the CRM</span></div>
+        <div class="vrow q2"><span class="vc">✓</span><span>ops brief written · schedules booked</span></div>
+        <div class="vrow q3"><span class="vc">✓</span><span>6 systems updated — one entry</span></div>
+        <div class="vrow q4"><span class="vc">✓</span><span>nothing falls between the teams</span></div>
+      </div>
+      <p>One confirmed deal used to mean manual updates in six places — <b>now it happens once, everywhere, instantly.</b></p></div>
     <div class="acard"><div class="ahd"><div class="aic"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B0CBE8" stroke-width="1.6" stroke-linecap="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/><path d="M9 12l2 2 4-4.5"/></svg></div><div class="at">The Approvals Agent</div></div>
       <div class="mini">
         <div class="vdoc a1"><span>contract-114 · checked EN+AR</span><span class="stamp">FILED</span></div>
@@ -370,8 +376,8 @@ footer a{color:var(--text);text-decoration:none}
 <section id="trust">
   <div class="kick">▸ Why trust us</div>
   <h2>Because we already run companies this way — <b>across our portfolio.</b></h2>
-  <div class="lead">We don't sell what we haven't lived. Our founders have built inside one of the world's fastest-growing tech ecosystems, advised governments and global enterprises on innovation, and founded companies that run on the exact stack we deploy — from consumer businesses operated end-to-end by AI workforces to engineering firms serving international brands. Across that portfolio, today:</div>
-  <div class="fig">
+  <div class="lead"><b>We don't sell what we haven't lived.</b> The stack we deploy for you already runs our own companies. The numbers, across that portfolio today:</div>
+  <div class="fig big">
     <div class="f"><div class="n">4</div><div class="l">industries running today: consumer retail · enterprise services · out-of-home media · pet care &amp; mobility</div></div>
     <div class="f"><div class="n">500+</div><div class="l">people across operations that run alongside our agents</div></div>
     <div class="f"><div class="n">150+</div><div class="l">workflows running or mapped across the portfolio</div></div>
@@ -388,16 +394,7 @@ footer a{color:var(--text);text-decoration:none}
 </section>
 
 <!-- TEAM -->
-<section id="team">
-  <div class="kick">▸ The team</div>
-  <h2>Built by <b>operators, not advisors.</b></h2>
-  <div class="cards c2">
-    <div class="card"><div style="display:flex;align-items:center;gap:16px;margin-bottom:14px"><img src="img/peter.jpg" alt="Peter Abou Hachem" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid var(--text)"><div><div style="font-size:18px;color:var(--white);font-weight:600">Peter Abou Hachem</div><div class="mono" style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim)">Founder &amp; CEO</div></div></div>
-    <p>Led growth &amp; strategy at <b>Hub71</b> — helping Abu Dhabi become a global tech hub and helping government and enterprises innovate. Saw from the inside why startups, funds and venture builders succeed or fail — then built his own company, run almost entirely by an AI workforce.</p></div>
-    <div class="card"><div style="display:flex;align-items:center;gap:16px;margin-bottom:14px"><img src="img/karim.jpg" alt="Karim Makarem" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid var(--text)"><div><div style="font-size:18px;color:var(--white);font-weight:600">Karim Makarem</div><div class="mono" style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim)">Co-founder · CTO</div></div></div>
-    <p>Founder of an AI engineering company serving enterprise clients across the region; has built and led large technical teams. Owns HoB's agentic platform and its <b>sovereign architecture</b> — models on your infrastructure, data that never leaves.</p></div>
-  </div>
-</section>
+
 
 <!-- WHO WE WORK WITH -->
 <section id="who">
@@ -424,10 +421,10 @@ footer a{color:var(--text);text-decoration:none}
 
 <!-- VENTURES -->
 <section id="ventures">
-  <div class="kick">▸ Ventures · layer 3 in the wild</div>
-  <h2>Example: a power bill <b>becoming a business.</b></h2>
-  <div class="lead">An industrial player runs energy-hungry assets around the clock — a heavy electricity bill on sites it already owns. Batteries replace generators. Off-grid solar powers remote locations. An AI ranks every site: <b>upgrade the equipment, or innovate around it.</b> The asset owner keeps the lead — and a cost line becomes a revenue line. That's what a House of Builders venture looks like.</div>
-  <span class="illus">illustrative — ventures are structured per partner</span>
+  <div class="kick">▸ When the wheel already exists</div>
+  <h2>We don't reinvent. <b>We source, and operate it with you.</b></h2>
+  <div class="lead">Some problems shouldn't be built from scratch: energy systems, regulated fintech, specialized industrial hardware. When proven technology already exists — verticalized, certified, working elsewhere in the world — <b>we scan globally, bring the right company to your operation, and run it together.</b> You keep the lead on your assets; the specialist gets a real operating partner in the Gulf; your cost line becomes a capability. One example: an asset-heavy operator with a heavy power bill gets batteries, off-grid solar and an AI ranking every site — upgrade the equipment, or innovate around it.</div>
+  <span class="illus">sourced and structured per partner — never a science project on your budget</span>
 </section>
 
 <!-- CLOSING CTA -->
