@@ -569,13 +569,15 @@ document.querySelectorAll('.rev').forEach(function(el){io.observe(el);});
   var screens=[].slice.call(frame.querySelectorAll('.screen'));
   var dots=[].slice.call(frame.querySelectorAll('.scrdots span'));
   var label=document.querySelector('.macbar .u');
-  var i=0;
-  setInterval(function(){
+  var i=0, started=false;
+  function tick(){
     screens[i].classList.remove('on'); dots[i]&&dots[i].classList.remove('on');
     i=(i+1)%screens.length;
     screens[i].classList.add('on'); dots[i]&&dots[i].classList.add('on');
     if(label&&screens[i].dataset.label) label.textContent=screens[i].dataset.label;
-  },5500);
+  }
+  var mo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!started){started=true;setInterval(tick,4500);}})},{threshold:0.5});
+  mo.observe(document.querySelector('.macwrap')||frame);
 })();
 // systems carousel — real agent featured, the rest rotate
 (function(){
@@ -597,7 +599,9 @@ document.querySelectorAll('.rev').forEach(function(el){io.observe(el);});
       dots.forEach(function(d,k){d.className='sdot'+(k===i?' on':'');});
     },260);}
   render();
-  var iv=setInterval(function(){i=(i+1)%items.length;render();},3600);
+  var iv, started=false;
+  var mo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!started){started=true;iv=setInterval(function(){i=(i+1)%items.length;render();},3600);}})},{threshold:0.4});
+  mo.observe(document.querySelector('.syswrap')||rot);
   rot.addEventListener('mouseenter',function(){clearInterval(iv);});
 })();
 </script>
