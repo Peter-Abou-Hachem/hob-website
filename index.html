@@ -142,6 +142,17 @@ h2 b{font-weight:700;color:var(--accent)}
 /* three-things / doors / plug cards */
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
 .grid3.g2{grid-template-columns:repeat(2,1fr);max-width:760px}
+/* supply <> demand flow */
+.sdflow{display:flex;align-items:stretch;gap:10px;margin-top:40px;flex-wrap:wrap;justify-content:center}
+.sdnode{flex:1 1 240px;max-width:320px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px 20px;text-align:center;box-shadow:0 18px 42px -30px rgba(0,0,0,0.6)}
+.sdnode.mid{border-color:rgba(176,203,232,0.42);background:linear-gradient(180deg,rgba(176,203,232,0.1),rgba(0,0,0,0.06))}
+.sdnode .lab{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.sdnode h4{font-size:16px;color:var(--ink);font-weight:600;margin:9px 0 8px;letter-spacing:-0.01em}
+.sdnode p{font-size:13px;color:var(--t);line-height:1.5}
+.sdarrow{display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:20px;color:var(--accent);padding:0 2px}
+@media(max-width:760px){.sdarrow{transform:rotate(90deg);padding:4px 0}}
+.sdcap{margin-top:20px;font-size:15px;color:var(--t);max-width:76ch;margin-left:auto;margin-right:auto;text-align:center;line-height:1.6}
+.sdcap b{color:var(--ink)}
 @media(max-width:820px){.grid3{grid-template-columns:1fr}}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px 24px;transition:transform .18s,border-color .18s}
 .card:hover{transform:translateY(-4px);border-color:rgba(176,203,232,0.4)}
@@ -291,7 +302,6 @@ footer .mono{margin-left:auto;font-size:11px;letter-spacing:0.06em;text-transfor
 </div></nav>
 
 <div id="top" class="hero"><div class="wrap">
-  <div class="helabel">An X-ray for CEOs and chairmen · Dubai — Abu Dhabi</div>
   <h1>We bring your whole company to life on one screen, <b>then automate it.</b></h1>
   <p class="lede">House of Builders draws your whole organisation from its own documents into one live picture, shows leadership where the money leaks and which decisions are waiting, then moves the repetitive work onto agents. <b>Built in the UAE, with global backing.</b></p>
   <div class="hbtns">
@@ -504,8 +514,16 @@ footer .mono{margin-left:auto;font-size:11px;letter-spacing:0.06em;text-transfor
 
 <section id="doors"><div class="wrap">
   <div class="rev"><div class="eye">Who we work with</div>
-  <h2>Two doors. <b>Pick yours.</b></h2></div>
-  <div class="grid3 g2">
+  <h2>Two doors. <b>They feed each other.</b></h2></div>
+  <div class="sdflow rev">
+    <div class="sdnode"><div class="lab">Demand</div><h4>Enterprises &amp; government</h4><p>Real industry problems, real budgets, and the mandate to fix them.</p></div>
+    <div class="sdarrow">⇄</div>
+    <div class="sdnode mid"><div class="lab">House of Builders</div><h4>We operate the match</h4><p>We run the tech inside their walls, and the library compounds on top.</p></div>
+    <div class="sdarrow">⇄</div>
+    <div class="sdnode"><div class="lab">Supply</div><h4>VCs &amp; global tech</h4><p>Proven technology that already solves the problem, elsewhere in the world.</p></div>
+  </div>
+  <p class="sdcap rev">When a specific technology already solves a real industry problem, we bring the two sides together and run it. <b>Demand pulls proven supply in, supply proves itself on real demand, and our own offering compounds on top of both.</b></p>
+  <div class="grid3 g2" style="margin-top:26px">
     <div class="card rev"><h3>Enterprises &amp; government</h3><p>Run on AI. We map your organisation, automate what pays first, and hand you a cockpit where you watch it work, sovereign, auditable, inside your own walls.</p><a href="#talk" class="go">Start a conversation →</a></div>
     <div class="card rev"><h3>VCs &amp; global tech companies</h3><p>Enter the Gulf with an operator. Bring proven technology in with the local channels, the compliance path and the operating hand your portfolio needs here.</p><a href="#talk" class="go">Talk to us →</a></div>
   </div>
