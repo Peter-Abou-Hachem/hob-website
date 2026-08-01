@@ -575,7 +575,7 @@ document.querySelectorAll('.rev').forEach(function(el){io.observe(el);});
     i=(i+1)%screens.length;
     screens[i].classList.add('on'); dots[i]&&dots[i].classList.add('on');
     if(label&&screens[i].dataset.label) label.textContent=screens[i].dataset.label;
-  },4500);
+  },5500);
 })();
 // systems carousel — real agent featured, the rest rotate
 (function(){
@@ -597,7 +597,7 @@ document.querySelectorAll('.rev').forEach(function(el){io.observe(el);});
       dots.forEach(function(d,k){d.className='sdot'+(k===i?' on':'');});
     },260);}
   render();
-  var iv=setInterval(function(){i=(i+1)%items.length;render();},2600);
+  var iv=setInterval(function(){i=(i+1)%items.length;render();},3600);
   rot.addEventListener('mouseenter',function(){clearInterval(iv);});
 })();
 </script>
