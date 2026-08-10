@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>House of Builders · Plug-ins</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="hob-pages.css">
+<style>
+.appscreen{margin-top:26px;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 30px 80px -40px rgba(0,0,0,0.6)}
+.appbar{display:flex;align-items:center;gap:8px;padding:12px 18px;background:rgba(167,194,208,0.05);border-bottom:1px solid var(--line)}
+.appbar i{width:9px;height:9px;border-radius:50%;background:rgba(167,194,208,0.28)}
+.appbar .u{margin-left:10px;font-family:'IBM Plex Sans',sans-serif;font-size:12px;color:var(--t)}
+.appbar .cnt{margin-left:auto;font-family:'IBM Plex Sans',sans-serif;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--good);border:1px solid rgba(130,183,158,0.5);border-radius:999px;padding:4px 10px}
+.appwin{height:52vh;min-height:360px;overflow:hidden;position:relative;background:var(--panel);-webkit-mask-image:linear-gradient(to bottom,#000 88%,transparent);mask-image:linear-gradient(to bottom,#000 88%,transparent)}
+.apptrack{padding:18px;display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:10px;animation:appscroll 60s linear infinite}
+.appwin:hover .apptrack{animation-play-state:paused}
+@keyframes appscroll{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+.apptile{display:flex;align-items:center;gap:10px;background:rgba(167,194,208,0.05);border:1px solid var(--line);border-radius:11px;padding:11px 12px}
+.apptile .ic{width:32px;height:32px;border-radius:8px;background:rgba(176,203,232,0.14);color:var(--accent);font-family:'IBM Plex Sans',sans-serif;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.apptile .an{font-size:13px;font-weight:600;color:var(--ink);line-height:1.15}
+.apptile .ac{font-family:'IBM Plex Sans',sans-serif;font-size:9px;letter-spacing:0.05em;text-transform:uppercase;color:var(--dim);margin-top:2px}
+.appmore{text-align:center;font-family:'IBM Plex Sans',sans-serif;font-size:12px;color:var(--dim);padding:16px}
+.csscroll{height:55vh;min-height:360px;overflow:hidden;position:relative;margin-top:24px;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 7%,#000 93%,transparent)}
+.cstrack{display:flex;flex-direction:column;gap:14px;animation:csscroll 60s linear infinite}
+.csscroll:hover .cstrack{animation-play-state:paused}
+@keyframes csscroll{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+.cscard{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:14px;padding:20px 22px;cursor:pointer;transition:border-color .15s}
+.cscard:hover{border-color:var(--accent)}
+.cscard .cssec{font-family:'IBM Plex Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.cscard .csp{font-weight:600;font-size:17px;color:var(--ink);margin:8px 0 6px}
+.cscard .csd{font-size:13.5px;color:var(--t);line-height:1.5}
+.cscard .csn{margin-top:12px;display:flex;gap:20px;flex-wrap:wrap}
+.cscard .csn b{font-family:'IBM Plex Sans',sans-serif;font-size:15px;color:var(--good)}
+.cscard .csn span{font-size:11px;color:var(--dim);display:block}
+</style>
+</head><body>
+<nav id="nav"><div class="wrap">
+  <a href="index.html" class="brand">House of Builders<i></i></a>
+  <div class="links">
+    <a href="index.html" class="cta">Cockpit</a>
+    <a href="venture.html" class="hidem">Venture clienting</a>
+    <a href="philosophy.html" class="hidem">Philosophy</a>
+    <a href="plugins.html" class="hidem on">Plug-ins</a>
+    <a href="insights.html" class="hidem">Insights</a>
+  </div>
+</div></nav>
+
+<div class="phero" style="padding-bottom:20px"><div class="wrap">
+  <h1>Plug in what fixes <b>your problem.</b></h1>
+  <p class="lede">A menu of ready-to-use plug-ins. Some are standard and off the shelf: collections, reporting, hiring, client servicing. Some are built from what your Cockpit learns. You plug in what you need, and Cockpit tells you which ones.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">100s</div><div class="l">plug-ins, ready to go</div></div>
+    <div class="stat"><div class="v">40+</div><div class="l">proofs of concept run</div></div>
+    <div class="stat"><div class="v">6</div><div class="l">industries live</div></div>
+    <div class="stat"><div class="v">1000s</div><div class="l">manual hours returned</div></div>
+  </div>
+</div></div>
+
+<section><div class="wrap">
+  <h2>What you can <b>plug in.</b></h2>
+  <div class="appscreen">
+    <div class="appbar"><i></i><i></i><i></i><span class="u">house of builders · products</span><span class="cnt">growing weekly</span></div>
+    <div class="appwin"><div class="apptrack" id="apptrack"></div></div>
+  </div>
+  <div class="appmore">Cockpit finds where you are bleeding. You plug in the ones that fix it. New ones added every week, and every client inherits them.</div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Working in production.</h2>
+  <div class="csscroll"><div class="cstrack" id="cstrack"></div></div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="fb">House of Builders<i></i></div>
+  <div class="fm">We operate the future · Dubai · Abu Dhabi</div>
+</div></footer>
+
+<script>
+var AGENTS=[
+ ["Collections","Finance"],["Invoice","Finance"],["Reconciler","Finance"],["Expense Audit","Finance"],["Cash Forecast","Finance"],["Payroll","Finance"],["Revenue Recognition","Finance"],
+ ["Recruiter","People"],["Onboarding","People"],["Leave & Attendance","People"],["Letters","People"],
+ ["Quote Builder","Sales"],["Lead Qualifier","Sales"],["Pricing","Sales"],["Renewals","Sales"],["Proposal","Sales"],["Pipeline Review","Sales"],
+ ["Contract Reader","Legal"],["Compliance","Legal"],["KYC","Legal"],["Approvals","Legal"],["Audit Trail","Legal"],
+ ["Inbox Triage","Ops"],["Scheduler","Ops"],["Dispatch","Ops"],["Site Tracker","Ops"],["Handoff","Ops"],["Escalation","Ops"],["Ticket Triage","Ops"],
+ ["Inventory","Supply"],["Forecaster","Supply"],["Vendor Screener","Supply"],["Catalogue Scout","Supply"],["Order Desk","Supply"],["Restock","Supply"],["Quality QC","Supply"],
+ ["Report Writer","Reporting"],["Data Cleaner","Reporting"],["Doc Filer","Reporting"],["Meeting Notes","Reporting"],
+ ["Content Drafter","Content"],["SEO","Content"],["Social","Content"],["Sentiment","Content"],
+ ["Claims","Insurance"],["Fraud Watch","Risk"],["Churn Watch","Growth"],["Rostering","Ops"]
+];
+(function(){var el=document.getElementById('apptrack');if(!el)return;
+ function ini(n){return n.replace(/[^A-Za-z ]/g,'').split(' ').map(function(w){return w[0];}).join('').slice(0,2).toUpperCase();}
+ function tile(a){return '<div class="apptile"><div class="ic">'+ini(a[0])+'</div><div><div class="an">'+a[0]+'</div><div class="ac">'+a[1]+'</div></div></div>';}
+ var h=AGENTS.map(tile).join('');el.innerHTML=h+h;})();
+
+var CS=[
+ ["Out-of-home media operator","The whole company on one screen, first agent live.","We mapped the operator from its own documents and put the first agent into production, screening real CVs.",[["AED 30M","found in LED + electricity"],["315","CVs scored"],["59","workflows mapped"]]],
+ ["Consumer / retail brand","A distributed brand run by an agent team.","Inventory, content, SEO and curation moved to agents inside the existing tools.",[["2","people run it"],["9","agents alongside"],["24/7","coverage"]]],
+ ["Marketing & creative agency","A small team, a large agent workforce.","The repetitive delivery work moved onto agents, so a lean team runs a much larger output.",[["7","people"],["93","agents"],["Live","in production"]]],
+ ["Pet-care retail & services","The whole company on one shared surface.","A company chat plus an agent builder, a customer inbox that turns messages into actions, wired to the ERP.",[["1","shared surface"],["Inbox → action","automated"],["Live","in production"]]],
+ ["National utility","Inspections without putting crews at height.","We sourced a proven drone and vision inspection and ran it against the live workflow.",[["40","sites in the POC"],["POC","to deployment"],["↓ risk","crews off towers"]]],
+ ["Energy company","The same category, bought three ways at three prices.","Spend-intelligence agents read the contracts and surfaced the overlap, priced and traced to source.",[["≈ $340k/yr","overlap found"],["Minutes","the monthly report"],["Every $","traced to source"]]]
+];
+(function(){var el=document.getElementById('cstrack');if(!el)return;
+ function card(c){return '<div class="cscard"><div class="cssec">'+c[0]+'</div><div class="csp">'+c[1]+'</div><div class="csd">'+c[2]+'</div><div class="csn">'+c[3].map(function(n){return '<div><b>'+n[0]+'</b><span>'+n[1]+'</span></div>';}).join('')+'</div></div>';}
+ var h=CS.map(card).join('');el.innerHTML=h+h;})();
+</script>
+</body></html>
