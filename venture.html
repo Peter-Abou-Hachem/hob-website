@@ -123,4 +123,10 @@ var html=R.map(row).join("");el.innerHTML=html+html;
   <div class="fb">House of Builders<i></i></div>
   <div class="fm">We operate the future · Dubai · Abu Dhabi</div>
 </div></footer>
+<script>
+(function(){var s=document.querySelector('.mapscroll');if(!s)return;
+function center(){var m=s.querySelector('.map');if(!m||s.scrollWidth<=s.clientWidth)return;
+s.scrollLeft=Math.max(0,(m.offsetWidth*0.60)-(s.clientWidth/2));}
+center();window.addEventListener('load',center);window.addEventListener('resize',center);setTimeout(center,300);})();
+</script>
 </body></html>
