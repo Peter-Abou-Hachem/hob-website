@@ -31,6 +31,10 @@
 .cscard .csn{margin-top:12px;display:flex;gap:20px;flex-wrap:wrap}
 .cscard .csn b{font-family:'IBM Plex Sans',sans-serif;font-size:15px;color:var(--good)}
 .cscard .csn span{font-size:11px;color:var(--dim);display:block}
+.ao{font-family:'IBM Plex Sans',sans-serif;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:var(--dim);margin-top:4px}.ao.l{color:var(--t)}.ao.s{color:var(--accent);font-weight:700}.apptile.src{border-color:var(--accent)}
+.born{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}@media(max-width:820px){.born{grid-template-columns:1fr}}
+.bo{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px 22px 20px}.bo .bn{width:30px;height:30px;border-radius:50%;background:rgba(167,194,208,0.12);color:var(--accent);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}.bo .bh{font-weight:600;font-size:17px;color:var(--ink);margin-bottom:6px}.bo p{font-size:14px;color:var(--t);line-height:1.55;margin:0}
+.bornex{margin-top:16px;border-left:3px solid var(--accent);padding:14px 18px;background:var(--panel);border-radius:0 12px 12px 0;font-size:14.5px;color:var(--t);line-height:1.55}.bornex b{color:var(--ink)}
 </style>
 </head><body>
 <nav id="nav"><div class="wrap">
@@ -62,7 +66,17 @@
     <div class="appbar"><i></i><i></i><i></i><span class="u">house of builders · products</span><span class="cnt">growing weekly</span></div>
     <div class="appwin"><div class="apptrack" id="apptrack"></div></div>
   </div>
-  <div class="appmore">Cockpit finds where you are bleeding. You plug in the ones that fix it. New ones added every week, and every client inherits them.</div>
+  <div class="appmore">Cockpit finds where you are bleeding. You plug in the ones that fix it. New ones added every week, and every client inherits them.<br>Every plug-in says where it came from: off the shelf, learned from a cockpit, or sourced through venture clienting.</div>
+</div></section>
+
+<section id="born"><div class="wrap">
+  <h2>How a plug-in <b>is born.</b></h2>
+  <div class="born">
+    <div class="bo"><div class="bn">1</div><div class="bh">One client, one problem.</div><p>A construction group could not see what happened on its sites between the weekly reports.</p></div>
+    <div class="bo"><div class="bn">2</div><div class="bh">We source the answer once.</div><p>That is venture clienting. We found Polynome, cameras and microphones that read a site the way a foreman would, and plugged it into that client's Cockpit.</p></div>
+    <div class="bo"><div class="bn">3</div><div class="bh">It joins the menu.</div><p>A manufacturing client plugged the same thing into its floor next. Every client after inherits it.</p></div>
+  </div>
+  <div class="bornex"><b>Polynome runs the floor, Cockpit runs the company.</b> Built by Polynome, sold through Cockpit. And Cockpit sold through Polynome, the deal runs both ways.</div>
 </div></section>
 
 <section><div class="wrap">
@@ -76,8 +90,8 @@
 </div></footer>
 
 <script>
-var AGENTS=[
- ["Collections","Finance"],["Invoice","Finance"],["Reconciler","Finance"],["Expense Audit","Finance"],["Cash Forecast","Finance"],["Payroll","Finance"],["Revenue Recognition","Finance"],
+var AGENTS=[["Polynome","Floor · eyes and ears","sourced"],
+ ["Collections","Finance","standard"],["Invoice","Finance"],["Reconciler","Finance"],["Expense Audit","Finance"],["Cash Forecast","Finance"],["Payroll","Finance"],["Revenue Recognition","Finance"],
  ["Recruiter","People"],["Onboarding","People"],["Leave & Attendance","People"],["Letters","People"],
  ["Quote Builder","Sales"],["Lead Qualifier","Sales"],["Pricing","Sales"],["Renewals","Sales"],["Proposal","Sales"],["Pipeline Review","Sales"],
  ["Contract Reader","Legal"],["Compliance","Legal"],["KYC","Legal"],["Approvals","Legal"],["Audit Trail","Legal"],
@@ -89,7 +103,8 @@ var AGENTS=[
 ];
 (function(){var el=document.getElementById('apptrack');if(!el)return;
  function ini(n){return n.replace(/[^A-Za-z ]/g,'').split(' ').map(function(w){return w[0];}).join('').slice(0,2).toUpperCase();}
- function tile(a){return '<div class="apptile"><div class="ic">'+ini(a[0])+'</div><div><div class="an">'+a[0]+'</div><div class="ac">'+a[1]+'</div></div></div>';}
+ function org(k){return k==='sourced'?'<div class="ao s">sourced · venture clienting</div>':(k==='standard'?'<div class="ao">off the shelf</div>':'<div class="ao l">learned from a cockpit</div>');}
+ function tile(a){return '<div class="apptile'+(a[2]==='sourced'?' src':'')+'"><div class="ic">'+ini(a[0])+'</div><div><div class="an">'+a[0]+'</div><div class="ac">'+a[1]+'</div>'+org(a[2])+'</div></div>';}
  var h=AGENTS.map(tile).join('');el.innerHTML=h+h;})();
 
 var CS=[
