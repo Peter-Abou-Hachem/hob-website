@@ -304,7 +304,7 @@ footer .mono{margin-left:auto;font-size:11px;letter-spacing:0.06em;text-transfor
 .rd{font-size:14px;color:var(--t);line-height:1.55}
 .prevbar{background:#16252E;color:#B0CBE8;font-family:'IBM Plex Sans',sans-serif;font-size:11px;text-align:center;padding:7px 14px;letter-spacing:0.03em}
 .prevbar b{color:#EDBB5B}
-#subnav{position:sticky;top:64px;z-index:55;background:rgba(60,85,95,0.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+#subnav{position:sticky;top:var(--navh,64px);z-index:55;background:rgba(60,85,95,0.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 #subnav .wrap{display:flex;align-items:center;gap:24px;height:46px;overflow-x:auto}
 #subnav .snbrand{font-family:'IBM Plex Sans',sans-serif;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);font-weight:700;display:flex;align-items:center;gap:6px;flex-shrink:0}
 #subnav .snbrand i{width:6px;height:6px;background:var(--accent);transform:rotate(45deg);display:inline-block}
@@ -345,10 +345,10 @@ footer .mono{margin-left:auto;font-size:11px;letter-spacing:0.06em;text-transfor
   <input class="navx" type="checkbox" id="navx" aria-hidden="true"><label class="burger" for="navx" aria-label="Menu"><span></span></label>
   <div class="links">
     <a href="index.html" class="cta">Cockpit</a>
+    <a href="plugins.html" class="hidem">Plug-ins</a>
     <a href="venture.html" class="hidem">Venture clienting</a>
     <a href="philosophy.html" class="hidem">Philosophy</a>
-    <a href="plugins.html" class="hidem">Plug-ins</a>
-    <a href="#realscreens" class="hidem">Proof</a>
+    <a href="insights.html" class="hidem">Insights</a>
   </div>
 </div></nav>
 <div id="subnav"><div class="wrap">
@@ -695,4 +695,5 @@ document.querySelectorAll('.rev').forEach(function(el){io.observe(el);});
   rot.addEventListener('mouseenter',function(){clearInterval(iv);});
 })();
 </script>
+<script>(function(){function h(){var n=document.getElementById('nav');if(n)document.documentElement.style.setProperty('--navh',n.offsetHeight+'px');}h();window.addEventListener('resize',h);window.addEventListener('load',h);})();</script>
 </body></html>
