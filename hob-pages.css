@@ -125,3 +125,5 @@ footer .fm{font-family:'IBM Plex Sans',sans-serif;font-size:11px;color:var(--dim
 @keyframes prowscroll{from{transform:translateY(0)}to{transform:translateY(-50%)}}
 
 .grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:30px}@media(max-width:960px){.grid5{grid-template-columns:1fr 1fr 1fr}}@media(max-width:600px){.grid5{grid-template-columns:1fr}}
+
+footer .fl{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:12px;font-size:13px}footer .fl a{color:var(--t);text-decoration:none}footer .fl a:hover{color:var(--ink)}footer .fm a{color:inherit;text-decoration:none}
