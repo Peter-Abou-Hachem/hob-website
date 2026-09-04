@@ -305,10 +305,10 @@ footer .mono{margin-left:auto;font-size:11px;letter-spacing:0.06em;text-transfor
 .prevbar{background:#16252E;color:#B0CBE8;font-family:'IBM Plex Sans',sans-serif;font-size:11px;text-align:center;padding:7px 14px;letter-spacing:0.03em}
 .prevbar b{color:#EDBB5B}
 #subnav{position:sticky;top:var(--navh,64px);z-index:55;background:rgba(60,85,95,0.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-#subnav .wrap{display:flex;align-items:center;gap:24px;height:46px;overflow-x:auto}
+#subnav .wrap{display:flex;align-items:center;gap:24px;height:46px}
 #subnav .snbrand{font-family:'IBM Plex Sans',sans-serif;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);font-weight:700;display:flex;align-items:center;gap:6px;flex-shrink:0}
 #subnav .snbrand i{width:6px;height:6px;background:var(--accent);transform:rotate(45deg);display:inline-block}
-#subnav .snlinks{display:flex;gap:22px}
+#subnav .snlinks{display:flex;gap:22px;flex:1 1 auto;min-width:0;overflow-x:auto;scrollbar-width:none}#subnav .snlinks::-webkit-scrollbar{display:none}
 #subnav .snlinks a{font-size:13px;color:var(--t);font-weight:500;white-space:nowrap}
 #subnav .snlinks a:hover{color:var(--ink)}
 #subnav .snpill{margin-left:auto;flex-shrink:0;font-size:12px;font-weight:700;color:var(--btnink);background:var(--accent);padding:7px 13px;border-radius:999px;white-space:nowrap}
