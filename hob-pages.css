@@ -127,3 +127,503 @@ footer .fm{font-family:'IBM Plex Sans',sans-serif;font-size:11px;color:var(--dim
 .grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:30px}@media(max-width:960px){.grid5{grid-template-columns:1fr 1fr 1fr}}@media(max-width:600px){.grid5{grid-template-columns:1fr}}
 
 footer .fl{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:12px;font-size:13px}footer .fl a{color:var(--t);text-decoration:none}footer .fl a:hover{color:var(--ink)}footer .fm a{color:inherit;text-decoration:none}
+
+/* ==========================================================================
+   PERSPACE · THE IDENTITY, ON THE SITE            18 September 2026
+   Peter: "update my website using new branding, make it apple style like my
+   personal website but use logo and latest colours."
+   The light palette the cockpit already runs on, Satoshi over Inter, square
+   corners, and the room to breathe the founder page has. Nothing here changes
+   a word of the copy: this block only repaints what is already written.
+   ========================================================================== */
+:root{
+  --bg:#E1E8F0; --sculpture:#F4F6F8; --panel:#FFFFFF; --panel2:#F7F8FA;
+  --ink:#091120; --t:#33404f; --dim:rgba(9,17,32,.55);
+  --line:rgba(169,172,175,.55); --accent:#2f6d7a; --turq:#8BA6B7;
+  --gold:#6b5f3e; --good:#40663f; --btnink:#FFFFFF; --indigo:#091120;
+}
+body{font-family:"Satoshi","Inter",system-ui,-apple-system,sans-serif!important;
+  background:var(--bg)!important;color:var(--t)!important;line-height:1.55}
+h1,h2,h3,.scnum,.n,.big{font-family:"Inter","Satoshi",system-ui,sans-serif!important;
+  color:var(--ink)!important;letter-spacing:-.035em!important}
+h1 b,h2 b,h3 b{color:var(--ink)!important;font-weight:700!important}
+.mono,.eye,.helabel,.sclab,.k{font-family:"Satoshi",system-ui,sans-serif!important}
+a{color:inherit}
+
+/* the room · one idea a screen, the way the founder page reads */
+.wrap{max-width:1240px;padding:0 40px}
+section{padding:132px 0!important;border-bottom:1px solid var(--line)!important}
+section:last-of-type{border-bottom:0!important}
+h1{font-size:clamp(44px,7.4vw,92px)!important;font-weight:300!important;line-height:.98!important}
+h2{font-size:clamp(30px,4.6vw,56px)!important;font-weight:300!important;line-height:1.04!important;max-width:22ch!important}
+h3{font-weight:600!important}
+.lede,.hero .lede,.p2{font-size:clamp(17px,1.5vw,21px)!important;line-height:1.6!important;color:var(--t)!important;max-width:60ch!important}
+.lede b,.p2 b,.hero .lede b{color:var(--ink)!important;font-weight:600!important}
+.eye,.helabel{font-size:11px!important;letter-spacing:.2em!important;text-transform:uppercase;
+  color:var(--accent)!important;font-weight:700!important;margin-bottom:26px!important}
+
+/* the spine · one bar, the logo, nothing else */
+#nav{background:rgba(225,232,240,.86)!important;backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid var(--line)!important}
+#nav .wrap{height:72px}
+#nav .brand{color:var(--ink)!important;font-weight:600;font-size:17px;display:flex;align-items:center;gap:10px}
+/* the boxed mark is retired: the mark now stands on its own, see THE MARK, ALIVE */
+#nav .links a{color:var(--t)!important;font-size:14px}
+#nav .links a:hover,#nav .links a.on{color:var(--ink)!important}
+#nav .links a.on{border-bottom:2px solid var(--accent)!important}
+#nav .links a.cockpitnav{color:var(--accent)!important}
+#nav .cta,.btn,.btn.p,.btn.s{border-radius:0!important}
+#nav .cta{background:var(--ink)!important;color:#fff!important;font-weight:600;font-size:14px;padding:12px 22px}
+#nav .cta:hover{background:var(--accent)!important;color:#fff!important}
+/* one spine, not two: the second bar is the same paper with a rule under it */
+#subnav{background:rgba(244,246,248,.92)!important;border-bottom:1px solid var(--line)!important;backdrop-filter:saturate(180%) blur(20px)}
+#subnav a{color:var(--t)!important}
+#subnav a:hover,#subnav a.on,#subnav b{color:var(--ink)!important}
+#subnav .cta{background:var(--ink)!important;color:#fff!important;border-radius:0!important;font-weight:600}
+.prevbar{background:var(--ink)!important;border-color:var(--line)!important}
+.prevbar,.prevbar b{color:rgba(225,232,240,.9)!important}
+
+/* the two buttons */
+.btn{font-weight:600!important;font-size:15px!important;padding:16px 30px!important;transition:transform .15s,background .15s}
+.btn.p{background:var(--ink)!important;color:#fff!important}
+.btn.p:hover{background:var(--accent)!important;color:#fff!important;transform:none}
+.btn.s{background:transparent!important;color:var(--ink)!important;border:1px solid var(--line)!important}
+.btn.s:hover{border-color:var(--ink)!important}
+.hbtns{gap:12px!important;margin-top:44px!important}
+
+/* every panel becomes paper */
+.card,.panel,.tile,.box,.stat,.bit,.plug,.shape,.scale,.who,.sys,.step,.row,.item,
+.g3>div,.g2>div,.grid>div{border-radius:0!important}
+[class*="card"],[class*="panel"],[class*="tile"]{background:var(--panel)!important;
+  border:1px solid var(--line)!important;color:var(--t)!important;
+  box-shadow:0 1px 1px rgba(9,17,32,.04),0 14px 30px -20px rgba(9,17,32,.35)}
+[class*="card"] h3,[class*="panel"] h3,[class*="tile"] h3,
+[class*="card"] b,[class*="panel"] b{color:var(--ink)!important}
+
+/* the hero gets the founder page's air */
+.hero{padding:120px 0 110px!important}
+.hero .lede{margin-top:34px!important}
+
+/* figures read as figures, not as decoration */
+.scnum,.n,.num{color:var(--ink)!important;font-weight:700!important}
+.sclab,.cap,.small{color:var(--dim)!important}
+
+/* rules and separators */
+hr,.sep,.divider{border-color:var(--line)!important;background:var(--line)!important}
+footer{background:var(--ink)!important;color:rgba(225,232,240,.82)!important;padding:80px 0!important}
+footer a,footer b{color:#fff!important}
+img{border-radius:0!important}
+
+@media(max-width:900px){
+  .wrap{padding:0 22px}
+  section{padding:76px 0!important}
+  .hero{padding:64px 0 60px!important}
+  h1{font-size:clamp(34px,9vw,52px)!important}
+  h2{font-size:clamp(24px,6.4vw,34px)!important;max-width:none!important}
+}
+
+/* the second bar's button, and the drawn panels */
+#subnav .snpill{background:var(--ink)!important;color:#fff!important;border-radius:0!important;
+  border:0!important;font-weight:600!important;padding:10px 20px!important}
+#subnav .snpill:hover{background:var(--accent)!important}
+#subnav .snbrand{color:var(--ink)!important}
+#subnav .snbrand i{background:var(--accent)!important}
+.demo,.demowrap,.frame,.screen,.shot,[class*="demo"],[class*="frame"]{border-radius:0!important}
+
+/* square everything that is a surface; circles stay circles */
+.sctrack,.cockpit,.cktile,.ckrow,.macframe,.mtile,.mrow,.mfc,.plug,.bit,.way,.sys,.step,
+.stat,.tile,.pane,.block,.note,.quote,.logo,.shot,.pic,.thumb{border-radius:0!important}
+[style*="border-radius"]:not(.dot):not(.pip):not([class*="circle"]){border-radius:0}
+.dot,.pip,[class*="circle"],.num,.idx{border-radius:50%!important}
+
+/* Peter, 18 Sep 2026: "dark blue box to always have white font."
+   The nav links rule was more specific than the button rule, so the one dark box
+   on the page was reading dark grey on indigo. Anything sitting on the indigo is
+   named here, and it is named last. */
+#nav .links a.cta,#nav .links a.cta:hover,#nav a.cta,#nav .cta,
+#subnav .snpill,#subnav a.snpill,#subnav .snlinks a.snpill,
+a.btn.p,.btn.p,.btn.p:hover,
+footer,footer a,footer b,footer span,footer p,
+.prevbar,.prevbar b,
+.dark,.dark h2,.dark h3,.dark p,.dark b,.dark span{color:#FFFFFF!important}
+#nav .links a.cta:hover,#subnav .snpill:hover,.btn.p:hover{background:var(--accent)!important}
+footer a:hover{color:var(--turq)!important}
+
+/* ==========================================================================
+   THE MARK, ALIVE                                    18 September 2026
+   Peter: "the logo to be not in a box and bigger bolder. Can u do some
+   animations on the website with the logo? Be creative."
+   The mark is two brackets around a star. It is drawn here as three pieces in
+   one frame, so each can move on its own: the brackets hold, the star turns.
+   On the light page the pieces are the indigo cut of the same artwork, so the
+   mark reads at full weight with nothing behind it.
+   ========================================================================== */
+.pmark{position:relative;display:inline-block;width:1em;height:.88em;vertical-align:-.06em}
+.pmark i,#nav .brand .pmark i,#subnav .snbrand .pmark i,.brand .pmark i,.snbrand .pmark i{
+  position:absolute!important;inset:0!important;display:block!important;width:auto!important;height:auto!important;
+  background-color:transparent!important;transform:none;border-radius:0!important;margin:0!important;
+  background-position:center;background-repeat:no-repeat;background-size:contain}
+.pmark .bl,.brand .pmark .bl,.snbrand .pmark .bl{background-image:url(img/mark-left.png)!important}
+.pmark .br,.brand .pmark .br,.snbrand .pmark .br{background-image:url(img/mark-right.png)!important}
+.pmark .st,.brand .pmark .st,.snbrand .pmark .st{background-image:url(img/mark-star.png)!important;transform-origin:50% 50%}
+.pmark.ink .bl{background-image:url(img/mark-left-ink.png)!important}
+.pmark.ink .br{background-image:url(img/mark-right-ink.png)!important}
+.pmark.ink .st{background-image:url(img/mark-star-ink.png)!important}
+
+/* the star turns, slowly, the way a thing that is running does */
+@keyframes pm-turn{0%{transform:rotate(0) scale(1)}50%{transform:rotate(180deg) scale(1.13)}100%{transform:rotate(360deg) scale(1)}}
+/* the brackets breathe a hair, so the mark is never quite still */
+@keyframes pm-hold-l{0%,100%{transform:translateX(0)}50%{transform:translateX(-3.5%)}}
+@keyframes pm-hold-r{0%,100%{transform:translateX(0)}50%{transform:translateX(3.5%)}}
+.pmark .st{animation:pm-turn 9s cubic-bezier(.65,0,.35,1) infinite}
+.pmark .bl{animation:pm-hold-l 9s cubic-bezier(.65,0,.35,1) infinite}
+.pmark .br{animation:pm-hold-r 9s cubic-bezier(.65,0,.35,1) infinite}
+/* on the way in: the brackets arrive from the edges, the star lands last */
+@keyframes pm-in-l{from{opacity:0;transform:translateX(-46%)}to{opacity:1;transform:translateX(0)}}
+@keyframes pm-in-r{from{opacity:0;transform:translateX(46%)}to{opacity:1;transform:translateX(0)}}
+@keyframes pm-in-s{from{opacity:0;transform:rotate(-140deg) scale(.2)}to{opacity:1;transform:rotate(0) scale(1)}}
+.pmark.enter .bl{animation:pm-in-l .9s cubic-bezier(.2,.8,.2,1) both}
+.pmark.enter .br{animation:pm-in-r .9s cubic-bezier(.2,.8,.2,1) both}
+.pmark.enter .st{animation:pm-in-s 1.05s .25s cubic-bezier(.2,.8,.2,1) both}
+/* hovering the brand opens the brackets, as if making room */
+#nav .brand:hover .pmark .bl{transform:translateX(-11%)}
+#nav .brand:hover .pmark .br{transform:translateX(11%)}
+#nav .brand:hover .pmark .st{transform:rotate(90deg) scale(1.2)}
+#nav .brand:hover .pmark i{animation:none;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+
+/* the brand itself: no box, bigger, heavier */
+#nav .brand{font-size:21px!important;font-weight:700!important;letter-spacing:-.02em;gap:12px!important}
+#nav .brand i.pm-old,#nav .brand>i:not(.bl):not(.br):not(.st){display:none!important}
+#nav .brand .pmark{width:52px;height:46px;order:-1}
+#subnav .snbrand .pmark{width:20px;height:18px;margin-left:7px}
+
+/* the mark, large and quiet, behind the first screen */
+.pmark-ghost{position:absolute;right:-1vw;top:52%;transform:translateY(-50%);
+  width:min(32vw,430px);height:min(29vw,379px);opacity:.34;pointer-events:none;z-index:0;filter:saturate(.2)}
+.hero{position:relative}
+.hero>.wrap{position:relative;z-index:1}
+@media(max-width:900px){.pmark-ghost{display:none}}
+@media(prefers-reduced-motion:reduce){.pmark i{animation:none!important}}
+
+/* The mark is chrome. It was drawn for a dark ground, and the cockpit already
+   gives it one: the indigo spine at the top of every page. So the bar carries
+   the colour and the mark stands on it with nothing around it. 18 Sep 2026 */
+#nav{background:var(--ink)!important;border-bottom:1px solid rgba(169,172,175,.28)!important;backdrop-filter:none!important}
+#nav .brand{color:#fff!important}
+#nav .links a{color:rgba(225,232,240,.82)!important}
+#nav .links a:hover,#nav .links a.on{color:#fff!important}
+#nav .links a.on{border-bottom-color:var(--turq)!important}
+#nav .links a.cockpitnav{color:var(--turq)!important}
+#nav .links a.cta,#nav .cta{background:var(--turq)!important;color:var(--ink)!important}
+#nav .links a.cta:hover,#nav .cta:hover{background:#fff!important;color:var(--ink)!important}
+#nav .brand .pmark{width:56px;height:50px}
+.pmark-ghost{opacity:.22!important;filter:none!important}
+
+/* ==========================================================================
+   THE COVER GROUND                                  18 September 2026
+   Peter, on the deck he presented today: "the one u did for todays meeting
+   looks nicer than the website one btw. Colors wise."
+   So the hero takes the deck cover's ground: the sculpture gradient running
+   from deep slate through silver into warm off-white, with the chrome mark
+   floating on it. The rest of the page stays the light palette.
+   ========================================================================== */
+.hero{background:
+  radial-gradient(120% 90% at 66% 46%, rgba(255,255,255,.95) 0%, rgba(255,255,255,0) 46%),
+  radial-gradient(80% 70% at 92% 8%, #EFE9E4 0%, rgba(239,233,228,0) 60%),
+  radial-gradient(78% 66% at 6% 100%, #0F1622 0%, rgba(15,22,34,.9) 28%, rgba(15,22,34,0) 72%),
+  linear-gradient(116deg,#141B2B 0%,#2C3A49 12%,#4E5E6D 24%,#9EB4C1 42%,#DFE3EC 58%,#FDFEFF 74%,#EFE9E4 100%)!important;
+  overflow:hidden;border-bottom:1px solid var(--line)}
+/* the same fine grain the deck cover carries, so the metal does not look flat */
+.hero:after{content:'';position:absolute;inset:0;pointer-events:none;opacity:.26;mix-blend-mode:overlay;z-index:0;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/><feColorMatrix type='saturate' values='0'/></filter><rect width='260' height='260' filter='url(%23n)'/></svg>")}
+/* the words sit on the dark side of the ground, so they carry its light */
+.hero h1{color:#FFFFFF!important;text-shadow:0 1px 26px rgba(9,17,32,.42)}
+.hero .lede{color:rgba(249,250,244,.94)!important;text-shadow:0 1px 18px rgba(9,17,32,.38)}
+.hero .lede b{color:#FFFFFF!important}
+.hero .helabel{color:rgba(249,250,244,.72)!important}
+.hero .btn.s{color:#fff!important;border-color:rgba(249,250,244,.5)!important}
+.hero .btn.s:hover{border-color:#fff!important}
+.hero .btn.p{background:#fff!important;color:var(--ink)!important}
+.hero .btn.p:hover{background:var(--turq)!important;color:var(--ink)!important}
+/* the figures under the fold sit where the ground has gone pale, so they stay ink */
+.hero .stats,.hero .statline,.hero .figs{position:relative;z-index:1}
+/* the mark floats where the light is, the way it does on the cover */
+.pmark-ghost{right:6vw!important;top:42%!important;opacity:.95!important;
+  width:min(30vw,390px)!important;height:min(27vw,344px)!important;
+  filter:drop-shadow(0 18px 30px rgba(9,17,32,.28))!important}
+@media(max-width:900px){
+  .hero{background:linear-gradient(170deg,#141B2B 0%,#2C3A49 22%,#4E5E6D 44%,#9EB4C1 66%,#DFE3EC 86%,#EFE9E4 100%)!important}
+}
+
+/* the words need one ground, not four: a scrim holds the left side dark so the
+   whole hero reads, and the mark keeps the light on the right. */
+.hero:before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(100deg, rgba(9,17,32,.80) 0%, rgba(9,17,32,.62) 30%, rgba(9,17,32,.18) 52%, rgba(9,17,32,0) 66%)}
+.hero>.wrap{position:relative;z-index:2}
+.pmark-ghost{z-index:1!important}
+.hero h1 b{color:#FFFFFF!important}
+.hero .stats b,.hero .statline b,.hero .figs b,.hero .num,.hero .n{color:#FFFFFF!important}
+.hero .stats,.hero .statline,.hero .figs{color:rgba(249,250,244,.86)!important}
+
+/* the figure strip lives inside the hero, so it takes the hero's light */
+.hero .pstrip,.hero .pstrip .k,.hero .pstrip .v{color:rgba(249,250,244,.88)!important}
+.hero .pstrip .v,.hero .pstrip b{color:#FFFFFF!important}
+.hero .pstrip{border-color:rgba(249,250,244,.28)!important}
+.hero .scale,.hero .sclab,.hero .scnum{color:rgba(249,250,244,.9)!important}
+.hero .scnum{color:#FFFFFF!important}
+
+/* ==========================================================================
+   THE DRAWN PANELS ARE DARK                         18 September 2026
+   Peter: "grey background sucks" then "colors dont work" on three more.
+   These panels are little product screens. They were drawn white-on-dark for
+   the old page; turning the page light left white text on pale grey. So they
+   go back to being dark, which is what they are: the indigo screen sitting on
+   a light page, exactly as the cockpit does it. Ten times the contrast, and
+   the drawings read from a phone at arm's length.
+   ========================================================================== */
+.cockpit,.macframe,.agentscreen,.eng,.shift,.pln,.chatdone,.mtrack,.sczone,
+.cktile,.ckrow,.mtile,.mrow,.mfc{
+  background:#0E1B2E!important;border:1px solid rgba(169,172,175,.22)!important;border-radius:0!important;
+  color:rgba(225,232,240,.86)!important;box-shadow:0 1px 1px rgba(9,17,32,.06),0 24px 50px -28px rgba(9,17,32,.6)}
+.cockpit *,.macframe *,.agentscreen *,.eng *,.shift *,.pln *,.chatdone *,.mtrack *,.sczone *,
+.cktile *,.ckrow *,.mtile *,.mrow *,.mfc *{color:rgba(225,232,240,.86)!important}
+.cockpit b,.macframe b,.agentscreen b,.eng b,.shift b,.pln b,.chatdone b,
+.cktile b,.mtile b,.mfc b,.cockpit strong,.macframe strong{color:#FFFFFF!important}
+.cktile,.ckrow,.mtile,.mrow,.mfc{background:rgba(255,255,255,.06)!important;box-shadow:none!important}
+.cktop,.macbar{background:rgba(255,255,255,.05)!important;border-bottom:1px solid rgba(169,172,175,.2)!important}
+.macbar i{background:rgba(225,232,240,.4)!important}
+.ckrow .pill.dec,.mrow .pill.dec{background:rgba(255,255,255,.08)!important;border:1px solid rgba(169,172,175,.28)!important}
+.ckrow .pill.live,.mrow .pill.live{background:rgba(63,168,160,.22)!important;border:1px solid rgba(63,168,160,.5)!important}
+.ckrow .pill.live,.ckrow .pill.live *{color:#7FD8CF!important}
+.abar .track,.track{background:rgba(255,255,255,.12)!important;border-radius:0!important}
+.fill{border-radius:0!important}
+.sdot,.scrdots span{background:rgba(225,232,240,.35)!important}
+.eng text{fill:rgba(225,232,240,.86)!important}
+.eng rect{stroke:rgba(169,172,175,.3)!important}
+
+/* ==========================================================================
+   THE NAVIGATION, ON A PHONE
+   Two bars stacked and wrapped into each other. On a phone there is now one
+   bar: the mark and the name, then the links on a single line that scrolls,
+   and the one button underneath. Nothing overlaps anything.
+   ========================================================================== */
+@media(max-width:900px){
+  #nav .wrap{display:flex!important;flex-wrap:nowrap!important;align-items:center!important;
+    justify-content:space-between!important;height:60px!important;padding:0 18px!important;row-gap:0!important}
+  #nav .brand{width:auto!important;text-align:left!important;font-size:17px!important;gap:9px!important}
+  #nav .brand .pmark{width:34px!important;height:30px!important}
+  #nav .links{width:auto!important;margin-left:auto!important;gap:0!important;flex-wrap:nowrap!important;
+    overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;justify-content:flex-end!important}
+  #nav .links::-webkit-scrollbar{display:none}
+  #nav .links a{font-size:13px!important;padding:0 9px!important;white-space:nowrap}
+  #nav .links a.hidem{display:none!important}
+  #nav .links a.cta{padding:8px 14px!important;margin-left:6px}
+  #subnav{position:static!important}
+  #subnav .wrap{display:flex!important;align-items:center!important;gap:12px!important;
+    height:auto!important;padding:10px 18px!important;flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none}
+  #subnav .wrap::-webkit-scrollbar{display:none}
+  #subnav .snbrand{flex-shrink:0}
+  /* the section anchors are a desktop nicety; on a phone they crowd the button
+     and get cut mid-word, so the second bar keeps the name and the one action */
+  #subnav .snlinks{display:none!important}
+  #subnav .snpill{position:static!important;flex-shrink:0;margin-left:auto;font-size:11px!important;padding:8px 14px!important}
+}
+
+.shift,.pln,.chatdone,.agentscreen,.planet,.eng,.mtrack,.sczone{border-radius:0!important}
+.abar .track,.abar .track>*{border-radius:0!important}
+
+/* the live-picture demo is a product screen too, so it is dark like the others.
+   Its tiles, its orbit nodes and its centre all take the screen's light. */
+.screen,.scrin,.orbit,.planet{background:#0E1B2E!important;border:1px solid rgba(169,172,175,.22)!important;
+  border-radius:0!important;color:rgba(225,232,240,.86)!important}
+.orbit{box-shadow:0 1px 1px rgba(9,17,32,.06),0 24px 50px -28px rgba(9,17,32,.6)}
+.scrin,.screen{box-shadow:none!important}
+.orbit .node,.orbit .nd,.node{background:rgba(255,255,255,.1)!important;color:rgba(225,232,240,.9)!important;
+  border:1px solid rgba(169,172,175,.3)!important;border-radius:0!important}
+.orbit .core,.core{color:#FFFFFF!important}
+.mtiles .mtile{background:rgba(255,255,255,.06)!important;border:1px solid rgba(169,172,175,.2)!important}
+.mtile .v,.mtile .k,.mtile .s{color:rgba(225,232,240,.86)!important}
+.mtile .v{color:#FFFFFF!important}
+.mtile .v.g{color:#7FD8CF!important}.mtile .v.gd{color:#D9C48A!important}
+.scbub{background:rgba(255,255,255,.14)!important;color:#FFFFFF!important;border:1px solid rgba(169,172,175,.35)!important}
+.sctop,.scbar,.scfoot{color:rgba(225,232,240,.8)!important}
+
+/* the generic paper rule matched anything with "tile" in its class, which
+   included the wrapper inside the dark screen and painted it white. */
+.mtiles,.cktiles,.tiles,.scrin,.screen{background:transparent!important;border:0!important;box-shadow:none!important}
+.orbit .mtiles,.orbit .scrin{background:transparent!important}
+
+/* ==========================================================================
+   THE COMPANIES WALL                                 18 September 2026
+   Peter: the engine drawing was unreadable, so it becomes the wall from the
+   deck: every company we have read, the engine in the middle, and a line
+   running from each one into it. The lines carry the method, never the data,
+   which is why they flow both ways and nothing is labelled with a figure.
+   ========================================================================== */
+#engine{background:#0E1B2E!important;border-bottom:0}
+#engine h2,#engine h2 b{color:#FFFFFF!important}
+#engine .p2{color:rgba(225,232,240,.86)!important;max-width:74ch!important}
+#engine .p2 b{color:#fff!important}
+.cwall{position:relative;margin-top:44px}
+.cw-links{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
+.cw-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cw-co{background:rgba(255,255,255,.055);border:1px solid rgba(169,172,175,.26);padding:18px 20px;
+  min-height:104px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;
+  transition:background .25s,border-color .25s,transform .25s}
+.cw-co:hover{background:rgba(255,255,255,.1);border-color:rgba(139,166,183,.6);transform:translateY(-2px)}
+.cw-co .cw-logo{width:30px;height:30px;object-fit:contain;margin-bottom:10px;align-self:flex-start;
+  background:#fff;padding:3px;border-radius:0}
+.cw-co b{font-family:"Inter",system-ui,sans-serif;font-size:clamp(17px,1.5vw,22px);font-weight:600;
+  letter-spacing:-.02em;color:#FFFFFF;line-height:1.1}
+.cw-co span{font-size:12px;color:rgba(225,232,240,.6);line-height:1.4}
+.cw-co[data-us]{background:linear-gradient(140deg,rgba(139,166,183,.3),rgba(255,255,255,.05));
+  border-color:rgba(139,166,183,.7)}
+.cw-core{grid-column:2;grid-row:2;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:22px 18px;min-height:104px;
+  background:linear-gradient(135deg,#FDFEFF 0%,#C9CDD0 26%,#A9ACAF 46%,#E6E0DE 64%,#8BA6B7 100%);
+  border:1px solid #A9ACAF;box-shadow:0 18px 44px -18px rgba(0,0,0,.7);position:relative;z-index:2}
+.cw-core b{font-family:"Inter",system-ui,sans-serif;font-size:clamp(18px,1.7vw,25px);font-weight:700;
+  letter-spacing:-.02em;color:#091120;margin-top:8px}
+.cw-core span{font-size:11.5px;line-height:1.35;color:#2F3C48;margin-top:4px;max-width:30ch}
+.cw-core .cw-mark{width:44px;height:39px}
+.cw-note{margin-top:22px;font-size:14px;line-height:1.65;color:rgba(225,232,240,.7)}
+.cw-note b{color:#fff}
+/* the lines: drawn to the box edges, flowing in and out */
+.cw-links line{stroke:rgba(139,166,183,.5);stroke-width:1.1;stroke-dasharray:4 7;
+  animation:cw-flow 2.2s linear infinite}
+@keyframes cw-flow{to{stroke-dashoffset:-22}}
+@media(max-width:900px){
+  .cw-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .cw-core{grid-column:1/-1;grid-row:auto;order:-1}
+  .cw-links{display:none}
+  .cw-co{min-height:0;padding:14px 15px}
+  .cw-co b{font-size:16px}
+}
+
+/* the engine core is metal, so the mark on it is the ink cut, not chrome on chrome */
+.cw-core .cw-mark .bl{background-image:url(img/mark-left-ink.png)!important}
+.cw-core .cw-mark .br{background-image:url(img/mark-right-ink.png)!important}
+.cw-core .cw-mark .st{background-image:url(img/mark-star-ink.png)!important}
+
+/* ==========================================================================
+   METAL IS THE COCKPIT'S COLOUR                     19 September 2026
+   Peter: "metallic is only used on cockpit as additional color from perspace
+   to stand out and all cockpit related ctas follow that color."
+   Agreed, and it is already the mark's material, so it reads as ours rather
+   than as decoration. Metal frames every cockpit screen and fills every
+   button that leads into the cockpit. Nothing else on the site may use it.
+   ========================================================================== */
+:root{--metal:linear-gradient(135deg,#FDFEFF 0%,#C9CDD0 22%,#A9ACAF 42%,#E6E0DE 62%,#8BA6B7 100%)}
+#realscreens figure{background:var(--metal);padding:9px;border:1px solid #A9ACAF;border-radius:0;
+  box-shadow:0 1px 1px rgba(9,17,32,.06),0 26px 56px -26px rgba(9,17,32,.55);margin:0}
+#realscreens figure img{display:block;width:100%;border:1px solid rgba(9,17,32,.35);border-radius:0}
+#realscreens figcaption{color:var(--dim);font-size:12px;padding:9px 2px 0}
+.cockpit,.macframe{background:var(--metal)!important;padding:9px!important;border:1px solid #A9ACAF!important}
+.cockpit>*,.macframe>*{background:#0E1B2E!important}
+/* every door into the cockpit is metal */
+#nav .links a.cta,#nav .cta,#subnav .snpill,.btn.p,a.btn.p{
+  background:var(--metal)!important;color:#091120!important;border:1px solid #A9ACAF!important;
+  text-shadow:0 1px 0 rgba(255,255,255,.55)}
+#nav .links a.cta:hover,#nav .cta:hover,#subnav .snpill:hover,.btn.p:hover{
+  background:#FFFFFF!important;color:#091120!important}
+.hero .btn.p{background:var(--metal)!important;color:#091120!important}
+#nav .links a.cockpitnav{color:#C9CDD0!important}
+
+/* metal carries ink, never white: the dark-box rule from earlier was still
+   painting this one white because it names the same selector. */
+#subnav a.snpill,#subnav .snlinks a.snpill,#nav .links a.cta,.hero a.btn.p,a.btn.p{color:#091120!important}
+#subnav a.snpill:hover,#nav .links a.cta:hover,a.btn.p:hover{color:#091120!important}
+
+/* ==========================================================================
+   THE MAP, WITH SOMETHING IN IT                     19 September 2026
+   Peter: "glob color too light 10x ui and animate."
+   The map was pale ink on a pale ground. It is now the night side of the
+   identity: an indigo field, the land drawn in, the UAE lit in metal, every
+   other hub turquoise, and a pulse travelling out along each route so the
+   thing reads as a network that is running rather than a diagram.
+   ========================================================================== */
+.map{background:#0E1B2E!important;border:1px solid rgba(169,172,175,.25)!important;border-radius:0!important;
+  background-image:radial-gradient(rgba(139,166,183,.22) 1px,transparent 1px)!important;
+  background-size:24px 24px!important;
+  box-shadow:0 1px 1px rgba(9,17,32,.06),0 30px 60px -30px rgba(9,17,32,.7)}
+.mapland ellipse{fill:rgba(139,166,183,.14);stroke:rgba(139,166,183,.28);stroke-width:.12}
+.maplines line{stroke:rgba(139,166,183,.34)!important;stroke-width:.34!important}
+.maplines line.live{stroke:rgba(63,168,160,.75)!important;stroke-dasharray:1.6 3.4;
+  animation:mp-run 3.4s linear infinite}
+@keyframes mp-run{to{stroke-dashoffset:-20}}
+.hub .dot{background:#3FA8A0!important;box-shadow:0 0 0 3px rgba(63,168,160,.18),0 0 16px rgba(63,168,160,.7)!important}
+.hub.core .dot{background:linear-gradient(135deg,#FDFEFF,#A9ACAF 45%,#8BA6B7)!important;
+  box-shadow:0 0 0 5px rgba(169,172,175,.22),0 0 26px rgba(225,232,240,.8)!important}
+.hub .hl{color:#FFFFFF!important;font-weight:500}
+.hub .hx{color:rgba(225,232,240,.6)!important}
+/* each hub breathes, on its own beat, so the network never sits still */
+.hub .dot{animation:mp-beat 4.6s ease-in-out infinite}
+.hub:nth-of-type(3n) .dot{animation-delay:.9s}
+.hub:nth-of-type(3n+1) .dot{animation-delay:1.8s}
+.hub.core .dot{animation:mp-core 5.2s ease-in-out infinite}
+@keyframes mp-beat{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.28);opacity:1}}
+@keyframes mp-core{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
+.maplegend{color:rgba(9,17,32,.6)!important}
+.maplegend b{color:#8BA6B7!important}
+@media(prefers-reduced-motion:reduce){.hub .dot,.maplines line.live{animation:none!important}}
+
+/* the little illustrations at the head of each note are product screens too */
+.artc .vis,.vis{background:#0E1B2E!important;border-bottom:1px solid rgba(169,172,175,.22)!important;
+  border-radius:0!important;color:rgba(225,232,240,.86)!important}
+.artc .vis *,.vis *{color:rgba(225,232,240,.86)!important}
+.artc .vis b,.vis b,.vis strong{color:#FFFFFF!important}
+.vis .bar,.vis .line,.vis .row{background:rgba(255,255,255,.12)!important;border-radius:0!important}
+.vis .fill,.vis .on{background:#8BA6B7!important}
+.vis .gold,.vis .amber{background:#D9C48A!important;color:#091120!important}
+.artc{border-radius:0!important}
+
+/* ==========================================================================
+   THE MENU, ON A PHONE                               19 September 2026
+   Peter: "website link not showing me full nav on mobile."
+   It was not: the links were hidden so the bar would not wrap, which left
+   one button and no way to the other pages. There is now a proper menu. The
+   bar keeps the mark, the name and the way into the cockpit; the rest opens
+   full screen, one page a line, the way it should have from the start.
+   ========================================================================== */
+@media(max-width:900px){
+  #nav .navx{display:none!important}
+  #nav .burger{display:block!important;position:relative;width:26px;height:20px;margin-left:14px;
+    cursor:pointer;flex-shrink:0;z-index:72}
+  #nav .burger span,#nav .burger:before,#nav .burger:after{content:'';position:absolute;left:0;right:0;
+    height:1.6px;background:#fff;transition:transform .32s cubic-bezier(.2,.8,.2,1),opacity .2s}
+  #nav .burger:before{top:2px}
+  #nav .burger span{top:9px}
+  #nav .burger:after{top:16px}
+  #nav .navx:checked~.burger:before{transform:translateY(7px) rotate(45deg)}
+  #nav .navx:checked~.burger span{opacity:0}
+  #nav .navx:checked~.burger:after{transform:translateY(-7px) rotate(-45deg)}
+
+  #nav .links{position:fixed!important;inset:0!important;z-index:70;
+    background:#0E1B2E!important;display:flex!important;flex-direction:column!important;
+    align-items:flex-start!important;justify-content:center!important;gap:0!important;
+    padding:0 30px!important;margin:0!important;overflow:visible!important;
+    opacity:0;visibility:hidden;transform:translateY(-10px);
+    transition:opacity .3s ease,transform .36s cubic-bezier(.2,.8,.2,1),visibility .3s}
+  #nav .navx:checked~.links{opacity:1;visibility:visible;transform:none}
+  #nav .links a,#nav .links a.hidem{display:block!important;width:100%;
+    font-family:"Inter",system-ui,sans-serif!important;font-size:30px!important;font-weight:500!important;
+    letter-spacing:-.03em!important;color:#fff!important;padding:17px 0!important;
+    border-bottom:1px solid rgba(169,172,175,.22)!important;white-space:normal!important}
+  #nav .links a.cta{background:var(--metal)!important;color:#091120!important;font-size:19px!important;
+    font-weight:600!important;text-align:center;padding:16px 0!important;margin-top:26px!important;
+    border:1px solid #A9ACAF!important;border-bottom:1px solid #A9ACAF!important}
+  #nav .links a:last-child{border-bottom:0!important}
+  /* the bar stays put and the mark stays visible while the menu is open */
+  #nav .wrap{position:relative;z-index:72}
+  #nav .brand{z-index:72;position:relative}
+  body:has(#navx:checked){overflow:hidden}
+}
+
+/* the opening words need the same held ground the hero has, or they run out
+   onto the pale side of the gradient and disappear. */
+#opener:after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(6deg, rgba(9,17,32,.78) 0%, rgba(9,17,32,.5) 22%, rgba(9,17,32,.08) 44%, rgba(9,17,32,0) 60%)}
+#opener .op-cap,#opener .op-scroll{z-index:3}
+@media(max-width:900px){
+  #opener:after{background:linear-gradient(2deg, rgba(9,17,32,.86) 0%, rgba(9,17,32,.6) 26%, rgba(9,17,32,.1) 48%, rgba(9,17,32,0) 62%)}
+}

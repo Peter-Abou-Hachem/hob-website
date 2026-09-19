@@ -2,6 +2,9 @@
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Perspace · Plug-ins</title>
 <meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="hob-pages.css">
 <style>
@@ -39,7 +42,7 @@
 </style>
 </head><body>
 <nav id="nav"><div class="wrap">
-  <a href="index.html" class="brand">Perspace<i></i></a>
+  <a href="index.html" class="brand">Perspace<span class="pmark enter"><i class="bl"></i><i class="st"></i><i class="br"></i></span></a>
   <input class="navx" type="checkbox" id="navx" aria-hidden="true"><label class="burger" for="navx" aria-label="Menu"><span></span></label>
   <div class="links">
     <a href="index.html" class="cta">Cockpit</a>
@@ -121,5 +124,23 @@ var CS=[
 (function(){var el=document.getElementById('cstrack');if(!el)return;
  function card(c){return '<div class="cscard"><div class="cssec">'+c[0]+'</div><div class="csp">'+c[1]+'</div><div class="csd">'+c[2]+'</div><div class="csn">'+c[3].map(function(n){return '<div><b>'+n[0]+'</b><span>'+n[1]+'</span></div>';}).join('')+'</div></div>';}
  var h=CS.map(card).join('');el.innerHTML=h+h;})();
+</script>
+<script>(function(){function go(){[].forEach.call(document.querySelectorAll('.pmark.enter'),function(m){setTimeout(function(){m.classList.remove('enter');},1500);});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();})();</script>
+<script>
+/* the routes that carry something are marked live, so the pulse runs on the
+   lines that mean a deployment rather than on every line on the map. */
+(function(){
+ var ls=document.querySelectorAll('.maplines line');
+ for(var i=0;i<ls.length;i++) if(i%2===0) ls[i].classList.add('live');
+})();
+</script>
+<script>
+/* close the menu when a link is taken, so returning to the page is not a trap */
+(function(){
+ var x=document.getElementById('navx'); if(!x)return;
+ var ls=document.querySelectorAll('#nav .links a');
+ for(var i=0;i<ls.length;i++) ls[i].addEventListener('click',function(){x.checked=false;});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')x.checked=false;});
+})();
 </script>
 </body></html>

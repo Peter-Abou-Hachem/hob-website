@@ -2,13 +2,16 @@
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Perspace · Venture clienting</title>
 <meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="hob-pages.css">
 <style>.vptr{margin-top:22px;display:flex;align-items:center;justify-content:space-between;gap:20px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 14px 14px 0;background:var(--panel);padding:18px 22px;font-size:14.5px;color:var(--t);line-height:1.55}.vptr b{color:var(--ink)}.vptr a{white-space:nowrap;color:var(--accent);font-weight:600;text-decoration:none;font-size:14px}@media(max-width:820px){.vptr{flex-direction:column;align-items:flex-start}}@media(max-width:820px){#nav .wrap{flex-wrap:wrap;height:auto;padding:8px 0 8px;row-gap:6px;justify-content:center}#nav .brand{width:100%;text-align:center}#nav .links{width:100%;margin-left:0;flex-wrap:nowrap;justify-content:center;gap:4px}#nav .links a{font-size:11.5px;letter-spacing:0;padding:6px 5px;white-space:nowrap}#nav .links a.cta{padding:6px 9px}}@media(max-width:360px){#nav .links a{font-size:10.5px;padding:6px 4px}}
 </style>
 </head><body>
 <nav id="nav"><div class="wrap">
-  <a href="index.html" class="brand">Perspace<i></i></a>
+  <a href="index.html" class="brand">Perspace<span class="pmark enter"><i class="bl"></i><i class="st"></i><i class="br"></i></span></a>
   <input class="navx" type="checkbox" id="navx" aria-hidden="true"><label class="burger" for="navx" aria-label="Menu"><span></span></label>
   <div class="links">
     <a href="index.html" class="cta">Cockpit</a>
@@ -132,5 +135,23 @@ var html=R.map(row).join("");el.innerHTML=html+html;
 function center(){var m=s.querySelector('.map');if(!m||s.scrollWidth<=s.clientWidth)return;
 s.scrollLeft=Math.max(0,(m.offsetWidth*0.60)-(s.clientWidth/2));}
 center();window.addEventListener('load',center);window.addEventListener('resize',center);setTimeout(center,300);})();
+</script>
+<script>(function(){function go(){[].forEach.call(document.querySelectorAll('.pmark.enter'),function(m){setTimeout(function(){m.classList.remove('enter');},1500);});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();})();</script>
+<script>
+/* the routes that carry something are marked live, so the pulse runs on the
+   lines that mean a deployment rather than on every line on the map. */
+(function(){
+ var ls=document.querySelectorAll('.maplines line');
+ for(var i=0;i<ls.length;i++) if(i%2===0) ls[i].classList.add('live');
+})();
+</script>
+<script>
+/* close the menu when a link is taken, so returning to the page is not a trap */
+(function(){
+ var x=document.getElementById('navx'); if(!x)return;
+ var ls=document.querySelectorAll('#nav .links a');
+ for(var i=0;i<ls.length;i++) ls[i].addEventListener('click',function(){x.checked=false;});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')x.checked=false;});
+})();
 </script>
 </body></html>

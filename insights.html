@@ -2,6 +2,9 @@
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Perspace · Insights</title>
 <meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="hob-pages.css">
 <style>
@@ -21,7 +24,7 @@
 </style>
 </head><body>
 <nav id="nav"><div class="wrap">
-  <a href="index.html" class="brand">Perspace<i></i></a>
+  <a href="index.html" class="brand">Perspace<span class="pmark enter"><i class="bl"></i><i class="st"></i><i class="br"></i></span></a>
   <input class="navx" type="checkbox" id="navx" aria-hidden="true"><label class="burger" for="navx" aria-label="Menu"><span></span></label>
   <div class="links">
     <a href="index.html" class="cta">Cockpit</a>
@@ -42,9 +45,9 @@
 
     <div class="artc">
       <div class="vis"><svg viewBox="0 0 300 110" aria-hidden="true">
-        <g fill="rgba(176,203,232,0.18)"><rect x="10" y="12" width="180" height="6" rx="3"/><rect x="10" y="26" width="240" height="6" rx="3"/><rect x="10" y="40" width="150" height="6" rx="3"/><rect x="10" y="68" width="210" height="6" rx="3"/><rect x="10" y="82" width="120" height="6" rx="3"/><rect x="10" y="96" width="200" height="6" rx="3"/></g>
-        <rect x="10" y="54" width="260" height="6" rx="3" fill="#EDBB5B"/>
-        <text x="280" y="60" class="num" font-size="12" text-anchor="end" fill="#EDBB5B">AED 13.4M</text>
+        <g fill="rgba(176,203,232,0.18)"><rect x="10" y="12" width="180" height="6" rx="0"/><rect x="10" y="26" width="240" height="6" rx="0"/><rect x="10" y="40" width="150" height="6" rx="0"/><rect x="10" y="68" width="210" height="6" rx="0"/><rect x="10" y="82" width="120" height="6" rx="0"/><rect x="10" y="96" width="200" height="6" rx="0"/></g>
+        <rect x="10" y="54" width="172" height="6" rx="0" fill="#D9C48A"/>
+        <text x="192" y="60" class="num" font-size="12" text-anchor="start" fill="#F0E4BE" style="letter-spacing:.02em">AED 13.4M</text>
         <text x="10" y="8" class="lbl">EVERY CONTRACT, EVERY ASSET, EVERY BILL, ONE TABLE</text>
       </svg></div>
       <div class="body">
@@ -158,4 +161,22 @@
   <div class="fm">We operate the future · Dubai · Abu Dhabi · <a href="mailto:hello@perspace.ai">hello@perspace.ai</a></div>
   <nav class="fl"><a href="index.html">Cockpit</a><a href="venture.html">Venture clienting</a><a href="plugins.html">Plug-ins</a><a href="philosophy.html">Philosophy</a><a href="insights.html">Insights</a></nav>
 </div></footer>
+<script>(function(){function go(){[].forEach.call(document.querySelectorAll('.pmark.enter'),function(m){setTimeout(function(){m.classList.remove('enter');},1500);});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();})();</script>
+<script>
+/* the routes that carry something are marked live, so the pulse runs on the
+   lines that mean a deployment rather than on every line on the map. */
+(function(){
+ var ls=document.querySelectorAll('.maplines line');
+ for(var i=0;i<ls.length;i++) if(i%2===0) ls[i].classList.add('live');
+})();
+</script>
+<script>
+/* close the menu when a link is taken, so returning to the page is not a trap */
+(function(){
+ var x=document.getElementById('navx'); if(!x)return;
+ var ls=document.querySelectorAll('#nav .links a');
+ for(var i=0;i<ls.length;i++) ls[i].addEventListener('click',function(){x.checked=false;});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')x.checked=false;});
+})();
+</script>
 </body></html>
