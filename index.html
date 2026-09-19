@@ -897,6 +897,22 @@ footer a:hover{color:var(--turq)!important}
 @media(max-width:900px){
   #opener:after{background:linear-gradient(2deg, rgba(9,17,32,.86) 0%, rgba(9,17,32,.6) 26%, rgba(9,17,32,.1) 48%, rgba(9,17,32,0) 62%)}
 }
+
+/* our own tile carries the mark itself, not a favicon lookup */
+.cw-co .cw-colog{width:30px;height:27px;margin-bottom:10px;align-self:flex-start}
+.cw-co .cw-colog i{animation:none!important}
+
+/* the wall is five groups now, each with the flags it operates under */
+.cw-grid{grid-template-columns:repeat(3,1fr)}
+.cw-co{min-height:150px}
+.cw-top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.cw-co .cw-logo{margin:0!important}
+.cw-flag{font-size:19px;line-height:1;letter-spacing:2px;
+  font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",system-ui,sans-serif}
+.cw-co b em{font-style:normal;font-weight:400;color:rgba(225,232,240,.72)}
+.cw-subs{display:block;margin-top:8px;font-size:11px;letter-spacing:.06em;
+  color:rgba(225,232,240,.5)!important;text-transform:uppercase}
+@media(max-width:900px){.cw-co{min-height:0}.cw-flag{font-size:17px}}
 </style>
 </head>
 <body>
@@ -1093,25 +1109,13 @@ footer a:hover{color:var(--turq)!important}
   <div class="cwall" id="cwall">
     <svg class="cw-links" id="cwlinks" aria-hidden="true"></svg>
     <div class="cw-grid">
-      <div class="cw-co"><img class="cw-logo" src="https://www.google.com/s2/favicons?domain=hypermedia.ae&sz=128" alt="" loading="lazy" onerror="this.remove()"><b>Hypermedia</b><span>out-of-home media · Dubai</span></div>
-      <div class="cw-co"><b>W Group</b><span>the backer</span></div>
-      <div class="cw-co"><img class="cw-logo" src="https://www.google.com/s2/favicons?domain=leverbrands.co.uk&sz=128" alt="" loading="lazy" onerror="this.remove()"><b>Lever Brands</b><span>brand and marketing · London</span></div>
-      <div class="cw-co"><img class="cw-logo" src="https://www.google.com/s2/favicons?domain=naranti.com&sz=128" alt="" loading="lazy" onerror="this.remove()"><b>Naranti</b><span>out-of-home media · Mexico</span></div>
-      <div class="cw-co"><b>Flourish Fund</b><span>the fund behind Drool</span></div>
-      <div class="cw-co"><b>Drool</b><span>the pet group</span></div>
-      <div class="cw-core" id="cwcore">
-        <span class="pmark cw-mark" aria-hidden="true"><i class="bl"></i><i class="st"></i><i class="br"></i></span>
-        <b>The engine</b>
-        <span>learns from every company it reads, and hands it to the next</span>
-      </div>
-      <div class="cw-co"><img class="cw-logo" src="https://www.google.com/s2/favicons?domain=petzania.com&sz=128" alt="" loading="lazy" onerror="this.remove()"><b>Petzania</b><span>pet retail and care</span></div>
-      <div class="cw-co"><b>My Second Home</b><span>boarding and daycare</span></div>
-      <div class="cw-co"><b>Little Gems</b><span>grooming</span></div>
-      <div class="cw-co"><img class="cw-logo" src="https://www.google.com/s2/favicons?domain=cloudpulse.ai&sz=128" alt="" loading="lazy" onerror="this.remove()"><b>CloudPulse</b><span>cloud and data</span></div>
-      <div class="cw-co"><img class="cw-logo" src="https://www.google.com/s2/favicons?domain=unfamiliarfamiliar.com&sz=128" alt="" loading="lazy" onerror="this.remove()"><b>Unfamiliar Familiar</b><span>records</span></div>
-      <div class="cw-co" data-us="1"><img class="cw-logo" src="https://www.google.com/s2/favicons?domain=perspace.ai&sz=128" alt="" loading="lazy" onerror="this.remove()"><b>Perspace</b><span>ours · we run on it</span></div>
+      <div class="cw-co"><div class="cw-top"><img class="cw-logo" src="https://www.google.com/s2/favicons?domain=hypermedia.ae&sz=128" alt="" loading="lazy" onerror="this.remove()"><span class="cw-flag">🇦🇪 🇸🇦</span></div><b>Hypermedia <em>and W Group</em></b><span>the largest out-of-home operator in the region</span></div>
+      <div class="cw-co"><div class="cw-top"><span class="cw-flag">🇦🇪</span></div><b>Flourish Fund</b><span>a pet roll-up: the fund and the brands under it</span><span class="cw-subs">Drool · Woof · Petzania · My Second Home</span></div>
+      <div class="cw-core" id="cwcore"><span class="pmark cw-mark" aria-hidden="true"><i class="bl"></i><i class="st"></i><i class="br"></i></span><b>The engine</b><span>learns from every company it reads, and hands it to the next</span></div>
+      <div class="cw-co"><div class="cw-top"><img class="cw-logo" src="https://www.google.com/s2/favicons?domain=naranti.com&sz=128" alt="" loading="lazy" onerror="this.remove()"><span class="cw-flag">🇲🇽</span></div><b>Naranti</b><span>the largest out-of-home operator in Mexico and LatAm</span></div>
+      <div class="cw-co"><div class="cw-top"><img class="cw-logo" src="https://www.google.com/s2/favicons?domain=unfamiliarfamiliar.com&sz=128" alt="" loading="lazy" onerror="this.remove()"><span class="cw-flag">🇦🇪 🇬🇧</span></div><b>Unfamiliar Familiar <em>and CloudPulse</em></b><span>a music group: the records and the sound in the room</span></div>
+      <div class="cw-co"><div class="cw-top"><img class="cw-logo" src="https://www.google.com/s2/favicons?domain=leverbrands.co.uk&sz=128" alt="" loading="lazy" onerror="this.remove()"><span class="cw-flag">🇬🇧</span></div><b>Lever Brands</b><span>brand and marketing, London</span></div>
     </div>
-  </div>
   <p class="cw-note"><b>No client data ever crosses.</b> Not a number, not a file, not a name. Each company's records stay inside its own gate, and what compounds between them is the method, which is ours to carry.</p>
 </div></section>
 <section id="how"><div class="wrap">

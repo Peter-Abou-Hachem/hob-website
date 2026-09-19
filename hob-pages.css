@@ -627,3 +627,19 @@ footer a:hover{color:var(--turq)!important}
 @media(max-width:900px){
   #opener:after{background:linear-gradient(2deg, rgba(9,17,32,.86) 0%, rgba(9,17,32,.6) 26%, rgba(9,17,32,.1) 48%, rgba(9,17,32,0) 62%)}
 }
+
+/* our own tile carries the mark itself, not a favicon lookup */
+.cw-co .cw-colog{width:30px;height:27px;margin-bottom:10px;align-self:flex-start}
+.cw-co .cw-colog i{animation:none!important}
+
+/* the wall is five groups now, each with the flags it operates under */
+.cw-grid{grid-template-columns:repeat(3,1fr)}
+.cw-co{min-height:150px}
+.cw-top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.cw-co .cw-logo{margin:0!important}
+.cw-flag{font-size:19px;line-height:1;letter-spacing:2px;
+  font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",system-ui,sans-serif}
+.cw-co b em{font-style:normal;font-weight:400;color:rgba(225,232,240,.72)}
+.cw-subs{display:block;margin-top:8px;font-size:11px;letter-spacing:.06em;
+  color:rgba(225,232,240,.5)!important;text-transform:uppercase}
+@media(max-width:900px){.cw-co{min-height:0}.cw-flag{font-size:17px}}
