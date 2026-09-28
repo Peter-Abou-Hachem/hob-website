@@ -1,182 +1,170 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Perspace · Insights</title>
-<meta name="robots" content="noindex, nofollow">
-<link rel="preconnect" href="https://api.fontshare.com">
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Library · Perspace</title>
+<meta name="description" content="The Perspace library: repeatable plays that find money, the methods we run on every company, and the territories every company is read on.">
+<link rel="icon" type="image/png" href="img/favicon.png">
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="hob-pages.css?v=20260919a">
+<link rel="stylesheet" href="site.css">
 <style>
-.artc{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:0;display:flex;flex-direction:column;overflow:hidden}
-.artc .vis{height:150px;border-bottom:1px solid var(--line);background:linear-gradient(160deg,rgba(176,203,232,0.08),rgba(0,0,0,0.12));position:relative;display:flex;align-items:center;justify-content:center;padding:18px}
-.artc .vis svg{width:100%;height:100%;overflow:visible}
-.artc .body{padding:20px 22px 22px}
-.artc .d{font-family:'IBM Plex Sans',sans-serif;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--dim)}
-.artc .t{font-weight:600;font-size:18px;color:var(--ink);margin:8px 0 10px;line-height:1.25}
-.artc .x{font-size:13.5px;color:var(--t);line-height:1.6}
-.artc .x+.x{margin-top:9px}
-.artc .x b{color:var(--ink);font-weight:600}
-.artc .k{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--accent);margin-top:14px;letter-spacing:0.04em}
-.vis .lbl{font-family:'Space Mono',monospace;font-size:9px;fill:rgba(176,203,232,0.75);letter-spacing:0.08em}
-.vis .num{font-family:'IBM Plex Sans',sans-serif;font-weight:700;fill:#fff}
-@media(max-width:820px){#nav .wrap{flex-wrap:wrap;height:auto;padding:8px 0 8px;row-gap:6px;justify-content:center}#nav .brand{width:100%;text-align:center}#nav .links{width:100%;margin-left:0;flex-wrap:nowrap;justify-content:center;gap:4px}#nav .links a{font-size:11.5px;letter-spacing:0;padding:6px 5px;white-space:nowrap}#nav .links a.cta{padding:6px 9px}}@media(max-width:360px){#nav .links a{font-size:10.5px;padding:6px 4px}}
-</style>
-</head><body>
+/* hero shelf */
+.phero .grid>*{min-width:0}
+.shelf{position:relative;height:400px;display:flex;align-items:flex-end;justify-content:center;gap:10px;padding-bottom:30px;border-bottom:2px solid var(--ink)}
+.bk2{flex:1 1 0;max-width:40px;min-width:0;overflow:hidden;background:#d8dade;border:1px solid var(--silver);position:relative;transform-origin:bottom;animation:rise 1.2s var(--ease) both;animation-delay:var(--d);display:flex;align-items:flex-end;justify-content:center;padding-bottom:12px}
+.bk2 span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:10.5px;letter-spacing:.14em;font-weight:500;color:var(--faint);white-space:nowrap}
+.bk2.w{background:var(--ink);border-color:var(--ink)}.bk2.w span{color:#fff}
+.bk2.w::after{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:var(--accent)}
+@keyframes rise{from{transform:scaleY(0);opacity:0}to{transform:scaleY(1);opacity:1}}
+/* shelves */
+.lib-top{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:40px}
+.legend{display:flex;gap:18px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);font-weight:500}
+.legend i{display:inline-block;width:10px;height:10px;margin-right:8px;vertical-align:-1px}
+.shelfrow{display:grid;grid-template-columns:260px 1fr;gap:40px;padding:44px 0;border-top:1px solid var(--ink)}
+.shelfrow h3{font-size:32px;font-weight:700;letter-spacing:-.02em}
+.shelfrow .def{font-size:15.5px;line-height:1.55;color:var(--soft);margin-top:12px}
+.shelfrow .n{font-size:12px;letter-spacing:.14em;color:var(--accent-ink);font-weight:500;margin-top:18px}
+.papers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.pp{border:1px solid var(--line);background:var(--ground);padding:22px 20px 20px;min-height:170px;display:flex;flex-direction:column;gap:10px;text-align:left;font:inherit;color:inherit;cursor:default;position:relative}
+.pp .k{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--faint)}
+.pp b{font-size:19px;font-weight:700;letter-spacing:-.01em;line-height:1.25;color:var(--faint)}
+.pp p{font-size:14px;line-height:1.5;color:var(--faint)}
+.pp .go{margin-top:auto;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--faint)}
+.pp.w{background:var(--card);border-color:var(--ink);cursor:pointer;transition:transform .3s var(--ease),box-shadow .3s}
+.pp.w:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(9,17,32,.1)}
+.pp.w .k{color:var(--accent-ink)}.pp.w b{color:var(--ink)}.pp.w p{color:var(--soft)}.pp.w .go{color:var(--ink)}
+.pp.w::before{content:"";position:absolute;left:-1px;right:-1px;top:-1px;height:4px;background:var(--ink)}
+/* reader */
+.rd{position:fixed;inset:0;z-index:80;background:rgba(9,17,32,.45);display:flex;justify-content:flex-end;opacity:0;pointer-events:none;transition:opacity .35s}
+.rd.open{opacity:1;pointer-events:auto}
+.rd .sheet{width:min(720px,100%);height:100%;background:var(--card);overflow-y:auto;transform:translateX(40px);transition:transform .45s var(--ease);padding:calc(env(safe-area-inset-top,0px) + 40px) 56px 80px}
+.rd.open .sheet{transform:none}
+.rd .x{position:sticky;top:0;float:right;width:42px;height:42px;border:1px solid var(--ink);background:var(--card);font:500 20px var(--f);cursor:pointer;color:var(--ink)}
+.rd .k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-ink);font-weight:500}
+.rd h2{font-size:clamp(32px,4vw,46px);margin-top:16px;max-width:14em}
+.rd .sub{font-size:19px;line-height:1.5;color:var(--soft);margin-top:18px;max-width:30em}
+.rd section{padding:30px 0 0;margin-top:30px;border-top:1px solid var(--line);overflow:visible}
+.rd section h4{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);font-weight:700}
+.rd section p{font-size:17px;line-height:1.65;color:var(--soft);margin-top:12px;max-width:34em}
+.rd section ul{list-style:none;margin-top:14px;display:grid;gap:10px}
+.rd section li{font-size:16.5px;line-height:1.5;color:var(--ink);padding-left:22px;position:relative}
+.rd section li::before{content:"";position:absolute;left:0;top:11px;width:10px;height:1px;background:var(--ink)}
+.rd .foot{margin-top:40px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.x:focus-visible,.pp.w:focus-visible{outline:2px solid var(--accent-ink);outline-offset:3px}
+@media (max-width:900px){
+  .shelfrow{grid-template-columns:1fr;gap:22px;padding:34px 0}
+  .papers{grid-template-columns:1fr 1fr}
+  .shelf{height:260px;gap:4px;overflow:hidden}.bk2 span{display:none}.phero .grid>*{min-width:0}
+  .rd .sheet{padding:calc(env(safe-area-inset-top,0px) + 24px) 22px 60px}
+}
+@media (max-width:480px){.papers{grid-template-columns:1fr}.pp{min-height:0}}
+</style></head>
+<body>
 <nav id="nav"><div class="wrap">
-  <a href="index.html" class="brand">Perspace<span class="pmark enter"><i class="bl"></i><i class="st"></i><i class="br"></i></span></a>
-  <input class="navx" type="checkbox" id="navx" aria-hidden="true"><label class="burger" for="navx" aria-label="Menu"><span></span></label>
-  <div class="links">
-    <a href="index.html" class="cta">Cockpit</a>
-    <a href="venture.html" class="hidem">Venture clienting</a>
-    <a href="plugins.html" class="hidem">Plug-ins</a>
-    <a href="philosophy.html" class="hidem">Philosophy</a>
-    <a href="insights.html" class="hidem on">Insights</a>
-  </div>
+  <a class="brand" href="index.html"><img src="img/perspace-mark-ink.png" alt="">Perspace</a>
+  <div class="links"><a href="philosophy.html">Philosophy</a><a href="method.html">Method</a><a href="cockpit.html">Cockpit</a><a href="plugins.html">Plug-ins</a><a href="venture.html">Venture clienting</a><a class="on" href="insights.html">Library</a></div>
+  <a class="btn dark" href="mailto:hello@perspace.ai?subject=Walkthrough">Book a walkthrough →</a>
+  <button class="mnu" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
 </div></nav>
 
-<div class="phero"><div class="wrap">
-  <h1>From the <b>build floor.</b></h1>
-  <p class="lede">Notes on operating companies on agents: what we are building, what we are learning, and what it means for enterprises in the UAE and the Gulf. Written for owners and operators, not for engineers.</p>
-</div></div>
-
-<section><div class="wrap">
-  <div class="grid3">
-
-    <div class="artc">
-      <div class="vis"><svg viewBox="0 0 300 110" aria-hidden="true">
-        <g fill="rgba(176,203,232,0.18)"><rect x="10" y="12" width="180" height="6" rx="0"/><rect x="10" y="26" width="240" height="6" rx="0"/><rect x="10" y="40" width="150" height="6" rx="0"/><rect x="10" y="68" width="210" height="6" rx="0"/><rect x="10" y="82" width="120" height="6" rx="0"/><rect x="10" y="96" width="200" height="6" rx="0"/></g>
-        <rect x="10" y="54" width="172" height="6" rx="0" fill="#D9C48A"/>
-        <text x="192" y="60" class="num" font-size="12" text-anchor="start" fill="#F0E4BE" style="letter-spacing:.02em">AED 13.4M</text>
-        <text x="10" y="8" class="lbl">EVERY CONTRACT, EVERY ASSET, EVERY BILL, ONE TABLE</text>
-      </svg></div>
-      <div class="body">
-        <div class="d">Field notes</div>
-        <div class="t">How we found thirteen million dirhams inside the electricity bill.</div>
-        <p class="x">A company signs thousands of contracts over twenty five years and keeps a register of everything it owns. The assets that need electricity to run, the cold rooms, the refrigerated trailers, the charging yard, live in three places: the supplier contracts, the asset register and the power bills. Nobody reads the three side by side. A machine does, in an afternoon, and lines them up on one table.</p>
-        <p class="x">The biggest number is almost never hidden. The tariff written into the contracts years ago no longer matched what the assets actually drew, and the difference had been paid every month since, by an accounts team that could only see one page at a time. <b>Thirteen point four million dirhams, one off, confirmed from the company's own records.</b> Not an estimate. A line item.</p>
-        <div class="k">FROM THE SAMPLE COCKPIT · EVERY FIGURE INVENTED</div>
-      </div>
-    </div>
-
-    <div class="artc">
-      <div class="vis"><svg viewBox="0 0 300 110" aria-hidden="true">
-        <text x="10" y="14" class="lbl">THE SCORE · 0 TO 100</text>
-        <rect x="10" y="44" width="280" height="8" rx="4" fill="rgba(176,203,232,0.15)"/>
-        <rect x="10" y="44" width="118" height="8" rx="4" fill="#B0CBE8"/>
-        <circle cx="128" cy="48" r="7" fill="#fff"/>
-        <text x="128" y="34" class="num" font-size="13" text-anchor="middle">42</text>
-        <text x="10" y="76" class="lbl">MANUAL</text><text x="150" y="76" class="lbl" text-anchor="middle">ASSISTED</text><text x="290" y="76" class="lbl" text-anchor="end">AGENTIC</text>
-        <text x="10" y="100" class="lbl" fill="rgba(176,203,232,0.5)">ONE NUMBER AN OWNER CAN READ AT A GLANCE</text>
-      </svg></div>
-      <div class="body">
-        <div class="d">The thesis</div>
-        <div class="t">The score we run by: how much of your work runs on agents.</div>
-        <p class="x">Every company sits somewhere on one line. At the left, people do everything by hand. In the middle, software helps but a person still pushes every step. At the right, agents carry the repeated work and people make the calls.</p>
-        <p class="x">The cockpit measures where you are, workflow by workflow, and adds it up into one number. <b>The number moves every month, because every month more of the work runs on its own.</b> That is the only progress report a chairman needs.</p>
-        <div class="k">READ IT IN WORDS TOO: MANUAL · ASSISTED · AGENTIC</div>
-      </div>
-    </div>
-
-    <div class="artc">
-      <div class="vis"><svg viewBox="0 0 300 110" aria-hidden="true">
-        <g fill="none" stroke-width="5">
-          <circle cx="60" cy="52" r="30" stroke="rgba(176,203,232,0.15)"/><circle cx="60" cy="52" r="30" stroke="#B0CBE8" stroke-dasharray="120 200" transform="rotate(-90 60 52)"/>
-          <circle cx="150" cy="52" r="30" stroke="rgba(176,203,232,0.15)"/><circle cx="150" cy="52" r="30" stroke="#B0CBE8" stroke-dasharray="75 200" transform="rotate(-90 150 52)"/>
-          <circle cx="240" cy="52" r="30" stroke="rgba(176,203,232,0.15)"/><circle cx="240" cy="52" r="30" stroke="#EDBB5B" stroke-dasharray="188 200" transform="rotate(-90 240 52)"/>
-        </g>
-        <text x="60" y="98" class="lbl" text-anchor="middle">WHAT YOU<tspan x="60" dy="11">ALLOW</tspan></text><text x="150" y="98" class="lbl" text-anchor="middle">WHERE YOU<tspan x="150" dy="11">ALLOW</tspan></text><text x="240" y="98" class="lbl" text-anchor="middle">EVERY<tspan x="240" dy="11">STEP</tspan></text>
-        <text x="60" y="57" class="num" font-size="13" text-anchor="middle">Sees</text><text x="150" y="57" class="num" font-size="13" text-anchor="middle">Acts</text><text x="240" y="57" class="num" font-size="13" text-anchor="middle">Logs</text>
-      </svg></div>
-      <div class="body">
-        <div class="d">Trust</div>
-        <div class="t">Sovereign by design: why your data never leaves your walls.</div>
-        <p class="x">Think of connecting a bank account to an app. The app sees only the account you allow, moves money only where you allow, and every action is on a statement. Agents plug into your company the same way.</p>
-        <p class="x">Then you choose how close it stays: <b>connected</b> to your systems from our hosting, <b>hybrid</b> where your data never leaves your walls, or <b>private</b> inside your own cloud with the model itself in your environment. Same product in all three.</p>
-        <div class="k">THREE WAYS TO RUN IT · ONE BUILD</div>
-      </div>
-    </div>
-
-    <div class="artc">
-      <div class="vis"><svg viewBox="0 0 300 110" aria-hidden="true">
-        <g stroke="rgba(176,203,232,0.35)" stroke-width="1.2"><line x1="150" y1="22" x2="60" y2="60"/><line x1="150" y1="22" x2="150" y2="60"/><line x1="150" y1="22" x2="240" y2="60"/><line x1="60" y1="60" x2="35" y2="92"/><line x1="60" y1="60" x2="85" y2="92"/><line x1="150" y1="60" x2="150" y2="92"/><line x1="240" y1="60" x2="215" y2="92"/><line x1="240" y1="60" x2="265" y2="92"/></g>
-        <circle cx="150" cy="22" r="9" fill="#fff"/>
-        <circle cx="60" cy="60" r="8" fill="#B0CBE8"/><circle cx="150" cy="60" r="8" fill="#B0CBE8"/><circle cx="240" cy="60" r="8" fill="#B0CBE8"/>
-        <rect x="27" y="84" width="16" height="16" rx="3" fill="#EDBB5B"/><rect x="77" y="84" width="16" height="16" rx="3" fill="#EDBB5B"/><circle cx="150" cy="92" r="8" fill="#B0CBE8"/><rect x="207" y="84" width="16" height="16" rx="3" fill="#EDBB5B"/><rect x="257" y="84" width="16" height="16" rx="3" fill="#EDBB5B"/>
-        <text x="10" y="12" class="lbl">● PEOPLE   ■ AGENTS · SAME CHART</text>
-      </svg></div>
-      <div class="body">
-        <div class="d">The future</div>
-        <div class="t">Humans and agents: the org chart of the next decade.</div>
-        <p class="x">The next company has both on the chart, side by side. People set the goals, hold the budget and own the result. Agents carry the repetition: the collecting, the reconciling, the chasing, the filing.</p>
-        <p class="x"><b>Every agent has a named manager, a job description, a cost, and a line it never crosses.</b> Money out, prices to customers and anything legal always stop at a person. Someone runs the agents the way a good manager runs a team.</p>
-        <div class="k">PEOPLE MOVE UP, NOT OUT</div>
-      </div>
-    </div>
-
-    <div class="artc">
-      <div class="vis"><svg viewBox="0 0 300 110" aria-hidden="true">
-        <text x="10" y="14" class="lbl">THE CALL WE MAKE ON EVERY PROBLEM</text>
-        <rect x="10" y="30" width="280" height="24" rx="6" fill="rgba(176,203,232,0.12)"/>
-        <rect x="10" y="30" width="112" height="24" rx="6" fill="#B0CBE8"/>
-        <rect x="122" y="30" width="118" height="24" fill="#EDBB5B"/>
-        <text x="66" y="46" class="num" font-size="10" text-anchor="middle" fill="#0E1A22">BUILD IT</text>
-        <text x="181" y="46" class="num" font-size="10" text-anchor="middle" fill="#0E1A22">SOURCE IT</text>
-        <text x="265" y="46" class="lbl" text-anchor="middle">NEITHER</text>
-        <text x="10" y="80" class="lbl">BUILD YOUR EDGE · SOURCE WHAT EXISTS</text>
-        <text x="10" y="98" class="lbl" fill="rgba(176,203,232,0.5)">SOMETIMES THE HONEST ANSWER IS NEITHER</text>
-      </svg></div>
-      <div class="body">
-        <div class="d">Playbook</div>
-        <div class="t">Build or buy: when we automate and when we source.</div>
-        <p class="x">Once the cockpit shows where the money leaks, the next question is how to close it. If the answer is your edge, the thing your company knows better than anyone, we build it inside your walls.</p>
-        <p class="x">If proven technology already exists somewhere in the world, we source it and bring it in, because that beats building it twice. <b>And sometimes the honest answer is neither:</b> the leak is a decision, not a tool, and it goes to the person who owns it.</p>
-        <div class="k">COCKPIT FIRST · THEN VENTURE CLIENTING</div>
-      </div>
-    </div>
-
-    <div class="artc">
-      <div class="vis"><svg viewBox="0 0 300 110" aria-hidden="true">
-        <g stroke="rgba(237,187,91,0.45)" stroke-width="1"><line x1="150" y1="58" x2="48" y2="34"/><line x1="150" y1="58" x2="252" y2="32"/><line x1="150" y1="58" x2="270" y2="66"/><line x1="150" y1="58" x2="222" y2="92"/><line x1="150" y1="58" x2="62" y2="90"/></g>
-        <g fill="rgba(176,203,232,0.55)"><circle cx="48" cy="34" r="3.5"/><circle cx="252" cy="32" r="3.5"/><circle cx="270" cy="66" r="3.5"/><circle cx="222" cy="92" r="3.5"/><circle cx="62" cy="90" r="3.5"/></g>
-        <text x="48" y="25" class="lbl" text-anchor="middle">UNITED STATES</text><text x="252" y="23" class="lbl" text-anchor="middle">KOREA</text><text x="270" y="82" class="lbl" text-anchor="middle">JAPAN</text><text x="222" y="106" class="lbl" text-anchor="middle">HONG KONG</text><text x="62" y="104" class="lbl" text-anchor="middle">EUROPE</text>
-        <circle cx="150" cy="58" r="11" fill="#EDBB5B"/><text x="150" y="62" class="num" font-size="9" text-anchor="middle" fill="#1d2a30">UAE</text>
-                <text x="150" y="10" class="lbl" text-anchor="middle">GOVERNMENT-BACKED · AI FIRST · DECIDES FAST</text>
-      </svg></div>
-      <div class="body">
-        <div class="d">The Gulf</div>
-        <div class="t">Why the operating layer gets built here first.</div>
-        <p class="x">Three things line up here that line up nowhere else at once. Governments that have made agents a national priority and back it with money. Family groups that own their companies outright and can decide in a meeting, not a quarter.</p>
-        <p class="x">And a region that has heard every pitch and now buys outcomes. <b>The company that runs itself on agents will be built here, on real groups, before it is built anywhere else.</b> Then it travels.</p>
-        <div class="k">BUILT IN THE UAE · WITH GLOBAL BACKING</div>
-      </div>
-    </div>
-
+<section class="phero"><div class="glow"></div><div class="wrap grid">
+  <div class="copy">
+    <div class="tag rv">The library</div>
+    <h1 class="rv d1">What we have learned, <b>written down.</b></h1>
+    <p class="lede rv d2">The plays that find money, the methods we run on every company, and the territories every company is read on. Each one is a short paper: the problem, the signs, the method, and what moves.</p>
+    <p class="rv d3" style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink);font-weight:500" id="tally"></p>
   </div>
+  <div class="shelf rv d2" id="shelf" aria-hidden="true"></div>
 </div></section>
-<section><div class="wrap" style="text-align:center"><a href="mailto:hello@perspace.ai?subject=Walkthrough" class="btn p">Book a walkthrough</a></div></section>
+
+<section class="pad" style="padding-top:30px"><div class="wrap">
+  <div class="lib-top">
+    <div><div class="tag rv">Three shelves</div><h2 class="rv d1" style="margin-top:22px">Plays, methods <b>and territories.</b></h2></div>
+    <div class="legend rv d2"><span><i style="background:var(--ink)"></i>Written</span><span><i style="background:#d8dade;border:1px solid var(--silver)"></i>In writing</span></div>
+  </div>
+  <div id="lib"></div>
+</div></section>
+
+<section class="closeband"><div class="wrap">
+  <div class="m rv"><img src="img/mark-left-c.png" alt=""><img class="s" src="img/star-crop.png" alt=""><img src="img/mark-right-c.png" alt=""></div>
+  <h2 class="rv d1">Run the plays <b>on your company.</b></h2>
+  <p class="lede rv d2">Start with one pocket. We show you the money, go in and get it, and prove it moved.</p>
+  <div class="btns rv d3"><a class="btn dark" href="mailto:hello@perspace.ai?subject=Walkthrough">Book a walkthrough →</a><a class="btn line" href="method.html">See the method →</a></div>
+</div></section>
+
+<div class="rd" id="rd" role="dialog" aria-modal="true" aria-labelledby="rdt"><div class="sheet" id="sheet"></div></div>
 
 <footer><div class="wrap">
-  <div class="fb">Perspace<i></i></div>
-  <div class="fm">We operate the future · Dubai · Abu Dhabi · <a href="mailto:hello@perspace.ai">hello@perspace.ai</a></div>
-  <nav class="fl"><a href="index.html">Cockpit</a><a href="venture.html">Venture clienting</a><a href="plugins.html">Plug-ins</a><a href="philosophy.html">Philosophy</a><a href="insights.html">Insights</a></nav>
+  <a class="brand" href="index.html"><img src="img/perspace-mark-ink.png" alt="">Perspace</a>
+  <div class="ft"><a href="philosophy.html">Philosophy</a><a href="method.html">Method</a><a href="cockpit.html">Cockpit</a><a href="plugins.html">Plug-ins</a><a href="venture.html">Venture clienting</a><a href="insights.html">Library</a></div>
+  <div class="tl">We operate the future · Dubai · Abu Dhabi · hello@perspace.ai</div>
 </div></footer>
-<script>(function(){function go(){[].forEach.call(document.querySelectorAll('.pmark.enter'),function(m){setTimeout(function(){m.classList.remove('enter');},1500);});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();})();</script>
+<script src="site.js"></script>
 <script>
-/* the routes that carry something are marked live, so the pulse runs on the
-   lines that mean a deployment rather than on every line on the map. */
-(function(){
- var ls=document.querySelectorAll('.maplines line');
- for(var i=0;i<ls.length;i++) if(i%2===0) ls[i].classList.add('live');
-})();
-</script>
-<script>
-/* close the menu when a link is taken, so returning to the page is not a trap */
-(function(){
- var x=document.getElementById('navx'); if(!x)return;
- var ls=document.querySelectorAll('#nav .links a');
- for(var i=0;i<ls.length;i++) ls[i].addEventListener('click',function(){x.checked=false;});
- document.addEventListener('keydown',function(e){if(e.key==='Escape')x.checked=false;});
-})();
+const SHELVES=[
+ {id:"plays",name:"Plays",def:"Repeatable ways we find money. The same play works across industries, because it fires on the shape of the data.",items:[
+  {id:"price-list-invoice",t:"Between the price list and the invoice",s:"What the company says it charges, against what it actually billed.",paper:{
+    sub:"Every company has a price. Very few charge it. The gap lives between two files nobody reads side by side.",
+    problem:"Sales agree a price in the room, finance invoices something else, and discounts that started as exceptions quietly become the price. Nobody is hiding anything. The two numbers simply live in different systems, owned by different people.",
+    signs:["Discounts that repeat on the same customers every month","A price list nobody has changed in years","Invoices that cannot be traced back to a signed price","Sales and finance each confident, and each with a different total"],
+    method:"We read the price list, the contracts and the invoices, and line them up customer by customer and line by line. Every gap is priced and traced to the file it came from. Then one person owns each gap: keep it on purpose, or close it.",
+    moves:"The share of revenue billed at the agreed price, month on month. The measure is the invoice, never the promise."}},
+  {id:"bought-three-ways",t:"The same thing, bought three ways",s:"One category, three suppliers, three prices, one spec."},
+  {id:"capacity-unsold",t:"Capacity nobody sold",s:"What the company owns that earned nothing this year."},
+  {id:"power-bill",t:"The money inside the power bill",s:"Contracts, assets and bills, read together for the first time."},
+  {id:"cash-90",t:"Cash past 90 days",s:"Money already earned, still sitting with the customer."},
+  {id:"report-nobody-reads",t:"The report nobody reads",s:"Hours of work every month that no decision depends on."}]},
+ {id:"methods",name:"Methods",def:"How we work, the same on every company. Each one is written down so it can be repeated, checked and improved.",items:[
+  {id:"grey-to-banked",t:"Grey to banked",s:"How a pocket of money earns its number.",paper:{
+    sub:"From the first day you see the whole shape of the company. Nothing is claimed before the files back it.",
+    problem:"Most programmes open on a big number. It is either a guess, or it takes months to prove, and by then nobody trusts it. The owner is asked to believe first and see later.",
+    signs:["A business case with one total and no sources","Savings claimed before anyone has checked the files","Numbers that change every time someone new presents them"],
+    method:"Every pocket moves through four states, and the cockpit shows each one in its own shade. Greyed: we know a pocket is likely here. Named: we know what it is and where it sits. Sized: we know what it is worth, from the company's own files. Banked: the money moved, and the record shows it. A pocket only darkens when the evidence arrives.",
+    moves:"How much of the company has moved from greyed to banked. That is the only total worth reporting."}},
+  {id:"blueprint",t:"The blueprint, from your own files",s:"One live map of how the company really runs."},
+  {id:"four-rungs",t:"Four rungs, and why the agent comes last",s:"Write it down, make it right, give it a tool, give it an agent."},
+  {id:"build-or-source",t:"Build, source, or neither",s:"When we build, when we bring it in, and when it is a decision."},
+  {id:"one-person",t:"One person on every line",s:"Every piece of work carried by a person, an agent or a tool, with a person accountable."}]},
+ {id:"territories",name:"Territories",def:"The areas every company is read on, in the same order, so a chairman can compare one company with the next.",items:[
+  {id:"revenue",t:"Revenue",s:"Who pays, where new money comes from, and whether it comes back."},
+  {id:"margin",t:"Margin",s:"Where the money leaks between the price and the cash.",paper:{
+    sub:"Revenue tells you what came in. Margin tells you what the company kept, and most of what it lost it never saw leave.",
+    problem:"Margin is rarely lost in one place. It leaks a little at a time: a discount here, a supplier there, a cost nobody allocated. Each leak is too small to call a problem, and together they are the difference between a good year and a flat one.",
+    signs:["Revenue grows and margin does not","Costs grouped so broadly that nobody owns them","The same service costing very different amounts in different places","Margin reported once a quarter, long after the decisions were made"],
+    method:"We read margin line by line: the price, the discount, the cost to serve and the cost of what was bought. Each leak becomes a pocket, named, sized and traced to its file. The largest go first, each owned by a named person.",
+    moves:"Margin per line, against the way it ran before, checked at 30, 60 and 90 days."}},
+  {id:"operations",t:"Operations",s:"Where the time goes, and what waits on whom."},
+  {id:"risk",t:"Risk",s:"What would hurt, and whether anyone would see it coming."},
+  {id:"support",t:"Support",s:"The work that keeps everything else going."}]}
+];
+const all=SHELVES.flatMap(s=>s.items.map(i=>({...i,shelf:s.name})));
+const written=all.filter(i=>i.paper);
+document.getElementById('tally').textContent=written.length.toLocaleString('en-US')+' of '+all.length.toLocaleString('en-US')+' papers written · more every month';
+// hero shelf: one spine per paper
+const sh=document.getElementById('shelf');
+all.forEach((it,j)=>{const b=document.createElement('div');b.className='bk2'+(it.paper?' w':'');b.style.height=(200+((j*37)%130))+'px';b.style.setProperty('--d',(j*0.05)+'s');b.innerHTML='<span>'+it.t+'</span>';sh.appendChild(b);});
+// shelves
+const lib=document.getElementById('lib');
+SHELVES.forEach(s=>{const w=s.items.filter(i=>i.paper).length;
+  const row=document.createElement('div');row.className='shelfrow';
+  row.innerHTML='<div class="rv"><h3>'+s.name+'</h3><p class="def">'+s.def+'</p><div class="n">'+w+' OF '+s.items.length+' WRITTEN</div></div><div class="papers">'+
+   s.items.map(i=>i.paper?'<button class="pp w rv" data-id="'+i.id+'"><div class="k">'+s.name+' · written</div><b>'+i.t+'</b><p>'+i.s+'</p><div class="go">Read →</div></button>'
+     :'<div class="pp rv"><div class="k">'+s.name+' · in writing</div><b>'+i.t+'</b><p>'+i.s+'</p><div class="go">Coming soon</div></div>').join('')+'</div>';
+  lib.appendChild(row);});
+document.querySelectorAll('#lib .rv').forEach(el=>{new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');o.unobserve(e.target);}}),{threshold:.15}).observe(el);});
+// reader
+const rd=document.getElementById('rd'),sheet=document.getElementById('sheet');let last=null;
+function openP(id,push){const i=written.find(x=>x.id===id);if(!i)return;const p=i.paper;
+  sheet.innerHTML='<button class="x" aria-label="Close">×</button><div class="k">'+i.shelf+'</div><h2 id="rdt">'+i.t+'</h2><p class="sub">'+p.sub+'</p>'+
+   '<section><h4>The problem</h4><p>'+p.problem+'</p></section><section><h4>The signs</h4><ul>'+p.signs.map(x=>'<li>'+x+'</li>').join('')+'</ul></section>'+
+   '<section><h4>The method</h4><p>'+p.method+'</p></section><section><h4>What moves</h4><p>'+p.moves+'</p></section>'+
+   '<div class="foot">Perspace library · '+i.shelf+'</div>';
+  rd.classList.add('open');document.body.style.overflow='hidden';sheet.scrollTop=0;sheet.querySelector('.x').addEventListener('click',closeP);sheet.querySelector('.x').focus();
+  if(push!==false) history.replaceState(null,'','#'+id);}
+function closeP(){rd.classList.remove('open');document.body.style.overflow='';history.replaceState(null,'',location.pathname);if(last)last.focus();}
+lib.addEventListener('click',e=>{const b=e.target.closest('.pp.w');if(b){last=b;openP(b.dataset.id);}});
+rd.addEventListener('click',e=>{if(e.target===rd)closeP();});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&rd.classList.contains('open'))closeP();});
+if(location.hash) openP(location.hash.slice(1),false);
+addEventListener('hashchange',()=>{if(location.hash) openP(location.hash.slice(1),false);});
 </script>
 </body></html>
