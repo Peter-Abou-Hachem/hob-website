@@ -1,157 +1,179 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Perspace · Venture clienting</title>
-<meta name="robots" content="noindex, nofollow">
-<link rel="preconnect" href="https://api.fontshare.com">
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Venture clienting · Perspace</title>
+<meta name="description" content="If the technology to fix your problem already exists somewhere in the world, we source it, test it on your live work, and bring it in.">
+<link rel="icon" type="image/png" href="img/favicon.png">
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="hob-pages.css?v=20260919a">
-<style>.vptr{margin-top:22px;display:flex;align-items:center;justify-content:space-between;gap:20px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 14px 14px 0;background:var(--panel);padding:18px 22px;font-size:14.5px;color:var(--t);line-height:1.55}.vptr b{color:var(--ink)}.vptr a{white-space:nowrap;color:var(--accent);font-weight:600;text-decoration:none;font-size:14px}@media(max-width:820px){.vptr{flex-direction:column;align-items:flex-start}}@media(max-width:820px){#nav .wrap{flex-wrap:wrap;height:auto;padding:8px 0 8px;row-gap:6px;justify-content:center}#nav .brand{width:100%;text-align:center}#nav .links{width:100%;margin-left:0;flex-wrap:nowrap;justify-content:center;gap:4px}#nav .links a{font-size:11.5px;letter-spacing:0;padding:6px 5px;white-space:nowrap}#nav .links a.cta{padding:6px 9px}}@media(max-width:360px){#nav .links a{font-size:10.5px;padding:6px 4px}}
-</style>
-</head><body>
+<link rel="stylesheet" href="site.css">
+<style>
+.hubs{width:100%;height:auto;overflow:visible}
+.hubs .ring{fill:none;stroke:var(--line);stroke-width:1}
+.hubs .spokes line{stroke:var(--accent);stroke-width:1;stroke-dasharray:3 5;opacity:.7}
+.hubs .hb{opacity:0;animation:fadein .7s forwards;animation-delay:calc(var(--d) + .4s)}
+.hubs .hb circle{fill:var(--card);stroke:var(--ink);stroke-width:1.3}
+.hubs .hb text{font:500 13px var(--f);fill:var(--soft)}
+.hubs .flow{fill:var(--accent-ink)}
+.hubs .uae{fill:var(--ink)}
+.hubs .uaet{font:700 15px var(--f);fill:#fff;letter-spacing:.08em}
+.hubs .uaes{font:500 7.5px var(--f);fill:var(--accent);letter-spacing:.14em}
+@keyframes fadein{to{opacity:1}}
+/* add-on */
+.addon{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.flow2{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.flow2 div{background:var(--card);border:1px solid var(--line);padding:18px 20px;font-weight:700;font-size:16px}
+.flow2 div small{display:block;font-size:11px;letter-spacing:.14em;color:var(--faint);font-weight:500;margin-bottom:6px}
+.flow2 .ar{font-size:22px;color:var(--accent-ink)}
+.flow2 .hi{background:var(--ink);color:#fff;border-color:var(--ink)}
+.flow2 .hi small{color:var(--accent)}
+/* steps */
+.vs{display:grid;grid-template-columns:repeat(5,1fr);position:relative;margin-top:10px}
+.vs::before{content:"";position:absolute;left:16px;right:16px;top:16px;height:1px;background:var(--line)}
+.vs .fill{position:absolute;left:16px;top:16px;height:2px;width:0;background:var(--ink);transition:width 2.4s var(--ease)}
+.vs.in .fill{width:calc(100% - 32px)}
+.vst{padding-right:22px;position:relative}
+.vst .dot{width:32px;height:32px;border-radius:50%;background:var(--ground);border:1.5px solid var(--ink);display:grid;place-items:center;font-size:12.5px;font-weight:700;position:relative;z-index:1;transition:background .4s,color .4s}
+.vs.in .vst .dot{background:var(--ink);color:#fff}
+.vs.in .vst:nth-child(3) .dot{transition-delay:.5s}.vs.in .vst:nth-child(4) .dot{transition-delay:1s}.vs.in .vst:nth-child(5) .dot{transition-delay:1.5s}.vs.in .vst:nth-child(6) .dot{transition-delay:2s}
+.vst h3{font-size:21px;font-weight:700;letter-spacing:-.015em;margin-top:20px}
+.vst p{font-size:15px;line-height:1.55;color:var(--soft);margin-top:10px}
+/* choose */
+.choose{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14);margin-top:50px}
+.ch{background:var(--ink);padding:34px 30px}
+.ch .k{font-size:10.5px;letter-spacing:.16em;color:var(--accent);font-weight:500}
+.ch b{display:block;font-size:26px;font-weight:700;letter-spacing:-.02em;margin-top:14px}
+.ch p{font-size:15.5px;line-height:1.55;color:#b9c6d2;margin-top:10px}
+/* cases */
+.cfl{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.cfl button{font:500 13.5px var(--f);padding:9px 14px;border:1px solid var(--line);background:var(--ground);color:var(--soft);cursor:pointer}
+.cfl button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.czs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.cz{background:var(--card);border:1px solid var(--line);padding:22px 20px;display:flex;flex-direction:column;gap:10px;transition:transform .3s var(--ease),border-color .3s}
+.cz:hover{transform:translateY(-3px);border-color:var(--ink)}
+.cz .k{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink);font-weight:500}
+.cz p{font-size:15px;line-height:1.5;color:var(--ink)}
+.cz .ans{margin-top:auto;padding-top:14px;border-top:1px dashed var(--line);display:flex;flex-direction:column;gap:8px}
+.cz .ans b{font-size:14px}
+.pill{align-self:flex-start;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:5px 9px;background:var(--blue);color:var(--accent-ink)}
+.s-d .pill{background:var(--ink);color:#fff}
+.cz.hide{display:none}
+.pln{margin-top:40px;display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap;border:1px solid var(--ink);padding:26px 28px;background:var(--card)}
+.pln p{font-size:17px;line-height:1.5;max-width:40em}
+@media (max-width:1100px){.czs{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:900px){
+  .addon,.choose{grid-template-columns:1fr;gap:30px}.choose{gap:1px}
+  .vs{grid-template-columns:1fr;gap:26px;padding-left:50px}
+  .vs::before{left:15px;right:auto;top:0;bottom:0;width:1px;height:auto}
+  .vs .fill{left:15px;top:0;width:2px!important;height:0;transition:height 2.4s var(--ease)}.vs.in .fill{height:100%}
+  .vst .dot{position:absolute;left:-50px;top:0}.vst h3{margin-top:4px}
+  .czs{grid-template-columns:1fr 1fr}
+}
+@media (max-width:480px){.czs{grid-template-columns:1fr}}
+</style></head>
+<body>
 <nav id="nav"><div class="wrap">
-  <a href="index.html" class="brand">Perspace<span class="pmark enter"><i class="bl"></i><i class="st"></i><i class="br"></i></span></a>
-  <input class="navx" type="checkbox" id="navx" aria-hidden="true"><label class="burger" for="navx" aria-label="Menu"><span></span></label>
-  <div class="links">
-    <a href="index.html" class="cta">Cockpit</a>
-    <a href="venture.html" class="hidem on">Venture clienting</a>
-    <a href="plugins.html" class="hidem">Plug-ins</a>
-    <a href="philosophy.html" class="hidem">Philosophy</a>
-    <a href="insights.html" class="hidem">Insights</a>
-  </div>
+  <a class="brand" href="index.html"><img src="img/perspace-mark-ink.png" alt="">Perspace</a>
+  <div class="links"><a href="philosophy.html">Philosophy</a><a href="method.html">Method</a><a href="cockpit.html">Cockpit</a><a href="plugins.html">Plug-ins</a><a class="on" href="venture.html">Venture clienting</a><a class="mo" href="insights.html">Insights</a></div>
+  <a class="btn dark" href="mailto:hello@perspace.ai?subject=Walkthrough">Book a walkthrough →</a>
+  <button class="mnu" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
 </div></nav>
 
-<div class="phero" style="padding-bottom:20px"><div class="wrap">
-  <h1>If it already exists, <b>we source it.</b></h1>
-  <p class="lede">Venture clienting is an add-on to Cockpit, not a separate engagement. Once Cockpit is plugged in and your value pockets are clear, we already know exactly what your business needs. If the technology to solve it already exists somewhere in the world, we source it and bring it in, when that beats building it. Then you opt in: we source the startups, invest deal by deal, or help you stand up your own venture arm.</p>
-</div></div>
+<section class="phero"><div class="glow"></div><div class="wrap grid">
+  <div class="copy">
+    <div class="tag rv">Venture clienting · 04 AI and the right tools</div>
+    <h1 class="rv d1">If it already exists, <b>we source it.</b></h1>
+    <p class="lede rv d2">Once the cockpit shows what your business needs, we look for who in the world already solved it. When bringing it in beats building it, we test it on your live work and plug it in.</p>
+    <div class="btns rv d3"><a class="btn dark" href="mailto:hello@perspace.ai?subject=A%20problem%20to%20source">Tell us the problem →</a><a class="btn line" href="cockpit.html">Start with the cockpit →</a></div>
+  </div>
+  <div class="rv d2"><svg viewBox="-40 40 680 520" class="hubs"><circle class="ring" cx="300" cy="300" r="215"/><circle class="ring" cx="300" cy="300" r="175"/><g class="spokes"><line x1="300" y1="85" x2="300" y2="300"/><line x1="367" y1="138" x2="300" y2="300"/><line x1="452" y1="148" x2="300" y2="300"/><line x1="462" y1="233" x2="300" y2="300"/><line x1="515" y1="300" x2="300" y2="300"/><line x1="462" y1="367" x2="300" y2="300"/><line x1="452" y1="452" x2="300" y2="300"/><line x1="367" y1="462" x2="300" y2="300"/><line x1="300" y1="515" x2="300" y2="300"/><line x1="233" y1="462" x2="300" y2="300"/><line x1="148" y1="452" x2="300" y2="300"/><line x1="138" y1="367" x2="300" y2="300"/><line x1="85" y1="300" x2="300" y2="300"/><line x1="138" y1="233" x2="300" y2="300"/><line x1="148" y1="148" x2="300" y2="300"/><line x1="233" y1="138" x2="300" y2="300"/></g><g class="hb" style="--d:0.00s"><circle cx="300" cy="85" r="5"/><text x="312" y="89" text-anchor="start">Silicon Valley</text></g><circle class="flow" r="3"><animateMotion dur="2.4s" begin="0.00s" repeatCount="indefinite" path="M300,85 L300,300"/></circle><g class="hb" style="--d:0.12s"><circle cx="367" cy="138" r="5"/><text x="379" y="142" text-anchor="start">New York</text></g><circle class="flow" r="3"><animateMotion dur="2.8s" begin="0.35s" repeatCount="indefinite" path="M367,138 L300,300"/></circle><g class="hb" style="--d:0.24s"><circle cx="452" cy="148" r="5"/><text x="464" y="152" text-anchor="start">Canada</text></g><circle class="flow" r="3"><animateMotion dur="3.2s" begin="0.70s" repeatCount="indefinite" path="M452,148 L300,300"/></circle><g class="hb" style="--d:0.36s"><circle cx="462" cy="233" r="5"/><text x="474" y="237" text-anchor="start">LatAm</text></g><circle class="flow" r="3"><animateMotion dur="3.6s" begin="1.05s" repeatCount="indefinite" path="M462,233 L300,300"/></circle><g class="hb" style="--d:0.48s"><circle cx="515" cy="300" r="5"/><text x="527" y="304" text-anchor="start">London</text></g><circle class="flow" r="3"><animateMotion dur="2.4s" begin="1.40s" repeatCount="indefinite" path="M515,300 L300,300"/></circle><g class="hb" style="--d:0.60s"><circle cx="462" cy="367" r="5"/><text x="474" y="371" text-anchor="start">EU</text></g><circle class="flow" r="3"><animateMotion dur="2.8s" begin="1.75s" repeatCount="indefinite" path="M462,367 L300,300"/></circle><g class="hb" style="--d:0.72s"><circle cx="452" cy="452" r="5"/><text x="464" y="456" text-anchor="start">MENA</text></g><circle class="flow" r="3"><animateMotion dur="3.2s" begin="2.10s" repeatCount="indefinite" path="M452,452 L300,300"/></circle><g class="hb" style="--d:0.84s"><circle cx="367" cy="462" r="5"/><text x="379" y="466" text-anchor="start">Nigeria</text></g><circle class="flow" r="3"><animateMotion dur="3.6s" begin="2.45s" repeatCount="indefinite" path="M367,462 L300,300"/></circle><g class="hb" style="--d:0.96s"><circle cx="300" cy="515" r="5"/><text x="312" y="519" text-anchor="start">Uzbekistan</text></g><circle class="flow" r="3"><animateMotion dur="2.4s" begin="2.80s" repeatCount="indefinite" path="M300,515 L300,300"/></circle><g class="hb" style="--d:1.08s"><circle cx="233" cy="462" r="5"/><text x="221" y="466" text-anchor="end">India</text></g><circle class="flow" r="3"><animateMotion dur="2.8s" begin="3.15s" repeatCount="indefinite" path="M233,462 L300,300"/></circle><g class="hb" style="--d:1.20s"><circle cx="148" cy="452" r="5"/><text x="136" y="456" text-anchor="end">China</text></g><circle class="flow" r="3"><animateMotion dur="3.2s" begin="3.50s" repeatCount="indefinite" path="M148,452 L300,300"/></circle><g class="hb" style="--d:1.32s"><circle cx="138" cy="367" r="5"/><text x="126" y="371" text-anchor="end">Korea</text></g><circle class="flow" r="3"><animateMotion dur="3.6s" begin="3.85s" repeatCount="indefinite" path="M138,367 L300,300"/></circle><g class="hb" style="--d:1.44s"><circle cx="85" cy="300" r="5"/><text x="73" y="304" text-anchor="end">Japan</text></g><circle class="flow" r="3"><animateMotion dur="2.4s" begin="4.20s" repeatCount="indefinite" path="M85,300 L300,300"/></circle><g class="hb" style="--d:1.56s"><circle cx="138" cy="233" r="5"/><text x="126" y="237" text-anchor="end">Taiwan</text></g><circle class="flow" r="3"><animateMotion dur="2.8s" begin="4.55s" repeatCount="indefinite" path="M138,233 L300,300"/></circle><g class="hb" style="--d:1.68s"><circle cx="148" cy="148" r="5"/><text x="136" y="152" text-anchor="end">Singapore</text></g><circle class="flow" r="3"><animateMotion dur="3.2s" begin="4.90s" repeatCount="indefinite" path="M148,148 L300,300"/></circle><g class="hb" style="--d:1.80s"><circle cx="233" cy="138" r="5"/><text x="221" y="142" text-anchor="end">Australia</text></g><circle class="flow" r="3"><animateMotion dur="3.6s" begin="5.25s" repeatCount="indefinite" path="M233,138 L300,300"/></circle><circle class="uae" cx="300" cy="300" r="46"/><text class="uaet" x="300" y="298" text-anchor="middle">UAE</text><text class="uaes" x="300" y="315" text-anchor="middle">WHERE IT DEPLOYS</text></svg></div>
+</div></section>
 
-
-
-<section style="padding-top:14px"><div class="wrap">
-  <div class="mapscroll"><div class="map">
-    <svg class="maplines" viewBox="0 0 100 43.5" preserveAspectRatio="none" aria-hidden="true">
-    <g class="mapland"><ellipse cx="17" cy="16" rx="13" ry="8"/><ellipse cx="30" cy="30" rx="6" ry="9"/><ellipse cx="47" cy="13" rx="6.5" ry="4.5"/><ellipse cx="54" cy="25" rx="8" ry="11"/><ellipse cx="76" cy="19" rx="19" ry="11"/><ellipse cx="90" cy="33" rx="6" ry="4"/></g>
-    <line x1="60" y1="20.9" x2="8" y2="19.1"/><line x1="60" y1="20.9" x2="25" y2="17.8"/><line x1="60" y1="20.9" x2="20" y2="14.4"/><line x1="60" y1="20.9" x2="43" y2="12.2"/><line x1="60" y1="20.9" x2="46" y2="14.8"/><line x1="60" y1="20.9" x2="50" y2="13.1"/><line x1="60" y1="20.9" x2="51" y2="9.6"/><line x1="60" y1="20.9" x2="30" y2="32.2"/><line x1="60" y1="20.9" x2="47" y2="26.1"/><line x1="60" y1="20.9" x2="66" y2="16.5"/><line x1="60" y1="20.9" x2="70" y2="24.8"/><line x1="60" y1="20.9" x2="82" y2="21.3"/><line x1="60" y1="20.9" x2="83" y2="17.4"/><line x1="60" y1="20.9" x2="87" y2="17.4"/><line x1="60" y1="20.9" x2="91" y2="17.8"/><line x1="60" y1="20.9" x2="84" y2="23.5"/><line x1="60" y1="20.9" x2="79" y2="27.8"/><line x1="60" y1="20.9" x2="90" y2="33.9"/>
-    </svg>
-    <div class="hub core" style="left:60%;top:48%"><div class="dot"></div><div class="hl">UAE</div><div class="hx">where it deploys</div></div>
-    <div class="hub" style="left:8%;top:44%"><div class="dot"></div><div class="hl">Silicon Valley</div></div>
-    <div class="hub" style="left:25%;top:41%"><div class="dot"></div><div class="hl">New York</div></div>
-    <div class="hub" style="left:20%;top:33%"><div class="dot"></div><div class="hl">Canada</div></div>
-    <div class="hub sm" style="left:13%;top:32%"><div class="dot"></div></div>
-    <div class="hub" style="left:30%;top:74%"><div class="dot"></div><div class="hl">LatAm</div></div>
-    <div class="hub sm" style="left:18%;top:56%"><div class="dot"></div></div>
-    <div class="hub" style="left:43%;top:28%"><div class="dot"></div><div class="hl">London</div></div>
-    <div class="hub sm" style="left:46%;top:34%"><div class="dot"></div></div>
-    <div class="hub" style="left:50%;top:30%"><div class="dot"></div><div class="hl">EU</div></div>
-    <div class="hub sm" style="left:51%;top:22%"><div class="dot"></div></div>
-    <div class="hub" style="left:55%;top:50%"><div class="dot"></div><div class="hl">MENA</div></div>
-    <div class="hub sm" style="left:58%;top:52%"><div class="dot"></div></div>
-    <div class="hub" style="left:47%;top:60%"><div class="dot"></div><div class="hl">Nigeria</div></div>
-    <div class="hub" style="left:66%;top:38%"><div class="dot"></div><div class="hl">Uzbekistan</div></div>
-    <div class="hub" style="left:70%;top:57%"><div class="dot"></div><div class="hl">India</div></div>
-    <div class="hub" style="left:82%;top:49%"><div class="dot"></div><div class="hl">China</div></div>
-    <div class="hub sm" style="left:83%;top:40%"><div class="dot"></div></div>
-    <div class="hub" style="left:87%;top:40%"><div class="dot"></div><div class="hl">Korea</div></div>
-    <div class="hub" style="left:91%;top:41%"><div class="dot"></div><div class="hl">Japan</div></div>
-    <div class="hub" style="left:84%;top:54%"><div class="dot"></div><div class="hl">Taiwan</div></div>
-    <div class="hub" style="left:79%;top:64%"><div class="dot"></div><div class="hl">Singapore</div></div>
-    <div class="hub" style="left:90%;top:78%"><div class="dot"></div><div class="hl">Australia</div></div>
-  </div></div>
-  <div class="mapswipe">Swipe the map to see the whole network</div>
-  <div class="maplegend"><b>◆</b> UAE, where it deploys &nbsp;·&nbsp; ● the hubs we source proven technology from</div>
-  <div class="stats">
-    <div class="stat"><div class="v">10,000+</div><div class="l">startups in the network</div></div>
-    <div class="stat"><div class="v">500+</div><div class="l">VCs across the hubs</div></div>
-    <div class="stat"><div class="v">50+</div><div class="l">global hubs &amp; accelerators</div></div>
-    <div class="stat"><div class="v">40+</div><div class="l">proofs of concept run</div></div>
+<!-- ADD-ON -->
+<section class="pad" style="padding-top:20px"><div class="wrap addon">
+  <div>
+    <div class="tag rv">An add-on to the cockpit</div>
+    <h2 class="rv d1" style="margin-top:22px">We already know <b>what needs solving.</b></h2>
+    <p class="lede rv d2" style="margin-top:22px">Venture clienting is never a separate project. The cockpit has found the pocket and priced it, so the search starts from a real brief with the value behind it.</p>
+  </div>
+  <div class="flow2 rv d2">
+    <div><small>COCKPIT</small>The pocket</div><span class="ar">→</span>
+    <div><small>THE WORLD</small>Who solved it</div><span class="ar">→</span>
+    <div class="hi"><small>YOUR COMPANY</small>Tested live</div>
   </div>
 </div></section>
 
-<section><div class="wrap">
-  <h2>Our case studies.</h2>
-  <p class="p2">A real problem, matched to a technology that already works, then tested on the live workflow. The list grows as we run more.</p>
-  <div class="prowscroll"><div class="prowtrack" id="prowtrack"></div></div>
-  <div class="vptr"><div><b>Some answers become plug-ins.</b> What we source for one client joins the menu for every client. The first was Polynome, found for a construction site, now running on a manufacturing floor.</div><a href="plugins.html#born">See the plug-ins &#8594;</a></div>
-</div></section>
-<script>
-(function(){var R=[
- ["National utility","Tower and line inspections are manual, costly, and put crews at risk.","Drone + vision inspection","POC · 40 sites"],
- ["Retail bank","KYC and onboarding backlog runs into weeks.","Document reading + checks","Weeks &#8594; hours"],
- ["Telecom operator","Network fault triage is manual and slow to escalate.","Predictive network ops","POC · live"],
- ["Logistics group","Fleet and yard idle time no one can see in real time.","Routing + tracking","Deployed"],
- ["Healthcare network","Radiology reporting backlog delays care.","Imaging support","POC · 2 sites"],
- ["Real-estate developer","Broker and sales activity scattered across spreadsheets.","Sales system + follow-up","Deployed"],
- ["Energy company","The same category procured three ways at three prices.","Spend intelligence","Deployed"],
- ["Government department","Citizen requests handled by hand, inconsistently.","Automated help desk","POC · live"],
- ["Insurer","Claims processing is manual and error-prone.","Claims automation","POC"],
- ["Manufacturer","Line quality inspection depends on tired human eyes.","Vision quality control","POC · 1 line"],
- ["Media / out-of-home","Screen fill rate and pricing set by hand.","Dynamic pricing + yield","Deployed"],
- ["F&amp;B chain","Demand forecasting is guesswork; waste is high.","Demand forecasting","POC"],
- ["Airline","Crew rostering done by hand, constant last-minute reshuffles.","Rostering optimisation","POC"],
- ["Hospitality group","Guest requests scattered across phone, email and chat.","Unified guest desk","Deployed"],
- ["Construction","Site progress reported late and from memory.","Site progress tracking","POC"],
- ["Pharma distributor","Order and stock reconciliation done by hand.","Order reconciliation","Deployed"],
- ["Education group","Admissions and enrolment run on spreadsheets.","Admissions workflow","POC"],
- ["Ports & terminals","Gate and yard moves logged by hand.","Gate + yard tracking","POC · live"],
- ["Retail chain","Shelf gaps found too late, sales lost.","Replenishment, per store","Deployed"],
- ["Public sector","Procurement approvals queue for weeks.","Approvals automation","POC · live"]
-];
-var el=document.getElementById("prowtrack");if(!el)return;
-function row(r){return '<div class="prow"><div class="sec">'+r[0]+'</div><div class="prob">'+r[1]+'</div><div class="src">'+r[2]+'</div><div class="out">'+r[3]+'</div></div>';}
-var html=R.map(row).join("");el.innerHTML=html+html;
-})();
-</script>
-
-
-
-<section><div class="wrap">
-  <h2>Five steps, <b>start to finish.</b></h2>
-  <div class="grid5">
-    <div class="card"><div class="k">01</div><div class="ct">Plug in Cockpit</div><div class="cd">Cockpit maps your company and surfaces your value pockets, so we already know exactly what needs solving.</div></div>
-    <div class="card"><div class="k">02</div><div class="ct">Find the problem</div><div class="cd">We turn one of those pockets into a clear brief, with the value behind it.</div></div>
-    <div class="card"><div class="k">03</div><div class="ct">Find the champion</div><div class="cd">The person inside your company who owns that problem and wants it fixed. Nothing moves without them.</div></div>
-    <div class="card"><div class="k">04</div><div class="ct">Get the startup</div><div class="cd">We find the company in the world that already solves it, and run it against your real problem, live.</div></div>
-    <div class="card"><div class="k">05</div><div class="ct">Then you choose</div><div class="cd">Procure the contract, take a share in the company, or start a corporate venture. Whatever fits you best.</div></div>
+<!-- STEPS -->
+<section class="pad" style="padding-top:40px"><div class="wrap">
+  <div class="head2">
+    <div><div class="tag rv">Five steps</div><h2 class="rv d1">Start to finish, <b>on your real problem.</b></h2></div>
+    <p class="lede rv d2">Nothing moves without a person inside your company who owns the problem and wants it fixed.</p>
+  </div>
+  <div class="vs" data-trigger><span class="fill"></span>
+    <div class="vst"><div class="dot">1</div><h3>Plug in the cockpit</h3><p>It maps the company and shows where the money is.</p></div>
+    <div class="vst"><div class="dot">2</div><h3>Find the problem</h3><p>One pocket becomes a clear brief, with the value behind it.</p></div>
+    <div class="vst"><div class="dot">3</div><h3>Find the champion</h3><p>The person who owns that problem and wants it fixed.</p></div>
+    <div class="vst"><div class="dot">4</div><h3>Get the startup</h3><p>The company that already solves it, run against your real problem, live.</p></div>
+    <div class="vst"><div class="dot">5</div><h3>Then you choose</h3><p>Buy it, take a share, or build your own venture arm.</p></div>
   </div>
 </div></section>
 
-<section class="band"><div class="wrap">
-  <h2>Tell us the problem. <b>We will find who already solved it.</b></h2>
-  <div class="cta-row">
-    <a href="mailto:hello@perspace.ai?subject=Tell%20us%20the%20problem" class="btn p">Tell us the problem</a>
-    <a href="index.html" class="btn s">Try Cockpit</a>
+<!-- CHOOSE -->
+<section class="dark pad"><div class="wrap">
+  <div class="tag rv">Then you choose</div>
+  <h2 class="rv d1" style="margin-top:24px;color:#8ea3b3">Three ways in. <b style="color:#fff">Whatever fits you best.</b></h2>
+  <div class="choose">
+    <div class="ch rv"><div class="k">01 · BUY</div><b>Procure it</b><p>A contract for what already works. We source it, you run it.</p></div>
+    <div class="ch rv d1"><div class="k">02 · INVEST</div><b>Take a share</b><p>Invest in the company, deal by deal, alongside us.</p></div>
+    <div class="ch rv d2"><div class="k">03 · BUILD</div><b>Your own venture arm</b><p>We help you stand up a corporate venture arm of your own.</p></div>
   </div>
+</div></section>
+
+<!-- CASES -->
+<section class="pad"><div class="wrap">
+  <div class="head2">
+    <div><div class="tag rv">Case studies</div><h2 class="rv d1">A real problem, <b>matched to what already works.</b></h2></div>
+    <p class="lede rv d2">Each one tested on the live workflow. The list grows as we run more.</p>
+  </div>
+  <div class="cfl" id="cfl"><button class="on" data-s="all">All</button><button data-s="d">Deployed</button><button data-s="t">In trial</button></div>
+  <div class="czs" id="czs">
+    <div class="cz s-t" data-s="t"><div class="k">National utility</div><p>Tower and line inspections are manual, costly and put crews at risk.</p><div class="ans"><b>Drone and vision inspection</b><span class="pill">Trial · 40 sites</span></div></div>
+    <div class="cz s-d" data-s="d"><div class="k">Retail bank</div><p>The KYC and onboarding backlog runs into weeks.</p><div class="ans"><b>Document reading and checks</b><span class="pill">Weeks to hours</span></div></div>
+    <div class="cz s-t" data-s="t"><div class="k">Telecom operator</div><p>Network fault triage is manual and slow to escalate.</p><div class="ans"><b>Predictive network operations</b><span class="pill">Trial · live</span></div></div>
+    <div class="cz s-d" data-s="d"><div class="k">Logistics group</div><p>Fleet and yard idle time nobody can see in real time.</p><div class="ans"><b>Routing and tracking</b><span class="pill">Deployed</span></div></div>
+    <div class="cz s-t" data-s="t"><div class="k">Healthcare network</div><p>A radiology reporting backlog delays care.</p><div class="ans"><b>Imaging support</b><span class="pill">Trial · 2 sites</span></div></div>
+    <div class="cz s-d" data-s="d"><div class="k">Real-estate developer</div><p>Broker and sales activity scattered across spreadsheets.</p><div class="ans"><b>Sales system and follow-up</b><span class="pill">Deployed</span></div></div>
+    <div class="cz s-d" data-s="d"><div class="k">Energy company</div><p>The same category bought three ways at three prices.</p><div class="ans"><b>Spend intelligence</b><span class="pill">Deployed</span></div></div>
+    <div class="cz s-t" data-s="t"><div class="k">Government department</div><p>Citizen requests handled by hand, differently each time.</p><div class="ans"><b>Automated help desk</b><span class="pill">Trial · live</span></div></div>
+    <div class="cz s-t" data-s="t"><div class="k">Insurer</div><p>Claims processing is manual and error-prone.</p><div class="ans"><b>Claims automation</b><span class="pill">Trial</span></div></div>
+    <div class="cz s-t" data-s="t"><div class="k">Manufacturer</div><p>Line quality inspection depends on tired human eyes.</p><div class="ans"><b>Vision quality control</b><span class="pill">Trial · 1 line</span></div></div>
+    <div class="cz s-d" data-s="d"><div class="k">Media group</div><p>Screen fill rate and pricing set by hand.</p><div class="ans"><b>Dynamic pricing and yield</b><span class="pill">Deployed</span></div></div>
+    <div class="cz s-t" data-s="t"><div class="k">Food and beverage chain</div><p>Demand forecasting is guesswork and waste is high.</p><div class="ans"><b>Demand forecasting</b><span class="pill">Trial</span></div></div>
+    <div class="cz s-t" data-s="t"><div class="k">Airline</div><p>Crew rostering done by hand, with constant last-minute reshuffles.</p><div class="ans"><b>Rostering</b><span class="pill">Trial</span></div></div>
+    <div class="cz s-d" data-s="d"><div class="k">Hospitality group</div><p>Guest requests scattered across phone, email and chat.</p><div class="ans"><b>One guest desk</b><span class="pill">Deployed</span></div></div>
+    <div class="cz s-t" data-s="t"><div class="k">Construction</div><p>Site progress reported late and from memory.</p><div class="ans"><b>Site progress tracking</b><span class="pill">Trial</span></div></div>
+    <div class="cz s-d" data-s="d"><div class="k">Pharma distributor</div><p>Order and stock reconciliation done by hand.</p><div class="ans"><b>Order reconciliation</b><span class="pill">Deployed</span></div></div>
+    <div class="cz s-t" data-s="t"><div class="k">Education group</div><p>Admissions and enrolment run on spreadsheets.</p><div class="ans"><b>Admissions workflow</b><span class="pill">Trial</span></div></div>
+    <div class="cz s-t" data-s="t"><div class="k">Ports and terminals</div><p>Gate and yard moves logged by hand.</p><div class="ans"><b>Gate and yard tracking</b><span class="pill">Trial · live</span></div></div>
+    <div class="cz s-d" data-s="d"><div class="k">Retail chain</div><p>Shelf gaps found too late, and sales lost.</p><div class="ans"><b>Replenishment, per store</b><span class="pill">Deployed</span></div></div>
+    <div class="cz s-t" data-s="t"><div class="k">Public sector</div><p>Procurement approvals queue for weeks.</p><div class="ans"><b>Approvals automation</b><span class="pill">Trial · live</span></div></div>
+  </div>
+  <div class="pln rv"><p><b>Some answers become plug-ins.</b> What we source for one client joins the menu for every client. The first was Polynome, found for a construction site, now running on a manufacturing floor.</p><a class="btn line" href="plugins.html">See the plug-ins →</a></div>
+</div></section>
+
+<section class="closeband"><div class="wrap">
+  <div class="m rv"><img src="img/mark-left-c.png" alt=""><img class="s" src="img/star-crop.png" alt=""><img src="img/mark-right-c.png" alt=""></div>
+  <h2 class="rv d1">Tell us the problem. <b>We will find who already solved it.</b></h2>
+  <div class="btns rv d3"><a class="btn dark" href="mailto:hello@perspace.ai?subject=A%20problem%20to%20source">Tell us the problem →</a><a class="btn line" href="cockpit.html">Start with the cockpit →</a></div>
 </div></section>
 
 <footer><div class="wrap">
-  <div class="fb">Perspace<i></i></div>
-  <div class="fm">We operate the future · Dubai · Abu Dhabi · <a href="mailto:hello@perspace.ai">hello@perspace.ai</a></div>
-  <nav class="fl"><a href="index.html">Cockpit</a><a href="venture.html">Venture clienting</a><a href="plugins.html">Plug-ins</a><a href="philosophy.html">Philosophy</a><a href="insights.html">Insights</a></nav>
+  <a class="brand" href="index.html"><img src="img/perspace-mark-ink.png" alt="">Perspace</a>
+  <div class="ft"><a href="philosophy.html">Philosophy</a><a href="method.html">Method</a><a href="cockpit.html">Cockpit</a><a href="plugins.html">Plug-ins</a><a href="venture.html">Venture clienting</a><a href="insights.html">Insights</a></div>
+  <div class="tl">We operate the future · Dubai · Abu Dhabi · hello@perspace.ai</div>
 </div></footer>
+<script src="site.js"></script>
 <script>
-(function(){var s=document.querySelector('.mapscroll');if(!s)return;
-function center(){var m=s.querySelector('.map');if(!m||s.scrollWidth<=s.clientWidth)return;
-s.scrollLeft=Math.max(0,(m.offsetWidth*0.60)-(s.clientWidth/2));}
-center();window.addEventListener('load',center);window.addEventListener('resize',center);setTimeout(center,300);})();
-</script>
-<script>(function(){function go(){[].forEach.call(document.querySelectorAll('.pmark.enter'),function(m){setTimeout(function(){m.classList.remove('enter');},1500);});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();})();</script>
-<script>
-/* the routes that carry something are marked live, so the pulse runs on the
-   lines that mean a deployment rather than on every line on the map. */
-(function(){
- var ls=document.querySelectorAll('.maplines line');
- for(var i=0;i<ls.length;i++) if(i%2===0) ls[i].classList.add('live');
-})();
-</script>
-<script>
-/* close the menu when a link is taken, so returning to the page is not a trap */
-(function(){
- var x=document.getElementById('navx'); if(!x)return;
- var ls=document.querySelectorAll('#nav .links a');
- for(var i=0;i<ls.length;i++) ls[i].addEventListener('click',function(){x.checked=false;});
- document.addEventListener('keydown',function(e){if(e.key==='Escape')x.checked=false;});
-})();
+(function(){const f=document.getElementById('cfl'),cs=[...document.querySelectorAll('#czs .cz')];
+f.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;f.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));cs.forEach(c=>c.classList.toggle('hide',b.dataset.s!=='all'&&c.dataset.s!==b.dataset.s));});})();
 </script>
 </body></html>

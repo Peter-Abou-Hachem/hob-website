@@ -1,83 +1,153 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Perspace · Philosophy</title>
-<meta name="robots" content="noindex, nofollow">
-<link rel="preconnect" href="https://api.fontshare.com">
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Philosophy · Perspace</title>
+<meta name="description" content="What Perspace believes about the next decade of work, and why one team should carry strategy, change, value and the technology together.">
+<link rel="icon" type="image/png" href="img/favicon.png">
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="hob-pages.css?v=20260919a">
-</head><body>
+<link rel="stylesheet" href="site.css">
+<style>
+/* name story */
+.names{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.nm{padding:40px 30px 44px 0;position:relative}
+.nm+.nm{padding-left:30px;border-left:1px solid var(--line)}
+.nm small{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-ink);font-weight:500}
+.nm .w{font-size:clamp(42px,4.6vw,66px);font-weight:300;letter-spacing:-.03em;margin:16px 0 14px;line-height:1}
+.nm .w b{font-weight:700}
+.nm p{font-size:16.5px;line-height:1.55;color:var(--soft);max-width:22em}
+.nm.all{background:var(--card)}
+.nm.all .w{display:flex;align-items:center;gap:12px}
+.nm.all .w img{height:.95em}
+/* beliefs */
+.beliefs{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.bf{background:var(--ground);padding:34px 30px 38px;min-height:250px;position:relative;overflow:hidden;transition:background .4s}
+.bf:hover{background:var(--card)}
+.bf .n{font-size:56px;font-weight:300;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1px var(--accent);line-height:.8;margin-bottom:22px;transition:color .5s}
+.bf:hover .n{color:var(--blue)}
+.bf h3{font-size:24px;font-weight:700;letter-spacing:-.015em;max-width:12em;position:relative}
+.bf p{font-size:15.5px;line-height:1.55;color:var(--soft);margin-top:14px;max-width:21em;position:relative}
+/* budgets merge */
+.merge{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.stackb{position:relative;height:420px}
+.bud{position:absolute;left:0;right:0;height:64px;border:1px solid var(--ink);background:var(--card);display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-weight:500;font-size:16px;transition:transform 1.4s var(--ease),opacity 1s,background .6s}
+.bud span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.bud:nth-child(1){top:0}.bud:nth-child(2){top:86px}.bud:nth-child(3){top:172px}.bud:nth-child(4){top:258px}
+.onebox{position:absolute;left:0;right:0;top:344px;height:76px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-weight:700;font-size:18px;opacity:0;transform:translateY(20px);transition:opacity 1s .9s,transform 1s .9s var(--ease)}
+.onebox span{font-size:11px;letter-spacing:.16em;color:var(--accent);font-weight:500}
+.stackb.in .bud{transform:translateY(calc(344px - var(--y)));opacity:.0}
+.stackb.in .bud:nth-child(1){--y:0px;transition-delay:.0s}.stackb.in .bud:nth-child(2){--y:86px;transition-delay:.15s}.stackb.in .bud:nth-child(3){--y:172px;transition-delay:.3s}.stackb.in .bud:nth-child(4){--y:258px;transition-delay:.45s}
+.stackb.in .onebox{opacity:1;transform:none}
+.stackb .replay{position:absolute;right:0;bottom:-34px;font-size:11px;letter-spacing:.14em;color:var(--faint);cursor:pointer;text-transform:uppercase}
+/* pull quote */
+.quote{padding:150px 0}
+.quote h2{font-size:clamp(38px,5vw,72px);max-width:16em}
+.quote h2 b{color:#fff}.quote h2{color:#8ea3b3}
+.quote .lede{margin-top:30px}
+/* notes */
+.notes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.note{background:var(--card);border:1px solid var(--line);padding:28px 26px 26px;display:flex;flex-direction:column;gap:12px;min-height:280px;transition:transform .4s var(--ease),box-shadow .4s}
+.note:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(9,17,32,.08)}
+.note .k{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink);font-weight:500}
+.note h3{font-size:23px;font-weight:700;letter-spacing:-.015em;line-height:1.2}
+.note p{font-size:15px;line-height:1.55;color:var(--soft)}
+.note .go{margin-top:auto;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+@media (max-width:900px){
+  .names,.beliefs,.notes,.merge{grid-template-columns:1fr}
+  .nm+.nm{padding-left:0;border-left:0;border-top:1px solid var(--line)}.nm{padding:30px 0}
+  .stackb{height:440px}
+}
+</style></head>
+<body>
 <nav id="nav"><div class="wrap">
-  <a href="index.html" class="brand">Perspace<span class="pmark enter"><i class="bl"></i><i class="st"></i><i class="br"></i></span></a>
-  <input class="navx" type="checkbox" id="navx" aria-hidden="true"><label class="burger" for="navx" aria-label="Menu"><span></span></label>
-  <div class="links">
-    <a href="index.html" class="cta">Cockpit</a>
-    <a href="venture.html" class="hidem">Venture clienting</a>
-    <a href="plugins.html" class="hidem">Plug-ins</a>
-    <a href="philosophy.html" class="hidem on">Philosophy</a>
-    <a href="insights.html" class="hidem">Insights</a>
-  </div>
+  <a class="brand" href="index.html"><img src="img/perspace-mark-ink.png" alt="">Perspace</a>
+  <div class="links"><a class="on" href="philosophy.html">Philosophy</a><a href="method.html">Method</a><a href="cockpit.html">Cockpit</a><a href="plugins.html">Plug-ins</a><a href="venture.html">Venture clienting</a><a class="mo" href="insights.html">Insights</a></div>
+  <a class="btn dark" href="mailto:hello@perspace.ai?subject=Walkthrough">Book a walkthrough →</a>
+  <button class="mnu" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
 </div></nav>
 
-<div class="phero"><div class="wrap">
-  <h1>The next company is people and agents, <b>not people alone.</b></h1>
-  <p class="lede">Every company you know was built around people. Org charts, job titles, sign-offs, targets: all of it designed for humans, because humans were the only thing that could do the work. That was the right call for a hundred years. It is not the only option anymore, and the companies that see this first will pull away from the ones that do not.</p>
-</div></div>
+<section class="phero"><div class="glow"></div><div class="wrap grid">
+  <div class="copy">
+    <div class="tag rv">Philosophy · 01 Strategy</div>
+    <h1 class="rv d1">The next decade of work is already being built. <b>This is what we are sure of.</b></h1>
+    <p class="lede rv d2">Every company you know was built around people doing every task by hand. That was right for a hundred years. The companies that change how they run first will set the pace for everyone else.</p>
+  </div>
+  <div class="mk"><img class="b l" src="img/mark-left-c.png" alt=""><img class="b r" src="img/mark-right-c.png" alt=""><img class="s" src="img/star-crop.png" alt=""></div>
+</div></section>
 
-<section><div class="wrap">
-  <h2>Six things we are sure of <b>about the next decade of work.</b></h2>
-  <div class="bgrid">
-    <div class="bcard"><div class="bnum">01</div><div class="bt">Software stops being a tool.</div><div class="bd">You paid for seats and did the work yourself. Now the software does the work. You pay for the job done, not the login.</div></div>
-    <div class="bcard"><div class="bnum">02</div><div class="bt">Machines take the repeated work.</div><div class="bd">Most office work is rules on repeat. Machines are very good at that, and they never get tired.</div></div>
-    <div class="bcard"><div class="bnum">03</div><div class="bt">People move up, not out.</div><div class="bd">When machines take the busywork, people do the part only people can: judgment, taste, the hard call.</div></div>
-    <div class="bcard"><div class="bnum">04</div><div class="bt">What you already know is the advantage.</div><div class="bd">The technology is the same for everyone and it changes every week. Your industry does not. That is where your value sits.</div></div>
-    <div class="bcard"><div class="bnum">05</div><div class="bt">Chasing every new tool is a trap.</div><div class="bd">Chasing tools is a full-time job that pulls you off your real one. Go deep on what you know, and let us keep the technology current.</div></div>
-    <div class="bcard"><div class="bnum">06</div><div class="bt">The future is agents and people.</div><div class="bd">The next org chart has both on it, side by side, each with a clear owner. Someone runs the machines the way a good manager runs a team.</div></div>
+<!-- NAME -->
+<section class="pad" style="padding-top:40px"><div class="wrap">
+  <div class="tag rv">The name</div>
+  <div class="names rv d1" style="margin-top:30px">
+    <div class="nm"><small>Latin</small><div class="w">per</div><p>To see a thing clearly, all the way through.</p></div>
+    <div class="nm"><small>English</small><div class="w">space</div><p>A room only you are in.</p></div>
+    <div class="nm all"><small>Together</small><div class="w"><b>perspace</b><img src="img/star-crop.png" alt=""></div><p>The room where you see your whole company, drawn from its own files. Nothing leaves it that you have not allowed.</p></div>
   </div>
 </div></section>
 
-<section><div class="wrap">
-  <h2>Where the budget goes. <b>It pays for itself.</b></h2>
-  <p class="lede">Today, changing how a company runs means three separate budgets: advice, systems, and the software that carries it. Three bills, years of work, and making them fit together is your problem. We do the three as one operated product, alongside whoever already advises you, and it is paid for out of money you already spend.</p>
-  <div class="bgrid">
-    <div class="bcard"><div class="bnum">01</div><div class="bt">The people budget.</div><div class="bd">The biggest pot by far. When machines do the repeated work, you pay for the work that gets done, not the hours people sit there. Most of the money is here.</div></div>
-    <div class="bcard"><div class="bnum">02</div><div class="bt">The consulting budget.</div><div class="bd">The money set aside for advice and change programmes. With us it also buys the thing that keeps running after the advice lands, because we stay and operate it.</div></div>
-    <div class="bcard"><div class="bnum">03</div><div class="bt">The systems budget.</div><div class="bd">What you spend on your ERP, your CRM, and joining them up. We read what you already have and connect it in weeks, not years.</div></div>
-    <div class="bcard"><div class="bnum">04</div><div class="bt">The technology budget.</div><div class="bd">The money you keep aside to stay up to date. We keep you up to date, so you are not chasing new tools instead of doing your job.</div></div>
+<!-- BELIEFS -->
+<section class="pad" style="padding-top:20px"><div class="wrap">
+  <div class="head2">
+    <div><div class="tag rv">Six things we are sure of</div><h2 class="rv d1">What changes <b>in the next decade.</b></h2></div>
+    <p class="lede rv d2">None of these are predictions about technology. They are about how companies will be run.</p>
   </div>
-  <p class="lede" style="margin-top:30px"><b>It comes out of budgets you already hold.</b> Not a new line of spend on top of the four above. It covers itself from the first job, and every month more of the work runs on its own, so you get more while the fee stays the same.</p>
+  <div class="beliefs">
+    <div class="bf rv"><div class="n">01</div><h3>Software starts doing the work.</h3><p>You used to pay for seats and do the work yourself. Now you pay for the job done.</p></div>
+    <div class="bf rv d1"><div class="n">02</div><h3>Machines carry the repeated work.</h3><p>Most office work is rules on repeat. Machines are good at it and never tire.</p></div>
+    <div class="bf rv d2"><div class="n">03</div><h3>People move up.</h3><p>When machines take the busywork, people do what only people can: judgement, taste and the hard call.</p></div>
+    <div class="bf rv"><div class="n">04</div><h3>What you already know is the edge.</h3><p>The technology is the same for everyone and changes every week. Your industry knowledge does not.</p></div>
+    <div class="bf rv d1"><div class="n">05</div><h3>Chasing every new tool is a trap.</h3><p>It is a full time job that pulls you off your real one. Go deep on what you know, we keep the technology current.</p></div>
+    <div class="bf rv d2"><div class="n">06</div><h3>The org chart gets a second kind of member.</h3><p>People and agents side by side, each with a clear owner. Someone runs the machines the way a good manager runs a team.</p></div>
+  </div>
 </div></section>
 
-<section class="band"><div class="wrap">
-  <h2>You focus on what you know better than anyone. <b>We keep the technology current so it never eats you.</b></h2>
-  <div class="cta-row">
-    <a href="index.html" class="btn p">Try Cockpit</a>
-    <a href="venture.html" class="btn s">Venture clienting</a>
+<!-- BUDGETS -->
+<section class="pad" style="background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap merge">
+  <div>
+    <div class="tag rv">Where the budget goes</div>
+    <h2 class="rv d1" style="margin-top:22px">Four budgets, four suppliers. <b>We make it one box.</b></h2>
+    <p class="lede rv d2" style="margin-top:24px">Changing how a company runs usually means paying for advice, for systems, for software and for the people who carry the work, then making them fit together yourself. We carry all four as one operated product, alongside whoever already advises you, paid from money you already spend.</p>
   </div>
+  <div class="stackb" data-trigger id="bud">
+    <div class="bud">People <span>the biggest pot</span></div>
+    <div class="bud">Consulting <span>advice and change</span></div>
+    <div class="bud">Systems <span>ERP, CRM, the joins</span></div>
+    <div class="bud">Technology <span>staying current</span></div>
+    <div class="onebox">One box, one team <span>STRATEGY · CHANGE · VALUE · TECHNOLOGY</span></div>
+    <div class="replay" onclick="const b=document.getElementById('bud');b.classList.remove('in');setTimeout(()=>b.classList.add('in'),900)">Replay ↻</div>
+  </div>
+</div></section>
+
+<!-- QUOTE -->
+<section class="dark quote"><div class="wrap">
+  <div class="tag rv">Why now</div>
+  <h2 class="rv d1" style="margin-top:26px">Technology stopped being the difference. <b>How you run on it is the difference.</b></h2>
+  <p class="lede rv d2">Someone in your market will change how they run first. Every quarter after that, their company learns and yours waits. We would like it to be you.</p>
+</div></section>
+
+<!-- NOTES -->
+<section class="pad"><div class="wrap">
+  <div class="head2">
+    <div><div class="tag rv">Field notes</div><h2 class="rv d1">From the build floor, <b>for owners.</b></h2></div>
+    <p class="lede rv d2">What we are building, what we are learning, and what it means for companies in the Gulf. Written for owners and operators, not for engineers.</p>
+  </div>
+  <div class="notes">
+    <a class="note rv" href="insights.html"><div class="k">Field notes</div><h3>The money hiding inside a power bill.</h3><p>Contracts, the asset register and the bills, read side by side for the first time. The tariff in the contract no longer matched what the assets drew.</p><div class="go">Read →</div></a>
+    <a class="note rv d1" href="insights.html"><div class="k">The thesis</div><h3>One score for how a company runs.</h3><p>From manual, to assisted, to agentic, workflow by workflow. The only progress report a chairman needs.</p><div class="go">Read →</div></a>
+    <a class="note rv d2" href="insights.html"><div class="k">The Gulf</div><h3>Why this gets built here first.</h3><p>Governments that back it, owners who decide in a meeting, and a region that has heard every pitch and now buys outcomes.</p><div class="go">Read →</div></a>
+  </div>
+</div></section>
+
+<section class="closeband"><div class="wrap">
+  <div class="m rv"><img src="img/mark-left-c.png" alt=""><img class="s" src="img/star-crop.png" alt=""><img src="img/mark-right-c.png" alt=""></div>
+  <h2 class="rv d1">We operate <b>the future.</b></h2>
+  <p class="lede rv d2">Start with one pocket. We show you the money, go in and get it, and prove it moved.</p>
+  <div class="btns rv d3"><a class="btn dark" href="mailto:hello@perspace.ai?subject=Walkthrough">Book a walkthrough →</a><a class="btn line" href="method.html">See the method →</a></div>
 </div></section>
 
 <footer><div class="wrap">
-  <div class="fb">Perspace<i></i></div>
-  <div class="fm">We operate the future · Dubai · Abu Dhabi · <a href="mailto:hello@perspace.ai">hello@perspace.ai</a></div>
-  <nav class="fl"><a href="index.html">Cockpit</a><a href="venture.html">Venture clienting</a><a href="plugins.html">Plug-ins</a><a href="philosophy.html">Philosophy</a><a href="insights.html">Insights</a></nav>
+  <a class="brand" href="index.html"><img src="img/perspace-mark-ink.png" alt="">Perspace</a>
+  <div class="ft"><a href="philosophy.html">Philosophy</a><a href="method.html">Method</a><a href="cockpit.html">Cockpit</a><a href="plugins.html">Plug-ins</a><a href="venture.html">Venture clienting</a><a href="insights.html">Insights</a></div>
+  <div class="tl">We operate the future · Dubai · Abu Dhabi · hello@perspace.ai</div>
 </div></footer>
-<script>(function(){function go(){[].forEach.call(document.querySelectorAll('.pmark.enter'),function(m){setTimeout(function(){m.classList.remove('enter');},1500);});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();})();</script>
-<script>
-/* the routes that carry something are marked live, so the pulse runs on the
-   lines that mean a deployment rather than on every line on the map. */
-(function(){
- var ls=document.querySelectorAll('.maplines line');
- for(var i=0;i<ls.length;i++) if(i%2===0) ls[i].classList.add('live');
-})();
-</script>
-<script>
-/* close the menu when a link is taken, so returning to the page is not a trap */
-(function(){
- var x=document.getElementById('navx'); if(!x)return;
- var ls=document.querySelectorAll('#nav .links a');
- for(var i=0;i<ls.length;i++) ls[i].addEventListener('click',function(){x.checked=false;});
- document.addEventListener('keydown',function(e){if(e.key==='Escape')x.checked=false;});
-})();
-</script>
+<script src="site.js"></script>
 </body></html>

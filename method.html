@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Method · Perspace</title>
+<meta name="description" content="The Perspace method: read the company, draw its blueprint, find the money, change the work, then put agents on what repeats.">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+/* hero blueprint */
+.bph{position:relative;border:1px solid var(--ink);background:var(--card);overflow:hidden}
+.bph svg{display:block;width:100%;height:auto}
+.bph rect{fill:none;stroke:var(--ink);stroke-width:1.2;stroke-dasharray:900;stroke-dashoffset:900;animation:draw 1.6s var(--ease) forwards;animation-delay:var(--d)}
+.bph .g rect{stroke:var(--silver);stroke-dasharray:5 6;animation:fadein 1s forwards;opacity:0;animation-delay:var(--d)}
+.bph text{font:500 10.5px var(--f);letter-spacing:.14em;fill:var(--soft);opacity:0;animation:fadein .8s forwards;animation-delay:calc(var(--d) + .6s)}
+.bph .pin circle{fill:var(--ink);opacity:0;animation:fadein .6s forwards;animation-delay:var(--d)}
+.bph .pin .ring{fill:none;stroke:var(--accent);stroke-width:2;animation:fadein .6s forwards,ping 2.4s var(--d) infinite}
+.bph .pin text{fill:var(--ink);font-weight:700;letter-spacing:0;font-size:12px}
+.bph .lab{display:block;padding:0 16px 14px;font-size:10.5px;letter-spacing:.16em;color:var(--faint);font-weight:500}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fadein{to{opacity:1}}
+@keyframes ping{0%{r:7;opacity:.9}100%{r:22;opacity:0}}
+/* journey */
+.jr{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px}
+.jr .side{position:sticky;top:120px;align-self:start}
+.jr .side h2{margin-top:22px}
+.jr .side .lede{margin-top:22px}
+.phase-now{margin-top:34px;display:flex;gap:6px;flex-wrap:wrap}
+.phase-now span{font-size:10.5px;letter-spacing:.14em;font-weight:500;padding:7px 10px;border:1px solid var(--line);color:var(--faint);transition:all .4s}
+.phase-now span.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.steps{position:relative;padding-left:56px}
+.steps .track{position:absolute;left:15px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.steps .track i{position:absolute;left:0;top:0;width:100%;height:0;background:var(--ink);transition:height .15s linear}
+.sp{position:relative;padding:0 0 56px}
+.sp .dot{position:absolute;left:-56px;top:0;width:32px;height:32px;border-radius:50%;border:1.5px solid var(--silver);background:var(--ground);display:grid;place-items:center;font-size:12.5px;font-weight:700;color:var(--faint);transition:all .5s var(--ease)}
+.sp.lit .dot{border-color:var(--ink);background:var(--ink);color:#fff}
+.sp .k{font-size:10.5px;letter-spacing:.16em;font-weight:500;color:var(--accent-ink)}
+.sp h3{font-size:30px;font-weight:700;letter-spacing:-.02em;margin-top:8px}
+.sp p{font-size:17px;line-height:1.55;color:var(--soft);margin-top:10px;max-width:30em}
+.sp.seven h3::after{content:"the agent";margin-left:12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;padding:5px 9px;background:var(--blue);color:var(--accent-ink);vertical-align:middle}
+/* agent is seven */
+.seven-band{padding:140px 0}
+.seven-band .row{display:grid;grid-template-columns:auto 1fr;gap:70px;align-items:center}
+.big7{font-size:clamp(160px,20vw,300px);font-weight:300;line-height:.8;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1.5px var(--accent)}
+.seven-band h2{color:#8ea3b3}.seven-band h2 b{color:#fff}
+.seven-band .lede{margin-top:26px}
+/* rings */
+.rings{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rg{background:var(--card);border:1px solid var(--line);padding:34px 30px;display:flex;gap:26px;align-items:center}
+.rg svg{width:112px;height:112px;flex:none;transform:rotate(-90deg)}
+.rg circle{fill:none;stroke-width:9}
+.rg .bg{stroke:var(--line)}
+.rg .fg{stroke:var(--ink);stroke-linecap:round;stroke-dasharray:283;stroke-dashoffset:283;transition:stroke-dashoffset 1.8s var(--ease)}
+.rings.in .fg{stroke-dashoffset:var(--o)}
+.rings.in .rg:nth-child(2) .fg{transition-delay:.3s}.rings.in .rg:nth-child(3) .fg{transition-delay:.6s}
+.rg b{font-size:38px;font-weight:700;letter-spacing:-.02em;display:block}
+.rg span{font-size:15px;line-height:1.5;color:var(--soft)}
+/* approve */
+.ap{display:grid;grid-template-columns:1.25fr .75fr;gap:50px;align-items:center}
+.chat{background:var(--ink);color:#fff;padding:22px;box-shadow:0 40px 80px rgba(9,17,32,.2)}
+.chat .hd{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.12)}
+.chat .hd img{height:18px;filter:invert(1)}
+.chat .hd small{margin-left:auto;font-size:10px;letter-spacing:.16em;color:#7fd3ae;font-weight:500}
+.msg{background:#16203a;padding:16px 16px 14px;margin-top:16px;font-size:15px;line-height:1.5}
+.msg .k{font-size:10px;letter-spacing:.16em;color:var(--accent);font-weight:500}
+.msg b{display:block;margin-top:8px;font-size:17px}
+.msg p{color:#b9c6d2;margin-top:6px;font-size:14px}
+.msg .act{display:flex;gap:8px;margin-top:14px}
+.msg .act span{font-size:12px;font-weight:700;padding:9px 12px;border:1px solid rgba(255,255,255,.2)}
+.msg .act .yes{background:#fff;color:var(--ink);border-color:#fff;transition:all .4s}
+.me{margin:14px 0 0 auto;width:max-content;background:#fff;color:var(--ink);font-weight:700;font-size:14px;padding:10px 14px;opacity:0;transform:translateY(10px);transition:all .6s var(--ease) 1.4s}
+.done{margin-top:14px;font-size:13px;color:#b9c6d2;opacity:0;transition:opacity .6s 2.4s;display:flex;gap:8px;align-items:center}
+.done i{width:7px;height:7px;border-radius:50%;background:#3aa37a;flex:none}
+.chat.in .me{opacity:1;transform:none}.chat.in .done{opacity:1}
+.chat.in .msg .yes{background:#3aa37a;border-color:#3aa37a;color:#fff;transition-delay:1.2s}
+.ap ul{list-style:none;margin-top:30px;display:grid;gap:16px}
+.ap li{font-size:16.5px;line-height:1.5;color:var(--soft);padding-left:22px;position:relative}
+.ap li::before{content:"";position:absolute;left:0;top:10px;width:10px;height:1px;background:var(--ink)}
+.ap li b{color:var(--ink)}
+/* running */
+.run{display:grid;grid-template-columns:1.3fr .7fr;gap:50px;align-items:center}
+@media (max-width:900px){
+  .jr,.seven-band .row,.rings,.ap,.run{grid-template-columns:1fr;gap:34px}
+  .jr .side{position:static}
+  .sp h3{font-size:25px}
+  .seven-band{padding:90px 0}.big7{font-size:150px}
+  .rg{padding:26px 22px}.rg svg{width:88px;height:88px}
+  .ap .chat{order:2}
+}
+</style></head>
+<body>
+<nav id="nav"><div class="wrap">
+  <a class="brand" href="index.html"><img src="img/perspace-mark-ink.png" alt="">Perspace</a>
+  <div class="links"><a href="philosophy.html">Philosophy</a><a class="on" href="method.html">Method</a><a href="cockpit.html">Cockpit</a><a href="plugins.html">Plug-ins</a><a href="venture.html">Venture clienting</a><a class="mo" href="insights.html">Insights</a></div>
+  <a class="btn dark" href="mailto:hello@perspace.ai?subject=Walkthrough">Book a walkthrough →</a>
+  <button class="mnu" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+</div></nav>
+
+<section class="phero"><div class="glow"></div><div class="wrap grid">
+  <div class="copy">
+    <div class="tag rv">The method · the same on every company</div>
+    <h1 class="rv d1">Blueprint first. <b>Agentic from day one.</b></h1>
+    <p class="lede rv d2">We plug into what you already run. No migration, no timeline to sit through. We read the company, draw its blueprint, find the money and change how the work runs. Agents help from the first day, and take over a workflow once it has been fixed.</p>
+    <div class="btns rv d3"><a class="btn dark" href="#steps">Walk the eight steps ↓</a></div>
+  </div>
+  <div class="bph rv d2"><svg viewBox="0 0 500 400">
+    <g style="--d:.3s"><rect x="24" y="24" width="200" height="120"/><text x="38" y="46">FINANCE</text></g>
+    <g style="--d:.6s"><rect x="234" y="24" width="242" height="120"/><text x="248" y="46">SALES</text></g>
+    <g style="--d:.9s"><rect x="24" y="154" width="140" height="200"/><text x="38" y="176">PEOPLE</text></g>
+    <g style="--d:1.2s"><rect x="174" y="154" width="190" height="96"/><text x="188" y="176">OPERATIONS</text></g>
+    <g style="--d:1.5s"><rect x="374" y="154" width="102" height="200"/><text x="388" y="176">BUYING</text></g>
+    <g class="g" style="--d:1.9s"><rect x="174" y="260" width="190" height="94"/><text x="188" y="282">SYSTEMS</text></g>
+    <g class="pin" style="--d:2.6s"><circle class="ring" cx="424" cy="290" r="7"/><circle cx="424" cy="290" r="6"/><text x="424" y="322" text-anchor="middle">money found</text></g>
+    <g class="pin" style="--d:3.1s"><circle class="ring" cx="120" cy="100" r="7"/><circle cx="120" cy="100" r="6"/><text x="120" y="130" text-anchor="middle">money waiting</text></g>
+  </svg><span class="lab">A BLUEPRINT, DRAWN FROM THE COMPANY'S OWN FILES</span></div>
+</div></section>
+
+<!-- EIGHT STEPS -->
+<section class="pad" id="steps" style="padding-top:60px"><div class="wrap jr">
+  <div class="side">
+    <div class="tag rv">Eight steps, five rooms</div>
+    <h2 class="rv d1">Every company walks <b>the same road.</b></h2>
+    <p class="lede rv d2">Each step lights up in the cockpit as it lands, so you always know where you are and what is next.</p>
+    <div class="phase-now" id="phases"><span data-p="INPUT">INPUT</span><span data-p="CALIBRATE">CALIBRATE</span><span data-p="VALUE POCKETS">VALUE POCKETS</span><span data-p="THE WORK">THE WORK</span><span data-p="AI WORKFORCE">AI WORKFORCE</span></div>
+  </div>
+  <div class="steps" id="stepl"><div class="track"><i></i></div>
+    <div class="sp" data-p="INPUT"><div class="dot">1</div><div class="k">INPUT</div><h3>Plug in</h3><p>Your data, reports and documents, read where they sit. Our agents talk to your teams on the apps they already use. Nothing migrated.</p></div>
+    <div class="sp" data-p="CALIBRATE"><div class="dot">2</div><div class="k">CALIBRATE</div><h3>Form a view</h3><p>All of it drawn into one live picture of how the company really runs.</p></div>
+    <div class="sp" data-p="VALUE POCKETS"><div class="dot">3</div><div class="k">VALUE POCKETS</div><h3>Find the money</h3><p>Where the money leaks, each pocket priced and linked to the document it came from.</p></div>
+    <div class="sp" data-p="VALUE POCKETS"><div class="dot">4</div><div class="k">VALUE POCKETS</div><h3>Rank it</h3><p>Ordered by value, so the first move is the one that pays the most.</p></div>
+    <div class="sp" data-p="THE WORK"><div class="dot">5</div><div class="k">THE WORK</div><h3>Change how it is done</h3><p>Who does what, in what order, and what gets dropped. Written down and owned by a named person.</p></div>
+    <div class="sp" data-p="THE WORK"><div class="dot">6</div><div class="k">THE WORK</div><h3>Check it stuck</h3><p>Measured at 30, 60 and 90 days against the way it ran before.</p></div>
+    <div class="sp seven" data-p="AI WORKFORCE"><div class="dot">7</div><div class="k">AI WORKFORCE</div><h3>Automate one</h3><p>One workflow live, measured against the manual baseline.</p></div>
+    <div class="sp" data-p="AI WORKFORCE" style="padding-bottom:0"><div class="dot">8</div><div class="k">AI WORKFORCE</div><h3>Keep going</h3><p>Then the next, and the next. The picture stays live as the company moves.</p></div>
+  </div>
+</div></section>
+
+<!-- SEVEN -->
+<section class="dark seven-band"><div class="wrap row">
+  <div class="big7 rv">7</div>
+  <div>
+    <div class="tag rv">Why the agent waits</div>
+    <h2 class="rv d1" style="margin-top:24px">The agent is step seven. <b>It works on work that has been fixed.</b></h2>
+    <p class="lede rv d2">An agent pointed at a broken process only does the wrong work faster. So we fix the work first, prove it held, then hand the repeated part to a machine.</p>
+  </div>
+</div></section>
+
+<!-- RINGS -->
+<section class="pad"><div class="wrap">
+  <div class="head2">
+    <div><div class="tag rv">Proof it held</div><h2 class="rv d1">Checked at 30, 60 <b>and 90 days.</b></h2></div>
+    <p class="lede rv d2">Every change is measured against how the work ran before. A step counts as done when the number moves.</p>
+  </div>
+  <div class="rings" data-trigger>
+    <div class="rg"><svg viewBox="0 0 110 110"><circle class="bg" cx="55" cy="55" r="45"/><circle class="fg" cx="55" cy="55" r="45" style="--o:189"/></svg><div><b>30 days</b><span>The new way is in use. Who owns it is written down.</span></div></div>
+    <div class="rg"><svg viewBox="0 0 110 110"><circle class="bg" cx="55" cy="55" r="45"/><circle class="fg" cx="55" cy="55" r="45" style="--o:94"/></svg><div><b>60 days</b><span>It holds without us chasing it.</span></div></div>
+    <div class="rg"><svg viewBox="0 0 110 110"><circle class="bg" cx="55" cy="55" r="45"/><circle class="fg" cx="55" cy="55" r="45" style="--o:0"/></svg><div><b>90 days</b><span>The number moved. Now it is ready for an agent.</span></div></div>
+  </div>
+</div></section>
+
+<!-- RUNNING -->
+<section class="pad" style="padding-top:20px"><div class="wrap run">
+  <div>
+    <div class="device rv"><video autoplay muted loop playsinline poster="img/poster_work.jpg"><source src="img/clip_work.webm" type="video/webm"><source src="img/clip_work.mp4" type="video/mp4"></video></div>
+    <div class="honest">A real cockpit, renamed · names and figures changed</div>
+  </div>
+  <div>
+    <div class="tag rv">The work, running</div>
+    <h2 class="rv d1" style="margin-top:22px">Every pocket becomes <b>a piece of work.</b></h2>
+    <p class="lede rv d2" style="margin-top:22px">Four stages: write it down, make it right, give it a tool, give it an agent. Each one greys out until the one before is done.</p>
+  </div>
+</div></section>
+
+<!-- APPROVE -->
+<section class="pad" style="background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap ap">
+  <div>
+    <div class="tag rv">How you stay in charge</div>
+    <h2 class="rv d1" style="margin-top:22px">You approve the way <b>you reply to a message.</b></h2>
+    <ul class="rv d2">
+      <li><b>Every morning</b> three numbers that moved and one finding priced.</li>
+      <li><b>One decision</b> at a time, with the reason and the source attached.</li>
+      <li><b>Every reply</b> is logged. The call stays yours.</li>
+      <li><b>After launch</b> we run and update the agents for you.</li>
+    </ul>
+  </div>
+  <div class="chat" data-trigger>
+    <div class="hd"><img src="img/perspace-mark-ink.png" alt="">Perspace<small>● ONLINE</small></div>
+    <div class="msg"><div class="k">DECISION WAITING ON YOU</div><b>Approve the supplier ranking as the buying input?</b><p>Three suppliers, one ranked view, same spec. Closes about $340k a year.</p><div class="act"><span class="yes">Approve</span><span>See the source</span></div></div>
+    <div class="me">Approved</div>
+    <div class="done"><i></i>Ranking locked · finance told · logged to the record</div>
+  </div>
+</div></section>
+
+<section class="closeband"><div class="wrap">
+  <div class="m rv"><img src="img/mark-left-c.png" alt=""><img class="s" src="img/star-crop.png" alt=""><img src="img/mark-right-c.png" alt=""></div>
+  <h2 class="rv d1">Start with <b>one pocket.</b></h2>
+  <p class="lede rv d2">We show you the money, go in and get it, and prove it moved.</p>
+  <div class="btns rv d3"><a class="btn dark" href="mailto:hello@perspace.ai?subject=Walkthrough">Book a walkthrough →</a><a class="btn line" href="cockpit.html">See the cockpit →</a></div>
+</div></section>
+
+<footer><div class="wrap">
+  <a class="brand" href="index.html"><img src="img/perspace-mark-ink.png" alt="">Perspace</a>
+  <div class="ft"><a href="philosophy.html">Philosophy</a><a href="method.html">Method</a><a href="cockpit.html">Cockpit</a><a href="plugins.html">Plug-ins</a><a href="venture.html">Venture clienting</a><a href="insights.html">Insights</a></div>
+  <div class="tl">We operate the future · Dubai · Abu Dhabi · hello@perspace.ai</div>
+</div></footer>
+<script src="site.js"></script>
+<script>
+(function(){
+  const list=document.getElementById('stepl'), bar=list.querySelector('.track i'), sps=[...list.querySelectorAll('.sp')], chips=[...document.querySelectorAll('#phases span')];
+  function f(){
+    const r=list.getBoundingClientRect(), mid=innerHeight*.55;
+    const k=Math.max(0,Math.min(1,(mid-r.top)/r.height));
+    bar.style.height=(k*100)+'%';
+    let cur=null;
+    sps.forEach(s=>{const lit=s.getBoundingClientRect().top<mid; s.classList.toggle('lit',lit); if(lit) cur=s.dataset.p;});
+    chips.forEach(c=>c.classList.toggle('on',c.dataset.p===cur));
+  }
+  addEventListener('scroll',f,{passive:true}); addEventListener('resize',f); f();
+})();
+</script>
+</body></html>

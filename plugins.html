@@ -1,146 +1,218 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Perspace · Plug-ins</title>
-<meta name="robots" content="noindex, nofollow">
-<link rel="preconnect" href="https://api.fontshare.com">
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Plug-ins · Perspace</title>
+<meta name="description" content="A menu of ready-to-use plug-ins. The cockpit finds where you are losing money, you plug in the ones that fix it.">
+<link rel="icon" type="image/png" href="img/favicon.png">
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="hob-pages.css?v=20260919a">
+<link rel="stylesheet" href="site.css">
 <style>
-.appscreen{margin-top:26px;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 30px 80px -40px rgba(0,0,0,0.6)}
-.appbar{display:flex;align-items:center;gap:8px;padding:12px 18px;background:rgba(167,194,208,0.05);border-bottom:1px solid var(--line)}
-.appbar i{width:9px;height:9px;border-radius:50%;background:rgba(167,194,208,0.28)}
-.appbar .u{margin-left:10px;font-family:'IBM Plex Sans',sans-serif;font-size:12px;color:var(--t)}
-.appbar .cnt{margin-left:auto;font-family:'IBM Plex Sans',sans-serif;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--good);border:1px solid rgba(130,183,158,0.5);border-radius:999px;padding:4px 10px}
-.appwin{height:52vh;min-height:360px;overflow:hidden;position:relative;background:var(--panel);-webkit-mask-image:linear-gradient(to bottom,#000 88%,transparent);mask-image:linear-gradient(to bottom,#000 88%,transparent)}
-.apptrack{padding:18px;display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:10px;animation:appscroll 60s linear infinite}
-.appwin:hover .apptrack{animation-play-state:paused}
-@keyframes appscroll{from{transform:translateY(0)}to{transform:translateY(-50%)}}
-.apptile{display:flex;align-items:center;gap:10px;background:rgba(167,194,208,0.05);border:1px solid var(--line);border-radius:11px;padding:11px 12px}
-.apptile .ic{width:32px;height:32px;border-radius:8px;background:rgba(176,203,232,0.14);color:var(--accent);font-family:'IBM Plex Sans',sans-serif;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.apptile .an{font-size:13px;font-weight:600;color:var(--ink);line-height:1.15}
-.apptile .ac{font-family:'IBM Plex Sans',sans-serif;font-size:9px;letter-spacing:0.05em;text-transform:uppercase;color:var(--dim);margin-top:2px}
-.appmore{text-align:center;font-family:'IBM Plex Sans',sans-serif;font-size:12px;color:var(--dim);padding:16px}
-.csscroll{height:55vh;min-height:360px;overflow:hidden;position:relative;margin-top:24px;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 7%,#000 93%,transparent)}
-.cstrack{display:flex;flex-direction:column;gap:14px;animation:csscroll 60s linear infinite}
-.csscroll:hover .cstrack{animation-play-state:paused}
-@keyframes csscroll{from{transform:translateY(0)}to{transform:translateY(-50%)}}
-.cscard{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:14px;padding:20px 22px;cursor:pointer;transition:border-color .15s}
-.cscard:hover{border-color:var(--accent)}
-.cscard .cssec{font-family:'IBM Plex Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);font-weight:700}
-.cscard .csp{font-weight:600;font-size:17px;color:var(--ink);margin:8px 0 6px}
-.cscard .csd{font-size:13.5px;color:var(--t);line-height:1.5}
-.cscard .csn{margin-top:12px;display:flex;gap:20px;flex-wrap:wrap}
-.cscard .csn b{font-family:'IBM Plex Sans',sans-serif;font-size:15px;color:var(--good)}
-.cscard .csn span{font-size:11px;color:var(--dim);display:block}
-.ao{font-family:'IBM Plex Sans',sans-serif;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:var(--dim);margin-top:4px}.ao.l{color:var(--t)}.ao.s{color:var(--accent);font-weight:700}.apptile.src{border-color:var(--accent)}
-.born{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}@media(max-width:820px){.born{grid-template-columns:1fr}}
-.bo{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px 22px 20px}.bo .bn{width:30px;height:30px;border-radius:50%;background:rgba(167,194,208,0.12);color:var(--accent);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}.bo .bh{font-weight:600;font-size:17px;color:var(--ink);margin-bottom:6px}.bo p{font-size:14px;color:var(--t);line-height:1.55;margin:0}
-.bornex{margin-top:16px;border-left:3px solid var(--accent);padding:14px 18px;background:var(--panel);border-radius:0 12px 12px 0;font-size:14.5px;color:var(--t);line-height:1.55}.bornex b{color:var(--ink)}
-@media(max-width:820px){#nav .wrap{flex-wrap:wrap;height:auto;padding:8px 0 8px;row-gap:6px;justify-content:center}#nav .brand{width:100%;text-align:center}#nav .links{width:100%;margin-left:0;flex-wrap:nowrap;justify-content:center;gap:4px}#nav .links a{font-size:11.5px;letter-spacing:0;padding:6px 5px;white-space:nowrap}#nav .links a.cta{padding:6px 9px}}@media(max-width:360px){#nav .links a{font-size:10.5px;padding:6px 4px}}
-</style>
-</head><body>
+/* hero socket */
+.sock{position:relative;height:420px}
+.sock .port{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:240px;height:240px;border-radius:50%;background:var(--ink);display:grid;place-items:center;box-shadow:0 0 0 16px rgba(9,17,32,.05),0 0 0 34px rgba(9,17,32,.03)}
+.sock .port img{height:62px;animation:spin2 18s linear infinite;filter:brightness(1.4)}
+.sock .chip{position:absolute;background:var(--card);border:1px solid var(--ink);padding:10px 14px;font-size:14px;font-weight:700;display:flex;gap:10px;align-items:center;white-space:nowrap;box-shadow:0 14px 30px rgba(9,17,32,.08);animation:plug 6s var(--ease) infinite;animation-delay:var(--d)}
+.sock .chip i{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+@keyframes plug{0%{opacity:0;transform:translate(var(--x),var(--y)) scale(.9)}14%{opacity:1;transform:translate(var(--x),var(--y)) scale(1)}55%{opacity:1;transform:translate(var(--x),var(--y))}75%{opacity:0;transform:translate(0,0) scale(.4)}100%{opacity:0;transform:translate(0,0) scale(.4)}}
+.sock .chip{left:calc(50% - 60px);top:calc(50% - 20px)}
+/* origins */
+.orig{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.og{border:1px solid var(--line);background:var(--card);padding:28px 26px}
+.og .dot{width:12px;height:12px;border-radius:50%;margin-bottom:18px}
+.og b{font-size:21px;font-weight:700;letter-spacing:-.015em}
+.og p{font-size:15.5px;line-height:1.55;color:var(--soft);margin-top:10px}
+.d-shelf{background:var(--silver)}.d-cockpit{background:var(--accent)}.d-venture{background:var(--ink)}
+/* menu */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px;align-items:center}
+.filters button{font:500 13.5px var(--f);padding:9px 14px;border:1px solid var(--line);background:var(--ground);color:var(--soft);cursor:pointer;transition:all .25s}
+.filters button:hover{border-color:var(--ink);color:var(--ink)}
+.filters button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.filters .cnt{margin-left:auto;font-size:12px;letter-spacing:.14em;color:var(--faint);font-weight:500}
+.menu{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.pi{background:var(--card);border:1px solid var(--line);padding:14px;display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:center;position:relative;transition:transform .3s var(--ease),border-color .3s,box-shadow .3s}
+.pi:hover{transform:translateY(-3px);border-color:var(--ink);box-shadow:0 14px 28px rgba(9,17,32,.08)}
+.pi .ic{width:40px;height:40px;display:grid;place-items:center;font-size:12.5px;font-weight:700;background:var(--blue);color:var(--accent-ink)}
+.pi b{display:block;font-size:15px;font-weight:700}
+.pi span{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-top:3px}
+.pi em{grid-column:1/-1;font-style:normal;font-size:11px;letter-spacing:.06em;color:var(--soft);display:flex;align-items:center;gap:7px;border-top:1px dashed var(--line);padding-top:10px}
+.pi em::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.o-shelf em::before{background:var(--silver)}.o-venture em::before{background:var(--ink)}
+.o-venture{border-color:var(--ink)}.o-venture .ic{background:var(--ink);color:#fff}
+.pi.hide{display:none}
+.menu-note{margin-top:26px;font-size:15px;color:var(--soft);max-width:44em;line-height:1.55}
+/* born */
+.born{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(255,255,255,.2);margin-top:50px}
+.bn{padding:34px 30px 10px 0;position:relative}
+.bn+.bn{padding-left:30px;border-left:1px solid rgba(255,255,255,.12)}
+.bn .n{font-size:13px;font-weight:700;width:32px;height:32px;border-radius:50%;border:1px solid var(--accent);display:grid;place-items:center;color:var(--accent)}
+.bn h3{font-size:24px;font-weight:700;letter-spacing:-.015em;margin-top:20px;color:#fff}
+.bn p{font-size:16px;line-height:1.55;color:#b9c6d2;margin-top:12px;max-width:22em}
+.both{margin-top:50px;padding-top:30px;border-top:1px solid rgba(255,255,255,.12);font-size:20px;line-height:1.5;color:#b9c6d2;max-width:40em}
+.both b{color:#fff}
+/* cases */
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.cs{background:var(--card);border:1px solid var(--line);padding:28px 26px 26px;display:flex;flex-direction:column}
+.cs .k{font-size:10.5px;letter-spacing:.16em;color:var(--accent-ink);font-weight:500}
+.cs h3{font-size:22px;font-weight:700;letter-spacing:-.015em;line-height:1.25;margin-top:12px}
+.cs p{font-size:15px;line-height:1.55;color:var(--soft);margin-top:10px}
+.cs .st{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:auto;padding-top:22px;border-top:1px solid var(--line)}
+.cs .st div{padding-top:16px}
+.cs .st b{display:block;font-size:24px;font-weight:300;letter-spacing:-.02em}
+.cs .st span{display:block;font-size:12px;line-height:1.35;color:var(--faint);margin-top:4px}
+.cs .gap{height:22px}
+@media (max-width:1100px){.menu{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:900px){
+  .orig,.cases,.born{grid-template-columns:1fr}
+  .menu{grid-template-columns:1fr 1fr}
+  .bn,.bn+.bn{padding:26px 0 10px;border-left:0;border-top:1px solid rgba(255,255,255,.12)}
+  .sock{height:320px}.sock .port{width:170px;height:170px}.sock .port img{height:46px}
+  .filters{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px}.filters button{flex:none}.filters .cnt{display:none}
+}
+@media (max-width:480px){.menu{grid-template-columns:1fr}}
+</style></head>
+<body>
 <nav id="nav"><div class="wrap">
-  <a href="index.html" class="brand">Perspace<span class="pmark enter"><i class="bl"></i><i class="st"></i><i class="br"></i></span></a>
-  <input class="navx" type="checkbox" id="navx" aria-hidden="true"><label class="burger" for="navx" aria-label="Menu"><span></span></label>
-  <div class="links">
-    <a href="index.html" class="cta">Cockpit</a>
-    <a href="venture.html" class="hidem">Venture clienting</a>
-    <a href="plugins.html" class="hidem on">Plug-ins</a>
-    <a href="philosophy.html" class="hidem">Philosophy</a>
-    <a href="insights.html" class="hidem">Insights</a>
-  </div>
+  <a class="brand" href="index.html"><img src="img/perspace-mark-ink.png" alt="">Perspace</a>
+  <div class="links"><a href="philosophy.html">Philosophy</a><a href="method.html">Method</a><a href="cockpit.html">Cockpit</a><a class="on" href="plugins.html">Plug-ins</a><a href="venture.html">Venture clienting</a><a class="mo" href="insights.html">Insights</a></div>
+  <a class="btn dark" href="mailto:hello@perspace.ai?subject=Walkthrough">Book a walkthrough →</a>
+  <button class="mnu" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
 </div></nav>
 
-<div class="phero" style="padding-bottom:20px"><div class="wrap">
-  <h1>Plug in what fixes <b>your problem.</b></h1>
-  <p class="lede">A menu of ready-to-use plug-ins. Some are standard and off the shelf: collections, reporting, hiring, client servicing. Some are built from what your Cockpit learns. You plug in what you need, and Cockpit tells you which ones.</p>
-  <div class="stats">
-    <div class="stat"><div class="v">100s</div><div class="l">plug-ins, ready to go</div></div>
-    <div class="stat"><div class="v">40+</div><div class="l">proofs of concept run</div></div>
-    <div class="stat"><div class="v">6</div><div class="l">industries live</div></div>
-    <div class="stat"><div class="v">1000s</div><div class="l">manual hours returned</div></div>
+<section class="phero"><div class="glow"></div><div class="wrap grid">
+  <div class="copy">
+    <div class="tag rv">Plug-ins · 04 AI and the right tools</div>
+    <h1 class="rv d1">Plug in what <b>fixes your problem.</b></h1>
+    <p class="lede rv d2">The cockpit finds where you are losing money. You plug in the ones that fix it. Some are off the shelf, some are learned from a cockpit, some we source from the world.</p>
+    <div class="btns rv d3"><a class="btn dark" href="#menu">See the menu ↓</a><a class="btn line" href="mailto:hello@perspace.ai?subject=Which%20plug-ins%20fit%20us">Which ones fit you? →</a></div>
   </div>
-</div></div>
-
-<section><div class="wrap">
-  <h2>What you can <b>plug in.</b></h2>
-  <div class="appscreen">
-    <div class="appbar"><i></i><i></i><i></i><span class="u">perspace · products</span><span class="cnt">growing weekly</span></div>
-    <div class="appwin"><div class="apptrack" id="apptrack"></div></div>
+  <div class="sock rv d2" aria-hidden="true">
+    <div class="port"><img src="img/star-crop.png" alt=""></div>
+    <div class="chip" style="--x:-150px;--y:-150px;--d:0s"><i></i>Collections</div>
+    <div class="chip" style="--x:140px;--y:-120px;--d:1s"><i></i>Contract Reader</div>
+    <div class="chip" style="--x:150px;--y:120px;--d:2s"><i></i>Polynome</div>
+    <div class="chip" style="--x:-170px;--y:140px;--d:3s"><i></i>Cash Forecast</div>
+    <div class="chip" style="--x:-40px;--y:-190px;--d:4s"><i></i>Recruiter</div>
+    <div class="chip" style="--x:10px;--y:180px;--d:5s"><i></i>Dispatch</div>
   </div>
-  <div class="appmore">Cockpit finds where you are bleeding. You plug in the ones that fix it. New ones added every week, and every client inherits them.<br>Every plug-in says where it came from: off the shelf, learned from a cockpit, or sourced through venture clienting.</div>
-  <div class="cta-row" style="display:flex;justify-content:center;margin-top:8px"><a href="mailto:hello@perspace.ai?subject=Walkthrough" class="btn p">Which ones fit you? Book a walkthrough</a></div>
 </div></section>
 
-<section id="born"><div class="wrap">
-  <h2>How a plug-in <b>is born.</b></h2>
+<!-- ORIGINS -->
+<section class="pad" style="padding-top:20px"><div class="wrap">
+  <div class="tag rv">Every plug-in says where it came from</div>
+  <div class="orig" style="margin-top:30px">
+    <div class="og rv"><div class="dot d-shelf"></div><b>Off the shelf</b><p>Standard work every company has, ready on day one.</p></div>
+    <div class="og rv d1"><div class="dot d-cockpit"></div><b>Learned from a cockpit</b><p>Built once for a real client problem, then offered to every client after.</p></div>
+    <div class="og rv d2"><div class="dot d-venture"></div><b>Sourced from the world</b><p>Proven technology we find through <a href="venture.html" style="text-decoration:underline">venture clienting</a>, when that beats building it.</p></div>
+  </div>
+</div></section>
+
+<!-- MENU -->
+<section class="pad" id="menu" style="padding-top:40px"><div class="wrap">
+  <div class="head2">
+    <div><div class="tag rv">The menu</div><h2 class="rv d1">What you can <b>plug in.</b></h2></div>
+    <p class="lede rv d2">New ones join every week, and every client inherits them.</p>
+  </div>
+  <div class="filters" id="flt"><button class="on" data-c="ALL">All</button><button data-c="FINANCE">Finance</button><button data-c="PEOPLE">People</button><button data-c="SALES">Sales</button><button data-c="LEGAL AND RISK">Legal and Risk</button><button data-c="OPERATIONS">Operations</button><button data-c="SUPPLY">Supply</button><button data-c="REPORTING AND CONTENT">Reporting and Content</button><span class="cnt" id="cnt"></span></div>
+  <div class="menu" id="mnu">
+    <div class="pi o-shelf" data-c="FINANCE"><div class="ic">C</div><div><b>Collections</b><span>Finance</span></div><em>Off the shelf</em></div>
+    <div class="pi o-cockpit" data-c="FINANCE"><div class="ic">I</div><div><b>Invoice</b><span>Finance</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="FINANCE"><div class="ic">R</div><div><b>Reconciler</b><span>Finance</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="FINANCE"><div class="ic">EA</div><div><b>Expense Audit</b><span>Finance</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="FINANCE"><div class="ic">CF</div><div><b>Cash Forecast</b><span>Finance</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="FINANCE"><div class="ic">P</div><div><b>Payroll</b><span>Finance</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="FINANCE"><div class="ic">RR</div><div><b>Revenue Recognition</b><span>Finance</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="PEOPLE"><div class="ic">R</div><div><b>Recruiter</b><span>People</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="PEOPLE"><div class="ic">O</div><div><b>Onboarding</b><span>People</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="PEOPLE"><div class="ic">LA</div><div><b>Leave & Attendance</b><span>People</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="PEOPLE"><div class="ic">L</div><div><b>Letters</b><span>People</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="PEOPLE"><div class="ic">R</div><div><b>Rostering</b><span>People</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="SALES"><div class="ic">QB</div><div><b>Quote Builder</b><span>Sales</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="SALES"><div class="ic">LQ</div><div><b>Lead Qualifier</b><span>Sales</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="SALES"><div class="ic">P</div><div><b>Pricing</b><span>Sales</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="SALES"><div class="ic">R</div><div><b>Renewals</b><span>Sales</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="SALES"><div class="ic">P</div><div><b>Proposal</b><span>Sales</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="SALES"><div class="ic">PR</div><div><b>Pipeline Review</b><span>Sales</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="SALES"><div class="ic">CW</div><div><b>Churn Watch</b><span>Sales</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="LEGAL AND RISK"><div class="ic">CR</div><div><b>Contract Reader</b><span>Legal and Risk</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="LEGAL AND RISK"><div class="ic">C</div><div><b>Compliance</b><span>Legal and Risk</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="LEGAL AND RISK"><div class="ic">K</div><div><b>KYC</b><span>Legal and Risk</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="LEGAL AND RISK"><div class="ic">A</div><div><b>Approvals</b><span>Legal and Risk</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="LEGAL AND RISK"><div class="ic">AT</div><div><b>Audit Trail</b><span>Legal and Risk</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="LEGAL AND RISK"><div class="ic">C</div><div><b>Claims</b><span>Legal and Risk</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="LEGAL AND RISK"><div class="ic">FW</div><div><b>Fraud Watch</b><span>Legal and Risk</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-venture" data-c="OPERATIONS"><div class="ic">P</div><div><b>Polynome</b><span>Operations</span></div><em>Sourced · venture clienting</em></div>
+    <div class="pi o-cockpit" data-c="OPERATIONS"><div class="ic">IT</div><div><b>Inbox Triage</b><span>Operations</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="OPERATIONS"><div class="ic">S</div><div><b>Scheduler</b><span>Operations</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="OPERATIONS"><div class="ic">D</div><div><b>Dispatch</b><span>Operations</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="OPERATIONS"><div class="ic">ST</div><div><b>Site Tracker</b><span>Operations</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="OPERATIONS"><div class="ic">H</div><div><b>Handoff</b><span>Operations</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="OPERATIONS"><div class="ic">E</div><div><b>Escalation</b><span>Operations</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="OPERATIONS"><div class="ic">TT</div><div><b>Ticket Triage</b><span>Operations</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="SUPPLY"><div class="ic">I</div><div><b>Inventory</b><span>Supply</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="SUPPLY"><div class="ic">F</div><div><b>Forecaster</b><span>Supply</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="SUPPLY"><div class="ic">VS</div><div><b>Vendor Screener</b><span>Supply</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="SUPPLY"><div class="ic">CS</div><div><b>Catalogue Scout</b><span>Supply</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="SUPPLY"><div class="ic">OD</div><div><b>Order Desk</b><span>Supply</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="SUPPLY"><div class="ic">R</div><div><b>Restock</b><span>Supply</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="SUPPLY"><div class="ic">QQ</div><div><b>Quality QC</b><span>Supply</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="REPORTING AND CONTENT"><div class="ic">RW</div><div><b>Report Writer</b><span>Reporting and Content</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="REPORTING AND CONTENT"><div class="ic">DC</div><div><b>Data Cleaner</b><span>Reporting and Content</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="REPORTING AND CONTENT"><div class="ic">DF</div><div><b>Doc Filer</b><span>Reporting and Content</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="REPORTING AND CONTENT"><div class="ic">MN</div><div><b>Meeting Notes</b><span>Reporting and Content</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="REPORTING AND CONTENT"><div class="ic">CD</div><div><b>Content Drafter</b><span>Reporting and Content</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="REPORTING AND CONTENT"><div class="ic">S</div><div><b>SEO</b><span>Reporting and Content</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="REPORTING AND CONTENT"><div class="ic">S</div><div><b>Social</b><span>Reporting and Content</span></div><em>Learned from a cockpit</em></div>
+    <div class="pi o-cockpit" data-c="REPORTING AND CONTENT"><div class="ic">S</div><div><b>Sentiment</b><span>Reporting and Content</span></div><em>Learned from a cockpit</em></div>
+  </div>
+</div></section>
+
+<!-- BORN -->
+<section class="dark pad"><div class="wrap">
+  <div class="tag rv">How a plug-in is born</div>
+  <h2 class="rv d1" style="margin-top:24px;color:#8ea3b3">One client, one problem. <b style="color:#fff">Then every client after.</b></h2>
   <div class="born">
-    <div class="bo"><div class="bn">1</div><div class="bh">One client, one problem.</div><p>A construction group could not see what happened on its sites between the weekly reports.</p></div>
-    <div class="bo"><div class="bn">2</div><div class="bh">We source the answer once.</div><p>That is venture clienting. We found Polynome, cameras and microphones that read a site the way a foreman would, and plugged it into that client's Cockpit.</p></div>
-    <div class="bo"><div class="bn">3</div><div class="bh">It joins the menu.</div><p>A manufacturing client plugged the same thing into its floor next. Every client after inherits it.</p></div>
+    <div class="bn rv"><div class="n">1</div><h3>One client, one problem.</h3><p>A construction group could not see what happened on its sites between the weekly reports.</p></div>
+    <div class="bn rv d1"><div class="n">2</div><h3>We source the answer once.</h3><p>We found Polynome, cameras and microphones that read a site the way a foreman would, and plugged it into that client's cockpit.</p></div>
+    <div class="bn rv d2"><div class="n">3</div><h3>It joins the menu.</h3><p>A manufacturing client plugged the same thing into its floor next. Every client after inherits it.</p></div>
   </div>
-  <div class="bornex"><b>Polynome runs the floor, Cockpit runs the company.</b> Built by Polynome, sold through Cockpit. And Cockpit sold through Polynome, the deal runs both ways.</div>
+  <p class="both rv"><b>Polynome runs the floor, the cockpit runs the company.</b> Built by Polynome, sold through the cockpit, and the cockpit sold through Polynome. The deal runs both ways.</p>
 </div></section>
 
-<section><div class="wrap">
-  <h2>Working in production.</h2>
-  <div class="csscroll"><div class="cstrack" id="cstrack"></div></div>
+<!-- CASES -->
+<section class="pad"><div class="wrap">
+  <div class="head2">
+    <div><div class="tag rv">Working in production</div><h2 class="rv d1">Plugged in, <b>and running.</b></h2></div>
+    <p class="lede rv d2">Six companies, six shapes of problem. The same menu underneath.</p>
+  </div>
+  <div class="cases">
+    <div class="cs rv"><div class="k">LOGISTICS GROUP</div><h3>The whole company on one screen, first agents live.</h3><p>Mapped from its own documents, with collections, payroll and the radar in production.</p><div class="st"><div><b>10</b><span>pockets found</span></div><div><b>4</b><span>agents on the org chart</span></div><div><b>90+ days</b><span>old money, now being collected</span></div></div></div>
+    <div class="cs rv d1"><div class="k">CONSUMER AND RETAIL BRAND</div><h3>A distributed brand run by an agent team.</h3><p>Inventory, content, search and curation moved to agents inside the existing tools.</p><div class="st"><div><b>2</b><span>people run it</span></div><div><b>9</b><span>agents alongside</span></div><div><b>24/7</b><span>coverage</span></div></div></div>
+    <div class="cs rv d2"><div class="k">MARKETING AND CREATIVE AGENCY</div><h3>A small team, a large agent workforce.</h3><p>The repeated delivery work moved onto agents, so a lean team runs a much larger output.</p><div class="st"><div><b>7</b><span>people</span></div><div><b>93</b><span>agents</span></div><div><b>Live</b><span>in production</span></div></div></div>
+    <div class="cs rv"><div class="k">PET CARE, RETAIL AND SERVICES</div><h3>The whole company on one shared surface.</h3><p>A company chat with an agent builder, and a customer inbox that turns messages into actions, wired to the ERP.</p><div class="st"><div><b>1</b><span>shared surface</span></div><div><b>Inbox</b><span>to action, automated</span></div><div><b>Live</b><span>in production</span></div></div></div>
+    <div class="cs rv d1"><div class="k">NATIONAL UTILITY</div><h3>Inspections without putting crews at height.</h3><p>A proven drone and vision inspection, sourced and run against the live workflow.</p><div class="st"><div><b>40</b><span>sites in the trial</span></div><div><b>Trial</b><span>to deployment</span></div><div><b>Crews</b><span>off the towers</span></div></div></div>
+    <div class="cs rv d2"><div class="k">ENERGY COMPANY</div><h3>The same category, bought three ways at three prices.</h3><p>Agents read the contracts and surfaced the overlap, priced and traced to source.</p><div class="st"><div><b>$340k</b><span>a year of overlap</span></div><div><b>Minutes</b><span>for the monthly report</span></div><div><b>Every $</b><span>traced to source</span></div></div></div>
+  </div>
+</div></section>
+
+<section class="closeband"><div class="wrap">
+  <div class="m rv"><img src="img/mark-left-c.png" alt=""><img class="s" src="img/star-crop.png" alt=""><img src="img/mark-right-c.png" alt=""></div>
+  <h2 class="rv d1">Which ones <b>fit you?</b></h2>
+  <p class="lede rv d2">The cockpit tells you. Start with one pocket and plug in what closes it.</p>
+  <div class="btns rv d3"><a class="btn dark" href="mailto:hello@perspace.ai?subject=Walkthrough">Book a walkthrough →</a><a class="btn line" href="venture.html">Venture clienting →</a></div>
 </div></section>
 
 <footer><div class="wrap">
-  <div class="fb">Perspace<i></i></div>
-  <div class="fm">We operate the future · Dubai · Abu Dhabi · <a href="mailto:hello@perspace.ai">hello@perspace.ai</a></div>
-  <nav class="fl"><a href="index.html">Cockpit</a><a href="venture.html">Venture clienting</a><a href="plugins.html">Plug-ins</a><a href="philosophy.html">Philosophy</a><a href="insights.html">Insights</a></nav>
+  <a class="brand" href="index.html"><img src="img/perspace-mark-ink.png" alt="">Perspace</a>
+  <div class="ft"><a href="philosophy.html">Philosophy</a><a href="method.html">Method</a><a href="cockpit.html">Cockpit</a><a href="plugins.html">Plug-ins</a><a href="venture.html">Venture clienting</a><a href="insights.html">Insights</a></div>
+  <div class="tl">We operate the future · Dubai · Abu Dhabi · hello@perspace.ai</div>
 </div></footer>
-
+<script src="site.js"></script>
 <script>
-var AGENTS=[["Polynome","Floor · eyes and ears","sourced"],
- ["Collections","Finance","standard"],["Invoice","Finance"],["Reconciler","Finance"],["Expense Audit","Finance"],["Cash Forecast","Finance"],["Payroll","Finance"],["Revenue Recognition","Finance"],
- ["Recruiter","People"],["Onboarding","People"],["Leave & Attendance","People"],["Letters","People"],
- ["Quote Builder","Sales"],["Lead Qualifier","Sales"],["Pricing","Sales"],["Renewals","Sales"],["Proposal","Sales"],["Pipeline Review","Sales"],
- ["Contract Reader","Legal"],["Compliance","Legal"],["KYC","Legal"],["Approvals","Legal"],["Audit Trail","Legal"],
- ["Inbox Triage","Ops"],["Scheduler","Ops"],["Dispatch","Ops"],["Site Tracker","Ops"],["Handoff","Ops"],["Escalation","Ops"],["Ticket Triage","Ops"],
- ["Inventory","Supply"],["Forecaster","Supply"],["Vendor Screener","Supply"],["Catalogue Scout","Supply"],["Order Desk","Supply"],["Restock","Supply"],["Quality QC","Supply"],
- ["Report Writer","Reporting"],["Data Cleaner","Reporting"],["Doc Filer","Reporting"],["Meeting Notes","Reporting"],
- ["Content Drafter","Content"],["SEO","Content"],["Social","Content"],["Sentiment","Content"],
- ["Claims","Insurance"],["Fraud Watch","Risk"],["Churn Watch","Growth"],["Rostering","Ops"]
-];
-(function(){var el=document.getElementById('apptrack');if(!el)return;
- function ini(n){return n.replace(/[^A-Za-z ]/g,'').split(' ').map(function(w){return w[0];}).join('').slice(0,2).toUpperCase();}
- function org(k){return k==='sourced'?'<div class="ao s">sourced · venture clienting</div>':(k==='standard'?'<div class="ao">off the shelf</div>':'<div class="ao l">learned from a cockpit</div>');}
- function tile(a){return '<div class="apptile'+(a[2]==='sourced'?' src':'')+'"><div class="ic">'+ini(a[0])+'</div><div><div class="an">'+a[0]+'</div><div class="ac">'+a[1]+'</div>'+org(a[2])+'</div></div>';}
- var h=AGENTS.map(tile).join('');el.innerHTML=h+h;})();
-
-var CS=[
- ["Logistics group","The whole company on one screen, first agents live.","We mapped the group from its own documents and put the first agents into production: collections, payroll and the radar.",[["AED 13.4M","sitting past 90 days, now being collected"],["10","pockets found"],["4","agents on the org chart"]]],
- ["Consumer / retail brand","A distributed brand run by an agent team.","Inventory, content, SEO and curation moved to agents inside the existing tools.",[["2","people run it"],["9","agents alongside"],["24/7","coverage"]]],
- ["Marketing & creative agency","A small team, a large agent workforce.","The repetitive delivery work moved onto agents, so a lean team runs a much larger output.",[["7","people"],["93","agents"],["Live","in production"]]],
- ["Pet-care retail & services","The whole company on one shared surface.","A company chat plus an agent builder, a customer inbox that turns messages into actions, wired to the ERP.",[["1","shared surface"],["Inbox → action","automated"],["Live","in production"]]],
- ["National utility","Inspections without putting crews at height.","We sourced a proven drone and vision inspection and ran it against the live workflow.",[["40","sites in the POC"],["POC","to deployment"],["↓ risk","crews off towers"]]],
- ["Energy company","The same category, bought three ways at three prices.","Spend-intelligence agents read the contracts and surfaced the overlap, priced and traced to source.",[["≈ $340k/yr","overlap found"],["Minutes","the monthly report"],["Every $","traced to source"]]]
-];
-(function(){var el=document.getElementById('cstrack');if(!el)return;
- function card(c){return '<div class="cscard"><div class="cssec">'+c[0]+'</div><div class="csp">'+c[1]+'</div><div class="csd">'+c[2]+'</div><div class="csn">'+c[3].map(function(n){return '<div><b>'+n[0]+'</b><span>'+n[1]+'</span></div>';}).join('')+'</div></div>';}
- var h=CS.map(card).join('');el.innerHTML=h+h;})();
-</script>
-<script>(function(){function go(){[].forEach.call(document.querySelectorAll('.pmark.enter'),function(m){setTimeout(function(){m.classList.remove('enter');},1500);});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();})();</script>
-<script>
-/* the routes that carry something are marked live, so the pulse runs on the
-   lines that mean a deployment rather than on every line on the map. */
 (function(){
- var ls=document.querySelectorAll('.maplines line');
- for(var i=0;i<ls.length;i++) if(i%2===0) ls[i].classList.add('live');
-})();
-</script>
-<script>
-/* close the menu when a link is taken, so returning to the page is not a trap */
-(function(){
- var x=document.getElementById('navx'); if(!x)return;
- var ls=document.querySelectorAll('#nav .links a');
- for(var i=0;i<ls.length;i++) ls[i].addEventListener('click',function(){x.checked=false;});
- document.addEventListener('keydown',function(e){if(e.key==='Escape')x.checked=false;});
+  const f=document.getElementById('flt'), cards=[...document.querySelectorAll('#mnu .pi')], cnt=document.getElementById('cnt');
+  function show(c){ let n=0; cards.forEach(el=>{const on=c==='ALL'||el.dataset.c===c; el.classList.toggle('hide',!on); if(on) n++;}); cnt.textContent=n.toLocaleString('en-US')+' PLUG-INS'; }
+  f.addEventListener('click',e=>{const b=e.target.closest('button'); if(!b) return; f.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b)); show(b.dataset.c);});
+  show('ALL');
 })();
 </script>
 </body></html>

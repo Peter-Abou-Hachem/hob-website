@@ -251,7 +251,7 @@ footer .tl{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:
   .space .frame{width:78vw}.space .bk{height:80%}
   .live{position:relative;left:auto;bottom:auto;transform:none;width:auto;margin-top:10px;animation:none;opacity:1}
   .scrollcue{display:none}
-  .space{height:220vh}.space .frame{width:86vw;margin-top:18vh}.space .words{top:12vh}
+  .space{height:220vh}.space .frame{width:72vw;margin-top:18vh}.space .words{top:12vh}.space .bk{height:72%}.space .bk.l{right:calc(100% + 6px)}.space .bk.r{left:calc(100% + 6px)}
   .boxhead,.mhead,.data .grid,.fd{grid-template-columns:1fr;gap:28px}
   .box{grid-template-columns:1fr 1fr}.tile{border-bottom:1px solid var(--ink);min-height:0}.tile:nth-child(2n){border-right:0}
   .ck .grid{grid-template-columns:1fr;gap:26px}
@@ -265,28 +265,45 @@ footer .tl{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:
   .pad{padding:90px 0}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.mark .l,.mark .r,.mark .s{opacity:1;transform:translate(0,-50%)}.mark .s{transform:translate(-50%,-50%)}}
+/* mobile menu */
+.mnu{display:none;width:40px;height:40px;border:1px solid var(--ink);background:transparent;cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:6px;margin-left:auto}
+.mnu i{display:block;width:16px;height:1.5px;background:var(--ink);transition:transform .3s var(--ease)}
+nav.open .mnu i:first-child{transform:translateY(3.75px) rotate(45deg)}nav.open .mnu i:last-child{transform:translateY(-3.75px) rotate(-45deg)}
+@media (max-width:900px){
+  nav .wrap{gap:12px}
+  .mnu{display:flex}
+  nav.open{background:var(--ground);border-color:var(--line)}
+  nav.open .links{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--ground);padding:6px 22px 18px;border-bottom:1px solid var(--ink);box-shadow:0 30px 40px rgba(9,17,32,.08)}
+  nav.open .links a{padding:15px 0;font-size:18px;color:var(--ink);border-bottom:1px solid var(--line)}
+  nav.open .links a:last-child{border-bottom:0}
+  nav.open .links a.on{text-decoration:none;font-weight:700}
+}
+.links .mo{display:none}
+@media (max-width:900px){nav.open .links .mo{display:block}}
+video{filter:blur(9px)}
 </style></head>
 <body>
 
 <nav id="nav"><div class="wrap">
   <a class="brand" href="index.html"><img src="img/perspace-mark-ink.png" alt="">Perspace</a>
-  <div class="links"><a href="philosophy.html">Philosophy</a><a href="#method">Method</a><a href="#cockpit">Cockpit</a><a href="plugins.html">Plug-ins</a><a href="venture.html">Venture clienting</a></div>
+  <div class="links"><a href="philosophy.html">Philosophy</a><a href="method.html">Method</a><a href="cockpit.html">Cockpit</a><a href="plugins.html">Plug-ins</a><a href="venture.html">Venture clienting</a><a class="mo" href="insights.html">Insights</a></div>
   <a class="btn dark" href="mailto:hello@perspace.ai?subject=Walkthrough">Book a walkthrough →</a>
+  <button class="mnu" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
 </div></nav>
 
 <!-- 1 · HERO -->
 <section class="hero"><div class="glow"></div><div class="wrap grid">
   <div class="copy">
-    <div class="tag rv">Perspace · Dubai · Abu Dhabi</div>
+    <div class="tag rv">Built in the UAE, with global backing</div>
     <h1 class="rv d1">Every company will run on a new operating system. <b>We build yours.</b></h1>
     <p class="lede rv d2">We show you the money sitting inside your own company, go in and get it, and prove it moved. Our people and the agents we build do the work together, inside your company.</p>
-    <div class="btns rv d3"><a class="btn dark" href="mailto:hello@perspace.ai?subject=Walkthrough">Book a walkthrough →</a><a class="btn line" href="#method">See the method →</a></div>
+    <div class="btns rv d3"><a class="btn dark" href="mailto:hello@perspace.ai?subject=Walkthrough">Book a walkthrough →</a><a class="btn line" href="method.html">See the method →</a></div>
   </div>
   <div class="mark">
     <div class="markbox"><img class="b l" src="img/mark-left-c.png" alt=""><img class="b r" src="img/mark-right-c.png" alt="">
     <img class="s" src="img/star-crop.png" alt=""><div class="shine"></div></div>
     <div class="live"><div class="top"><span class="dotlive"><i></i>Value captured, live</span><span>A real cockpit, renamed</span></div>
-      <div class="big"><small>AED</small><span id="ctr">37,812,640</span></div>
+      <div class="big"><small>AED</small><span id="ctr">52,406,180</span></div>
       <div class="sub">found, owned and moving · every figure traced to its file</div>
       <div class="feed" id="feed"></div></div>
   </div>
@@ -316,10 +333,10 @@ footer .tl{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:
     <a class="tile" href="philosophy.html"><div class="n">01 · STRATEGY</div>
       <svg class="ic ic-comp" viewBox="0 0 74 74"><circle cx="37" cy="37" r="30"/><circle cx="37" cy="37" r="2"/><path class="needle acc" d="M37 37 L37 14"/><path d="M37 7v5M37 62v5M7 37h5M62 37h5"/></svg>
       <h3>Where to go</h3><p>Where the company should head, and what stands in the way.</p><div class="go">Philosophy <i>→</i></div></a>
-    <a class="tile" href="#method"><div class="n">02 · TRANSFORMATION</div>
+    <a class="tile" href="method.html"><div class="n">02 · TRANSFORMATION</div>
       <svg class="ic ic-loop" viewBox="0 0 74 74"><circle cx="37" cy="37" r="26" style="stroke:var(--line)"/><circle class="arc acc" cx="37" cy="37" r="26" style="stroke-width:2"/><path d="M30 37l5 5 10-11"/></svg>
       <h3>How the work changes</h3><p>A repeatable method that changes how the work is done, owned by a named person.</p><div class="go">Method <i>→</i></div></a>
-    <a class="tile" href="#cockpit"><div class="n">03 · VALUE CREATION</div>
+    <a class="tile" href="cockpit.html"><div class="n">03 · VALUE CREATION</div>
       <svg class="ic ic-bars" viewBox="0 0 74 74"><path d="M8 66h58"/><rect x="12" y="30" width="9" height="36"/><rect x="27" y="20" width="9" height="46"/><rect class="acc" x="42" y="12" width="9" height="54"/><rect x="57" y="36" width="9" height="30" style="display:none"/></svg>
       <h3>Where the money is</h3><p>Every pocket named, sized and traced to the file it came from.</p><div class="go">Cockpit <i>→</i></div></a>
     <a class="tile ai" href="plugins.html"><div class="n">04 · AI AND THE RIGHT TOOLS</div>
@@ -446,9 +463,9 @@ footer .tl{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:
 </div></section>
 
 <footer><div class="wrap">
-  <div class="brand"><img src="img/perspace-mark-ink.png" alt="">Perspace</div>
-  <div class="ft"><a href="philosophy.html">Philosophy</a><a href="#method">Method</a><a href="#cockpit">Cockpit</a><a href="plugins.html">Plug-ins</a><a href="venture.html">Venture clienting</a><a href="insights.html">Insights</a></div>
-  <div class="tl">We operate the future · Dubai · Abu Dhabi</div>
+  <a class="brand" href="index.html"><img src="img/perspace-mark-ink.png" alt="">Perspace</a>
+  <div class="ft"><a href="philosophy.html">Philosophy</a><a href="method.html">Method</a><a href="cockpit.html">Cockpit</a><a href="plugins.html">Plug-ins</a><a href="venture.html">Venture clienting</a><a href="insights.html">Insights</a></div>
+  <div class="tl">We operate the future · Dubai · Abu Dhabi · hello@perspace.ai</div>
 </div></footer>
 
 <script>
@@ -466,8 +483,8 @@ footer .tl{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:
     (function f(t){const k=Math.min(1,(t-t0)/d);el.textContent=Math.round(to*(1-Math.pow(1-k,3)))+suf; if(k<1) requestAnimationFrame(f);})(t0); }
 
   // live value meter (figures from the renamed company)
-  const ctr=document.getElementById('ctr'),feed=document.getElementById('feed'); let v=37812640,i=0;
-  const ev=[["Pocket found","Formats that sold nothing","+ 1,538 faces"],["Workflow live","Collections, invoices chased","+ 186,300"],["Decision approved","Supplier contract, priced","+ 28,300/mo"],["Traced","Rate card against invoice","file linked"],["Pocket found","The estate left empty","+ 285 of 4,418"],["Workflow live","Monthly report, now minutes","+ 15,000/mo"]];
+  const ctr=document.getElementById('ctr'),feed=document.getElementById('feed'); let v=52406180,i=0;
+  const ev=[["Pocket found","Routes that ran empty","+ 2,164 routes"],["Workflow live","Collections, invoices chased","+ 241,700"],["Decision approved","Supplier contract, priced","+ 31,900/mo"],["Traced","Rate card against invoice","file linked"],["Pocket found","Depots left idle","+ 312 of 5,120"],["Workflow live","Monthly report, now minutes","+ 15,000/mo"]];
   function add(){const e=ev[i++%ev.length];const r=document.createElement('div');r.className='row';r.innerHTML='<span class="k">'+e[0]+'</span><span>'+e[1]+'</span><span class="v">'+e[2]+'</span>';feed.insertBefore(r,feed.firstChild);while(feed.children.length>3)feed.removeChild(feed.lastChild);}
   add();add();add(); if(!RM){ setInterval(()=>{v+=Math.round(200+Math.random()*1400);ctr.textContent=v.toLocaleString('en-US');},420); setInterval(add,2800);}
 
@@ -483,10 +500,10 @@ footer .tl{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:
 
   // COCKPIT tabs: auto-advance, each tab plays its own real screen
   const tabs=[...document.querySelectorAll('.tab')], vids=[...document.querySelectorAll('.device video')], stats=document.getElementById('stats');
-  const S=[[["733","files read"],["1,942","sites on the register"],["164","advertisers who pay"]],
-           [["21","places found"],["1,538 of 7,300","faces that sold nothing"],["5","rows, by what they do to money"]],
-           [["22","acts on 13 territories"],["33","ways of working written down"],["0","logged as moved, yet"]],
-           [["158","carriers of work"],["97","people"],["17","agents designed"]]];
+  const S=[[["612","files read"],["2,380","delivery points on the register"],["241","customers who pay"]],
+           [["17","places found"],["2,164 of 9,850","routes that ran empty"],["5","rows, by what they do to money"]],
+           [["26","acts on 11 territories"],["41","ways of working written down"],["0","logged as moved, yet"]],
+           [["203","carriers of work"],["128","people"],["21","agents designed"]]];
   let cur=0,timer;
   function show(n){ cur=n; tabs.forEach((t,j)=>{t.classList.toggle('on',j===n); const b=t.querySelector('.bar'); b.style.animation='none'; b.offsetWidth; b.style.animation='';});
     vids.forEach((vd,j)=>{ if(j===n){vd.classList.add('on'); try{vd.currentTime=0;vd.play();}catch(e){}} else {vd.classList.remove('on'); vd.pause();}});
@@ -498,5 +515,9 @@ footer .tl{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:
   show(0);
   window.__showTab=show;
 })();
+</script>
+<script>(function(){const n=document.getElementById('nav'),b=n&&n.querySelector('.mnu');if(!b)return;
+b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+n.querySelectorAll('.links a').forEach(a=>a.addEventListener('click',()=>{n.classList.remove('open');b.setAttribute('aria-expanded','false')}));})();
 </script>
 </body></html>

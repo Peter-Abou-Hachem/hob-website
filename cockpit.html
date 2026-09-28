@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cockpit · Perspace</title>
+<meta name="description" content="The Perspace cockpit: your whole company on one screen, drawn from its own files, with every figure traced to the document it came from.">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+.phero .device{box-shadow:0 50px 100px rgba(9,17,32,.2)}
+/* rooms */
+.room{display:grid;grid-template-columns:1.25fr .75fr;gap:60px;align-items:center;padding:70px 0;border-top:1px solid var(--line)}
+.room:nth-child(even){grid-template-columns:.75fr 1.25fr}
+.room:nth-child(even) .vis{order:2}
+.room .k{font-size:11px;letter-spacing:.18em;font-weight:500;color:var(--accent-ink)}
+.room h3{font-size:clamp(30px,3vw,44px);font-weight:300;letter-spacing:-.025em;margin-top:14px}
+.room h3 b{font-weight:700}
+.room p{font-size:17px;line-height:1.55;color:var(--soft);margin-top:16px;max-width:26em}
+.room ul{list-style:none;margin-top:22px;display:grid;gap:10px}
+.room li{font-size:15.5px;color:var(--ink);padding-left:22px;position:relative;line-height:1.45}
+.room li::before{content:"";position:absolute;left:0;top:10px;width:10px;height:1px;background:var(--ink)}
+/* greying ladder */
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--ink)}
+.lg{padding:30px 26px 34px;border-left:1px solid var(--line);background:var(--card);transition:background 1s var(--ease),color 1s}
+.lg:first-child{border-left:0}
+.lg .sw{height:10px;margin-bottom:26px;background:#d8dade;transition:background 1s var(--ease)}
+.lg b{font-size:24px;font-weight:700;letter-spacing:-.015em;display:block;color:var(--faint);transition:color 1s}
+.lg span{display:block;font-size:15px;line-height:1.5;color:var(--soft);margin-top:10px}
+.ladder.in .lg:nth-child(1) .sw{background:#b9bfc7;transition-delay:.2s}
+.ladder.in .lg:nth-child(2) .sw{background:#8ba6b7;transition-delay:.6s}
+.ladder.in .lg:nth-child(3) .sw{background:#3f5e6e;transition-delay:1s}
+.ladder.in .lg:nth-child(4) .sw{background:#091120;transition-delay:1.4s}
+.ladder.in .lg b{color:var(--ink)}
+.ladder.in .lg:nth-child(2) b{transition-delay:.4s}.ladder.in .lg:nth-child(3) b{transition-delay:.8s}.ladder.in .lg:nth-child(4) b{transition-delay:1.2s}
+/* traced finding */
+.trace{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.fcard{background:var(--card);border:1px solid var(--ink);padding:30px;box-shadow:0 30px 60px rgba(9,17,32,.1)}
+.fcard .k{font-size:10.5px;letter-spacing:.16em;color:var(--accent-ink);font-weight:500}
+.fcard h4{font-size:24px;font-weight:700;letter-spacing:-.015em;margin-top:12px;line-height:1.25}
+.fcard .v{font-size:44px;font-weight:300;letter-spacing:-.03em;margin-top:18px}
+.fcard .v small{font-size:16px;color:var(--soft);letter-spacing:0}
+.path{margin-top:22px;display:grid;gap:0}
+.path div{display:flex;align-items:center;gap:12px;font-size:14px;padding:12px 0;border-top:1px dashed var(--line);opacity:0;transform:translateX(-10px);transition:all .7s var(--ease)}
+.path div i{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none}
+.path div:last-child i{background:var(--ink)}
+.path div code{font-family:var(--f);font-weight:700}
+.fcard.in .path div{opacity:1;transform:none}
+.fcard.in .path div:nth-child(2){transition-delay:.4s}.fcard.in .path div:nth-child(3){transition-delay:.8s}
+/* plugs */
+.plugs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pl{background:var(--card);border:1px solid var(--line);padding:30px 28px}
+.pl b{font-size:22px;font-weight:700;letter-spacing:-.015em}
+.pl p{font-size:15.5px;line-height:1.55;color:var(--soft);margin-top:10px}
+.pl .k{font-size:10.5px;letter-spacing:.16em;color:var(--accent-ink);font-weight:500;margin-bottom:14px}
+.sources{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px}
+.sources span{font-size:13px;font-weight:500;padding:9px 14px;border:1px solid var(--line);background:var(--ground)}
+@media (max-width:900px){
+  .room,.room:nth-child(even),.trace,.plugs{grid-template-columns:1fr;gap:28px}
+  .room:nth-child(even) .vis{order:0}
+  .room{padding:50px 0}
+  .ladder{grid-template-columns:1fr 1fr}.lg:nth-child(3){border-left:0}.lg:nth-child(n+3){border-top:1px solid var(--line)}
+}
+</style></head>
+<body>
+<nav id="nav"><div class="wrap">
+  <a class="brand" href="index.html"><img src="img/perspace-mark-ink.png" alt="">Perspace</a>
+  <div class="links"><a href="philosophy.html">Philosophy</a><a href="method.html">Method</a><a class="on" href="cockpit.html">Cockpit</a><a href="plugins.html">Plug-ins</a><a href="venture.html">Venture clienting</a><a class="mo" href="insights.html">Insights</a></div>
+  <a class="btn dark" href="mailto:hello@perspace.ai?subject=Walkthrough">Book a walkthrough →</a>
+  <button class="mnu" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+</div></nav>
+
+<section class="phero"><div class="glow"></div><div class="wrap grid">
+  <div class="copy">
+    <div class="tag rv">The cockpit · 03 Value creation</div>
+    <h1 class="rv d1">Your whole company, <b>on one screen.</b></h1>
+    <p class="lede rv d2">Drawn from its own files and kept current as it moves. Where the money sits, what is moving, and who carries it. Every figure traces back to the document it came from.</p>
+    <div class="btns rv d3"><a class="btn dark" href="mailto:hello@perspace.ai?subject=Walkthrough">Book a walkthrough →</a><a class="btn line" href="#rooms">Walk the four rooms ↓</a></div>
+  </div>
+  <div class="rv d2">
+    <div class="device"><video autoplay muted loop playsinline poster="img/poster_today.jpg"><source src="img/clip_today.webm" type="video/webm"><source src="img/clip_today.mp4" type="video/mp4"></video></div>
+    <div class="honest">A real cockpit · the company's name and every figure are changed</div>
+  </div>
+</div></section>
+
+<!-- FOUR ROOMS -->
+<section class="pad" id="rooms" style="padding-top:30px"><div class="wrap">
+  <div class="head2">
+    <div><div class="tag rv">Four rooms</div><h2 class="rv d1">One company, <b>read four ways.</b></h2></div>
+    <p class="lede rv d2">The same company in every room. What you learn in one lights up the next.</p>
+  </div>
+  <div class="rooms">
+    <div class="room">
+      <div class="vis rv"><div class="device"><video autoplay muted loop playsinline preload="none" poster="img/poster_calibrate.jpg"><source src="img/clip_calibrate.webm" type="video/webm"><source src="img/clip_calibrate.mp4" type="video/mp4"></video></div></div>
+      <div class="rv d1"><div class="k">01 · CALIBRATE</div><h3>The company, <b>as its files describe it.</b></h3><p>What we read, what it tells us, and what the files could not tell us yet.</p>
+        <ul><li>Every answer names who gave it and when it expires</li><li>Gaps are listed as questions, never guessed</li></ul></div>
+    </div>
+    <div class="room">
+      <div class="vis rv"><div class="device"><video autoplay muted loop playsinline preload="none" poster="img/poster_value.jpg"><source src="img/clip_value.webm" type="video/webm"><source src="img/clip_value.mp4" type="video/mp4"></video></div></div>
+      <div class="rv d1"><div class="k">02 · VALUE</div><h3>Where <b>the money sits.</b></h3><p>Every pocket named, sized and traced to its file. Look here first, then the rest, row by row.</p>
+        <ul><li>Revenue, margin, operations, risk</li><li>Each pocket darkens as it is proven</li></ul></div>
+    </div>
+    <div class="room">
+      <div class="vis rv"><div class="device"><video autoplay muted loop playsinline preload="none" poster="img/poster_work.jpg"><source src="img/clip_work.webm" type="video/webm"><source src="img/clip_work.mp4" type="video/mp4"></video></div></div>
+      <div class="rv d1"><div class="k">03 · WORK</div><h3>What is <b>moving.</b></h3><p>Every pocket becomes a piece of work. Each one says who holds it, what it needs and where it is stuck.</p>
+        <ul><li>Write it down, make it right, give it a tool, give it an agent</li><li>Done means the number moved</li></ul></div>
+    </div>
+    <div class="room">
+      <div class="vis rv"><div class="device"><video autoplay muted loop playsinline preload="none" poster="img/poster_workforce.jpg"><source src="img/clip_workforce.webm" type="video/webm"><source src="img/clip_workforce.mp4" type="video/mp4"></video></div></div>
+      <div class="rv d1"><div class="k">04 · WORKFORCE</div><h3>People and agents, <b>one chart.</b></h3><p>Every piece of work carried by a person, an agent or a tool, each with a person accountable.</p>
+        <ul><li>Name and role on every line</li><li>Money out, prices and anything legal stop at a person</li></ul></div>
+    </div>
+  </div>
+  <div class="honest" style="text-align:center">A real cockpit · the company's name and every figure are changed</div>
+</div></section>
+
+<!-- GREYING -->
+<section class="pad" style="background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap">
+  <div class="head2">
+    <div><div class="tag rv">How you read it</div><h2 class="rv d1">Everything starts grey. <b>It darkens as it is proven.</b></h2></div>
+    <p class="lede rv d2">From the first day you see the whole shape of the company. Nothing is claimed before the files back it.</p>
+  </div>
+  <div class="ladder" data-trigger>
+    <div class="lg"><div class="sw"></div><b>Greyed</b><span>We know a pocket is likely here.</span></div>
+    <div class="lg"><div class="sw"></div><b>Named</b><span>We know what it is and where it sits.</span></div>
+    <div class="lg"><div class="sw"></div><b>Sized</b><span>We know what it is worth, from your files.</span></div>
+    <div class="lg"><div class="sw"></div><b>Banked</b><span>The money moved, and the record shows it.</span></div>
+  </div>
+</div></section>
+
+<!-- ONE FINDING -->
+<section class="pad"><div class="wrap trace">
+  <div>
+    <div class="tag rv">One finding, traced</div>
+    <h2 class="rv d1" style="margin-top:22px">Every figure <b>opens to its file.</b></h2>
+    <p class="lede rv d2" style="margin-top:22px">Tap a number and you land on the contract, the invoice or the sheet it came from. If the file is not there yet, the cockpit says what would fill it.</p>
+  </div>
+  <div class="fcard" data-trigger>
+    <div class="k">VALUE · PROCUREMENT</div>
+    <h4>The same category, bought three ways at three prices.</h4>
+    <div class="v">≈ $340k <small>a year</small></div>
+    <div class="path">
+      <div><i></i>Three suppliers, one spec</div>
+      <div><i></i>Read from <code>Supplier_Contracts_2026.xlsx</code></div>
+      <div><i></i>One ranked view, waiting on one approval</div>
+    </div>
+  </div>
+</div></section>
+
+<!-- PLUGS INTO -->
+<section class="pad" style="padding-top:30px"><div class="wrap">
+  <div class="head2">
+    <div><div class="tag rv">Your data</div><h2 class="rv d1">It plugs into <b>what you already run.</b></h2></div>
+    <p class="lede rv d2">Nothing to migrate and nothing new to learn. It sees what you permit, acts where you permit, and logs every step. You choose where it runs.</p>
+  </div>
+  <div class="plugs">
+    <div class="pl rv"><div class="k">01</div><b>Connected</b><p>Runs on our hosting, in a UAE region if you want. The fastest way to start.</p></div>
+    <div class="pl rv d1"><div class="k">02</div><b>Hybrid</b><p>Raw data stays inside your walls. Only the finished record crosses.</p></div>
+    <div class="pl rv d2"><div class="k">03</div><b>Private</b><p>All of it inside your own cloud, the model included. For regulated work and government.</p></div>
+  </div>
+  <div class="sources rv"><span>ERP</span><span>Accounting</span><span>CRM</span><span>Spreadsheets</span><span>Shared drives</span><span>Email</span><span>WhatsApp and Teams</span><span>Contracts and PDFs</span></div>
+</div></section>
+
+<section class="closeband"><div class="wrap">
+  <div class="m rv"><img src="img/mark-left-c.png" alt=""><img class="s" src="img/star-crop.png" alt=""><img src="img/mark-right-c.png" alt=""></div>
+  <h2 class="rv d1">See your company <b>on one screen.</b></h2>
+  <p class="lede rv d2">Start with one pocket. We show you the money, go in and get it, and prove it moved.</p>
+  <div class="btns rv d3"><a class="btn dark" href="mailto:hello@perspace.ai?subject=Walkthrough">Book a walkthrough →</a><a class="btn line" href="plugins.html">See the plug-ins →</a></div>
+</div></section>
+
+<footer><div class="wrap">
+  <a class="brand" href="index.html"><img src="img/perspace-mark-ink.png" alt="">Perspace</a>
+  <div class="ft"><a href="philosophy.html">Philosophy</a><a href="method.html">Method</a><a href="cockpit.html">Cockpit</a><a href="plugins.html">Plug-ins</a><a href="venture.html">Venture clienting</a><a href="insights.html">Insights</a></div>
+  <div class="tl">We operate the future · Dubai · Abu Dhabi · hello@perspace.ai</div>
+</div></footer>
+<script src="site.js"></script>
+</body></html>
