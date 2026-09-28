@@ -111,4 +111,3 @@ footer .tl{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}
   .mk .l,.mk .r{opacity:1;transform:translate(0,-50%)}.mk .s{opacity:1;transform:translate(-50%,-50%)}}
-video{filter:blur(9px)} /*TEMPBLUR*/

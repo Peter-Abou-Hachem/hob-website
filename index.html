@@ -280,7 +280,6 @@ nav.open .mnu i:first-child{transform:translateY(3.75px) rotate(45deg)}nav.open 
 }
 .links .mo{display:none}
 @media (max-width:900px){nav.open .links .mo{display:block}}
-video{filter:blur(9px)}
 </style></head>
 <body>
 
@@ -484,7 +483,7 @@ video{filter:blur(9px)}
 
   // live value meter (figures from the renamed company)
   const ctr=document.getElementById('ctr'),feed=document.getElementById('feed'); let v=52406180,i=0;
-  const ev=[["Pocket found","Routes that ran empty","+ 2,164 routes"],["Workflow live","Collections, invoices chased","+ 241,700"],["Decision approved","Supplier contract, priced","+ 31,900/mo"],["Traced","Rate card against invoice","file linked"],["Pocket found","Depots left idle","+ 312 of 5,120"],["Workflow live","Monthly report, now minutes","+ 15,000/mo"]];
+  const ev=[["Pocket found","Routes that sold nothing","+ 1,049 routes"],["Workflow live","Collections, invoices chased","+ 241,700"],["Decision approved","Supplier contract, priced","+ 31,900/mo"],["Traced","Rate card against invoice","file linked"],["Pocket found","Routes waiting to be filled","+ 541 of 8,369"],["Workflow live","Monthly report, now minutes","+ 15,000/mo"]];
   function add(){const e=ev[i++%ev.length];const r=document.createElement('div');r.className='row';r.innerHTML='<span class="k">'+e[0]+'</span><span>'+e[1]+'</span><span class="v">'+e[2]+'</span>';feed.insertBefore(r,feed.firstChild);while(feed.children.length>3)feed.removeChild(feed.lastChild);}
   add();add();add(); if(!RM){ setInterval(()=>{v+=Math.round(200+Math.random()*1400);ctr.textContent=v.toLocaleString('en-US');},420); setInterval(add,2800);}
 
@@ -500,10 +499,10 @@ video{filter:blur(9px)}
 
   // COCKPIT tabs: auto-advance, each tab plays its own real screen
   const tabs=[...document.querySelectorAll('.tab')], vids=[...document.querySelectorAll('.device video')], stats=document.getElementById('stats');
-  const S=[[["612","files read"],["2,380","delivery points on the register"],["241","customers who pay"]],
-           [["17","places found"],["2,164 of 9,850","routes that ran empty"],["5","rows, by what they do to money"]],
-           [["26","acts on 11 territories"],["41","ways of working written down"],["0","logged as moved, yet"]],
-           [["203","carriers of work"],["128","people"],["21","agents designed"]]];
+  const S=[[["1,312","files read"],["3,548","depots on the register"],["259","shippers who pay"]],
+           [["40","places found"],["1,049 of 4,978","routes that sold nothing"],["5","rows, by what they do to money"]],
+           [["25","acts on 13 territories"],["47","ways of working to change"],["0","logged as moved, yet"]],
+           [["164","carriers of work"],["137","people"],["22","agents designed"]]];
   let cur=0,timer;
   function show(n){ cur=n; tabs.forEach((t,j)=>{t.classList.toggle('on',j===n); const b=t.querySelector('.bar'); b.style.animation='none'; b.offsetWidth; b.style.animation='';});
     vids.forEach((vd,j)=>{ if(j===n){vd.classList.add('on'); try{vd.currentTime=0;vd.play();}catch(e){}} else {vd.classList.remove('on'); vd.pause();}});
