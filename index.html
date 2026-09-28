@@ -94,7 +94,7 @@ nav .btn{padding:11px 16px;font-size:14px}
 
 /* THE SPACE (scroll-driven) */
 .space{height:260vh;background:var(--ink);color:#fff}
-.space .stick{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.space .stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .space .grid2{position:absolute;inset:0;background-image:linear-gradient(rgba(139,166,183,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(139,166,183,.08) 1px,transparent 1px);background-size:64px 64px}
 .space .words{position:absolute;top:9vh;left:0;right:0;text-align:center;z-index:3}
 .space .words h2{color:#fff}
@@ -102,9 +102,9 @@ nav .btn{padding:11px 16px;font-size:14px}
 .space .words .w.on{opacity:1;transform:none}
 .space .words .w small{display:block;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-weight:500}
 .space .frame{position:relative;width:min(900px,60vw);aspect-ratio:16/9;margin-top:20vh;z-index:2}
-.space .screen{position:absolute;inset:0;border:1px solid rgba(139,166,183,.5);background:#000;box-shadow:0 60px 120px rgba(0,0,0,.55);overflow:hidden;transform-origin:center;transition:transform .15s linear,opacity .15s linear}
+.space .screen{position:absolute;inset:0;border:1px solid rgba(139,166,183,.5);background:#000;box-shadow:0 60px 120px rgba(0,0,0,.55);overflow:hidden;transform-origin:center;will-change:transform,opacity;backface-visibility:hidden}
 .space .screen video{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
-.space .bk{position:absolute;top:50%;height:112%;z-index:3;filter:drop-shadow(0 30px 40px rgba(0,0,0,.5))}
+.space .bk{position:absolute;top:50%;height:112%;z-index:3;will-change:transform;backface-visibility:hidden}
 .space .bk.l{right:calc(100% + 18px);transform:translate(-60vw,-50%)}.space .bk.r{left:calc(100% + 18px);transform:translate(60vw,-50%)}
 .space .note{position:absolute;bottom:5vh;left:0;right:0;text-align:center;font-size:11.5px;letter-spacing:.16em;color:var(--accent);text-transform:uppercase;z-index:3}
 
@@ -606,12 +606,17 @@ nav.open .mnu i:first-child{transform:translateY(3.75px) rotate(45deg)}nav.open 
 
   // THE SPACE: brackets close in around the cockpit as you scroll
   const sp=document.getElementById('space'), bl=sp.querySelector('.bk.l'), br=sp.querySelector('.bk.r'), scr=sp.querySelector('.screen'), ws=[...sp.querySelectorAll('.w')];
-  function spaceFrame(){ const r=sp.getBoundingClientRect(), total=r.height-innerHeight; let k=Math.min(1,Math.max(0,-r.top/total));
-    const close=Math.min(1,k/0.7), e=1-Math.pow(1-close,3);
-    bl.style.transform=`translate(${-60*(1-e)}vw,-50%)`; br.style.transform=`translate(${60*(1-e)}vw,-50%)`;
-    scr.style.transform=`scale(${0.82+0.18*e})`; scr.style.opacity=0.35+0.65*e;
-    const idx=k<0.28?0:k<0.6?1:2; ws.forEach((w,j)=>w.classList.toggle('on',j===idx)); }
-  addEventListener('scroll',spaceFrame,{passive:true}); addEventListener('resize',spaceFrame); spaceFrame();
+  /* one write per frame, rounded, and settled values once closed, so nothing shimmers while the video plays */
+  let spLast='',spTick=false;
+  function spaceFrame(){ spTick=false; const r=sp.getBoundingClientRect(), total=Math.max(1,r.height-innerHeight); let k=Math.min(1,Math.max(0,-r.top/total));
+    const close=Math.min(1,k/0.7); let e=1-Math.pow(1-close,3); if(e>0.995)e=1;
+    const tx=Math.round(60*(1-e)*10)/10, sc=Math.round((0.82+0.18*e)*1000)/1000, op=Math.round((0.35+0.65*e)*100)/100;
+    const idx=k<0.28?0:k<0.6?1:2, key=tx+'|'+sc+'|'+op+'|'+idx; if(key===spLast)return; spLast=key;
+    bl.style.transform=`translate3d(${-tx}vw,-50%,0)`; br.style.transform=`translate3d(${tx}vw,-50%,0)`;
+    scr.style.transform=sc===1?'none':`scale(${sc})`; scr.style.opacity=op;
+    ws.forEach((w,j)=>w.classList.toggle('on',j===idx)); }
+  function spaceQueue(){ if(!spTick){spTick=true;requestAnimationFrame(spaceFrame);} }
+  addEventListener('scroll',spaceQueue,{passive:true}); let spW=innerWidth; addEventListener('resize',()=>{ if(innerWidth!==spW){spW=innerWidth;spLast='';spaceQueue();} }); spaceFrame();
   window.__spaceFrame=spaceFrame;
 
   // COCKPIT tabs: auto-advance, each tab plays its own real screen
