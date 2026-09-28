@@ -205,10 +205,10 @@ nav .btn{padding:11px 16px;font-size:14px}
 .spark{fill:var(--accent-ink)}
 
 /* FOUNDER */
-.fd{display:grid;grid-template-columns:320px 1fr;gap:70px;align-items:center}
+.fd{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center}
 .fd .ph{position:relative;display:block}
-.fd .ph img{width:320px;height:380px;object-fit:cover;filter:grayscale(1) contrast(1.05);border:1px solid var(--ink);display:block;transition:filter .5s}
-.fd .ph:hover img{filter:grayscale(0)}
+.fd .ph img{width:100%;aspect-ratio:5/4;height:auto;object-fit:cover;filter:saturate(.8);border:1px solid var(--ink);display:block;transition:filter .5s}
+.fd .ph:hover img{filter:saturate(1)}
 .fd .ph .in{position:absolute;right:-14px;bottom:-14px;background:var(--ink);color:#fff;font-size:12px;font-weight:700;padding:10px 14px;letter-spacing:.04em}
 .who{font-size:30px;font-weight:700;letter-spacing:-.015em;display:inline-flex;gap:10px;align-items:center}
 .who:hover{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
@@ -261,7 +261,7 @@ footer .tl{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:
   .nums{grid-template-columns:1fr 1fr}.num:nth-child(3){padding-left:0;border-left:0}.num{border-top:1px solid var(--line)}.num b{font-size:44px}
   .engine{height:auto;display:grid;gap:10px}.engine svg{display:none}.co,.core{position:static!important;transform:none!important;width:auto!important}.core{position:relative!important;left:auto!important;top:auto!important;width:140px!important;height:140px;margin:12px auto 20px;order:-1}
   .rings{grid-template-columns:1fr}
-  .fd .ph img{width:100%;height:360px}
+  .fd .ph img{width:100%;height:auto}
   .pad{padding:90px 0}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.mark .l,.mark .r,.mark .s{opacity:1;transform:translate(0,-50%)}.mark .s{transform:translate(-50%,-50%)}}
@@ -415,7 +415,7 @@ footer .tl{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:
 <section class="pad" style="border-top:1px solid var(--line)"><div class="wrap">
   <div class="tag rv">Founder-led</div>
   <div class="fd" style="margin-top:40px">
-    <a class="ph rv" href="https://www.linkedin.com/in/peter-abou-hachem-2240b497/" target="_blank" rel="noopener"><img src="img/peter-founder.jpg" alt="Peter Abou Hachem"><span class="in">LinkedIn ↗</span></a>
+    <a class="ph rv" href="https://www.linkedin.com/in/peter-abou-hachem-2240b497/" target="_blank" rel="noopener"><img src="img/peter-stage.jpg" alt="Peter Abou Hachem speaking on the Hub71 stage"><span class="in">LinkedIn ↗</span></a>
     <div class="stack">
       <h2 class="rv d1">Built by someone who has sat <b>on your side of the table.</b></h2>
       <div class="rv d2"><a class="who" href="https://www.linkedin.com/in/peter-abou-hachem-2240b497/" target="_blank" rel="noopener">Peter Abou Hachem <span style="font-weight:300;font-size:22px">↗</span></a><div class="role">Founder and CEO</div></div>
