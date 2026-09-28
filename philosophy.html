@@ -29,15 +29,16 @@
 /* budgets merge */
 .merge{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
 .stackb{position:relative;height:420px}
-.bud{position:absolute;left:0;right:0;height:64px;border:1px solid var(--ink);background:var(--card);display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-weight:500;font-size:16px;transition:transform 1.4s var(--ease),opacity 1s,background .6s}
+.bud{position:absolute;left:0;right:0;height:64px;border:1px solid var(--ink);background:var(--card);display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-weight:500;font-size:16px;opacity:0}
 .bud span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
-.bud:nth-child(1){top:0}.bud:nth-child(2){top:86px}.bud:nth-child(3){top:172px}.bud:nth-child(4){top:258px}
-.onebox{position:absolute;left:0;right:0;top:344px;height:76px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-weight:700;font-size:18px;opacity:0;transform:translateY(20px);transition:opacity 1s .9s,transform 1s .9s var(--ease)}
+.bud:nth-child(1){top:0;--y:344px;--i:0}.bud:nth-child(2){top:86px;--y:258px;--i:1}.bud:nth-child(3){top:172px;--y:172px;--i:2}.bud:nth-child(4){top:258px;--y:86px;--i:3}
+.onebox{position:absolute;left:0;right:0;top:344px;height:76px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-weight:700;font-size:18px;opacity:0}
 .onebox span{font-size:11px;letter-spacing:.16em;color:var(--accent);font-weight:500}
-.stackb.in .bud{transform:translateY(calc(344px - var(--y)));opacity:.0}
-.stackb.in .bud:nth-child(1){--y:0px;transition-delay:.0s}.stackb.in .bud:nth-child(2){--y:86px;transition-delay:.15s}.stackb.in .bud:nth-child(3){--y:172px;transition-delay:.3s}.stackb.in .bud:nth-child(4){--y:258px;transition-delay:.45s}
-.stackb.in .onebox{opacity:1;transform:none}
-.stackb .replay{position:absolute;right:0;bottom:-34px;font-size:11px;letter-spacing:.14em;color:var(--faint);cursor:pointer;text-transform:uppercase}
+.stackb.in .bud{animation:budloop 14s var(--ease) infinite;animation-delay:calc(var(--i) * .35s)}
+.stackb.in .onebox{animation:boxloop 14s var(--ease) infinite}
+@keyframes budloop{0%{opacity:0;transform:translateY(-14px)}8%{opacity:1;transform:none}40%{opacity:1;transform:none}62%{opacity:0;transform:translateY(var(--y))}100%{opacity:0;transform:translateY(var(--y))}}
+@keyframes boxloop{0%,52%{opacity:0;transform:translateY(20px)}64%{opacity:1;transform:none}92%{opacity:1;transform:none}100%{opacity:0;transform:none}}
+@media (prefers-reduced-motion:reduce){.bud{opacity:1}.onebox{opacity:1;top:360px}}
 /* pull quote */
 .quote{padding:150px 0}
 .quote h2{font-size:clamp(38px,5vw,72px);max-width:16em}
@@ -113,7 +114,6 @@
     <div class="bud">Systems <span>ERP, CRM, the joins</span></div>
     <div class="bud">Technology <span>staying current</span></div>
     <div class="onebox">One box, one team <span>STRATEGY · CHANGE · VALUE · TECHNOLOGY</span></div>
-    <div class="replay" onclick="const b=document.getElementById('bud');b.classList.remove('in');setTimeout(()=>b.classList.add('in'),900)">Replay ↻</div>
   </div>
 </div></section>
 
