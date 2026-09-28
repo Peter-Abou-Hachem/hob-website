@@ -1,1344 +1,501 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Perspace · we operate the future</title>
-<meta name="description" content="Perspace makes companies run on AI. We draw your whole organisation into one live picture, find where the money leaks, and put agents on the repetitive work. Built in the Gulf, sovereign by design.">
-<link rel="preconnect" href="https://api.fontshare.com">
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Perspace · We operate the future</title>
+<meta name="description" content="Every company will run on a new operating system. Perspace builds yours: we show you the money sitting inside your own company, go in and get it, and prove it moved.">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<meta property="og:title" content="Perspace · We operate the future">
+<meta property="og:description" content="Every company will run on a new operating system. We build yours.">
+<meta property="og:image" content="https://perspace.ai/img/og-perspace.jpg">
+<meta property="og:url" content="https://perspace.ai/">
+<meta name="twitter:card" content="summary_large_image">
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#3C555F; --panel:#476470; --panel2:#52717d; --ink:#F8FBFC; --t:#CFDCE4; --dim:#98AAB4;
-  --line:rgba(207,220,228,0.18); --accent:#B0CBE8; --gold:#EDBB5B; --good:#9AD0B6; --btnink:#16252E;
+  --ground:#F2F0EE; --card:#F9FAF4; --line:#E6E0DE; --ink:#091120; --soft:#4A5260; --faint:#8A8F98;
+  --accent:#8BA6B7; --accent-ink:#3F5E6E; --blue:#E1E8F0; --silver:#A9ACAF;
+  --f:"Satoshi",system-ui,sans-serif;
+  --ease:cubic-bezier(.2,.7,.1,1);
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;overflow-x:clip}
-body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--t);-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:clip;max-width:100%}
-svg,img{max-width:100%}
-.wrap{max-width:1160px;margin:0 auto;padding:0 26px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ground);color:var(--ink);font-family:var(--f);-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  background-image:linear-gradient(to right,rgba(9,17,32,.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(9,17,32,.04) 1px,transparent 1px);background-size:64px 64px}
 a{color:inherit;text-decoration:none}
-.mono{font-family:'IBM Plex Sans',sans-serif}
+.wrap{max-width:1280px;margin:0 auto;padding:0 56px}
+.tag{font-weight:500;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-ink);display:flex;align-items:center;gap:12px}
+.tag::before{content:"";width:22px;height:1px;background:currentColor}
+h1,h2,h3{font-weight:300;letter-spacing:-.03em;line-height:1.02;text-wrap:balance}
+h1{font-size:clamp(46px,6.4vw,92px)} h2{font-size:clamp(34px,4.3vw,60px)}
+h1 b,h2 b{font-weight:700}
+.lede{font-size:19px;line-height:1.55;color:var(--soft);max-width:33em}
+.btn{font-weight:700;font-size:15px;padding:15px 22px;display:inline-flex;gap:10px;align-items:center;transition:transform .3s var(--ease),background .3s}
+.btn.dark{background:var(--ink);color:#fff}.btn.dark:hover{transform:translateY(-2px)}
+.btn.line{border:1px solid var(--ink)}.btn.line:hover{background:var(--card)}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+section{position:relative;overflow-x:clip}
+html,body{overflow-x:clip}
+.pad{padding:140px 0}
 
-#nav{position:sticky;top:0;z-index:60;background:rgba(26,41,48,0.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-#nav .wrap{display:flex;align-items:center;gap:8px;height:64px}
-#nav .brand{font-weight:600;font-size:16px;color:var(--ink)}
-#nav .brand i{display:inline-block;width:6px;height:6px;background:var(--accent);transform:rotate(45deg);margin-left:5px;vertical-align:middle}
-#nav .links{margin-left:auto;display:flex;align-items:center;gap:26px}
-#nav .links a{font-size:13.5px;color:var(--t);font-weight:500}
-#nav .links a:hover{color:var(--ink)}
-#nav .cta{background:var(--accent);color:var(--btnink)!important;padding:11px 22px;border-radius:999px;font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:14.5px;letter-spacing:0.01em}
-#nav .cta:hover{background:#fff;color:var(--btnink)!important}
-#nav .burger,#nav .navx{display:none}
-@media(max-width:820px){#nav .wrap{flex-wrap:wrap;height:auto;padding:10px 0;row-gap:8px;justify-content:center}#nav .brand{width:100%;text-align:center}#nav .links{width:100%;margin-left:0;gap:9px 16px;flex-wrap:wrap;justify-content:center}#nav .links a{font-size:13px}#nav .links a.hidem{display:inline-block}#nav .links a.cta{padding:8px 16px}}
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}.rv.d4{transition-delay:.4s}
 
-section{padding:78px 0;border-bottom:1px solid var(--line)}
-.eye{font-family:'IBM Plex Sans',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:18px}
-.eye:before{content:'';opacity:0.8}
-h1{font-size:clamp(38px,6vw,68px);font-weight:300;color:var(--ink);letter-spacing:-0.03em;line-height:1.02}
-h1 b{font-weight:700}
-h2{font-size:clamp(26px,3.6vw,40px);font-weight:400;color:var(--ink);letter-spacing:-0.02em;line-height:1.14;max-width:40ch}
-h2 b{font-weight:700;color:var(--accent)}
-.p2{font-size:16.5px;color:var(--t);max-width:82ch;margin-top:16px;line-height:1.62}
-.p2 b{color:var(--ink);font-weight:600}
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+nav.sc{background:rgba(242,240,238,.86);backdrop-filter:blur(10px);border-color:var(--line)}
+nav .wrap{display:flex;align-items:center;height:76px;gap:40px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px}
+.brand img{height:22px}
+.links{display:flex;gap:30px;font-size:14.5px;font-weight:500;color:var(--soft);flex:1}
+.links a:hover{color:var(--ink)}
+nav .btn{padding:11px 16px;font-size:14px}
 
-/* hero */
-.hero{padding:74px 0 70px}
-.helabel{font-family:'IBM Plex Sans',sans-serif;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--dim);margin-bottom:26px}
-.helabel:before{content:'';color:var(--accent)}
-.hero .lede{font-size:clamp(17px,2vw,20px);color:var(--t);max-width:60ch;margin:26px 0 0;line-height:1.55}
-.hero .lede b{color:var(--ink);font-weight:600}
-.hbtns{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;align-items:center}
-.btn{padding:13px 24px;border-radius:999px;font-size:14.5px;font-weight:700;cursor:pointer;border:1px solid transparent;transition:transform .15s,background .15s,border-color .15s;display:inline-block}
-.btn.p{background:var(--accent);color:var(--btnink);font-weight:700}
-.btn.p:hover{background:#fff;color:var(--btnink);transform:translateY(-2px)}
-.btn.s{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.btn.s:hover{border-color:var(--accent)}
-.getlink{font-family:'IBM Plex Sans',sans-serif;font-size:13px;color:var(--t);border-bottom:1px solid var(--line);padding-bottom:3px}
-.getlink:hover{color:var(--ink);border-color:var(--accent)}
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 90px}
+.hero .grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
+.hero .copy>*+*{margin-top:26px}
+.glow{position:absolute;z-index:0;right:-8%;top:8%;width:62vw;height:62vw;max-width:900px;max-height:900px;border-radius:50%;
+  background:radial-gradient(circle,rgba(225,232,240,.95) 0%,rgba(225,232,240,.4) 38%,rgba(242,240,238,0) 70%);pointer-events:none}
+.mark{position:relative;height:640px}
+.markbox{position:absolute;left:0;right:0;top:0;height:470px}
+.mark .b{position:absolute;top:50%;height:400px;filter:drop-shadow(0 34px 44px rgba(9,17,32,.2))}
+.mark .l{left:18%;transform:translate(-160%,-50%);opacity:0;animation:inL 1.6s .2s var(--ease) forwards, floatA 7s 1.8s ease-in-out infinite}
+.mark .r{right:18%;transform:translate(160%,-50%);opacity:0;animation:inR 1.6s .2s var(--ease) forwards, floatB 7s 1.8s ease-in-out infinite}
+.mark .s{position:absolute;left:50%;top:50%;height:96px;transform:translate(-50%,-50%) scale(.2) rotate(-90deg);opacity:0;animation:inS 1.3s 1.1s var(--ease) forwards, spin 14s 2.4s linear infinite}
+.shine{position:absolute;left:50%;top:50%;width:260px;height:260px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.95),rgba(255,255,255,0) 60%);opacity:0;animation:flash 1.6s 1.5s ease-out forwards;pointer-events:none;mix-blend-mode:screen}
+@keyframes inL{to{transform:translate(0,-50%);opacity:1}}
+@keyframes inR{to{transform:translate(0,-50%);opacity:1}}
+@keyframes inS{to{transform:translate(-50%,-50%) scale(1) rotate(0);opacity:1}}
+@keyframes floatA{0%,100%{transform:translate(0,-50%)}50%{transform:translate(-8px,-52%)}}
+@keyframes floatB{0%,100%{transform:translate(0,-50%)}50%{transform:translate(8px,-48%)}}
+@keyframes spin{0%{transform:translate(-50%,-50%) rotate(0)}100%{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes flash{0%{opacity:0}25%{opacity:.9}100%{opacity:0}}
+.scrollcue{position:absolute;left:56px;bottom:34px;font-size:11px;letter-spacing:.18em;color:var(--faint);display:flex;gap:10px;align-items:center}
+.scrollcue i{width:1px;height:34px;background:linear-gradient(var(--ink),transparent);animation:cue 2s infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
-/* agentic scale — the score, on the same axis as the stages (distinct, not a gauge) */
-.scale{margin-top:60px;max-width:860px}
-.scaletop{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:18px;flex-wrap:wrap;gap:10px}
-.sclab{font-family:'IBM Plex Sans',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--dim)}
-.scnum{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(34px,4.5vw,46px);font-weight:700;color:var(--ink);line-height:1}
-.scnum b{font-size:18px;color:var(--dim);font-weight:400}
-.sctrack{position:relative;display:grid;grid-template-columns:1fr 1fr 1fr;height:60px;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
-.sczone{display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Sans',sans-serif;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim);border-right:1px solid var(--line)}
-.sczone:last-child{border-right:none}
-.sczone.z1{background:rgba(237,187,91,0.08)}
-.sczone.z2{background:rgba(140,193,222,0.09)}
-.sczone.z3{background:rgba(143,203,174,0.15);color:var(--good)}
-.scmark{position:absolute;top:-7px;bottom:-7px;left:0%;width:3px;background:var(--ink);border-radius:2px;transition:left 1.4s cubic-bezier(.2,.7,.2,1);box-shadow:0 0 18px rgba(245,249,251,0.55);z-index:3}
-.scbub{position:absolute;top:-32px;left:50%;transform:translateX(-50%);background:var(--ink);color:#12202a;font-family:'IBM Plex Sans',sans-serif;font-size:13px;font-weight:700;padding:3px 10px;border-radius:7px;white-space:nowrap}
-.scbub:after{content:'';position:absolute;bottom:-4px;left:50%;transform:translateX(-50%) rotate(45deg);width:8px;height:8px;background:var(--ink)}
-.scdesc{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:20px}
-.scdesc div{font-size:13.5px;color:var(--t);line-height:1.5}
-.scdesc b{color:var(--ink)}
-@media(max-width:640px){.scdesc{grid-template-columns:1fr;gap:9px}.sczone span{font-size:9px}}
-
-/* cockpit demo */
-.cockpit{margin-top:42px;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 30px 80px -36px rgba(0,0,0,0.7)}
-.cktop{display:flex;align-items:center;gap:8px;padding:13px 20px;background:rgba(167,194,208,0.05);border-bottom:1px solid var(--line)}
-.ckdot{width:10px;height:10px;border-radius:50%;background:rgba(167,194,208,0.28)}
-.ckname{margin-left:10px;font-family:'IBM Plex Sans',sans-serif;font-size:12px;color:var(--t)}
-.ckbadge{margin-left:auto;font-family:'IBM Plex Sans',sans-serif;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--good);border:1px solid rgba(130,183,158,0.5);border-radius:999px;padding:4px 10px}
-.ckbody{padding:24px;display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:14px;background:var(--panel)}
-@media(max-width:820px){.ckbody{grid-template-columns:1fr}}
-.cktile{background:rgba(167,194,208,0.05);border:1px solid var(--line);border-radius:13px;padding:18px}
-.cktile .k{font-family:'IBM Plex Sans',sans-serif;font-size:9.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--dim)}
-.cktile .v{font-family:'IBM Plex Sans',sans-serif;font-size:24px;font-weight:700;color:var(--ink);margin-top:8px}
-.cktile .v.g{color:var(--accent)}.cktile .v.gd{color:var(--gold)}
-.cktile .s{font-size:12px;color:var(--t);margin-top:7px;line-height:1.5}
-.ckrow{grid-column:1/-1;background:rgba(167,194,208,0.04);border:1px solid var(--line);border-radius:11px;padding:13px 18px;display:flex;align-items:center;gap:13px;flex-wrap:wrap}
-.ckrow .pill{font-family:'IBM Plex Sans',sans-serif;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:4px 9px;border-radius:999px;font-weight:700}
-.ckrow .pill.dec{background:rgba(231,178,78,0.16);color:var(--gold)}
-.ckrow .pill.live{background:rgba(130,183,158,0.16);color:var(--good)}
-.ckrow .txt{font-size:14px;color:var(--ink)}
-
-/* map */
-/* mac-screen orbital map (planets, whoop-age glow, rotating) */
-.macwrap{max-width:900px;margin:40px auto 0}
-.macframe{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 44px 100px -46px rgba(0,0,0,0.7)}
-.macbar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line);background:rgba(0,0,0,0.14)}
-.macbar i{width:11px;height:11px;border-radius:50%;background:rgba(207,220,228,0.28)}
-.macbar .u{margin-left:12px;font-family:'IBM Plex Sans',sans-serif;font-size:11px;letter-spacing:0.04em;color:var(--dim)}
-.orbit{position:relative;height:460px;overflow:hidden;background:radial-gradient(ellipse 62% 54% at 50% 50%,rgba(176,203,232,0.12),transparent 70%)}
-@media(max-width:560px){.orbit{height:380px}}
-.orbit .ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border:1px solid rgba(207,220,228,0.13);border-radius:50%}
-.core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:128px;height:128px;border-radius:50%;
-  background:radial-gradient(circle at 50% 42%,rgba(240,246,250,0.95),rgba(176,203,232,0.7) 42%,rgba(176,203,232,0.06) 72%);
-  box-shadow:0 0 70px rgba(176,203,232,0.5),inset 0 0 30px rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;text-align:center;z-index:4}
-.core:before{content:'';position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,0.5),transparent 40%),radial-gradient(circle at 68% 62%,rgba(255,255,255,0.25),transparent 35%);opacity:0.7}
-.core span{position:relative;font-family:'IBM Plex Sans',sans-serif;font-size:11px;font-weight:700;color:var(--btnink);letter-spacing:0.05em;line-height:1.3}
-.spin{position:absolute;top:50%;left:50%;width:0;height:0;animation:spin 50s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.planet{position:absolute;transform:translate(-50%,-50%);background:rgba(20,26,31,0.66);border:1px solid var(--line);border-radius:9px;padding:7px 11px;font-family:'IBM Plex Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.04em;color:var(--t);white-space:nowrap;box-shadow:0 8px 22px -12px rgba(0,0,0,0.7);animation:spinback 50s linear infinite}
-.planet:before{content:'';position:absolute;left:-4px;top:50%;width:5px;height:5px;border-radius:50%;background:var(--accent);transform:translateY(-50%);box-shadow:0 0 8px var(--accent)}
-@keyframes spinback{to{transform:translate(-50%,-50%) rotate(-360deg)}}
-/* rotating screens inside the frame */
-.screen{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;pointer-events:none}
-.screen.on{opacity:1;pointer-events:auto}
-.scrin{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:30px 40px}
-@media(max-width:560px){.scrin{padding:20px}}
-.scrh{font-family:'IBM Plex Sans',sans-serif;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--dim);margin-bottom:16px}
-.mtiles{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:12px}
-@media(max-width:560px){.mtiles{grid-template-columns:1fr}}
-.mtile{background:rgba(176,203,232,0.06);border:1px solid var(--line);border-radius:12px;padding:16px}
-.mtile .k{font-family:'IBM Plex Sans',sans-serif;font-size:8.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim)}
-.mtile .v{font-family:'IBM Plex Sans',sans-serif;font-size:22px;font-weight:700;color:var(--ink);margin-top:7px}
-.mtile .v.g{color:var(--accent)}.mtile .v.gd{color:var(--gold)}
-.mtile .s{font-size:11px;color:var(--t);margin-top:6px;line-height:1.45}
-.mrow{margin-top:12px;background:rgba(176,203,232,0.05);border:1px solid var(--line);border-radius:10px;padding:11px 15px;display:flex;gap:11px;align-items:center;flex-wrap:wrap}
-.mrow .pill{font-family:'IBM Plex Sans',sans-serif;font-size:8px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px;font-weight:700}
-.mrow .pill.dec{background:rgba(237,187,91,0.16);color:var(--gold)}.mrow .pill.live{background:rgba(154,208,182,0.16);color:var(--good)}
-.mrow .t{font-size:12.5px;color:var(--ink)}
-.mfind{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:560px){.mfind{grid-template-columns:1fr}}
-.mfc{background:rgba(176,203,232,0.06);border:1px solid var(--line);border-radius:12px;padding:16px}
-.mfc .lab{font-family:'IBM Plex Sans',sans-serif;font-size:8.5px;letter-spacing:0.09em;text-transform:uppercase;color:var(--good);font-weight:700}
-.mfc .amt{font-family:'IBM Plex Sans',sans-serif;font-size:20px;font-weight:700;color:var(--ink);margin:8px 0 6px}
-.mfc .d{font-size:11.5px;color:var(--t);line-height:1.45}
-.mfc .src{margin-top:10px;font-family:'IBM Plex Sans',sans-serif;font-size:8.5px;letter-spacing:0.04em;color:var(--accent)}
-.scrdots{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:6}
-.scrdots span{width:7px;height:7px;border-radius:50%;background:rgba(207,220,228,0.25);transition:background .3s}
-.scrdots span.on{background:var(--accent)}
-
-/* three-things / doors / plug cards */
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
-.grid3.g2{grid-template-columns:repeat(2,1fr);max-width:760px}
-/* supply <> demand flow */
-.sdflow{display:flex;align-items:stretch;gap:10px;margin-top:40px;flex-wrap:wrap;justify-content:center}
-.sdnode{flex:1 1 240px;max-width:320px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px 20px;text-align:center;box-shadow:0 18px 42px -30px rgba(0,0,0,0.6)}
-.sdnode.mid{border-color:rgba(176,203,232,0.42);background:linear-gradient(180deg,rgba(176,203,232,0.1),rgba(0,0,0,0.06))}
-.sdnode .lab{font-family:'IBM Plex Sans',sans-serif;font-size:9.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);font-weight:700}
-.sdnode h4{font-size:16px;color:var(--ink);font-weight:600;margin:9px 0 8px;letter-spacing:-0.01em}
-.sdnode p{font-size:13px;color:var(--t);line-height:1.5}
-.sdnode .go{display:inline-block;margin-top:14px;font-family:'IBM Plex Sans',sans-serif;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent)}
-.sdarrow{display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Sans',sans-serif;font-size:20px;color:var(--accent);padding:0 2px}
-@media(max-width:760px){.sdarrow{transform:rotate(90deg);padding:4px 0}}
-.sdcap{margin-top:20px;font-size:15px;color:var(--t);max-width:76ch;margin-left:auto;margin-right:auto;text-align:center;line-height:1.6}
-.sdcap b{color:var(--ink)}
-@media(max-width:820px){.grid3{grid-template-columns:1fr}}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px 24px;transition:transform .18s,border-color .18s}
-.card:hover{transform:translateY(-4px);border-color:rgba(176,203,232,0.4)}
-.card .num{font-family:'IBM Plex Sans',sans-serif;font-size:12px;color:var(--accent);font-weight:700}
-.card h3{font-size:18px;color:var(--ink);font-weight:600;margin:12px 0 9px;letter-spacing:-0.01em;line-height:1.25}
-.card p{font-size:14px;color:var(--t);line-height:1.55}
-.card .go{display:inline-block;margin-top:16px;font-family:'IBM Plex Sans',sans-serif;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent)}
-
-/* systems — featured real agent + rotating carousel */
-.syswrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px;align-items:stretch}
-@media(max-width:820px){.syswrap{grid-template-columns:1fr}}
-@media(max-width:820px){#engine h2 br{display:none}}
-.sys{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px}
-.sys.feat{border-color:rgba(176,203,232,0.4)}
-#sysrot{transition:opacity .26s ease}
-.ftab{font-family:'IBM Plex Sans',sans-serif;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:6px}
-.sysdots{display:flex;gap:9px;justify-content:center;align-items:center;margin-top:16px}
-.sysarrow{background:transparent;border:1px solid var(--line);color:var(--ink);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;line-height:1;display:flex;align-items:center;justify-content:center;padding:0}
-.sysarrow:hover{border-color:var(--accent);color:var(--accent)}
-.sdot{width:7px;height:7px;border-radius:50%;background:rgba(207,220,228,0.22);transition:background .2s}
-.sdot.on{background:var(--accent)}
-.agentscreen{margin-top:16px;background:rgba(20,26,31,0.5);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
-.ash{font-family:'IBM Plex Sans',sans-serif;font-size:8.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim);margin:0 0 10px}
-.abar+.ash{margin-top:15px}
-.abar{display:grid;grid-template-columns:82px 1fr 32px;gap:10px;align-items:center;margin-bottom:7px;font-family:'IBM Plex Sans',sans-serif;font-size:9px;letter-spacing:0.02em;color:var(--t)}
-.abar .track{height:6px;border-radius:99px;background:rgba(207,220,228,0.12);overflow:hidden}
-.abar .fill{height:100%;border-radius:99px;background:var(--accent)}
-.abar.warn .fill{background:var(--gold)}
-.abar b{color:var(--ink);text-align:right}
-.shift{margin-top:16px;background:rgba(20,26,31,0.5);border:1px solid var(--line);border-radius:12px;padding:15px 18px}
-.shrow{display:grid;grid-template-columns:58px 1fr;gap:12px;align-items:baseline;padding:8px 0;font-size:12.5px;color:var(--t);line-height:1.45}
-.shrow+.shrow{border-top:1px solid rgba(207,220,228,0.08)}
-.shrow .tag{font-family:'IBM Plex Sans',sans-serif;font-size:8.5px;letter-spacing:0.08em;text-transform:uppercase;font-weight:700}
-.shrow .tag.was{color:var(--dim)}
-.shrow .tag.now{color:var(--good)}
-.impact{margin-top:11px;font-family:'IBM Plex Sans',sans-serif;font-size:10.5px;letter-spacing:0.02em;color:var(--accent);border-top:1px solid rgba(207,220,228,0.1);padding-top:11px}
-.sysbadge{display:inline-block;font-family:'IBM Plex Sans',sans-serif;font-size:9px;letter-spacing:0.09em;text-transform:uppercase;color:var(--good);border:1px solid rgba(130,183,158,0.4);border-radius:999px;padding:4px 10px}
-.sysbadge:before{content:'● ';color:var(--good)}
-.sys h3{font-family:'IBM Plex Sans',sans-serif;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink);font-weight:700;margin:14px 0 10px}
-.sys p{font-size:13.5px;color:var(--t);line-height:1.55}
-.sysstats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
-.sysstat .n{font-family:'IBM Plex Sans',sans-serif;font-size:19px;font-weight:700;color:var(--ink)}
-.sysstat .l{font-size:10px;color:var(--dim);line-height:1.35;margin-top:4px}
-.sysnote{margin-top:22px;font-family:'IBM Plex Sans',sans-serif;font-size:11px;letter-spacing:0.02em;color:var(--dim);text-align:center}
-.takeover{margin-top:24px;font-size:15px;color:var(--t);max-width:80ch;line-height:1.6}
-.takeover b{color:var(--ink)}
-
-/* cadence */
-.cadgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
-@media(max-width:900px){.cadgrid{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.cadgrid{grid-template-columns:1fr}}
-.cad{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px 20px;position:relative;overflow:hidden}
-.cad:before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);opacity:0.7}
-.cad .when{font-family:'IBM Plex Sans',sans-serif;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);font-weight:700}
-.cad h4{font-size:16.5px;color:var(--ink);font-weight:600;margin:8px 0 8px}
-.cad p{font-size:13.5px;color:var(--t);line-height:1.5}
-
-/* how we work — mechanism flow */
-.flowrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:38px}
-/* eight steps now, so they sit four and four rather than six and two */
-@media(min-width:900px){.flowrow .fstep{flex:1 1 calc(25% - 8px)}}
-.fstep{flex:1 1 165px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 16px;position:relative;transition:transform .18s,border-color .18s}
-.fstep:hover{transform:translateY(-3px);border-color:rgba(176,203,232,0.4)}
-.fstep .fn{font-family:'IBM Plex Sans',sans-serif;font-size:11px;color:var(--accent);font-weight:700}
-.fstep h4{font-size:15px;color:var(--ink);font-weight:600;margin:9px 0 6px;letter-spacing:-0.01em;line-height:1.2}
-.fstep p{font-size:12.5px;color:var(--t);line-height:1.5}
-.fstep.act{border-color:rgba(130,183,158,0.5)}
-.fstep.act .fn{color:var(--good)}
 /* live meter */
-.meter{margin-top:20px;background:var(--panel);border:1px solid rgba(176,203,232,0.32);border-radius:18px;padding:30px 32px;display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:center;box-shadow:0 24px 60px -34px rgba(0,0,0,0.6)}
-@media(max-width:760px){.meter{grid-template-columns:1fr;gap:22px}}
-.meter .mlabk{font-family:'IBM Plex Sans',sans-serif;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--good);font-weight:700}
-.meter .mbig{font-family:'IBM Plex Sans',sans-serif;font-size:clamp(38px,6vw,60px);font-weight:700;color:var(--ink);line-height:1;margin:12px 0 8px;letter-spacing:-0.01em}
-.meter .mbig b{color:var(--good)}
-.meter .msub{font-size:13px;color:var(--t);line-height:1.5}
-.meter .mright .wl{font-family:'IBM Plex Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim);margin-bottom:10px}
-.mtrack{height:10px;border-radius:99px;background:rgba(167,194,208,0.12);overflow:hidden}
-.mfill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--gold),var(--good));transition:width 2s ease}
-.mwork{display:flex;justify-content:space-between;margin-top:10px;font-family:'IBM Plex Sans',sans-serif;font-size:11px;color:var(--t)}
-.mwork b{color:var(--ink)}
-.millus{margin-top:16px;font-family:'IBM Plex Sans',sans-serif;font-size:10.5px;letter-spacing:0.02em;color:var(--dim)}
+.live{position:absolute;left:50%;bottom:-24px;transform:translateX(-50%);width:400px;background:rgba(249,250,244,.92);backdrop-filter:blur(6px);border:1px solid var(--line);box-shadow:0 20px 50px rgba(9,17,32,.10);padding:16px 18px 10px;opacity:0;animation:up 1s 1.9s var(--ease) forwards}
+@keyframes up{from{opacity:0;transform:translate(-50%,16px)}to{opacity:1;transform:translate(-50%,0)}}
+.live .top{display:flex;justify-content:space-between;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink);font-weight:500}
+.dotlive{display:inline-flex;align-items:center;gap:8px}.dotlive i{width:7px;height:7px;border-radius:50%;background:#3aa37a;animation:pl 1.6s infinite}
+@keyframes pl{0%{box-shadow:0 0 0 0 rgba(58,163,122,.45)}100%{box-shadow:0 0 0 9px rgba(58,163,122,0)}}
+.live .big{font-size:36px;font-weight:300;letter-spacing:-.02em;margin:8px 0 2px;font-variant-numeric:tabular-nums}
+.live .big small{font-size:13px;font-weight:500;color:var(--faint);letter-spacing:.12em;margin-right:6px}
+.live .sub{font-size:12px;color:var(--faint)}
+.feed{margin-top:10px;border-top:1px solid var(--line);height:98px;overflow:hidden}
+.feed .row{display:grid;grid-template-columns:120px 1fr auto;gap:10px;white-space:nowrap;font-size:12.5px;padding:8px 0;border-bottom:1px dashed var(--line);animation:fin .6s var(--ease) both}
+.feed .row span:nth-child(2){overflow:hidden;text-overflow:ellipsis}
+.feed .k{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink);font-weight:500;padding-top:2px}
+.feed .v{font-variant-numeric:tabular-nums;font-weight:500}
+@keyframes fin{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
 
-/* plug / sovereignty */
-.plug{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}@media(max-width:900px){.plug{grid-template-columns:1fr 1fr}}@media(max-width:560px){.plug{grid-template-columns:1fr}}
-@media(max-width:820px){.plug{grid-template-columns:1fr}}
-.plug3{grid-template-columns:repeat(3,1fr)}@media(max-width:820px){.plug3{grid-template-columns:1fr}}
-.pl{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px}
-.pl.sov{border-color:rgba(176,203,232,0.35)}
-.pl .h{font-size:16px;color:var(--ink);font-weight:600;margin:12px 0 8px;line-height:1.2}
-.pln{width:34px;height:34px;border-radius:50%;background:rgba(176,203,232,0.14);color:var(--accent);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:15px}
-.feebar{margin-top:18px;background:linear-gradient(120deg,rgba(237,187,91,0.10),transparent);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:14px;padding:18px 22px;font-size:18px;color:var(--ink);font-weight:300}.feebar b{font-weight:600}
-.pl p{font-size:14px;color:var(--t);line-height:1.55;margin-top:10px}
-.pl p b{color:var(--ink)}
+/* THE SPACE (scroll-driven) */
+.space{height:260vh;background:var(--ink);color:#fff}
+.space .stick{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.space .grid2{position:absolute;inset:0;background-image:linear-gradient(rgba(139,166,183,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(139,166,183,.08) 1px,transparent 1px);background-size:64px 64px}
+.space .words{position:absolute;top:9vh;left:0;right:0;text-align:center;z-index:3}
+.space .words h2{color:#fff}
+.space .words .w{position:absolute;left:0;right:0;opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.space .words .w.on{opacity:1;transform:none}
+.space .words .w small{display:block;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-weight:500}
+.space .frame{position:relative;width:min(900px,60vw);aspect-ratio:16/9;margin-top:20vh;z-index:2}
+.space .screen{position:absolute;inset:0;border:1px solid rgba(139,166,183,.5);background:#000;box-shadow:0 60px 120px rgba(0,0,0,.55);overflow:hidden;transform-origin:center;transition:transform .15s linear,opacity .15s linear}
+.space .screen video{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.space .bk{position:absolute;top:50%;height:112%;z-index:3;filter:drop-shadow(0 30px 40px rgba(0,0,0,.5))}
+.space .bk.l{right:calc(100% + 18px);transform:translate(-60vw,-50%)}.space .bk.r{left:calc(100% + 18px);transform:translate(60vw,-50%)}
+.space .note{position:absolute;bottom:5vh;left:0;right:0;text-align:center;font-size:11.5px;letter-spacing:.16em;color:var(--accent);text-transform:uppercase;z-index:3}
 
-/* chat */
-.chatwrap{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;margin-top:14px}
-@media(max-width:820px){.chatwrap{grid-template-columns:1fr;gap:30px}}
-.chatpoints{margin-top:20px;display:flex;flex-direction:column;gap:13px}
-.chatpoint{display:flex;gap:12px;align-items:flex-start}
-.chatpoint .d{flex:0 0 auto;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-top:8px}
-.chatpoint p{font-size:14.5px;color:var(--t);line-height:1.5}
-.chatpoint b{color:var(--ink);font-weight:600}
-.phone{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:20px 18px;box-shadow:0 28px 64px -30px rgba(0,0,0,0.7);max-width:400px;width:100%;justify-self:center}
-.phone .ph{display:flex;align-items:center;gap:9px;padding:0 4px 14px;border-bottom:1px solid var(--line)}
-.phone .ph .av{width:30px;height:30px;border-radius:50%;background:var(--accent);color:#12202a;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Sans',sans-serif;font-size:12px;font-weight:700}
-.phone .ph .nm{font-size:13px;font-weight:600;color:var(--ink)}
-.phone .ph .st{margin-left:auto;font-family:'IBM Plex Sans',sans-serif;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;color:var(--good)}
-.bub{max-width:86%;padding:11px 15px;border-radius:16px;font-size:13.5px;line-height:1.45;margin-top:12px}
-.bub.me{background:var(--accent);color:#12202a;margin-left:auto;border-bottom-right-radius:5px;font-weight:600}
-.bub.ai{background:var(--panel2);color:var(--ink);border-bottom-left-radius:5px}
-.bub.ai .dh{font-family:'IBM Plex Sans',sans-serif;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:5px}
-.bub.ai .why{color:var(--t);font-size:12.5px;margin-top:5px}
-.bub.ai .look{display:inline-block;margin-top:8px;font-family:'IBM Plex Sans',sans-serif;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(176,203,232,0.35);border-radius:99px;padding:3px 9px}
-.chatdone{margin-top:14px;text-align:center;font-family:'IBM Plex Sans',sans-serif;font-size:10px;letter-spacing:0.06em;text-transform:uppercase;color:var(--good);background:rgba(130,183,158,0.12);border-radius:999px;padding:8px}
+/* BOX */
+.boxhead{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:56px}
+.box{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--ink);background:var(--card)}
+.tile{padding:34px 28px 30px;min-height:330px;display:flex;flex-direction:column;gap:14px;border-right:1px solid var(--ink);position:relative;transition:background .4s}
+.tile:last-child{border-right:0}
+.tile:hover{background:#fff}
+.tile .n{font-size:11px;color:var(--accent-ink);letter-spacing:.16em;font-weight:500}
+.tile svg{height:74px;width:74px;margin:6px 0 4px}
+.tile h3{font-size:25px;font-weight:700;letter-spacing:-.015em}
+.tile p{font-size:15.5px;line-height:1.5;color:var(--soft)}
+.tile .go{margin-top:auto;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;display:flex;gap:8px;align-items:center}
+.tile .go i{transition:transform .3s var(--ease)}.tile:hover .go i{transform:translateX(5px)}
+.tile.ai{background:var(--blue)}
+.ic *{fill:none;stroke:var(--ink);stroke-width:1.4}
+.ic .acc{stroke:var(--accent-ink)}
+.ic-comp .needle{transform-origin:37px 37px;animation:needle 5s ease-in-out infinite}
+@keyframes needle{0%,100%{transform:rotate(-20deg)}50%{transform:rotate(35deg)}}
+.ic-loop .arc{stroke-dasharray:180;stroke-dashoffset:180;animation:loop 3.6s linear infinite}
+@keyframes loop{to{stroke-dashoffset:-180}}
+.ic-bars rect{transform-origin:bottom;transform-box:fill-box;animation:bar 3s ease-in-out infinite}
+.ic-bars rect:nth-child(2){animation-delay:.3s}.ic-bars rect:nth-child(3){animation-delay:.6s}.ic-bars rect:nth-child(4){animation-delay:.9s}
+@keyframes bar{0%,100%{transform:scaleY(.45)}50%{transform:scaleY(1)}}
+.ic-net circle.p{animation:blink 2.4s ease-in-out infinite}.ic-net circle.p:nth-of-type(2){animation-delay:.6s}.ic-net circle.p:nth-of-type(3){animation-delay:1.2s}
+@keyframes blink{0%,100%{fill:transparent}50%{fill:var(--accent-ink)}}
 
-/* trust aggregates */
-.agg{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
-@media(max-width:820px){.agg{grid-template-columns:1fr 1fr}}
-.aggn{font-family:'IBM Plex Sans',sans-serif;font-size:34px;font-weight:700;color:var(--ink)}
-.aggl{font-size:13px;color:var(--t);margin-top:6px;line-height:1.4}
-.aggl b{color:var(--accent)}
-.aggnote{margin-top:20px;font-family:'IBM Plex Sans',sans-serif;font-size:10.5px;letter-spacing:0.03em;color:var(--dim)}
-.crv{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
-@media(max-width:820px){.crv{grid-template-columns:1fr}}
-.crc{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
-.crc .h{font-family:'IBM Plex Sans',sans-serif;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);font-weight:700}
-.crc p{font-size:13.5px;color:var(--t);line-height:1.5;margin-top:9px}
+/* COCKPIT TABS */
+.ck{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.ck .grid{display:grid;grid-template-columns:370px 1fr;gap:56px;align-items:start;margin-top:60px}
+.tabs{display:flex;flex-direction:column}
+.tab{padding:22px 0 20px;border-top:1px solid var(--line);cursor:pointer;position:relative}
+.tab:last-child{border-bottom:1px solid var(--line)}
+.tab .t{display:flex;gap:14px;align-items:baseline}
+.tab .t span{font-size:11px;letter-spacing:.16em;color:var(--faint);font-weight:500}
+.tab .t b{font-size:22px;font-weight:500;letter-spacing:-.01em;color:var(--faint);transition:color .3s}
+.tab p{font-size:15px;line-height:1.5;color:var(--soft);max-height:0;overflow:hidden;opacity:0;transition:max-height .6s var(--ease),opacity .6s,margin .6s;margin-top:0}
+.tab.on .t b{color:var(--ink);font-weight:700}
+.tab.on p{max-height:120px;opacity:1;margin-top:10px}
+.tab .bar{position:absolute;left:0;bottom:-1px;height:2px;background:var(--ink);width:0}
+.tab.on .bar{animation:prog var(--dur,9s) linear forwards}
+@keyframes prog{to{width:100%}}
+.viewer{position:relative}
+.device{border:1px solid var(--ink);background:#fff;box-shadow:0 50px 100px rgba(9,17,32,.18);overflow:hidden;aspect-ratio:1280/720;position:relative}
+.device video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s}
+.device video.on{opacity:1}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:22px;border-top:1px solid var(--ink)}
+.stats div{padding:16px 16px 0 0}
+.stats b{display:block;font-size:30px;font-weight:300;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stats span{font-size:13px;color:var(--soft)}
+.honest{margin-top:22px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:500}
 
-/* fee + fomo */
-.fee{text-align:center}
-.fee .big{font-size:clamp(22px,3vw,32px);font-weight:600;color:var(--ink);letter-spacing:-0.02em;max-width:26ch;margin:0 auto;line-height:1.2}
-.fee .big b{color:var(--accent)}
-.fomo h2{max-width:24ch}
-.fomo .p2{max-width:64ch}
+/* METHOD */
+.mhead{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end}
+.rail{position:relative;display:grid;grid-template-columns:repeat(5,1fr);margin-top:70px}
+.rail::before{content:"";position:absolute;left:0;right:0;top:15px;height:1px;background:var(--line)}
+.rail .fill{position:absolute;left:0;top:15px;height:2px;background:var(--ink);width:0;transition:width 2.6s var(--ease)}
+.rail.in .fill{width:100%}
+.st{position:relative;padding-right:26px}
+.st .dot{width:32px;height:32px;border-radius:50%;background:var(--ground);border:1px solid var(--line);position:relative;z-index:1;display:grid;place-items:center;font-size:11px;color:var(--faint);transition:all .5s var(--ease)}
+.rail.in .st .dot{background:var(--ink);border-color:var(--ink);color:#fff}
+.rail.in .st:nth-child(3) .dot{transition-delay:.5s}.rail.in .st:nth-child(4) .dot{transition-delay:1s}.rail.in .st:nth-child(5) .dot{transition-delay:1.5s}.rail.in .st:nth-child(6) .dot{transition-delay:2s}
+.st .k{font-size:11px;letter-spacing:.16em;color:var(--accent-ink);margin:22px 0 8px;font-weight:500}
+.st h4{font-size:21px;font-weight:700;letter-spacing:-.01em}
+.st p{font-size:15px;line-height:1.5;color:var(--soft);margin-top:8px}
+.bp{position:relative;background:#0e1b2e;border:1px solid var(--ink);padding:22px;margin-top:70px;background-image:linear-gradient(rgba(139,166,183,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(139,166,183,.13) 1px,transparent 1px);background-size:24px 24px}
+.bp svg{display:block;width:100%;height:auto}
+.bp .lbl{position:absolute;left:22px;top:18px;font-size:10.5px;letter-spacing:.16em;color:#8BA6B7;font-weight:500}
+.bp .lbr{position:absolute;right:22px;top:18px;font-size:10.5px;letter-spacing:.16em;color:#8BA6B7;font-weight:500}
+.room rect{fill:rgba(139,166,183,0);stroke:#8BA6B7;stroke-width:1.4;stroke-dasharray:1200;stroke-dashoffset:1200}
+.room text{fill:#cfdbe4;font-family:var(--f);font-size:13px;letter-spacing:.14em;opacity:0}
+.room.ghost rect{stroke-dasharray:5 7;stroke-dashoffset:0;opacity:0;stroke:#5d7686}.room.ghost text{fill:#6f8796}
+.bp.in .room.fill rect{animation:draw 1.2s var(--d,0s) ease forwards,fillin .8s calc(var(--d,0s) + .8s) ease forwards}
+.bp.in .room text{animation:fade .6s calc(var(--d,0s) + .5s) ease forwards}
+.bp.in .room.ghost rect{animation:fade 1s var(--d,0s) ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}@keyframes fade{to{opacity:1}}@keyframes fillin{to{fill:rgba(139,166,183,.16)}}
+.pin circle,.pin text{opacity:0}
+.bp.in .pin circle,.bp.in .pin text{animation:fade .5s var(--d,3.5s) ease forwards}
+.bp.in .pin .ring{animation:fade .5s var(--d,3.5s) ease forwards,ping 2s calc(var(--d,3.5s) + .5s) ease-out infinite}
+.pin circle{fill:#F9FAF4}.pin .ring{fill:none;stroke:#F9FAF4;stroke-width:1.2;transform-origin:center;transform-box:fill-box}
+@keyframes ping{0%{transform:scale(1);opacity:.9}100%{transform:scale(3.2);opacity:0}}
+.pin text{fill:#F9FAF4;font-family:var(--f);font-size:12.5px;font-weight:500}
 
-footer{padding:44px 0;color:var(--dim);font-size:13px;border-bottom:none}
-footer .wrap{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-footer .brand{font-weight:600;color:var(--ink)}
-footer .brand i{display:inline-block;width:5px;height:5px;background:var(--accent);transform:rotate(45deg);margin-left:4px}
-footer .mono{margin-left:auto;font-size:11px;letter-spacing:0.06em;text-transform:uppercase}
+/* PROOF */
+.nums{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);margin-top:56px}
+.num{padding:30px 24px 28px 0}.num+.num{padding-left:24px;border-left:1px solid var(--line)}
+.num b{display:block;font-weight:300;font-size:60px;letter-spacing:-.03em;line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums}
+.num span{display:block;margin-top:12px;font-size:15px;color:var(--soft);max-width:15em}
+.engine{position:relative;height:470px;margin-top:40px}
+.engine svg{position:absolute;inset:0;width:100%;height:100%}
+.co{position:absolute;background:var(--card);border:1px solid var(--line);padding:12px 14px;width:220px;font-size:14px;line-height:1.35;box-shadow:0 8px 20px rgba(9,17,32,.05)}
+.co b{display:block;font-size:15px}.co i{font-style:normal;font-size:10px;letter-spacing:.14em;color:var(--faint);font-weight:500}
+.core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:176px;height:176px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;text-align:center;box-shadow:0 0 0 14px rgba(9,17,32,.05),0 0 0 28px rgba(9,17,32,.03)}
+.core img{height:52px;filter:brightness(1.4);animation:spin 20s linear infinite;transform-origin:center}
+.core small{display:block;font-size:10.5px;letter-spacing:.16em;margin-top:8px;font-weight:500}
+.spark{fill:var(--accent-ink)}
 
-.rev{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
-.rev.in{opacity:1;transform:none}
-.rgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}@media(max-width:820px){.rgrid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.rgrid{grid-template-columns:1fr}}
-.rcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
-.rk{font-family:'IBM Plex Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:9px}
-.rd{font-size:14px;color:var(--t);line-height:1.55}
-.prevbar{background:#16252E;color:#B0CBE8;font-family:'IBM Plex Sans',sans-serif;font-size:11px;text-align:center;padding:7px 14px;letter-spacing:0.03em}
-.prevbar b{color:#EDBB5B}
-#subnav{position:sticky;top:var(--navh,64px);z-index:55;background:rgba(60,85,95,0.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-#subnav .wrap{display:flex;align-items:center;gap:24px;height:46px}
-#subnav .snbrand{font-family:'IBM Plex Sans',sans-serif;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);font-weight:700;display:flex;align-items:center;gap:6px;flex-shrink:0}
-#subnav .snbrand i{width:6px;height:6px;background:var(--accent);transform:rotate(45deg);display:inline-block}
-#subnav .snlinks{display:flex;gap:22px;flex:1 1 auto;min-width:0;overflow-x:auto;scrollbar-width:none}#subnav .snlinks::-webkit-scrollbar{display:none}
-#subnav .snlinks a{font-size:13px;color:var(--t);font-weight:500;white-space:nowrap}
-#subnav .snlinks a:hover{color:var(--ink)}
-#subnav .snpill{margin-left:auto;flex-shrink:0;font-size:12px;font-weight:700;color:var(--btnink);background:var(--accent);padding:7px 13px;border-radius:999px;white-space:nowrap}
-#getgrid .card{border-top:3px solid var(--accent)}
-#getgrid .num{font-family:'IBM Plex Sans',sans-serif;font-size:34px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:12px}
-#getgrid .card h3{font-size:20px;line-height:1.2}
-#nav .links a.cockpitnav{color:var(--accent)!important;font-weight:700}
+/* FOUNDER */
+.fd{display:grid;grid-template-columns:320px 1fr;gap:70px;align-items:center}
+.fd .ph{position:relative;display:block}
+.fd .ph img{width:320px;height:380px;object-fit:cover;filter:grayscale(1) contrast(1.05);border:1px solid var(--ink);display:block;transition:filter .5s}
+.fd .ph:hover img{filter:grayscale(0)}
+.fd .ph .in{position:absolute;right:-14px;bottom:-14px;background:var(--ink);color:#fff;font-size:12px;font-weight:700;padding:10px 14px;letter-spacing:.04em}
+.who{font-size:30px;font-weight:700;letter-spacing:-.015em;display:inline-flex;gap:10px;align-items:center}
+.who:hover{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
+.role{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink);font-weight:500;margin-top:6px}
+.hats{display:flex;flex-wrap:wrap;gap:8px}
+.hats span{font-size:13px;font-weight:500;border:1px solid var(--ink);padding:7px 12px}
+.net{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--faint);letter-spacing:.04em}
+.net span::before{content:"· ";color:var(--accent)}
+.fd .stack>*+*{margin-top:20px}
 
-/* ── added 31 Aug: proof strip, real screens, the engine ── */
-.pstrip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid rgba(255,255,255,.16);border-bottom:1px solid rgba(255,255,255,.16);margin:26px 0 4px}
-.pstrip>div{padding:16px 20px 16px 0;border-right:1px solid rgba(255,255,255,.08)}
-.pstrip>div:last-child{border-right:0}
-.pstrip .v{font-size:32px;font-weight:700;color:var(--ink);line-height:1}
-.pstrip .k{font-size:12.5px;line-height:1.5;color:var(--dim);margin-top:8px}
-.pstrip .k b{color:var(--t);font-weight:600}
-.rs{display:grid;grid-template-columns:1.6fr 1fr;gap:16px;align-items:start;margin-top:22px}
-.rs .col{display:grid;gap:16px}
-.rs figure{margin:0}
-.rs img{width:100%;display:block;border:1px solid rgba(255,255,255,.16);border-radius:4px}
-.rs figcaption{font-size:12.5px;line-height:1.5;color:var(--dim);margin-top:8px}
-.rs figcaption b{color:var(--t);font-weight:600}
-.eng{border:1px solid rgba(255,255,255,.14);border-radius:6px;padding:26px 24px 20px;margin-top:22px;background:rgba(255,255,255,.025)}
-.engnote{font-size:13px;line-height:1.6;color:var(--dim);max-width:78ch;margin:18px auto 0;text-align:center}
-.engnote b{color:var(--ink);font-weight:600}
-@media(max-width:820px){.pstrip{grid-template-columns:1fr 1fr}.rs{grid-template-columns:1fr}}
-footer .fl{display:flex;gap:18px;flex-wrap:wrap;width:100%;justify-content:center;margin-top:12px;font-size:13px}footer .fl a{color:var(--t);text-decoration:none}footer .fl a:hover{color:var(--ink)}footer .mono a{color:inherit;text-decoration:none}
-@media(max-width:820px){#nav .wrap{flex-wrap:wrap;height:auto;padding:8px 0 8px;row-gap:6px;justify-content:center}#nav .brand{width:100%;text-align:center}#nav .links{width:100%;margin-left:0;flex-wrap:nowrap;justify-content:center;gap:4px}#nav .links a{font-size:11.5px;letter-spacing:0;padding:6px 5px;white-space:nowrap}#nav .links a.cta{padding:6px 9px}}@media(max-width:360px){#nav .links a{font-size:10.5px;padding:6px 4px}}
-</style><style>/* four screens, an even two by two on the home page */
-#realscreens .rs{grid-template-columns:1fr 1fr}#realscreens .rs .col{display:contents}
-@media(max-width:820px){#realscreens .rs{grid-template-columns:1fr}}
+/* DATA */
+.data{background:var(--ink);color:#fff}
+.data .grid{display:grid;grid-template-columns:1fr 1.4fr;gap:70px;align-items:center}
+.data h2{color:#fff}.data .lede{color:#b9c6d2}
+.rings{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(139,166,183,.25);border:1px solid rgba(139,166,183,.25)}
+.ring{background:var(--ink);padding:26px 22px}
+.ring h4{font-size:19px;font-weight:700;margin:16px 0 6px}
+.ring p{font-size:14.5px;line-height:1.5;color:#b9c6d2}
+.ring svg *{fill:none;stroke:#8BA6B7;stroke-width:1.4}.ring svg .c{fill:#8BA6B7;stroke:none}
+.ring svg .o{animation:breathe 3s ease-in-out infinite;transform-origin:center;transform-box:fill-box}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
 
-/* ==========================================================================
-   PERSPACE · THE IDENTITY, ON THE SITE            18 September 2026
-   Peter: "update my website using new branding, make it apple style like my
-   personal website but use logo and latest colours."
-   The light palette the cockpit already runs on, Satoshi over Inter, square
-   corners, and the room to breathe the founder page has. Nothing here changes
-   a word of the copy: this block only repaints what is already written.
-   ========================================================================== */
-:root{
-  --bg:#E1E8F0; --sculpture:#F4F6F8; --panel:#FFFFFF; --panel2:#F7F8FA;
-  --ink:#091120; --t:#33404f; --dim:rgba(9,17,32,.55);
-  --line:rgba(169,172,175,.55); --accent:#2f6d7a; --turq:#8BA6B7;
-  --gold:#6b5f3e; --good:#40663f; --btnink:#FFFFFF; --indigo:#091120;
+/* CLOSE */
+.close{padding:170px 0 150px;text-align:center;overflow:hidden}
+.close .m{height:160px;display:flex;justify-content:center;gap:34px;align-items:center;margin-bottom:40px}
+.close .m img{height:150px}.close .m .s{height:50px;animation:spin 14s linear infinite}
+.close h2{font-size:clamp(44px,6vw,88px)}
+.close .lede{margin:24px auto 0;text-align:center}
+.close .btns{justify-content:center;margin-top:40px}
+footer{border-top:1px solid var(--ink);padding:36px 0 44px;font-size:14px;color:var(--soft)}
+footer .wrap{display:flex;justify-content:space-between;gap:30px;align-items:center;flex-wrap:wrap}
+footer .ft{display:flex;gap:22px;flex-wrap:wrap}
+footer .tl{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);font-weight:500}
+
+@media (max-width:900px){
+  .wrap{padding:0 22px}.links{display:none}
+  nav .btn{font-size:12.5px;padding:9px 12px;white-space:nowrap}.glow{top:auto;bottom:-10%;right:-40%;width:120vw;height:120vw}
+  .hero{padding:110px 0 60px}.hero .grid{grid-template-columns:1fr}
+  .mark{height:auto}.markbox{position:relative;height:330px}.mark .b{height:280px}.mark .l{left:12%}.mark .r{right:12%}.mark .s{height:70px}
+  .space .frame{width:78vw}.space .bk{height:80%}
+  .live{position:relative;left:auto;bottom:auto;transform:none;width:auto;margin-top:10px;animation:none;opacity:1}
+  .scrollcue{display:none}
+  .space{height:220vh}.space .frame{width:86vw;margin-top:18vh}.space .words{top:12vh}
+  .boxhead,.mhead,.data .grid,.fd{grid-template-columns:1fr;gap:28px}
+  .box{grid-template-columns:1fr 1fr}.tile{border-bottom:1px solid var(--ink);min-height:0}.tile:nth-child(2n){border-right:0}
+  .ck .grid{grid-template-columns:1fr;gap:26px}
+  .rail{grid-template-columns:1fr;gap:26px}.rail::before,.rail .fill{left:15px;right:auto;top:0;bottom:0;width:1px;height:auto}.rail.in .fill{width:2px;height:100%}
+  .st{padding-left:52px}.st .dot{position:absolute;left:0;top:0}.st .k{margin-top:4px}
+  .bp .lbr{display:none}.bp .lbl{position:static;display:block;margin-bottom:10px}
+  .nums{grid-template-columns:1fr 1fr}.num:nth-child(3){padding-left:0;border-left:0}.num{border-top:1px solid var(--line)}.num b{font-size:44px}
+  .engine{height:auto;display:grid;gap:10px}.engine svg{display:none}.co,.core{position:static;transform:none;width:auto}.core{width:140px;height:140px;margin:12px auto}
+  .rings{grid-template-columns:1fr}
+  .fd .ph img{width:100%;height:360px}
+  .pad{padding:90px 0}
 }
-body{font-family:"Satoshi","Inter",system-ui,-apple-system,sans-serif!important;
-  background:var(--bg)!important;color:var(--t)!important;line-height:1.55}
-h1,h2,h3,.scnum,.n,.big{font-family:"Inter","Satoshi",system-ui,sans-serif!important;
-  color:var(--ink)!important;letter-spacing:-.035em!important}
-h1 b,h2 b,h3 b{color:var(--ink)!important;font-weight:700!important}
-.mono,.eye,.helabel,.sclab,.k{font-family:"Satoshi",system-ui,sans-serif!important}
-a{color:inherit}
-
-/* the room · one idea a screen, the way the founder page reads */
-.wrap{max-width:1240px;padding:0 40px}
-section{padding:132px 0!important;border-bottom:1px solid var(--line)!important}
-section:last-of-type{border-bottom:0!important}
-h1{font-size:clamp(44px,7.4vw,92px)!important;font-weight:300!important;line-height:.98!important}
-h2{font-size:clamp(30px,4.6vw,56px)!important;font-weight:300!important;line-height:1.04!important;max-width:22ch!important}
-h3{font-weight:600!important}
-.lede,.hero .lede,.p2{font-size:clamp(17px,1.5vw,21px)!important;line-height:1.6!important;color:var(--t)!important;max-width:60ch!important}
-.lede b,.p2 b,.hero .lede b{color:var(--ink)!important;font-weight:600!important}
-.eye,.helabel{font-size:11px!important;letter-spacing:.2em!important;text-transform:uppercase;
-  color:var(--accent)!important;font-weight:700!important;margin-bottom:26px!important}
-
-/* the spine · one bar, the logo, nothing else */
-#nav{background:rgba(225,232,240,.86)!important;backdrop-filter:saturate(180%) blur(20px);
-  border-bottom:1px solid var(--line)!important}
-#nav .wrap{height:72px}
-#nav .brand{color:var(--ink)!important;font-weight:600;font-size:17px;display:flex;align-items:center;gap:10px}
-/* the boxed mark is retired: the mark now stands on its own, see THE MARK, ALIVE */
-#nav .links a{color:var(--t)!important;font-size:14px}
-#nav .links a:hover,#nav .links a.on{color:var(--ink)!important}
-#nav .links a.on{border-bottom:2px solid var(--accent)!important}
-#nav .links a.cockpitnav{color:var(--accent)!important}
-#nav .cta,.btn,.btn.p,.btn.s{border-radius:0!important}
-#nav .cta{background:var(--ink)!important;color:#fff!important;font-weight:600;font-size:14px;padding:12px 22px}
-#nav .cta:hover{background:var(--accent)!important;color:#fff!important}
-/* one spine, not two: the second bar is the same paper with a rule under it */
-#subnav{background:rgba(244,246,248,.92)!important;border-bottom:1px solid var(--line)!important;backdrop-filter:saturate(180%) blur(20px)}
-#subnav a{color:var(--t)!important}
-#subnav a:hover,#subnav a.on,#subnav b{color:var(--ink)!important}
-#subnav .cta{background:var(--ink)!important;color:#fff!important;border-radius:0!important;font-weight:600}
-.prevbar{background:var(--ink)!important;border-color:var(--line)!important}
-.prevbar,.prevbar b{color:rgba(225,232,240,.9)!important}
-
-/* the two buttons */
-.btn{font-weight:600!important;font-size:15px!important;padding:16px 30px!important;transition:transform .15s,background .15s}
-.btn.p{background:var(--ink)!important;color:#fff!important}
-.btn.p:hover{background:var(--accent)!important;color:#fff!important;transform:none}
-.btn.s{background:transparent!important;color:var(--ink)!important;border:1px solid var(--line)!important}
-.btn.s:hover{border-color:var(--ink)!important}
-.hbtns{gap:12px!important;margin-top:44px!important}
-
-/* every panel becomes paper */
-.card,.panel,.tile,.box,.stat,.bit,.plug,.shape,.scale,.who,.sys,.step,.row,.item,
-.g3>div,.g2>div,.grid>div{border-radius:0!important}
-[class*="card"],[class*="panel"],[class*="tile"]{background:var(--panel)!important;
-  border:1px solid var(--line)!important;color:var(--t)!important;
-  box-shadow:0 1px 1px rgba(9,17,32,.04),0 14px 30px -20px rgba(9,17,32,.35)}
-[class*="card"] h3,[class*="panel"] h3,[class*="tile"] h3,
-[class*="card"] b,[class*="panel"] b{color:var(--ink)!important}
-
-/* the hero gets the founder page's air */
-.hero{padding:120px 0 110px!important}
-.hero .lede{margin-top:34px!important}
-
-/* figures read as figures, not as decoration */
-.scnum,.n,.num{color:var(--ink)!important;font-weight:700!important}
-.sclab,.cap,.small{color:var(--dim)!important}
-
-/* rules and separators */
-hr,.sep,.divider{border-color:var(--line)!important;background:var(--line)!important}
-footer{background:var(--ink)!important;color:rgba(225,232,240,.82)!important;padding:80px 0!important}
-footer a,footer b{color:#fff!important}
-img{border-radius:0!important}
-
-@media(max-width:900px){
-  .wrap{padding:0 22px}
-  section{padding:76px 0!important}
-  .hero{padding:64px 0 60px!important}
-  h1{font-size:clamp(34px,9vw,52px)!important}
-  h2{font-size:clamp(24px,6.4vw,34px)!important;max-width:none!important}
-}
-
-/* the second bar's button, and the drawn panels · 18 Sep 2026 */
-#subnav .snpill{background:var(--ink)!important;color:#fff!important;border-radius:0!important;
-  border:0!important;font-weight:600!important;padding:10px 20px!important}
-#subnav .snpill:hover{background:var(--accent)!important}
-#subnav .snbrand{color:var(--ink)!important}
-#subnav .snbrand i{background:var(--accent)!important}
-.demo,.demowrap,.frame,.screen,.shot,[class*="demo"],[class*="frame"]{border-radius:0!important}
-
-/* square everything that is a surface; circles stay circles */
-.sctrack,.cockpit,.cktile,.ckrow,.macframe,.mtile,.mrow,.mfc,.plug,.bit,.way,.sys,.step,
-.stat,.tile,.pane,.block,.note,.quote,.logo,.shot,.pic,.thumb{border-radius:0!important}
-[style*="border-radius"]:not(.dot):not(.pip):not([class*="circle"]){border-radius:0}
-.dot,.pip,[class*="circle"],.num,.idx{border-radius:50%!important}
-
-/* Peter, 18 Sep 2026: "dark blue box to always have white font."
-   The nav links rule was more specific than the button rule, so the one dark box
-   on the page was reading dark grey on indigo. Anything sitting on the indigo is
-   named here, and it is named last. */
-#nav .links a.cta,#nav .links a.cta:hover,#nav a.cta,#nav .cta,
-#subnav .snpill,#subnav a.snpill,#subnav .snlinks a.snpill,
-a.btn.p,.btn.p,.btn.p:hover,
-footer,footer a,footer b,footer span,footer p,
-.prevbar,.prevbar b,
-.dark,.dark h2,.dark h3,.dark p,.dark b,.dark span{color:#FFFFFF!important}
-#nav .links a.cta:hover,#subnav .snpill:hover,.btn.p:hover{background:var(--accent)!important}
-footer a:hover{color:var(--turq)!important}
-
-/* ==========================================================================
-   THE MARK, ALIVE                                    18 September 2026
-   Peter: "the logo to be not in a box and bigger bolder. Can u do some
-   animations on the website with the logo? Be creative."
-   The mark is two brackets around a star. It is drawn here as three pieces in
-   one frame, so each can move on its own: the brackets hold, the star turns.
-   On the light page the pieces are the indigo cut of the same artwork, so the
-   mark reads at full weight with nothing behind it.
-   ========================================================================== */
-.pmark{position:relative;display:inline-block;width:1em;height:.88em;vertical-align:-.06em}
-.pmark i,#nav .brand .pmark i,#subnav .snbrand .pmark i,.brand .pmark i,.snbrand .pmark i{
-  position:absolute!important;inset:0!important;display:block!important;width:auto!important;height:auto!important;
-  background-color:transparent!important;transform:none;border-radius:0!important;margin:0!important;
-  background-position:center;background-repeat:no-repeat;background-size:contain}
-.pmark .bl,.brand .pmark .bl,.snbrand .pmark .bl{background-image:url(img/mark-left.png)!important}
-.pmark .br,.brand .pmark .br,.snbrand .pmark .br{background-image:url(img/mark-right.png)!important}
-.pmark .st,.brand .pmark .st,.snbrand .pmark .st{background-image:url(img/mark-star.png)!important;transform-origin:50% 50%}
-.pmark.ink .bl{background-image:url(img/mark-left-ink.png)!important}
-.pmark.ink .br{background-image:url(img/mark-right-ink.png)!important}
-.pmark.ink .st{background-image:url(img/mark-star-ink.png)!important}
-
-/* the star turns, slowly, the way a thing that is running does */
-@keyframes pm-turn{0%{transform:rotate(0) scale(1)}50%{transform:rotate(180deg) scale(1.13)}100%{transform:rotate(360deg) scale(1)}}
-/* the brackets breathe a hair, so the mark is never quite still */
-@keyframes pm-hold-l{0%,100%{transform:translateX(0)}50%{transform:translateX(-3.5%)}}
-@keyframes pm-hold-r{0%,100%{transform:translateX(0)}50%{transform:translateX(3.5%)}}
-.pmark .st{animation:pm-turn 9s cubic-bezier(.65,0,.35,1) infinite}
-.pmark .bl{animation:pm-hold-l 9s cubic-bezier(.65,0,.35,1) infinite}
-.pmark .br{animation:pm-hold-r 9s cubic-bezier(.65,0,.35,1) infinite}
-/* on the way in: the brackets arrive from the edges, the star lands last */
-@keyframes pm-in-l{from{opacity:0;transform:translateX(-46%)}to{opacity:1;transform:translateX(0)}}
-@keyframes pm-in-r{from{opacity:0;transform:translateX(46%)}to{opacity:1;transform:translateX(0)}}
-@keyframes pm-in-s{from{opacity:0;transform:rotate(-140deg) scale(.2)}to{opacity:1;transform:rotate(0) scale(1)}}
-.pmark.enter .bl{animation:pm-in-l .9s cubic-bezier(.2,.8,.2,1) both}
-.pmark.enter .br{animation:pm-in-r .9s cubic-bezier(.2,.8,.2,1) both}
-.pmark.enter .st{animation:pm-in-s 1.05s .25s cubic-bezier(.2,.8,.2,1) both}
-/* hovering the brand opens the brackets, as if making room */
-#nav .brand:hover .pmark .bl{transform:translateX(-11%)}
-#nav .brand:hover .pmark .br{transform:translateX(11%)}
-#nav .brand:hover .pmark .st{transform:rotate(90deg) scale(1.2)}
-#nav .brand:hover .pmark i{animation:none;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
-
-/* the brand itself: no box, bigger, heavier */
-#nav .brand{font-size:21px!important;font-weight:700!important;letter-spacing:-.02em;gap:12px!important}
-#nav .brand i.pm-old,#nav .brand>i:not(.bl):not(.br):not(.st){display:none!important}
-#nav .brand .pmark{width:52px;height:46px;order:-1}
-#subnav .snbrand .pmark{width:20px;height:18px;margin-left:7px}
-
-/* the mark, large and quiet, behind the first screen */
-.pmark-ghost{position:absolute;right:-1vw;top:52%;transform:translateY(-50%);
-  width:min(32vw,430px);height:min(29vw,379px);opacity:.34;pointer-events:none;z-index:0;filter:saturate(.2)}
-.hero{position:relative}
-.hero>.wrap{position:relative;z-index:1}
-@media(max-width:900px){.pmark-ghost{display:none}}
-@media(prefers-reduced-motion:reduce){.pmark i{animation:none!important}}
-
-/* The mark is chrome. It was drawn for a dark ground, and the cockpit already
-   gives it one: the indigo spine at the top of every page. So the bar carries
-   the colour and the mark stands on it with nothing around it. 18 Sep 2026 */
-#nav{background:var(--ink)!important;border-bottom:1px solid rgba(169,172,175,.28)!important;backdrop-filter:none!important}
-#nav .brand{color:#fff!important}
-#nav .links a{color:rgba(225,232,240,.82)!important}
-#nav .links a:hover,#nav .links a.on{color:#fff!important}
-#nav .links a.on{border-bottom-color:var(--turq)!important}
-#nav .links a.cockpitnav{color:var(--turq)!important}
-#nav .links a.cta,#nav .cta{background:var(--turq)!important;color:var(--ink)!important}
-#nav .links a.cta:hover,#nav .cta:hover{background:#fff!important;color:var(--ink)!important}
-#nav .brand .pmark{width:56px;height:50px}
-.pmark-ghost{opacity:.22!important;filter:none!important}
-
-/* ==========================================================================
-   THE COVER GROUND                                  18 September 2026
-   Peter, on the deck he presented today: "the one u did for todays meeting
-   looks nicer than the website one btw. Colors wise."
-   So the hero takes the deck cover's ground: the sculpture gradient running
-   from deep slate through silver into warm off-white, with the chrome mark
-   floating on it. The rest of the page stays the light palette.
-   ========================================================================== */
-.hero{background:
-  radial-gradient(120% 90% at 66% 46%, rgba(255,255,255,.95) 0%, rgba(255,255,255,0) 46%),
-  radial-gradient(80% 70% at 92% 8%, #EFE9E4 0%, rgba(239,233,228,0) 60%),
-  radial-gradient(78% 66% at 6% 100%, #0F1622 0%, rgba(15,22,34,.9) 28%, rgba(15,22,34,0) 72%),
-  linear-gradient(116deg,#141B2B 0%,#2C3A49 12%,#4E5E6D 24%,#9EB4C1 42%,#DFE3EC 58%,#FDFEFF 74%,#EFE9E4 100%)!important;
-  overflow:hidden;border-bottom:1px solid var(--line)}
-/* the same fine grain the deck cover carries, so the metal does not look flat */
-.hero:after{content:'';position:absolute;inset:0;pointer-events:none;opacity:.26;mix-blend-mode:overlay;z-index:0;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/><feColorMatrix type='saturate' values='0'/></filter><rect width='260' height='260' filter='url(%23n)'/></svg>")}
-/* the words sit on the dark side of the ground, so they carry its light */
-.hero h1{color:#FFFFFF!important;text-shadow:0 1px 26px rgba(9,17,32,.42)}
-.hero .lede{color:rgba(249,250,244,.94)!important;text-shadow:0 1px 18px rgba(9,17,32,.38)}
-.hero .lede b{color:#FFFFFF!important}
-.hero .helabel{color:rgba(249,250,244,.72)!important}
-.hero .btn.s{color:#fff!important;border-color:rgba(249,250,244,.5)!important}
-.hero .btn.s:hover{border-color:#fff!important}
-.hero .btn.p{background:#fff!important;color:var(--ink)!important}
-.hero .btn.p:hover{background:var(--turq)!important;color:var(--ink)!important}
-/* the figures under the fold sit where the ground has gone pale, so they stay ink */
-.hero .stats,.hero .statline,.hero .figs{position:relative;z-index:1}
-/* the mark floats where the light is, the way it does on the cover */
-.pmark-ghost{right:6vw!important;top:42%!important;opacity:.95!important;
-  width:min(30vw,390px)!important;height:min(27vw,344px)!important;
-  filter:drop-shadow(0 18px 30px rgba(9,17,32,.28))!important}
-@media(max-width:900px){
-  .hero{background:linear-gradient(170deg,#141B2B 0%,#2C3A49 22%,#4E5E6D 44%,#9EB4C1 66%,#DFE3EC 86%,#EFE9E4 100%)!important}
-}
-
-/* the words need one ground, not four: a scrim holds the left side dark so the
-   whole hero reads, and the mark keeps the light on the right. */
-.hero:before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:linear-gradient(100deg, rgba(9,17,32,.80) 0%, rgba(9,17,32,.62) 30%, rgba(9,17,32,.18) 52%, rgba(9,17,32,0) 66%)}
-.hero>.wrap{position:relative;z-index:2}
-.pmark-ghost{z-index:1!important}
-.hero h1 b{color:#FFFFFF!important}
-.hero .stats b,.hero .statline b,.hero .figs b,.hero .num,.hero .n{color:#FFFFFF!important}
-.hero .stats,.hero .statline,.hero .figs{color:rgba(249,250,244,.86)!important}
-
-/* the figure strip lives inside the hero, so it takes the hero's light */
-.hero .pstrip,.hero .pstrip .k,.hero .pstrip .v{color:rgba(249,250,244,.88)!important}
-.hero .pstrip .v,.hero .pstrip b{color:#FFFFFF!important}
-.hero .pstrip{border-color:rgba(249,250,244,.28)!important}
-.hero .scale,.hero .sclab,.hero .scnum{color:rgba(249,250,244,.9)!important}
-.hero .scnum{color:#FFFFFF!important}
-
-/* ==========================================================================
-   THE DRAWN PANELS ARE DARK                         18 September 2026
-   Peter: "grey background sucks" then "colors dont work" on three more.
-   These panels are little product screens. They were drawn white-on-dark for
-   the old page; turning the page light left white text on pale grey. So they
-   go back to being dark, which is what they are: the indigo screen sitting on
-   a light page, exactly as the cockpit does it. Ten times the contrast, and
-   the drawings read from a phone at arm's length.
-   ========================================================================== */
-.cockpit,.macframe,.agentscreen,.eng,.shift,.pln,.chatdone,.mtrack,.sczone,
-.cktile,.ckrow,.mtile,.mrow,.mfc{
-  background:#0E1B2E!important;border:1px solid rgba(169,172,175,.22)!important;border-radius:0!important;
-  color:rgba(225,232,240,.86)!important;box-shadow:0 1px 1px rgba(9,17,32,.06),0 24px 50px -28px rgba(9,17,32,.6)}
-.cockpit *,.macframe *,.agentscreen *,.eng *,.shift *,.pln *,.chatdone *,.mtrack *,.sczone *,
-.cktile *,.ckrow *,.mtile *,.mrow *,.mfc *{color:rgba(225,232,240,.86)!important}
-.cockpit b,.macframe b,.agentscreen b,.eng b,.shift b,.pln b,.chatdone b,
-.cktile b,.mtile b,.mfc b,.cockpit strong,.macframe strong{color:#FFFFFF!important}
-.cktile,.ckrow,.mtile,.mrow,.mfc{background:rgba(255,255,255,.06)!important;box-shadow:none!important}
-.cktop,.macbar{background:rgba(255,255,255,.05)!important;border-bottom:1px solid rgba(169,172,175,.2)!important}
-.macbar i{background:rgba(225,232,240,.4)!important}
-.ckrow .pill.dec,.mrow .pill.dec{background:rgba(255,255,255,.08)!important;border:1px solid rgba(169,172,175,.28)!important}
-.ckrow .pill.live,.mrow .pill.live{background:rgba(63,168,160,.22)!important;border:1px solid rgba(63,168,160,.5)!important}
-.ckrow .pill.live,.ckrow .pill.live *{color:#7FD8CF!important}
-.abar .track,.track{background:rgba(255,255,255,.12)!important;border-radius:0!important}
-.fill{border-radius:0!important}
-.sdot,.scrdots span{background:rgba(225,232,240,.35)!important}
-.eng text{fill:rgba(225,232,240,.86)!important}
-.eng rect{stroke:rgba(169,172,175,.3)!important}
-
-/* ==========================================================================
-   THE NAVIGATION, ON A PHONE
-   Two bars stacked and wrapped into each other. On a phone there is now one
-   bar: the mark and the name, then the links on a single line that scrolls,
-   and the one button underneath. Nothing overlaps anything.
-   ========================================================================== */
-@media(max-width:900px){
-  #nav .wrap{display:flex!important;flex-wrap:nowrap!important;align-items:center!important;
-    justify-content:space-between!important;height:60px!important;padding:0 18px!important;row-gap:0!important}
-  #nav .brand{width:auto!important;text-align:left!important;font-size:17px!important;gap:9px!important}
-  #nav .brand .pmark{width:34px!important;height:30px!important}
-  #nav .links{width:auto!important;margin-left:auto!important;gap:0!important;flex-wrap:nowrap!important;
-    overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;justify-content:flex-end!important}
-  #nav .links::-webkit-scrollbar{display:none}
-  #nav .links a{font-size:13px!important;padding:0 9px!important;white-space:nowrap}
-  #nav .links a.hidem{display:none!important}
-  #nav .links a.cta{padding:8px 14px!important;margin-left:6px}
-  #subnav{position:static!important}
-  #subnav .wrap{display:flex!important;align-items:center!important;gap:12px!important;
-    height:auto!important;padding:10px 18px!important;flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none}
-  #subnav .wrap::-webkit-scrollbar{display:none}
-  #subnav .snbrand{flex-shrink:0}
-  /* the section anchors are a desktop nicety; on a phone they crowd the button
-     and get cut mid-word, so the second bar keeps the name and the one action */
-  #subnav .snlinks{display:none!important}
-  #subnav .snpill{position:static!important;flex-shrink:0;margin-left:auto;font-size:11px!important;padding:8px 14px!important}
-}
-
-.shift,.pln,.chatdone,.agentscreen,.planet,.eng,.mtrack,.sczone{border-radius:0!important}
-.abar .track,.abar .track>*{border-radius:0!important}
-
-/* ==========================================================================
-   THE OPENING                                        18 September 2026
-   Peter: "dont animate logo on nav, animate a big sleek logo apple style on
-   homepage load and scroll. keep classy neat yet apple level full screen."
-   One full screen. The mark arrives, holds, and is then handed to the page as
-   you scroll: it rises, closes and fades while the words come up under it.
-   Nothing blinks and nothing loops. The nav mark is still from here on.
-   ========================================================================== */
-#opener{position:relative;height:100vh;min-height:560px;overflow:hidden;display:flex;
-  align-items:center;justify-content:center;border-bottom:1px solid var(--line)}
-#opener .op-ground{position:absolute;inset:0;z-index:0;
-  background:
-   radial-gradient(120% 90% at 66% 46%, rgba(255,255,255,.95) 0%, rgba(255,255,255,0) 46%),
-   radial-gradient(80% 70% at 92% 8%, #EFE9E4 0%, rgba(239,233,228,0) 60%),
-   radial-gradient(78% 66% at 6% 100%, #0F1622 0%, rgba(15,22,34,.9) 28%, rgba(15,22,34,0) 72%),
-   linear-gradient(116deg,#141B2B 0%,#2C3A49 12%,#4E5E6D 24%,#9EB4C1 42%,#DFE3EC 58%,#FDFEFF 74%,#EFE9E4 100%)}
-#opener .op-ground:after{content:'';position:absolute;inset:0;opacity:.26;mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/><feColorMatrix type='saturate' values='0'/></filter><rect width='260' height='260' filter='url(%23n)'/></svg>")}
-#opener .op-mark{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);z-index:2;
-  width:min(46vw,600px);height:min(41vw,529px);
-  filter:drop-shadow(0 22px 40px rgba(9,17,32,.32));will-change:transform,opacity}
-#opener .op-cap{position:absolute;left:7vw;bottom:9vh;z-index:3;max-width:46ch;
-  color:#fff;text-shadow:0 1px 20px rgba(9,17,32,.5);will-change:transform,opacity}
-#opener .op-name{font-family:"Inter",system-ui,sans-serif;font-size:clamp(30px,3.2vw,46px);
-  font-weight:600;letter-spacing:-.03em;color:#fff}
-#opener .op-cap p{font-size:clamp(15px,1.35vw,20px);line-height:1.55;color:rgba(249,250,244,.94);margin-top:10px}
-#opener .op-tag{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;
-  color:rgba(249,250,244,.72);margin-top:20px;font-weight:500}
-#opener .op-scroll{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:3;
-  width:22px;height:34px;border:1px solid rgba(249,250,244,.5)}
-#opener .op-scroll i{position:absolute;left:50%;top:7px;width:2px;height:7px;margin-left:-1px;
-  background:rgba(249,250,244,.8);animation:op-hint 2.1s cubic-bezier(.65,0,.35,1) infinite}
-@keyframes op-hint{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(14px)}}
-
-/* the arrival, once */
-@keyframes op-in-l{from{opacity:0;transform:translateX(-30%) scale(.94)}to{opacity:1;transform:translateX(0) scale(1)}}
-@keyframes op-in-r{from{opacity:0;transform:translateX(30%) scale(.94)}to{opacity:1;transform:translateX(0) scale(1)}}
-@keyframes op-in-s{from{opacity:0;transform:rotate(-120deg) scale(.2)}to{opacity:1;transform:rotate(0) scale(1)}}
-@keyframes op-cap-in{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
-#opener .op-mark .bl{animation:op-in-l 1.15s cubic-bezier(.16,1,.3,1) both}
-#opener .op-mark .br{animation:op-in-r 1.15s cubic-bezier(.16,1,.3,1) both}
-#opener .op-mark .st{animation:op-in-s 1.35s .28s cubic-bezier(.16,1,.3,1) both}
-#opener .op-cap{animation:op-cap-in 1s .55s cubic-bezier(.2,.8,.2,1) both}
-
-/* the nav mark holds still now: the moment belongs to the opening */
-#nav .brand .pmark i,#subnav .snbrand .pmark i{animation:none!important}
-
-@media(max-width:900px){
-  #opener .op-mark{width:74vw;height:65vw;top:40%}
-  #opener .op-cap{left:22px;right:22px;bottom:10vh;max-width:none}
-}
-@media(prefers-reduced-motion:reduce){
-  #opener .op-mark i,#opener .op-cap,#opener .op-scroll i{animation:none!important}
-}
-
-/* the live-picture demo is a product screen too, so it is dark like the others.
-   Its tiles, its orbit nodes and its centre all take the screen's light. */
-.screen,.scrin,.orbit,.planet{background:#0E1B2E!important;border:1px solid rgba(169,172,175,.22)!important;
-  border-radius:0!important;color:rgba(225,232,240,.86)!important}
-.orbit{box-shadow:0 1px 1px rgba(9,17,32,.06),0 24px 50px -28px rgba(9,17,32,.6)}
-.scrin,.screen{box-shadow:none!important}
-.orbit .node,.orbit .nd,.node{background:rgba(255,255,255,.1)!important;color:rgba(225,232,240,.9)!important;
-  border:1px solid rgba(169,172,175,.3)!important;border-radius:0!important}
-.orbit .core,.core{color:#FFFFFF!important}
-.mtiles .mtile{background:rgba(255,255,255,.06)!important;border:1px solid rgba(169,172,175,.2)!important}
-.mtile .v,.mtile .k,.mtile .s{color:rgba(225,232,240,.86)!important}
-.mtile .v{color:#FFFFFF!important}
-.mtile .v.g{color:#7FD8CF!important}.mtile .v.gd{color:#D9C48A!important}
-.scbub{background:rgba(255,255,255,.14)!important;color:#FFFFFF!important;border:1px solid rgba(169,172,175,.35)!important}
-.sctop,.scbar,.scfoot{color:rgba(225,232,240,.8)!important}
-
-/* the generic paper rule matched anything with "tile" in its class, which
-   included the wrapper inside the dark screen and painted it white. */
-.mtiles,.cktiles,.tiles,.scrin,.screen{background:transparent!important;border:0!important;box-shadow:none!important}
-.orbit .mtiles,.orbit .scrin{background:transparent!important}
-
-/* ==========================================================================
-   THE COMPANIES WALL                                 18 September 2026
-   Peter: the engine drawing was unreadable, so it becomes the wall from the
-   deck: every company we have read, the engine in the middle, and a line
-   running from each one into it. The lines carry the method, never the data,
-   which is why they flow both ways and nothing is labelled with a figure.
-   ========================================================================== */
-#engine{background:#0E1B2E!important;border-bottom:0}
-#engine h2,#engine h2 b{color:#FFFFFF!important}
-#engine .p2{color:rgba(225,232,240,.86)!important;max-width:74ch!important}
-#engine .p2 b{color:#fff!important}
-.cwall{position:relative;margin-top:44px}
-.cw-links{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
-.cw-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.cw-co{background:rgba(255,255,255,.055);border:1px solid rgba(169,172,175,.26);padding:18px 20px;
-  min-height:104px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;
-  transition:background .25s,border-color .25s,transform .25s}
-.cw-co:hover{background:rgba(255,255,255,.1);border-color:rgba(139,166,183,.6);transform:translateY(-2px)}
-.cw-co .cw-logo{width:30px;height:30px;object-fit:contain;margin-bottom:10px;align-self:flex-start;
-  background:#fff;padding:3px;border-radius:0}
-.cw-co b{font-family:"Inter",system-ui,sans-serif;font-size:clamp(17px,1.5vw,22px);font-weight:600;
-  letter-spacing:-.02em;color:#FFFFFF;line-height:1.1}
-.cw-co span{font-size:12px;color:rgba(225,232,240,.6);line-height:1.4}
-.cw-co[data-us]{background:linear-gradient(140deg,rgba(139,166,183,.3),rgba(255,255,255,.05));
-  border-color:rgba(139,166,183,.7)}
-.cw-core{grid-column:2;grid-row:2;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:22px 18px;min-height:104px;
-  background:linear-gradient(135deg,#FDFEFF 0%,#C9CDD0 26%,#A9ACAF 46%,#E6E0DE 64%,#8BA6B7 100%);
-  border:1px solid #A9ACAF;box-shadow:0 18px 44px -18px rgba(0,0,0,.7);position:relative;z-index:2}
-.cw-core b{font-family:"Inter",system-ui,sans-serif;font-size:clamp(18px,1.7vw,25px);font-weight:700;
-  letter-spacing:-.02em;color:#091120;margin-top:8px}
-.cw-core span{font-size:11.5px;line-height:1.35;color:#2F3C48;margin-top:4px;max-width:30ch}
-.cw-core .cw-mark{width:44px;height:39px}
-.cw-note{margin-top:22px;font-size:14px;line-height:1.65;color:rgba(225,232,240,.7)}
-.cw-note b{color:#fff}
-/* the lines: drawn to the box edges, flowing in and out */
-.cw-links line{stroke:rgba(139,166,183,.5);stroke-width:1.1;stroke-dasharray:4 7;
-  animation:cw-flow 2.2s linear infinite}
-@keyframes cw-flow{to{stroke-dashoffset:-22}}
-@media(max-width:900px){
-  .cw-grid{grid-template-columns:1fr 1fr;gap:10px}
-  .cw-core{grid-column:1/-1;grid-row:auto;order:-1}
-  .cw-links{display:none}
-  .cw-co{min-height:0;padding:14px 15px}
-  .cw-co b{font-size:16px}
-}
-
-/* the engine core is metal, so the mark on it is the ink cut, not chrome on chrome */
-.cw-core .cw-mark .bl{background-image:url(img/mark-left-ink.png)!important}
-.cw-core .cw-mark .br{background-image:url(img/mark-right-ink.png)!important}
-.cw-core .cw-mark .st{background-image:url(img/mark-star-ink.png)!important}
-
-/* ==========================================================================
-   METAL IS THE COCKPIT'S COLOUR                     19 September 2026
-   Peter: "metallic is only used on cockpit as additional color from perspace
-   to stand out and all cockpit related ctas follow that color."
-   Agreed, and it is already the mark's material, so it reads as ours rather
-   than as decoration. Metal frames every cockpit screen and fills every
-   button that leads into the cockpit. Nothing else on the site may use it.
-   ========================================================================== */
-:root{--metal:linear-gradient(135deg,#FDFEFF 0%,#C9CDD0 22%,#A9ACAF 42%,#E6E0DE 62%,#8BA6B7 100%)}
-#realscreens figure{background:var(--metal);padding:9px;border:1px solid #A9ACAF;border-radius:0;
-  box-shadow:0 1px 1px rgba(9,17,32,.06),0 26px 56px -26px rgba(9,17,32,.55);margin:0}
-#realscreens figure img{display:block;width:100%;border:1px solid rgba(9,17,32,.35);border-radius:0}
-#realscreens figcaption{color:var(--dim);font-size:12px;padding:9px 2px 0}
-.cockpit,.macframe{background:var(--metal)!important;padding:9px!important;border:1px solid #A9ACAF!important}
-.cockpit>*,.macframe>*{background:#0E1B2E!important}
-/* every door into the cockpit is metal */
-#nav .links a.cta,#nav .cta,#subnav .snpill,.btn.p,a.btn.p{
-  background:var(--metal)!important;color:#091120!important;border:1px solid #A9ACAF!important;
-  text-shadow:0 1px 0 rgba(255,255,255,.55)}
-#nav .links a.cta:hover,#nav .cta:hover,#subnav .snpill:hover,.btn.p:hover{
-  background:#FFFFFF!important;color:#091120!important}
-.hero .btn.p{background:var(--metal)!important;color:#091120!important}
-#nav .links a.cockpitnav{color:#C9CDD0!important}
-
-/* metal carries ink, never white: the dark-box rule from earlier was still
-   painting this one white because it names the same selector. */
-#subnav a.snpill,#subnav .snlinks a.snpill,#nav .links a.cta,.hero a.btn.p,a.btn.p{color:#091120!important}
-#subnav a.snpill:hover,#nav .links a.cta:hover,a.btn.p:hover{color:#091120!important}
-
-/* ==========================================================================
-   THE MAP, WITH SOMETHING IN IT                     19 September 2026
-   Peter: "glob color too light 10x ui and animate."
-   The map was pale ink on a pale ground. It is now the night side of the
-   identity: an indigo field, the land drawn in, the UAE lit in metal, every
-   other hub turquoise, and a pulse travelling out along each route so the
-   thing reads as a network that is running rather than a diagram.
-   ========================================================================== */
-.map{background:#0E1B2E!important;border:1px solid rgba(169,172,175,.25)!important;border-radius:0!important;
-  background-image:radial-gradient(rgba(139,166,183,.22) 1px,transparent 1px)!important;
-  background-size:24px 24px!important;
-  box-shadow:0 1px 1px rgba(9,17,32,.06),0 30px 60px -30px rgba(9,17,32,.7)}
-.mapland ellipse{fill:rgba(139,166,183,.14);stroke:rgba(139,166,183,.28);stroke-width:.12}
-.maplines line{stroke:rgba(139,166,183,.34)!important;stroke-width:.34!important}
-.maplines line.live{stroke:rgba(63,168,160,.75)!important;stroke-dasharray:1.6 3.4;
-  animation:mp-run 3.4s linear infinite}
-@keyframes mp-run{to{stroke-dashoffset:-20}}
-.hub .dot{background:#3FA8A0!important;box-shadow:0 0 0 3px rgba(63,168,160,.18),0 0 16px rgba(63,168,160,.7)!important}
-.hub.core .dot{background:linear-gradient(135deg,#FDFEFF,#A9ACAF 45%,#8BA6B7)!important;
-  box-shadow:0 0 0 5px rgba(169,172,175,.22),0 0 26px rgba(225,232,240,.8)!important}
-.hub .hl{color:#FFFFFF!important;font-weight:500}
-.hub .hx{color:rgba(225,232,240,.6)!important}
-/* each hub breathes, on its own beat, so the network never sits still */
-.hub .dot{animation:mp-beat 4.6s ease-in-out infinite}
-.hub:nth-of-type(3n) .dot{animation-delay:.9s}
-.hub:nth-of-type(3n+1) .dot{animation-delay:1.8s}
-.hub.core .dot{animation:mp-core 5.2s ease-in-out infinite}
-@keyframes mp-beat{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.28);opacity:1}}
-@keyframes mp-core{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
-.maplegend{color:rgba(9,17,32,.6)!important}
-.maplegend b{color:#8BA6B7!important}
-@media(prefers-reduced-motion:reduce){.hub .dot,.maplines line.live{animation:none!important}}
-
-/* the little illustrations at the head of each note are product screens too */
-.artc .vis,.vis{background:#0E1B2E!important;border-bottom:1px solid rgba(169,172,175,.22)!important;
-  border-radius:0!important;color:rgba(225,232,240,.86)!important}
-.artc .vis *,.vis *{color:rgba(225,232,240,.86)!important}
-.artc .vis b,.vis b,.vis strong{color:#FFFFFF!important}
-.vis .bar,.vis .line,.vis .row{background:rgba(255,255,255,.12)!important;border-radius:0!important}
-.vis .fill,.vis .on{background:#8BA6B7!important}
-.vis .gold,.vis .amber{background:#D9C48A!important;color:#091120!important}
-.artc{border-radius:0!important}
-
-/* ==========================================================================
-   THE MENU, ON A PHONE                               19 September 2026
-   Peter: "website link not showing me full nav on mobile."
-   It was not: the links were hidden so the bar would not wrap, which left
-   one button and no way to the other pages. There is now a proper menu. The
-   bar keeps the mark, the name and the way into the cockpit; the rest opens
-   full screen, one page a line, the way it should have from the start.
-   ========================================================================== */
-@media(max-width:900px){
-  #nav .navx{display:none!important}
-  #nav .burger{display:block!important;position:relative;width:26px;height:20px;margin-left:14px;
-    cursor:pointer;flex-shrink:0;z-index:72}
-  #nav .burger span,#nav .burger:before,#nav .burger:after{content:'';position:absolute;left:0;right:0;
-    height:1.6px;background:#fff;transition:transform .32s cubic-bezier(.2,.8,.2,1),opacity .2s}
-  #nav .burger:before{top:2px}
-  #nav .burger span{top:9px}
-  #nav .burger:after{top:16px}
-  #nav .navx:checked~.burger:before{transform:translateY(7px) rotate(45deg)}
-  #nav .navx:checked~.burger span{opacity:0}
-  #nav .navx:checked~.burger:after{transform:translateY(-7px) rotate(-45deg)}
-
-  #nav .links{position:fixed!important;inset:0!important;z-index:70;
-    background:#0E1B2E!important;display:flex!important;flex-direction:column!important;
-    align-items:flex-start!important;justify-content:center!important;gap:0!important;
-    padding:0 30px!important;margin:0!important;overflow:visible!important;
-    opacity:0;visibility:hidden;transform:translateY(-10px);
-    transition:opacity .3s ease,transform .36s cubic-bezier(.2,.8,.2,1),visibility .3s}
-  #nav .navx:checked~.links{opacity:1;visibility:visible;transform:none}
-  #nav .links a,#nav .links a.hidem{display:block!important;width:100%;
-    font-family:"Inter",system-ui,sans-serif!important;font-size:30px!important;font-weight:500!important;
-    letter-spacing:-.03em!important;color:#fff!important;padding:17px 0!important;
-    border-bottom:1px solid rgba(169,172,175,.22)!important;white-space:normal!important}
-  #nav .links a.cta{background:var(--metal)!important;color:#091120!important;font-size:19px!important;
-    font-weight:600!important;text-align:center;padding:16px 0!important;margin-top:26px!important;
-    border:1px solid #A9ACAF!important;border-bottom:1px solid #A9ACAF!important}
-  #nav .links a:last-child{border-bottom:0!important}
-  /* the bar stays put and the mark stays visible while the menu is open */
-  #nav .wrap{position:relative;z-index:72}
-  #nav .brand{z-index:72;position:relative}
-  body:has(#navx:checked){overflow:hidden}
-}
-
-/* the opening words need the same held ground the hero has, or they run out
-   onto the pale side of the gradient and disappear. */
-#opener:after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:linear-gradient(6deg, rgba(9,17,32,.78) 0%, rgba(9,17,32,.5) 22%, rgba(9,17,32,.08) 44%, rgba(9,17,32,0) 60%)}
-#opener .op-cap,#opener .op-scroll{z-index:3}
-@media(max-width:900px){
-  #opener:after{background:linear-gradient(2deg, rgba(9,17,32,.86) 0%, rgba(9,17,32,.6) 26%, rgba(9,17,32,.1) 48%, rgba(9,17,32,0) 62%)}
-}
-
-/* our own tile carries the mark itself, not a favicon lookup */
-.cw-co .cw-colog{width:30px;height:27px;margin-bottom:10px;align-self:flex-start}
-.cw-co .cw-colog i{animation:none!important}
-
-/* the wall is five groups now, each with the flags it operates under */
-.cw-grid{grid-template-columns:repeat(3,1fr)}
-.cw-co{min-height:150px}
-.cw-top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.cw-co .cw-logo{margin:0!important}
-.cw-flag{font-size:19px;line-height:1;letter-spacing:2px;
-  font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",system-ui,sans-serif}
-.cw-co b em{font-style:normal;font-weight:400;color:rgba(225,232,240,.72)}
-.cw-subs{display:block;margin-top:8px;font-size:11px;letter-spacing:.06em;
-  color:rgba(225,232,240,.5)!important;text-transform:uppercase}
-@media(max-width:900px){.cw-co{min-height:0}.cw-flag{font-size:17px}}
-</style>
-</head>
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.mark .l,.mark .r,.mark .s{opacity:1;transform:translate(0,-50%)}.mark .s{transform:translate(-50%,-50%)}}
+</style></head>
 <body>
 
 <nav id="nav"><div class="wrap">
-  <a href="#top" class="brand">Perspace<span class="pmark enter"><i class="bl"></i><i class="st"></i><i class="br"></i></span></a>
-  <input class="navx" type="checkbox" id="navx" aria-hidden="true"><label class="burger" for="navx" aria-label="Menu"><span></span></label>
-  <div class="links">
-    <a href="index.html" class="cta">Cockpit</a>
-    <a href="venture.html" class="hidem">Venture clienting</a>
-    <a href="plugins.html" class="hidem">Plug-ins</a>
-    <a href="philosophy.html" class="hidem">Philosophy</a>
-    <a href="insights.html" class="hidem">Insights</a>
-  </div>
+  <a class="brand" href="index.html"><img src="img/perspace-mark-ink.png" alt="">Perspace</a>
+  <div class="links"><a href="philosophy.html">Philosophy</a><a href="#method">Method</a><a href="#cockpit">Cockpit</a><a href="plugins.html">Plug-ins</a><a href="venture.html">Venture clienting</a></div>
+  <a class="btn dark" href="mailto:hello@perspace.ai?subject=Walkthrough">Book a walkthrough →</a>
 </div></nav>
-<div id="subnav"><div class="wrap">
-  <span class="snbrand">Cockpit<span class="pmark"><i class="bl"></i><i class="st"></i><i class="br"></i></span></span>
-  <div class="snlinks">
-    <a href="#systems">Agents</a>
-    <a href="#how">How we work</a>
-    <a href="#plug">Sovereignty</a>
-  </div>
-  <a href="mailto:hello@perspace.ai?subject=Walkthrough" class="snpill">Book a walkthrough</a>
-</div></div>
 
-<section id="opener" aria-label="Perspace">
-  <div class="op-ground"></div>
-  <span class="pmark op-mark" aria-hidden="true"><i class="bl"></i><i class="st"></i><i class="br"></i></span>
-  <div class="op-cap">
-    <div class="op-name">Perspace</div>
-    <p>The space inside a company where its people and its agents work as one. Clarity so complete it needs no explaining, from one seat where the whole company is visible at once.</p>
-    <div class="op-tag">The next generation of companies is people and agents, not people alone</div>
+<!-- 1 · HERO -->
+<section class="hero"><div class="glow"></div><div class="wrap grid">
+  <div class="copy">
+    <div class="tag rv">Perspace · Dubai · Abu Dhabi</div>
+    <h1 class="rv d1">Every company will run on a new operating system. <b>We build yours.</b></h1>
+    <p class="lede rv d2">We show you the money sitting inside your own company, go in and get it, and prove it moved. Our people and the agents we build do the work together, inside your company.</p>
+    <div class="btns rv d3"><a class="btn dark" href="mailto:hello@perspace.ai?subject=Walkthrough">Book a walkthrough →</a><a class="btn line" href="#method">See the method →</a></div>
   </div>
-  <div class="op-scroll" aria-hidden="true"><i></i></div>
-</section>
-<div id="top" class="hero"><span class="pmark pmark-ghost" aria-hidden="true"><i class="bl"></i><i class="st"></i><i class="br"></i></span><div class="wrap">
-  <h1>We bring your whole company to life on one screen, <b>then automate what should be.</b></h1>
-  <p class="lede">Your whole company on one screen, run by your people and agents together. We draw it from your own data and records, show you where the money leaks and what is waiting on a decision, then automate what can and should be. <b>Built in the UAE, with global backing.</b></p>
-  <div class="hbtns">
-    <a href="#realscreens" class="btn p">See it running</a>
-    <a href="mailto:hello@perspace.ai?subject=Walkthrough" class="btn s">Book a walkthrough</a>
+  <div class="mark">
+    <div class="markbox"><img class="b l" src="img/mark-left-c.png" alt=""><img class="b r" src="img/mark-right-c.png" alt="">
+    <img class="s" src="img/star-crop.png" alt=""><div class="shine"></div></div>
+    <div class="live"><div class="top"><span class="dotlive"><i></i>Value captured, live</span><span>A real cockpit, renamed</span></div>
+      <div class="big"><small>AED</small><span id="ctr">37,812,640</span></div>
+      <div class="sub">found, owned and moving · every figure traced to its file</div>
+      <div class="feed" id="feed"></div></div>
   </div>
-  <div class="pstrip">
-   <div><div class="v">5</div><div class="k"><b>cockpits built</b> on real company data, live behind our clients' own gate</div></div>
-   <div><div class="v">4</div><div class="k"><b>company types</b>, the same engine on each: media, waste, a government ecosystem, real estate</div></div>
-   <div><div class="v">12 of 15</div><div class="k"><b>value patterns repeated</b> on a company in a different industry</div></div>
-   <div><div class="v">60+</div><div class="k"><b>agents in the library</b>, built once and re-used across clients</div></div>
+</div><div class="scrollcue"><i></i>SCROLL</div></section>
+
+<!-- 2 · THE SPACE -->
+<section class="space" id="space"><div class="stick"><div class="grid2"></div>
+  <div class="words">
+    <div class="w" data-i="0"><small>per</small><h2>To see a thing <b>all the way through.</b></h2></div>
+    <div class="w" data-i="1"><small>space</small><h2>A room <b>only you are in.</b></h2></div>
+    <div class="w" data-i="2"><small>perspace</small><h2>The room where you see <b>your whole company.</b></h2></div>
   </div>
-  <div class="scale rev">
-    <div class="scaletop"><span class="sclab">The score we run by · how much of the work runs agentically</span><span class="scnum" id="scnum">0 <b>/ 100</b></span></div>
-    <div class="sctrack">
-      <div class="sczone z1"><span>Manual</span></div>
-      <div class="sczone z2"><span>Assisted</span></div>
-      <div class="sczone z3"><span>Agentic</span></div>
-      <div class="scmark" id="scmark"><div class="scbub" id="scbub">0</div></div>
+  <div class="frame">
+    <img class="bk l" src="img/mark-left-c.png" alt=""><img class="bk r" src="img/mark-right-c.png" alt="">
+    <div class="screen"><video poster="img/poster_today.jpg" muted loop playsinline autoplay><source src="img/clip_today.webm" type="video/webm"><source src="img/clip_today.mp4" type="video/mp4"></video></div>
+  </div>
+  <div class="note">A real cockpit. The company's name and every figure are changed.</div>
+</div></section>
+
+<!-- 3 · THE BOX -->
+<section class="pad"><div class="wrap">
+  <div class="boxhead">
+    <div><div class="tag rv">One team · one box</div><h2 class="rv d1" style="margin-top:22px">Four things you buy from four firms. <b>One box.</b></h2></div>
+    <p class="lede rv d2">Strategy, the change itself, the value it creates and the technology that keeps it running. One team, measured in one place, paid from budgets you already hold.</p>
+  </div>
+  <div class="box rv d2">
+    <a class="tile" href="philosophy.html"><div class="n">01 · STRATEGY</div>
+      <svg class="ic ic-comp" viewBox="0 0 74 74"><circle cx="37" cy="37" r="30"/><circle cx="37" cy="37" r="2"/><path class="needle acc" d="M37 37 L37 14"/><path d="M37 7v5M37 62v5M7 37h5M62 37h5"/></svg>
+      <h3>Where to go</h3><p>Where the company should head, and what stands in the way.</p><div class="go">Philosophy <i>→</i></div></a>
+    <a class="tile" href="#method"><div class="n">02 · TRANSFORMATION</div>
+      <svg class="ic ic-loop" viewBox="0 0 74 74"><circle cx="37" cy="37" r="26" style="stroke:var(--line)"/><circle class="arc acc" cx="37" cy="37" r="26" style="stroke-width:2"/><path d="M30 37l5 5 10-11"/></svg>
+      <h3>How the work changes</h3><p>A repeatable method that changes how the work is done, owned by a named person.</p><div class="go">Method <i>→</i></div></a>
+    <a class="tile" href="#cockpit"><div class="n">03 · VALUE CREATION</div>
+      <svg class="ic ic-bars" viewBox="0 0 74 74"><path d="M8 66h58"/><rect x="12" y="30" width="9" height="36"/><rect x="27" y="20" width="9" height="46"/><rect class="acc" x="42" y="12" width="9" height="54"/><rect x="57" y="36" width="9" height="30" style="display:none"/></svg>
+      <h3>Where the money is</h3><p>Every pocket named, sized and traced to the file it came from.</p><div class="go">Cockpit <i>→</i></div></a>
+    <a class="tile ai" href="plugins.html"><div class="n">04 · AI AND THE RIGHT TOOLS</div>
+      <svg class="ic ic-net" viewBox="0 0 74 74"><path d="M16 20L37 37L58 20M16 54L37 37L58 54"/><circle class="p" cx="16" cy="20" r="5"/><circle class="p" cx="58" cy="20" r="5"/><circle class="p" cx="16" cy="54" r="5"/><circle cx="58" cy="54" r="5"/><circle class="acc" cx="37" cy="37" r="7"/></svg>
+      <h3>What keeps it running</h3><p>Agents and tools, built where it is your edge, sourced where it already exists.</p><div class="go">Plug-ins · Venture clienting <i>→</i></div></a>
+  </div>
+</div></section>
+
+<!-- 4 · THE COCKPIT -->
+<section class="ck pad" id="cockpit"><div class="wrap">
+  <div class="boxhead" style="margin-bottom:0">
+    <div><div class="tag rv">The cockpit</div><h2 class="rv d1" style="margin-top:22px">Your whole company, <b>on one screen.</b></h2></div>
+    <p class="lede rv d2">Drawn from its own files and kept current as it moves. Every figure traces back to the document it came from.</p>
+  </div>
+  <div class="grid">
+    <div class="tabs rv">
+      <div class="tab on" data-v="0"><div class="t"><span>01</span><b>Calibrate</b></div><p>The company as its own files describe it, and what those files could not tell us.</p><div class="bar"></div></div>
+      <div class="tab" data-v="1"><div class="t"><span>02</span><b>Value</b></div><p>Where the money sits. Look here first, then the rest, by row.</p><div class="bar"></div></div>
+      <div class="tab" data-v="2"><div class="t"><span>03</span><b>Work</b></div><p>What is moving. Every act says who holds it, what it needs and where it is stuck.</p><div class="bar"></div></div>
+      <div class="tab" data-v="3"><div class="t"><span>04</span><b>Workforce</b></div><p>People and agents on one chart, each with a person accountable.</p><div class="bar"></div></div>
     </div>
-    <div class="scdesc">
-      <div><b>Manual</b> — people carry every task. Slow, expensive, error-prone.</div>
-      <div><b>Assisted</b> — AI helps, people still drive every step.</div>
-      <div><b>Agentic</b> — agents do the work, people decide, everything logged.</div>
-    </div>
-  </div>
-</div></div>
-
-
-<section><div class="wrap">
-  <div class="rev"><h2>Your whole company, <b>drawn from its own data &amp; records.</b></h2>
-  <p class="p2">People, systems and money as one living map, drawn from what you already have and kept current as the business moves. Three numbers that tell you how it is doing, the findings that surface on their own, and the decisions that arrive ready to approve. Nothing new to learn, it becomes your company's map for AI: every workflow, every agent, every decision, one place. The demo below is illustrative. The real screens are further down the page.</p></div>
-  <div class="macwrap rev">
-    <div class="macframe">
-      <div class="macbar"><i></i><i></i><i></i><span class="u">your company · one live picture</span></div>
-      <div class="orbit">
-        <div class="screen on" data-label="your company · one live picture">
-          <div class="ring" style="width:200px;height:200px"></div>
-          <div class="ring" style="width:320px;height:320px"></div>
-          <div class="ring" style="width:430px;height:430px"></div>
-          <div class="core"><span>THE<br>COMPANY</span></div>
-          <div class="spin">
-            <div class="planet" style="top:-150px;left:0">FINANCE</div>
-            <div class="planet" style="top:-58px;left:182px">SALES</div>
-            <div class="planet" style="top:70px;left:140px">OPERATIONS</div>
-            <div class="planet" style="top:150px;left:36px">PROCUREMENT</div>
-            <div class="planet" style="top:96px;left:-118px">PEOPLE</div>
-            <div class="planet" style="top:-72px;left:-197px">SYSTEMS</div>
-            <div class="planet" style="top:-58px;left:69px">LEGAL</div>
-            <div class="planet" style="top:45px;left:-78px">SUPPLY</div>
-          </div>
-        </div>
-        <div class="screen" data-label="your company · today">
-          <div class="scrin">
-            <div class="scrh">Today · the company as it stands</div>
-            <div class="mtiles">
-              <div class="mtile"><div class="k">Money · booked this month</div><div class="v">$ 2.4M</div><div class="s">against a $2.9M plan</div></div>
-              <div class="mtile"><div class="k">Agents running</div><div class="v g">3 live</div><div class="s">every step traceable</div></div>
-              <div class="mtile"><div class="k">Needs a human</div><div class="v gd">2 waiting</div><div class="s">prepared with the why</div></div>
-            </div>
-            <div class="mrow"><span class="pill dec">decision</span><span class="t">Approve the supplier ranking — closes ≈ $340k/yr</span></div>
-            <div class="mrow"><span class="pill live">live now</span><span class="t">Invoice agent chased 42 open invoices · finance CC'd</span></div>
-          </div>
-        </div>
-        <div class="screen" data-label="your company · the findings">
-          <div class="scrin">
-            <div class="scrh">The findings · priced to the document</div>
-            <div class="mfind">
-              <div class="mfc"><div class="lab">Procurement overlap</div><div class="amt">≈ $340k / yr</div><div class="d">The same category bought three ways at three prices.</div><div class="src">traces to → Supplier_Contracts_2026.xlsx</div></div>
-              <div class="mfc"><div class="lab">Manual reporting</div><div class="amt">≈ $180k / yr</div><div class="d">A monthly report an agent assembles in minutes.</div><div class="src">traces to → the reporting workbook</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="scrdots"><span class="on"></span><span></span><span></span></div>
+    <div class="viewer rv d1">
+      <div class="device">
+        <video class="on" poster="img/poster_calibrate.jpg" muted playsinline preload="auto"><source src="img/clip_calibrate.webm" type="video/webm"><source src="img/clip_calibrate.mp4" type="video/mp4"></video>
+        <video poster="img/poster_value.jpg" muted playsinline preload="auto"><source src="img/clip_value.webm" type="video/webm"><source src="img/clip_value.mp4" type="video/mp4"></video>
+        <video poster="img/poster_work.jpg" muted playsinline preload="auto"><source src="img/clip_work.webm" type="video/webm"><source src="img/clip_work.mp4" type="video/mp4"></video>
+        <video poster="img/poster_workforce.jpg" muted playsinline preload="auto"><source src="img/clip_workforce.webm" type="video/webm"><source src="img/clip_workforce.mp4" type="video/mp4"></video>
       </div>
+      <div class="stats" id="stats"></div>
+      <div class="honest">A real cockpit · the company's name and every figure are changed</div>
     </div>
   </div>
 </div></section>
 
-<section><div class="wrap">
-  <div class="rev"><h2>Three things <b>you get.</b></h2></div>
-  <div class="grid3" id="getgrid">
-    <div class="card rev"><div class="num">01</div><h3>Run on AI, we map your organisation, then automate it</h3><p>A supervised workforce of AI agents takes on your repetitive, rule-based work inside your existing systems, nothing migrated, everything logged. Humans decide, agents do.</p></div>
-    <div class="card rev"><div class="num">02</div><h3>A mature library, plug and play, ready to run</h3><p>We bring decades of enterprise workflows, governance and operating rules, packaged with AI that plugs into your business with minimal customization. You start from working, not from blank, and the library keeps growing.</p></div>
-    <div class="card rev"><div class="num">03</div><h3>A compounding head start</h3><p>Every workflow we automate feeds the library, so the next one lands faster and cheaper than the last. It compounds with every deployment. The company that starts first pulls ahead, and the gap only widens, don't let a competitor compound before you.</p></div>
+<!-- 5 · METHOD -->
+<section class="pad" id="method"><div class="wrap">
+  <div class="mhead">
+    <div><div class="tag rv">The method · the same on every company</div><h2 class="rv d1" style="margin-top:22px">Blueprint first. <b>Agentic from day one.</b></h2></div>
+    <p class="lede rv d2">We read the company, draw its blueprint, find the money and change how the work runs. Agents help from the first day, and take over a workflow once it has been fixed.</p>
+  </div>
+  <div class="rail" id="rail"><span class="fill"></span>
+    <div class="st"><div class="dot">1</div><div class="k">READ</div><h4>Plug in</h4><p>Your data and documents, read where they sit.</p></div>
+    <div class="st"><div class="dot">2</div><div class="k">BLUEPRINT</div><h4>Draw the company</h4><p>One live map of how it really runs.</p></div>
+    <div class="st"><div class="dot">3</div><div class="k">VALUE</div><h4>Find the money</h4><p>Every leak priced, ranked and traced.</p></div>
+    <div class="st"><div class="dot">4</div><div class="k">CHANGE</div><h4>Change the work</h4><p>Owned by a person, checked at 30, 60, 90 days.</p></div>
+    <div class="st"><div class="dot">5</div><div class="k">AUTOMATE</div><h4>Agents on what repeats</h4><p>Measured against how it ran before.</p></div>
+  </div>
+  <div class="bp" id="bp"><span class="lbl">THE BLUEPRINT · DRAWN FROM THE COMPANY'S OWN FILES</span><span class="lbr">5 OF 8 FUNCTIONS MAPPED</span>
+  <svg viewBox="0 0 1180 400">
+    <g class="room fill" style="--d:0s"><rect x="40" y="50" width="300" height="140"/><text x="58" y="78">FINANCE</text></g>
+    <g class="room fill" style="--d:.4s"><rect x="350" y="50" width="250" height="140"/><text x="368" y="78">SALES</text></g>
+    <g class="room fill" style="--d:.8s"><rect x="610" y="50" width="330" height="140"/><text x="628" y="78">OPERATIONS</text></g>
+    <g class="room fill" style="--d:1.2s"><rect x="950" y="50" width="190" height="300"/><text x="968" y="78">PROCUREMENT</text></g>
+    <g class="room fill" style="--d:1.6s"><rect x="40" y="200" width="220" height="150"/><text x="58" y="228">PEOPLE</text></g>
+    <g class="room ghost" style="--d:2s"><rect x="270" y="200" width="220" height="150"/><text x="288" y="228">SYSTEMS</text></g>
+    <g class="room ghost" style="--d:2.3s"><rect x="500" y="200" width="200" height="150"/><text x="518" y="228">LEGAL</text></g>
+    <g class="room ghost" style="--d:2.6s"><rect x="710" y="200" width="230" height="150"/><text x="728" y="228">SUPPLY</text></g>
+    <g class="pin" style="--d:3.4s"><circle class="ring" cx="1045" cy="150" r="7"/><circle cx="1045" cy="150" r="6"/><text x="1045" y="182" text-anchor="middle">≈ AED 340k a year</text></g>
+    <g class="pin" style="--d:3.9s"><circle class="ring" cx="175" cy="130" r="7"/><circle cx="175" cy="130" r="6"/><text x="175" y="160" text-anchor="middle">AED 11.7M waiting 90 days</text></g>
+  </svg></div>
+</div></section>
+
+<!-- 6 · PROOF -->
+<section class="pad" style="padding-top:40px"><div class="wrap">
+  <div class="mhead">
+    <div><div class="tag rv">In production</div><h2 class="rv d1" style="margin-top:22px">One engine. <b>Every company makes it better.</b></h2></div>
+    <p class="lede rv d2">What moves between companies is the method: the shape of a problem and how it was solved. No client data ever crosses. Not a number, not a file, not a name.</p>
+  </div>
+  <div class="nums rv">
+    <div class="num"><b data-count="5">5</b><span>companies running on the engine</span></div>
+    <div class="num"><b data-count="12" data-suffix=" of 15">12 of 15</b><span>value patterns re-used in another industry</span></div>
+    <div class="num"><b data-count="4">4</b><span>countries, from the Gulf to Mexico and London</span></div>
+    <div class="num"><b data-count="60" data-suffix="+">60+</b><span>agents in the library, built once, re-used on every client</span></div>
+  </div>
+  <div class="engine">
+    <svg viewBox="0 0 1168 470" preserveAspectRatio="none"><g stroke="#8BA6B7" stroke-width="1.2" stroke-dasharray="4 5" fill="none">
+      <line x1="584" y1="235" x2="170" y2="100"/><line x1="584" y1="235" x2="170" y2="360"/><line x1="584" y1="235" x2="1000" y2="100"/><line x1="584" y1="235" x2="1000" y2="360"/><line x1="584" y1="235" x2="584" y2="45"/></g>
+      <circle class="spark" r="4"><animateMotion dur="2.6s" repeatCount="indefinite" path="M170,100 L584,235"/></circle>
+      <circle class="spark" r="4"><animateMotion dur="2.6s" begin=".6s" repeatCount="indefinite" path="M584,235 L1000,360"/></circle>
+      <circle class="spark" r="4"><animateMotion dur="2.6s" begin="1.2s" repeatCount="indefinite" path="M1000,100 L584,235"/></circle>
+      <circle class="spark" r="4"><animateMotion dur="2.6s" begin="1.8s" repeatCount="indefinite" path="M584,235 L170,360"/></circle>
+      <circle class="spark" r="4"><animateMotion dur="2.6s" begin="2.2s" repeatCount="indefinite" path="M584,45 L584,235"/></circle></svg>
+    <div class="co" style="left:2%;top:14%"><i>🇦🇪 🇸🇦 · OUT OF HOME</i><b>A large UAE group</b>an operator across the region</div>
+    <div class="co" style="left:2%;top:66%"><i>🇦🇪 · PET CARE</i><b>Flourish Fund</b>the fund and its brands</div>
+    <div class="co" style="right:2%;top:14%"><i>🇲🇽 · OUT OF HOME</i><b>Naranti</b>largest in Mexico and LatAm</div>
+    <div class="co" style="right:2%;top:66%"><i>🇬🇧 · BRAND</i><b>Lever Brands</b>brand and marketing, London</div>
+    <div class="co" style="left:50%;top:0;transform:translateX(-50%)"><i>🇦🇪 🇸🇦 🇱🇧 · MUSIC</i><b>Unfamiliar Familiar</b>and CloudPulse</div>
+    <div class="core"><div><img src="img/star-crop.png" alt=""><small>THE ENGINE</small></div></div>
   </div>
 </div></section>
 
-<section id="plug"><div class="wrap">
-  <div class="rev"><h2>No new platform. No migration. <b>It plugs into what you run.</b></h2></div>
-  <div class="plug">
-    <div class="pl rev"><div class="pln">1</div><div class="h">It plugs in</div><p>It works inside your own systems: your ERP, your spreadsheets, your chat. Nothing to migrate, nothing new to learn.</p></div>
-    <div class="pl rev"><div class="pln">2</div><div class="h">It only touches what you allow</div><p>Like connecting a bank account. It sees only what you permit, acts only where you permit, and logs every step.</p></div>
-    <div class="pl rev"><div class="pln">3</div><div class="h">Your data stays home</div><p>Your data never leaves your walls. For sensitive work, it runs on your own machines, nothing sent outside.</p></div>
-    <div class="pl rev"><div class="pln">4</div><div class="h">Your people keep the call</div><p>The machines take the busywork. Your team makes the decisions. Same team, more done.</p></div>
-  </div>
-  <div class="rev" style="margin-top:44px"><h2>Three ways to run it. <b>You choose how close it stays.</b></h2></div>
-  <div class="plug plug3">
-    <div class="pl sov rev"><div class="pln">1</div><div class="h">Connected</div><p>We read from your systems where they already are, and the cockpit runs on our hosting, in a <b>UAE region</b> if you want it. The fastest way to start, when your policy allows it.</p></div>
-    <div class="pl sov rev"><div class="pln">2</div><div class="h">Hybrid</div><p>Your data, and everything done to it, <b>never leave your walls</b>. Only the finished record crosses over, never anything raw. For when the data itself cannot travel.</p></div>
-    <div class="pl sov rev"><div class="pln">3</div><div class="h">Private</div><p>The whole thing runs <b>inside your own cloud</b>, yours alone, with the model itself in your environment if you choose. For regulated work and for government.</p></div>
-  </div>
-  <div class="millus rev" style="margin-top:14px">The same product in all three. Pricing differs with the security level, and we follow your policies. <a href="mailto:hello@perspace.ai?subject=Security%20note" class="getlink">Ask for the security note →</a></div>
-</div></section>
-
-<section id="systems"><div class="wrap">
-  <div class="rev"><h2>Real systems, <b>in production.</b></h2>
-  <p class="p2">Not concept demos. These are working systems from our build floor and our portfolio of companies: real screens, real counts, live repositories. Every new client starts from here, tuned to their business.</p></div>
-  <div class="syswrap">
-    <div class="sys feat rev"><span class="sysbadge">In production</span><h3>The Recruitment Agent</h3><p>Reads every CV against the role, cross-examines the candidate's claims against it, and attaches evidence to every verdict. It screens what HR systems never could. Your team hires; it never decides.</p>
-      <div class="agentscreen">
-        <div class="ash">Verdict · how the read ranked</div>
-        <div class="abar"><span>Strong 75+</span><div class="track"><div class="fill" style="width:24%"></div></div><b>24%</b></div>
-        <div class="abar"><span>Possible</span><div class="track"><div class="fill" style="width:48%"></div></div><b>48%</b></div>
-        <div class="abar"><span>Not a fit</span><div class="track"><div class="fill" style="width:28%"></div></div><b>28%</b></div>
-        <div class="ash">Integrity · claims cross-checked against the CV</div>
-        <div class="abar"><span>Corroborated</span><div class="track"><div class="fill" style="width:28%"></div></div><b>28%</b></div>
-        <div class="abar warn"><span>Unverified</span><div class="track"><div class="fill" style="width:63%"></div></div><b>63%</b></div>
-        <div class="abar warn"><span>Contradicted</span><div class="track"><div class="fill" style="width:9%"></div></div><b>9%</b></div>
-      </div>
-      <div class="sysstats"><div class="sysstat"><div class="n">412</div><div class="l">CVs read &amp; scored</div></div><div class="sysstat"><div class="n">297</div><div class="l">flagged for unbacked claims</div></div><div class="sysstat"><div class="n">4-step</div><div class="l">rubric, every verdict cited</div></div></div></div>
-    <div class="rev"><div class="sys" id="sysrot"></div><div class="sysdots" id="sysdots"></div></div>
-  </div>
-  <script>window.__SYSROT=[
-    {b:'In production · daily',t:'Company Chat + Agent Builder',p:'An operating group runs its day through chat: agents read and write into the ERP under governed permissions, and new agents are assembled from a builder, not coded from scratch. Part of the technology clients inherit.',was:'teams jump between the ERP, spreadsheets and chat; a new tool takes a quarter to wire in.',now:'the day runs from chat, agents read and write the ERP, a new agent is built in a day.',impact:'≈ 3× throughput per person · new agent in a day, not a quarter · est.',s:[['11','facilities run through it'],['20+','vehicles dispatched'],['200+','people on the system']]},
-    {b:'In production · 24/7',t:'Ops Mission Control',p:'A single wall for a multi-client operation: every ticket, build and deadline in one place, agents doing the tracking and chasing, humans doing the deciding. Battle-tested inside a live services business.',was:'status chased across email and calls; tickets slip, deadlines surprise you.',now:'one wall, agents track and chase, humans decide what matters.',impact:'≈ 300+ chase-hours returned / month · fewer missed deadlines · est.',s:[['24','client accounts'],['1,800+','tickets handled'],['316','builds tracked']]},
-    {b:'In production',t:'The Inbox-to-Task Loop',p:'Every inbound email is read, understood and turned into a task with an owner and a deadline. Follow-ups are chased until closed. Nothing waits in an inbox, nothing falls through.',was:'inbox triaged by hand; follow-ups forgotten, threads dropped.',now:'every email becomes an owned task, chased automatically to close.',impact:'≈ a day of triage returned / week · 0 dropped threads · est.',s:[['100%','of inbound read &amp; routed'],['0','threads dropped'],['24h','follow-up cycle, automatic']]},
-    {b:'In production · 24/7',t:'The Finance Desk',p:'Books that read themselves: revenue, stock and cost pulled from the operating systems around the clock, reconciled, and published to one live page. The answer exists before anyone builds a spreadsheet.',was:'reports rebuilt in spreadsheets, days late, stale on arrival.',now:'books reconcile themselves around the clock onto one live page.',impact:'≈ the monthly close, gone · the number is ready before anyone asks · est.',s:[['3h','refresh cycle, automatic'],['1,500+','stock items tracked live'],['0','manual reports produced']]},
-    {b:'In production · daily',t:'The Catalogue Scout',p:'Watches a supplier universe of 188,000 items every day against what the business already carries, flags what is missing and what just dropped, and drafts the order. The business never misses a release.',was:'buyers scan supplier lists by hand; drops and gaps get missed.',now:'188k items watched daily, gaps flagged, the order drafted for you.',impact:'≈ new-release revenue captured · 0 drops missed · est.',s:[['188K','items watched daily'],['1','weekly digest, auto-drafted'],['0','drops missed']]}
-  ];</script>
-  <p class="takeover rev"><b>What they take over:</b> quotes, collections, reporting, approvals, handoffs, scheduling, reconciliation, filings, escalations. <b>The whole workflow, not a tool bolted on the side</b>, if the work is repetitive and rule-based, an agent can own it end to end.</p>
-  <div class="sysnote">Running today across our portfolio of companies · deployed for each client inside their own systems</div>
-</div></section>
-
-
-
-<section class="sec" id="realscreens"><div class="wrap">
-  <h2>Real screens, from the cockpit.</h2>
-  <p class="p2">These four screens are the sample company, a fictional client stamped as such on every page, so nothing here belongs to a real client. The shapes, the pages and the numbers are exactly what a live cockpit shows on the client's own data.</p>
-  <div class="rs">
-    <figure><img src="img/cockpit-calibrate-sim.png?v=20260919a" alt="Calibrate, the eight questions">
-      <figcaption><b>The same eight questions, on every company.</b> Who pays, where new money comes from, does it come back, what each one is worth, what you serve them with, what it costs to serve, where the time goes, how long the money lasts. Each one carries a figure or says on its own line what would fill it.</figcaption></figure>
-    <div class="col">
-      <figure><img src="img/cockpit-pockets-sim.png?v=20260919a" alt="Value pockets">
-      <figcaption><b>Where the money is.</b> Every pocket named and sized from the company's own records, each one traced back to the document it came from, and marked real, calibrating or missing.</figcaption></figure>
-      <figure><img src="img/cockpit-work-sim.png?v=20260919a" alt="The work, running">
-      <figcaption><b>The work, running.</b> Every pocket becomes a thread with four stages: the truth, the decision, the way of working, the agent. Rings fill as each stage lands; what waits on a person says so.</figcaption></figure>
-      <figure><img src="img/cockpit-workforce-sim.png?v=20260919a" alt="People and agents, one chart">
-      <figcaption><b>People and agents, one chart.</b> Every agent stands in a department beside the people, with a named manager, a cost, and the one thing that switches it on.</figcaption></figure>
-    </div>
-  </div>
-  <div class="hbtns rev" style="justify-content:center;margin-top:34px"><a href="mailto:hello@perspace.ai?subject=Walkthrough" class="btn p">Book a walkthrough</a></div>
-</div></section>
-
-<section class="sec" id="engine"><div class="wrap">
-  <h2>Every client makes the next one better. <br>None of them ever sees another's data.</h2>
-  <p class="p2">One engine sits above every cockpit. What moves into it is the method: the shape of a problem and how it was solved. What moves back out is everything learned so far. No client data ever crosses.</p>
-  <div class="cwall" id="cwall">
-    <svg class="cw-links" id="cwlinks" aria-hidden="true"></svg>
-    <div class="cw-grid">
-      <div class="cw-co"><div class="cw-top"><span class="cw-flag">🇦🇪 🇸🇦</span></div><b>A large UAE group</b><span>an out-of-home operator across the region</span></div>
-      <div class="cw-co"><div class="cw-top"><span class="cw-flag">🇦🇪</span></div><b>Flourish Fund</b><span>a pet roll-up: the fund and the brands under it</span><span class="cw-subs">Drool · Woof · Petzania · My Second Home</span></div>
-      <div class="cw-core" id="cwcore"><span class="pmark cw-mark" aria-hidden="true"><i class="bl"></i><i class="st"></i><i class="br"></i></span><b>The engine</b><span>learns from every company it reads, and hands it to the next</span></div>
-      <div class="cw-co"><div class="cw-top"><img class="cw-logo" src="https://www.google.com/s2/favicons?domain=naranti.com&sz=128" alt="" loading="lazy" onerror="this.remove()"><span class="cw-flag">🇲🇽</span></div><b>Naranti</b><span>the largest out-of-home operator in Mexico and LatAm</span></div>
-      <div class="cw-co"><div class="cw-top"><img class="cw-logo" src="https://www.google.com/s2/favicons?domain=unfamiliarfamiliar.com&sz=128" alt="" loading="lazy" onerror="this.remove()"><span class="cw-flag">🇦🇪 🇸🇦 🇱🇧</span></div><b>Unfamiliar Familiar <em>and CloudPulse</em></b><span>a music group: the records, and the sound in the room across the Gulf and Lebanon</span></div>
-      <div class="cw-co"><div class="cw-top"><img class="cw-logo" src="https://www.google.com/s2/favicons?domain=leverbrands.co.uk&sz=128" alt="" loading="lazy" onerror="this.remove()"><span class="cw-flag">🇬🇧</span></div><b>Lever Brands</b><span>brand and marketing, London</span></div>
-    </div>
-  <p class="cw-note"><b>No client data ever crosses.</b> Not a number, not a file, not a name. Each company's records stay inside its own gate, and what compounds between them is the method, which is ours to carry.</p>
-</div></section>
-<section id="how"><div class="wrap">
-  <div class="rev"><h2>We plug into what you already run, <b>and the meter starts moving.</b></h2>
-  <p class="p2">No timeline to sit through. We connect to your existing data, read your reports and documentation, and our agents talk to your teams on the messaging apps they already use. From there, the loop runs. <b>The agent is step seven, not step one:</b> an agent pointed at work nobody has fixed only does the wrong work faster.</p></div>
-  <div class="flowrow">
-    <div class="fstep rev"><div class="fn">01</div><div class="ftab">Input</div><h4>Plug in</h4><p>Existing data, reports and documentation, read in place. Agents chat with your teams on the apps they already use. Nothing migrated.</p></div>
-    <div class="fstep rev"><div class="fn">02</div><div class="ftab">Calibrate</div><h4>Form a view</h4><p>All of it drawn into one live picture of how the company actually runs.</p></div>
-    <div class="fstep rev"><div class="fn">03</div><div class="ftab">Value pockets</div><h4>Findings</h4><p>Where the money leaks, each one priced and linked to its source.</p></div>
-    <div class="fstep rev"><div class="fn">04</div><div class="ftab">Value pockets</div><h4>Prioritize</h4><p>Ranked by value, so the first move is the one that pays the most.</p></div>
-    <div class="fstep rev"><div class="fn">05</div><div class="ftab">The work</div><h4>Change how it is done</h4><p>Before any agent. Who does what, in what order, and what gets dropped. Written down, and owned by a named person.</p></div>
-    <div class="fstep rev"><div class="fn">06</div><div class="ftab">The work</div><h4>Check it stuck</h4><p>Adoption measured at 30, 60 and 90 days against the way it ran before. Nobody validates by claim.</p></div>
-    <div class="fstep act rev"><div class="fn">07</div><div class="ftab">AI workforce</div><h4>Automate one</h4><p>Now the agent. One workflow live in production, measured against the manual baseline.</p></div>
-    <div class="fstep rev"><div class="fn">08</div><div class="ftab">AI workforce</div><h4>Continue</h4><p>Then the next, and the next. The picture stays live as the company moves.</p></div>
-  </div>
-  <div class="meter rev">
-    <div class="mleft">
-      <div class="mlabk">Live · estimated savings identified</div>
-      <div class="mbig" id="meternum">$ 0</div>
-      <div class="msub">As the read runs and workflows go live, the meter climbs. Every figure traces to the finding behind it.</div>
-    </div>
-    <div class="mright">
-      <div class="wl">Workflows live</div>
-      <div class="mtrack"><div class="mfill" id="meterfill"></div></div>
-      <div class="mwork"><span><b>6</b> live</span><span>and counting →</span></div>
-      <div class="millus">Illustrative. Your figure comes from your own read, your data never leaves your walls.</div>
+<!-- 7 · FOUNDER -->
+<section class="pad" style="border-top:1px solid var(--line)"><div class="wrap">
+  <div class="tag rv">Founder-led</div>
+  <div class="fd" style="margin-top:40px">
+    <a class="ph rv" href="https://www.linkedin.com/in/peter-abou-hachem-2240b497/" target="_blank" rel="noopener"><img src="img/peter-founder.jpg" alt="Peter Abou Hachem"><span class="in">LinkedIn ↗</span></a>
+    <div class="stack">
+      <h2 class="rv d1">Built by someone who has sat <b>on your side of the table.</b></h2>
+      <div class="rv d2"><a class="who" href="https://www.linkedin.com/in/peter-abou-hachem-2240b497/" target="_blank" rel="noopener">Peter Abou Hachem <span style="font-weight:300;font-size:22px">↗</span></a><div class="role">Founder and CEO</div></div>
+      <p class="lede rv d2">He has advised enterprises on strategy and commercial transformation, run growth as an operator, and spent six years building Abu Dhabi's tech ecosystem as Head of Growth and Strategy at Hub71. An angel investor with a background in venture capital and private equity, and a connector with a network of founders, investors and operators around the world.</p>
+      <div class="hats rv d3"><span>Advisor</span><span>Operator</span><span>Investor</span><span>Ecosystem connector</span></div>
+      <div class="net rv d4"><span>Silicon Valley</span><span>New York</span><span>London</span><span>Europe</span><span>India</span><span>Korea</span><span>Japan</span><span>Singapore</span><span>LatAm</span></div>
     </div>
   </div>
 </div></section>
 
-
-<section><div class="wrap">
-  <div class="chatwrap">
-    <div class="rev">
-      <h2>You approve the way <b>you reply to a message.</b></h2>
-      <p class="p2">Every morning the company reports to your pocket, three numbers that moved and one finding priced. And the one decision that needs you arrives in the same chat you already use, with the why attached. You reply, it is logged, and it acts.</p>
-      <div class="chatpoints">
-        <div class="chatpoint"><span class="d"></span><p><b>Approvals come to you</b>, in one line, with the reason and the source attached.</p></div>
-        <div class="chatpoint"><span class="d"></span><p><b>Managed after launch.</b> We monitor the agents and keep them current. You never manage the technology yourself.</p></div>
-        <div class="chatpoint"><span class="d"></span><p><b>Nothing hidden.</b> The moment you reply, it acts and logs the step. Every approval is traceable.</p></div>
-      </div>
-    </div>
-    <div class="phone rev">
-      <div class="ph"><span class="av">◆</span><span class="nm">Perspace</span><span class="st">online</span></div>
-      <div class="bub ai"><div class="dh">Decision waiting on you</div>Approve the supplier ranking as the sourcing input?<div class="why">Closes ≈ $340k/yr. Three vendors, one ranked view, same spec.</div><span class="look">see the source</span></div>
-      <div class="bub me">Approved</div>
-      <div class="bub ai"><div class="dh" style="color:var(--good)">Done</div>Ranking locked as the sourcing input · finance notified · logged to the record</div>
-      <div class="chatdone">Every approval traceable — the call stayed yours</div>
-    </div>
+<!-- 8 · YOUR DATA -->
+<section class="data pad"><div class="wrap grid">
+  <div><div class="tag rv" style="color:var(--accent)">Your data</div><h2 class="rv d1" style="margin-top:22px">It sees only what you allow. <b>You choose where it runs.</b></h2>
+    <p class="lede rv d2" style="margin-top:22px">Like connecting a bank account: it sees what you permit, acts where you permit, and logs every step.</p></div>
+  <div class="rings rv d2">
+    <div class="ring"><svg width="70" height="70"><circle class="o" cx="35" cy="35" r="28"/><circle class="c" cx="35" cy="35" r="6"/></svg><h4>Connected</h4><p>Runs on our hosting, in a UAE region if you want.</p></div>
+    <div class="ring"><svg width="70" height="70"><circle cx="35" cy="35" r="28"/><circle class="o" cx="35" cy="35" r="17"/><circle class="c" cx="35" cy="35" r="6"/></svg><h4>Hybrid</h4><p>Raw data stays inside your walls. Only the finished record crosses.</p></div>
+    <div class="ring"><svg width="70" height="70"><circle cx="35" cy="35" r="28"/><circle cx="35" cy="35" r="17"/><circle class="c o" cx="35" cy="35" r="8"/></svg><h4>Private</h4><p>All of it inside your own cloud, the model included.</p></div>
   </div>
 </div></section>
 
-
-
-
-
-
-<section class="fomo" id="talk"><div class="wrap rev">
-  <h2>Technology stopped being the differentiator. <b>Operating on it is.</b></h2>
-  <p class="p2">Someone in your market will run on agents first. Every quarter you wait, theirs learn your market. Decide if it is you.</p>
-  <div class="hbtns"><a href="mailto:hello@perspace.ai?subject=First%20pocket" class="btn p">Start with one pocket →</a></div>
+<!-- 9 · CLOSE -->
+<section class="close" id="close"><div class="wrap">
+  <div class="m rv"><img src="img/mark-left-c.png" alt=""><img class="s" src="img/star-crop.png" alt=""><img src="img/mark-right-c.png" alt=""></div>
+  <h2 class="rv d1">We operate <b>the future.</b></h2>
+  <p class="lede rv d2">Start with one pocket. We show you the money, go in and get it, and prove it moved.</p>
+  <div class="btns rv d3"><a class="btn dark" href="mailto:hello@perspace.ai?subject=Walkthrough">Book a walkthrough →</a><a class="btn line" href="mailto:hello@perspace.ai">hello@perspace.ai</a></div>
 </div></section>
 
 <footer><div class="wrap">
-  <span class="brand">Perspace<span class="pmark enter"><i class="bl"></i><i class="st"></i><i class="br"></i></span></span>
-  <span>We operate the future.</span>
-  <span class="mono">Dubai · Abu Dhabi · <a href="mailto:hello@perspace.ai">hello@perspace.ai</a></span>
-  <nav class="fl"><a href="index.html">Cockpit</a><a href="venture.html">Venture clienting</a><a href="plugins.html">Plug-ins</a><a href="philosophy.html">Philosophy</a><a href="insights.html">Insights</a></nav>
+  <div class="brand"><img src="img/perspace-mark-ink.png" alt="">Perspace</div>
+  <div class="ft"><a href="philosophy.html">Philosophy</a><a href="#method">Method</a><a href="#cockpit">Cockpit</a><a href="plugins.html">Plug-ins</a><a href="venture.html">Venture clienting</a><a href="insights.html">Insights</a></div>
+  <div class="tl">We operate the future · Dubai · Abu Dhabi</div>
 </div></footer>
 
 <script>
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:0.12});
-document.querySelectorAll('.rev').forEach(function(el){io.observe(el);});
+(function(){
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // nav background after scroll
+  const nav=document.getElementById('nav');
+  const onScroll=()=>nav.classList.toggle('sc',scrollY>20);
+  addEventListener('scroll',onScroll,{passive:true}); onScroll();
 
-// agentic scale — marker slides to 61, number counts up
-(function(){
-  var mark=document.getElementById('scmark'), bub=document.getElementById('scbub'), num=document.getElementById('scnum'); if(!mark)return;
-  var target=61;
-  var mo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){
-    mark.style.left=target+'%';
-    var t0=null; function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/1400,1);var v=Math.round(p*target);
-      bub.textContent=v; num.innerHTML=v+' <b>/ 100</b>'; if(p<1)requestAnimationFrame(step);} requestAnimationFrame(step);
-    mo.disconnect();}})},{threshold:0.5});
-  mo.observe(document.querySelector('.scale'));
-})();
-// live savings meter — counts up, fill grows
-(function(){
-  var num=document.getElementById('meternum'), fill=document.getElementById('meterfill'); if(!num)return;
-  var target=4.2; // $M, illustrative
-  var mo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){
-    fill.style.width='22%';
-    var t0=null; function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/1800,1);var v=(p*target).toFixed(1);
-      num.innerHTML='$ '+v+'M'; if(p<1)requestAnimationFrame(step);} requestAnimationFrame(step);
-    mo.disconnect();}})},{threshold:0.5});
-  mo.observe(document.querySelector('.meter'));
-})();
+  // reveal + one-shot triggers
+  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); if(e.target.dataset.count!==undefined) countUp(e.target); io.unobserve(e.target);} }),{threshold:.2});
+  document.querySelectorAll('.rv,#rail,#bp,[data-count]').forEach(el=>io.observe(el));
+  function countUp(el){ const to=+el.dataset.count, suf=el.dataset.suffix||''; if(RM){el.textContent=to+suf;return;} const t0=performance.now(),d=1400;
+    (function f(t){const k=Math.min(1,(t-t0)/d);el.textContent=Math.round(to*(1-Math.pow(1-k,3)))+suf; if(k<1) requestAnimationFrame(f);})(t0); }
 
-// mac frame — cycle through screens (map, today, findings)
-(function(){
-  var frame=document.querySelector('.orbit'); if(!frame)return;
-  var screens=[].slice.call(frame.querySelectorAll('.screen'));
-  var dots=[].slice.call(frame.querySelectorAll('.scrdots span'));
-  var label=document.querySelector('.macbar .u');
-  var i=0, started=false;
-  function tick(){
-    screens[i].classList.remove('on'); dots[i]&&dots[i].classList.remove('on');
-    i=(i+1)%screens.length;
-    screens[i].classList.add('on'); dots[i]&&dots[i].classList.add('on');
-    if(label&&screens[i].dataset.label) label.textContent=screens[i].dataset.label;
-  }
-  var mo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!started){started=true;setInterval(tick,4500);}})},{threshold:0.5});
-  mo.observe(document.querySelector('.macwrap')||frame);
-})();
-// systems carousel — real agent featured, the rest rotate
-(function(){
-  var rot=document.getElementById('sysrot'), dotsc=document.getElementById('sysdots'); if(!rot)return;
-  var items=window.__SYSROT||[]; if(!items.length)return;
-  var i=0, dots=[];
-  items.forEach(function(_,k){var d=document.createElement('span');d.className='sdot'+(k===0?' on':'');dotsc.appendChild(d);dots.push(d);});
-  var _pv=document.createElement('button');_pv.className='sysarrow';_pv.textContent='←';_pv.setAttribute('aria-label','Previous');
-  var _nx=document.createElement('button');_nx.className='sysarrow';_nx.textContent='→';_nx.setAttribute('aria-label','Next');
-  _pv.onclick=function(){clearInterval(iv);i=(i-1+items.length)%items.length;render();};
-  _nx.onclick=function(){clearInterval(iv);i=(i+1)%items.length;render();};
-  dotsc.insertBefore(_pv,dotsc.firstChild);dotsc.appendChild(_nx);
-  function render(){var s=items[i];
-    rot.style.opacity=0;
-    setTimeout(function(){
-      rot.innerHTML='<span class="sysbadge">'+s.b+'</span><h3>'+s.t+'</h3><p>'+s.p+'</p>'+
-        '<div class="shift"><div class="ash">The shift · manual → automated</div>'+
-        '<div class="shrow"><span class="tag was">Before</span><span>'+s.was+'</span></div>'+
-        '<div class="shrow"><span class="tag now">Now</span><span>'+s.now+'</span></div>'+
-        '<div class="impact">'+s.impact+'</div></div>'+
-        '<div class="sysstats">'+
-        s.s.map(function(x){return '<div class="sysstat"><div class="n">'+x[0]+'</div><div class="l">'+x[1]+'</div></div>';}).join('')+'</div>';
-      rot.style.opacity=1;
-      dots.forEach(function(d,k){d.className='sdot'+(k===i?' on':'');});
-    },260);}
-  render();
-  var iv, started=false;
-  var mo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!started){started=true;iv=setInterval(function(){i=(i+1)%items.length;render();},3600);}})},{threshold:0.4});
-  mo.observe(document.querySelector('.syswrap')||rot);
-  rot.addEventListener('mouseenter',function(){clearInterval(iv);});
-})();
-</script>
-<script>(function(){function h(){var n=document.getElementById('nav');if(n)document.documentElement.style.setProperty('--navh',n.offsetHeight+'px');}h();window.addEventListener('resize',h);window.addEventListener('load',h);})();</script>
-<script>
-/* the mark arrives once, then lives: the entrance rules are removed so the
-   perpetual turn underneath can take over (they sit on the same element, and
-   a fill-mode of both would otherwise freeze it on its last frame). */
-(function(){
- function go(){[].forEach.call(document.querySelectorAll('.pmark.enter'),function(m){
-  setTimeout(function(){m.classList.remove('enter');},1500);});}
- if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
-})();
-</script>
-<script>
-/* THE HAND-OFF. The mark is not on a loop: it arrives once, then the scroll
-   carries it away. Everything here is one transform on two elements, read off
-   the scroll position inside a frame callback, so it stays smooth on a phone. */
-(function(){
- var op=document.getElementById('opener'); if(!op)return;
- var mark=op.querySelector('.op-mark'), cap=op.querySelector('.op-cap'), hint=op.querySelector('.op-scroll');
- var ticking=false;
- function frame(){
-  ticking=false;
-  var h=op.offsetHeight||1, y=Math.min(Math.max(window.scrollY,0),h), p=y/h;   /* 0 at rest, 1 gone */
-  var e=p*p*(3-2*p);                                                            /* ease, so it leaves softly */
-  mark.style.transform='translate(-50%,-50%) translateY('+(-e*16)+'vh) scale('+(1-e*.46)+')';
-  mark.style.opacity=String(1-e*1.15);
-  cap.style.transform='translateY('+(-e*7)+'vh)';
-  cap.style.opacity=String(1-e*1.35);
-  if(hint)hint.style.opacity=String(1-p*3);
- }
- function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(frame); } }
- window.addEventListener('scroll',onScroll,{passive:true});
- window.addEventListener('resize',onScroll);
- frame();
-})();
-</script>
-<script>
-/* one line from every company into the engine, clipped to the edges of both
-   boxes so nothing is drawn underneath a card. Redrawn on resize only. */
-(function(){
- var wall=document.getElementById('cwall'); if(!wall)return;
- var svg=document.getElementById('cwlinks'), core=document.getElementById('cwcore');
- function draw(){
-  if(!core||window.innerWidth<=900){svg.innerHTML='';return;}
-  var W=wall.getBoundingClientRect(), C=core.getBoundingClientRect();
-  svg.setAttribute('viewBox','0 0 '+W.width+' '+W.height);
-  var cx=C.left+C.width/2-W.left, cy=C.top+C.height/2-W.top;
-  var out='';
-  [].forEach.call(wall.querySelectorAll('.cw-co'),function(co,i){
-   var R=co.getBoundingClientRect();
-   var x=R.left+R.width/2-W.left, y=R.top+R.height/2-W.top;
-   var dx=cx-x, dy=cy-y, L=Math.sqrt(dx*dx+dy*dy)||1, ux=dx/L, uy=dy/L;
-   var sx=x+ux*(Math.min(R.width,Math.abs(R.width/(ux||.001)))/2*0+R.width/2*Math.abs(ux)+R.height/2*Math.abs(uy));
-   var sy=y+uy*(R.width/2*Math.abs(ux)+R.height/2*Math.abs(uy));
-   var ex=cx-ux*(C.width/2*Math.abs(ux)+C.height/2*Math.abs(uy));
-   var ey=cy-uy*(C.width/2*Math.abs(ux)+C.height/2*Math.abs(uy));
-   out+='<line x1="'+sx.toFixed(1)+'" y1="'+sy.toFixed(1)+'" x2="'+ex.toFixed(1)+'" y2="'+ey.toFixed(1)+'" style="animation-delay:'+(i*.13).toFixed(2)+'s"/>';
-  });
-  svg.innerHTML=out;
- }
- var t; window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(draw,120);});
- if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',draw);else draw();
- setTimeout(draw,400); setTimeout(draw,1400);
-})();
-</script>
-<script>
-/* the routes that carry something are marked live, so the pulse runs on the
-   lines that mean a deployment rather than on every line on the map. */
-(function(){
- var ls=document.querySelectorAll('.maplines line');
- for(var i=0;i<ls.length;i++) if(i%2===0) ls[i].classList.add('live');
-})();
-</script>
-<script>
-/* close the menu when a link is taken, so returning to the page is not a trap */
-(function(){
- var x=document.getElementById('navx'); if(!x)return;
- var ls=document.querySelectorAll('#nav .links a');
- for(var i=0;i<ls.length;i++) ls[i].addEventListener('click',function(){x.checked=false;});
- document.addEventListener('keydown',function(e){if(e.key==='Escape')x.checked=false;});
+  // live value meter (figures from the renamed company)
+  const ctr=document.getElementById('ctr'),feed=document.getElementById('feed'); let v=37812640,i=0;
+  const ev=[["Pocket found","Formats that sold nothing","+ 1,538 faces"],["Workflow live","Collections, invoices chased","+ 186,300"],["Decision approved","Supplier contract, priced","+ 28,300/mo"],["Traced","Rate card against invoice","file linked"],["Pocket found","The estate left empty","+ 285 of 4,418"],["Workflow live","Monthly report, now minutes","+ 15,000/mo"]];
+  function add(){const e=ev[i++%ev.length];const r=document.createElement('div');r.className='row';r.innerHTML='<span class="k">'+e[0]+'</span><span>'+e[1]+'</span><span class="v">'+e[2]+'</span>';feed.insertBefore(r,feed.firstChild);while(feed.children.length>3)feed.removeChild(feed.lastChild);}
+  add();add();add(); if(!RM){ setInterval(()=>{v+=Math.round(200+Math.random()*1400);ctr.textContent=v.toLocaleString('en-US');},420); setInterval(add,2800);}
+
+  // THE SPACE: brackets close in around the cockpit as you scroll
+  const sp=document.getElementById('space'), bl=sp.querySelector('.bk.l'), br=sp.querySelector('.bk.r'), scr=sp.querySelector('.screen'), ws=[...sp.querySelectorAll('.w')];
+  function spaceFrame(){ const r=sp.getBoundingClientRect(), total=r.height-innerHeight; let k=Math.min(1,Math.max(0,-r.top/total));
+    const close=Math.min(1,k/0.7), e=1-Math.pow(1-close,3);
+    bl.style.transform=`translate(${-60*(1-e)}vw,-50%)`; br.style.transform=`translate(${60*(1-e)}vw,-50%)`;
+    scr.style.transform=`scale(${0.82+0.18*e})`; scr.style.opacity=0.35+0.65*e;
+    const idx=k<0.28?0:k<0.6?1:2; ws.forEach((w,j)=>w.classList.toggle('on',j===idx)); }
+  addEventListener('scroll',spaceFrame,{passive:true}); addEventListener('resize',spaceFrame); spaceFrame();
+  window.__spaceFrame=spaceFrame;
+
+  // COCKPIT tabs: auto-advance, each tab plays its own real screen
+  const tabs=[...document.querySelectorAll('.tab')], vids=[...document.querySelectorAll('.device video')], stats=document.getElementById('stats');
+  const S=[[["733","files read"],["1,942","sites on the register"],["164","advertisers who pay"]],
+           [["21","places found"],["1,538 of 7,300","faces that sold nothing"],["5","rows, by what they do to money"]],
+           [["22","acts on 13 territories"],["33","ways of working written down"],["0","logged as moved, yet"]],
+           [["158","carriers of work"],["97","people"],["17","agents designed"]]];
+  let cur=0,timer;
+  function show(n){ cur=n; tabs.forEach((t,j)=>{t.classList.toggle('on',j===n); const b=t.querySelector('.bar'); b.style.animation='none'; b.offsetWidth; b.style.animation='';});
+    vids.forEach((vd,j)=>{ if(j===n){vd.classList.add('on'); try{vd.currentTime=0;vd.play();}catch(e){}} else {vd.classList.remove('on'); vd.pause();}});
+    stats.innerHTML=S[n].map(s=>`<div><b>${s[0]}</b><span>${s[1]}</span></div>`).join('');
+    const dur=(vids[n].duration&&isFinite(vids[n].duration))?vids[n].duration:10; tabs[n].style.setProperty('--dur',dur+'s');
+    clearTimeout(timer); timer=setTimeout(()=>show((n+1)%tabs.length),dur*1000); }
+  tabs.forEach((t,j)=>t.addEventListener('click',()=>show(j)));
+  vids.forEach(v=>v.addEventListener('loadedmetadata',()=>{ if(vids.indexOf(v)===cur) show(cur); },{once:true}));
+  show(0);
+  window.__showTab=show;
 })();
 </script>
 </body></html>
