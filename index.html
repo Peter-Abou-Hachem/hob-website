@@ -302,8 +302,8 @@ nav.open .mnu i:first-child{transform:translateY(3.75px) rotate(45deg)}nav.open 
     <div class="markbox"><img class="b l" src="img/mark-left-c.png" alt=""><img class="b r" src="img/mark-right-c.png" alt="">
     <img class="s" src="img/star-crop.png" alt=""><div class="shine"></div></div>
     <div class="live"><div class="top"><span class="dotlive"><i></i>Value captured, live</span><span>A real cockpit, renamed</span></div>
-      <div class="big"><small>AED</small><span id="ctr">52,406,180</span></div>
-      <div class="sub">found, owned and moving · every figure traced to its file</div>
+      <div class="big"><small>AED</small><span id="ctr">0</span></div>
+      <div class="sub">found, owned and moving · a real cockpit, figures changed</div>
       <div class="feed" id="feed"></div></div>
   </div>
 </div><div class="scrollcue"><i></i>SCROLL</div></section>
@@ -595,10 +595,14 @@ nav.open .mnu i:first-child{transform:translateY(3.75px) rotate(45deg)}nav.open 
     (function f(t){const k=Math.min(1,(t-t0)/d);el.textContent=Math.round(to*(1-Math.pow(1-k,3)))+suf; if(k<1) requestAnimationFrame(f);})(t0); }
 
   // live value meter (figures from the renamed company)
-  const ctr=document.getElementById('ctr'),feed=document.getElementById('feed'); let v=52406180,i=0;
-  const ev=[["Pocket found","Routes that sold nothing","+ 1,049 routes"],["Workflow live","Collections, invoices chased","+ 241,700"],["Decision approved","Supplier contract, priced","+ 31,900/mo"],["Traced","Rate card against invoice","file linked"],["Pocket found","Routes waiting to be filled","+ 541 of 8,369"],["Workflow live","Monthly report, now minutes","+ 15,000/mo"]];
-  function add(){const e=ev[i++%ev.length];const r=document.createElement('div');r.className='row';r.innerHTML='<span class="k">'+e[0]+'</span><span>'+e[1]+'</span><span class="v">'+e[2]+'</span>';feed.insertBefore(r,feed.firstChild);while(feed.children.length>3)feed.removeChild(feed.lastChild);}
-  add();add();add(); if(!RM){ setInterval(()=>{v+=Math.round(200+Math.random()*1400);ctr.textContent=v.toLocaleString('en-US');},420); setInterval(add,2800);}
+  const ctr=document.getElementById('ctr'),feed=document.getElementById('feed');
+  /* the meter adds up: it counts to a fixed base once, then moves only by the amount of each line that lands, then holds */
+  const BASE=52114600, ev=[["Pocket found","Routes that sold nothing","+ 1,049 routes",0],["Workflow live","Collections, invoices chased","+ 241,700",241700],["Traced","Rate card against invoice","file linked",0],["Decision approved","Supplier contract, priced","+ 31,900",31900],["Pocket found","Routes waiting to be filled","+ 541 of 8,369",0],["Workflow live","Monthly report, now minutes","+ 15,000",15000]];
+  const fmt=n=>Math.round(n).toLocaleString('en-US'); let v=0,shown=0,i=0,tok=0;
+  function tween(to,ms){const from=shown,t0=performance.now(),me=++tok;v=to;(function f(t){if(me!==tok)return;const k=Math.min(1,(t-t0)/ms),e=1-Math.pow(1-k,3);shown=from+(to-from)*e;ctr.textContent=fmt(shown);if(k<1)requestAnimationFrame(f);})(t0);}
+  function add(){const e=ev[i++];const r=document.createElement('div');r.className='row';r.innerHTML='<span class="k">'+e[0]+'</span><span>'+e[1]+'</span><span class="v">'+e[2]+'</span>';feed.insertBefore(r,feed.firstChild);while(feed.children.length>3)feed.removeChild(feed.lastChild);if(e[3])tween(v+e[3],900);}
+  if(RM){v=BASE+ev.reduce((a,e)=>a+e[3],0);ctr.textContent=fmt(v);i=ev.length-3;add();add();add();}
+  else{ctr.textContent='0';setTimeout(()=>{tween(BASE,3000);let n=0;const t=setInterval(()=>{add();if(++n===ev.length)clearInterval(t);},2600);},1900);}
 
   // THE SPACE: brackets close in around the cockpit as you scroll
   const sp=document.getElementById('space'), bl=sp.querySelector('.bk.l'), br=sp.querySelector('.bk.r'), scr=sp.querySelector('.screen'), ws=[...sp.querySelectorAll('.w')];
