@@ -383,19 +383,132 @@ nav.open .mnu i:first-child{transform:translateY(3.75px) rotate(45deg)}nav.open 
     <div class="st"><div class="dot">4</div><div class="k">CHANGE</div><h4>Change the work</h4><p>Owned by a person, checked at 30, 60, 90 days.</p></div>
     <div class="st"><div class="dot">5</div><div class="k">AUTOMATE</div><h4>Agents on what repeats</h4><p>Measured against how it ran before.</p></div>
   </div>
-  <div class="bp" id="bp"><span class="lbl">THE BLUEPRINT · DRAWN FROM THE COMPANY'S OWN FILES</span><span class="lbr">5 OF 8 FUNCTIONS MAPPED</span>
-  <svg viewBox="0 0 1180 400">
-    <g class="room fill" style="--d:0s"><rect x="40" y="50" width="300" height="140"/><text x="58" y="78">FINANCE</text></g>
-    <g class="room fill" style="--d:.4s"><rect x="350" y="50" width="250" height="140"/><text x="368" y="78">SALES</text></g>
-    <g class="room fill" style="--d:.8s"><rect x="610" y="50" width="330" height="140"/><text x="628" y="78">OPERATIONS</text></g>
-    <g class="room fill" style="--d:1.2s"><rect x="950" y="50" width="190" height="300"/><text x="968" y="78">PROCUREMENT</text></g>
-    <g class="room fill" style="--d:1.6s"><rect x="40" y="200" width="220" height="150"/><text x="58" y="228">PEOPLE</text></g>
-    <g class="room ghost" style="--d:2s"><rect x="270" y="200" width="220" height="150"/><text x="288" y="228">SYSTEMS</text></g>
-    <g class="room ghost" style="--d:2.3s"><rect x="500" y="200" width="200" height="150"/><text x="518" y="228">LEGAL</text></g>
-    <g class="room ghost" style="--d:2.6s"><rect x="710" y="200" width="230" height="150"/><text x="728" y="228">SUPPLY</text></g>
-    <g class="pin" style="--d:3.4s"><circle class="ring" cx="1045" cy="150" r="7"/><circle cx="1045" cy="150" r="6"/><text x="1045" y="182" text-anchor="middle">≈ AED 340k a year</text></g>
-    <g class="pin" style="--d:3.9s"><circle class="ring" cx="175" cy="130" r="7"/><circle cx="175" cy="130" r="6"/><text x="175" y="160" text-anchor="middle">Cash waiting past 90 days</text></g>
+  <style>
+.bp2{position:relative;background:#0e1b2e;border:1px solid var(--ink);padding:54px 22px 20px;margin-top:70px;background-image:linear-gradient(rgba(139,166,183,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(139,166,183,.13) 1px,transparent 1px);background-size:24px 24px;color:#cfdbe4}
+.bp2 .lbl,.bp2 .lbr{position:absolute;top:18px;font-size:10.5px;letter-spacing:.16em;color:#8BA6B7;font-weight:500}
+.bp2 .lbl{left:22px}.bp2 .lbr{right:22px;font-variant-numeric:tabular-nums}
+.bp2 .sc{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.bp2 svg{display:block;width:100%;height:auto;min-width:760px}
+.bp2 .rm rect.box{fill:rgba(139,166,183,0);stroke:#8BA6B7;stroke-width:1.4;stroke-dasharray:1400;stroke-dashoffset:1400;transition:fill .4s}
+.bp2 .rm text{font-family:var(--f);opacity:0}
+.bp2 .rm .nm{fill:#cfdbe4;font-size:13px;letter-spacing:.14em}
+.bp2 .rm .ct{fill:#8BA6B7;font-size:11.5px;letter-spacing:.04em}
+.bp2 .rm .gl{opacity:0}
+.bp2 .rm .gl .p{fill:#cfdbe4}.bp2 .rm .gl .a{fill:none;stroke:#8BA6B7;stroke-width:1.3}.bp2 .rm .gl .f{fill:#5d7686}
+.bp2.in .rm.m rect.box{animation:bdraw 1.3s var(--d) ease forwards,bfill .8s calc(var(--d) + .9s) ease forwards}
+.bp2.in .rm text,.bp2.in .rm .gl{animation:bfade .7s calc(var(--d) + .7s) ease forwards}
+.bp2 .rm.g rect.box{stroke-dasharray:5 7;stroke-dashoffset:0;stroke:#5d7686;opacity:0}
+.bp2.in .rm.g rect.box{animation:bfade 1s var(--d) ease forwards}
+.bp2 .rm.g .nm{fill:#6f8796}.bp2 .rm.g .ct{fill:#5d7686;font-size:11px}
+.bp2 .rm{cursor:pointer}.bp2 .rm:hover rect.box,.bp2 .rm.act rect.box{fill:rgba(139,166,183,.16)!important}
+@keyframes bdraw{to{stroke-dashoffset:0}}@keyframes bfill{to{fill:rgba(139,166,183,.08)}}@keyframes bfade{to{opacity:1}}
+/* pockets */
+.bp2 .pk{opacity:0}.bp2.in .pk{animation:bfade .6s var(--d) ease forwards}
+.bp2 .pk rect{transition:fill 1.2s ease,stroke 1.2s ease}
+.bp2 .pk text{font-family:var(--f);font-size:11.5px;transition:fill 1.2s ease}
+.bp2 .pk .st{font-size:9.5px;letter-spacing:.14em;font-weight:500}
+.bp2 .pk[data-s="0"] rect{fill:rgba(93,118,134,.25);stroke:#5d7686}.bp2 .pk[data-s="0"] text{fill:#8aa0ae}
+.bp2 .pk[data-s="1"] rect{fill:rgba(139,166,183,.35);stroke:#8BA6B7}.bp2 .pk[data-s="1"] text{fill:#dfe8ee}
+.bp2 .pk[data-s="2"] rect{fill:#8BA6B7;stroke:#8BA6B7}.bp2 .pk[data-s="2"] text{fill:#091120}
+.bp2 .pk[data-s="3"] rect{fill:#F9FAF4;stroke:#F9FAF4}.bp2 .pk[data-s="3"] text{fill:#091120}
+.bp2 .pk .fl{opacity:0;transition:opacity .4s}.bp2 .pk.flash .fl{opacity:1}
+/* flow */
+.bp2 .flow path{fill:none;stroke:#8BA6B7;stroke-width:1.2;stroke-dasharray:3 6;opacity:0}
+.bp2.in .flow path{animation:bfade 1s 4.6s ease forwards}
+.bp2 .flow .ol{fill:#8BA6B7;font-family:var(--f);font-size:10.5px;letter-spacing:.16em;opacity:0}.bp2.in .flow .ol{animation:bfade 1s 4.6s ease forwards}
+.bp2 .flow .dot{fill:#F9FAF4;opacity:0}.bp2.in .flow .dot{animation:bfade .5s 5s ease forwards}
+.bp2 .stuck{opacity:0}.bp2.in .stuck{animation:bfade .6s 5.4s ease forwards}
+.bp2 .stuck circle{fill:#e0655a}.bp2 .stuck .rg{fill:none;stroke:#e0655a;stroke-width:1.3;transform-box:fill-box;transform-origin:center;animation:sping 2s ease-out infinite}
+.bp2 .stuck text{fill:#f3b1aa;font-family:var(--f);font-size:11.5px}
+@keyframes sping{0%{transform:scale(1);opacity:.9}100%{transform:scale(3.2);opacity:0}}
+/* legend + tip */
+.bp2 .lg{display:flex;flex-wrap:wrap;gap:18px;margin-top:14px;font-size:10.5px;letter-spacing:.14em;color:#8BA6B7;font-weight:500}
+.bp2 .lg i{display:inline-block;width:14px;height:9px;margin-right:8px;vertical-align:0;border:1px solid}
+.bp2 .lg .hint{margin-left:auto;color:#6f8796}.bp2 .lg .swipe{display:none;color:#6f8796}
+.bp2 .tip{position:absolute;z-index:3;width:260px;background:#F9FAF4;color:#091120;padding:14px 16px;font-size:13px;line-height:1.45;box-shadow:0 20px 40px rgba(0,0,0,.4);pointer-events:none;opacity:0;transform:translateY(6px);transition:opacity .25s,transform .25s}
+.bp2 .tip.on{opacity:1;transform:none}
+.bp2 .tip b{display:block;font-size:10.5px;letter-spacing:.16em;color:#3F5E6E;margin-bottom:6px}
+.bp2 .tip p+p{margin-top:6px}.bp2 .tip span{color:#4A5260}
+@media (max-width:900px){.bp2{padding-top:44px}.bp2 .lbr{display:none}.bp2 .lg .hint{display:none}.bp2 .lg .swipe{display:inline}.bp2 .tip{width:220px}}
+@media (prefers-reduced-motion:reduce){.bp2 .rm rect.box{stroke-dashoffset:0}.bp2 .rm text,.bp2 .rm .gl,.bp2 .pk,.bp2 .flow path,.bp2 .flow .dot,.bp2 .stuck{opacity:1}}
+</style>
+<div class="bp2" id="bp2" data-trigger>
+  <span class="lbl">THE BLUEPRINT · DRAWN FROM THE COMPANY'S OWN FILES</span><span class="lbr" id="bpc">0 OF 8 FUNCTIONS MAPPED</span>
+  <div class="sc"><svg viewBox="0 -44 1180 484" id="bps" role="img" aria-label="A company blueprint: rooms for each function, the money found in each, and where work gets stuck">
+    <g class="flow"><path id="fp" d="M475,40 Q625,4 775,40 Q480,-50 190,40"/><circle class="dot" r="4.5"><animateMotion dur="5s" repeatCount="indefinite" begin="5s"><mpath href="#fp"/></animateMotion></circle></g>
   </svg></div>
+  <div class="lg"><span><i style="background:rgba(93,118,134,.25);border-color:#5d7686"></i>GREYED</span><span><i style="background:rgba(139,166,183,.35);border-color:#8BA6B7"></i>NAMED</span><span><i style="background:#8BA6B7;border-color:#8BA6B7"></i>SIZED</span><span><i style="background:#F9FAF4;border-color:#F9FAF4"></i>BANKED</span><span class="hint">TAP A ROOM</span><span class="swipe">SWIPE TO SEE EVERY ROOM →</span></div>
+  <div class="tip" id="bpt"></div>
+</div>
+<script>
+(function(){
+  const NS='http://www.w3.org/2000/svg', svg=document.getElementById('bps'), wrap=document.getElementById('bp2'), tip=document.getElementById('bpt'), cnt=document.getElementById('bpc');
+  const ROOMS=[
+    {n:'FINANCE',x:40,y:40,w:300,h:170,m:1,pp:6,ag:2,files:'214 files',read:'The ledger, bank statements and every invoice since 2023',found:'Cash that customers have held past 90 days'},
+    {n:'SALES',x:350,y:40,w:250,h:170,m:1,pp:9,ag:1,files:'96 files',read:'The CRM, the price list and signed contracts',found:'Discounts that quietly became the price'},
+    {n:'OPERATIONS',x:610,y:40,w:330,h:170,m:1,pp:14,ag:1,files:'131 files',read:'Schedules, the asset register and site reports',found:'Capacity the company owns that earned nothing'},
+    {n:'PROCUREMENT',x:950,y:40,w:190,h:360,m:1,pp:3,ag:1,files:'58 files',read:'Supplier contracts and purchase orders',found:'One category bought three ways, at three prices'},
+    {n:'PEOPLE',x:40,y:220,w:220,h:180,m:1,pp:4,ag:0,files:'42 files',read:'The org chart, roles and the monthly reports',found:'A report that takes days and feeds no decision'},
+    {n:'SYSTEMS',x:270,y:220,w:220,h:180,m:0,note:'not reached yet',who:'held by the IT team'},
+    {n:'LEGAL',x:500,y:220,w:210,h:180,m:0,note:'contracts not reached',who:'held by the legal team'},
+    {n:'SUPPLY',x:720,y:220,w:220,h:180,m:0,note:'not reached yet',who:'held by operations'}];
+  const POCKETS=[ // room index, label, value, path of states it climbs to
+    {r:0,t:'Cash past 90 days',to:3},{r:1,t:'Discounts that became the price',to:2},{r:2,t:'Capacity nobody sold',to:1},{r:3,t:'Bought three ways',v:'≈ AED 340k a year',to:2},{r:4,t:'The report nobody reads',to:1}];
+  const SN=['GREYED','NAMED','SIZED','BANKED'];
+  const el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;};
+  const fl=svg.querySelector('.flow');
+  ROOMS.forEach((r,i)=>{
+    const g=el('g',{class:'rm '+(r.m?'m':'g'),style:'--d:'+(i*.35)+'s',tabindex:0});
+    el('rect',{class:'box',x:r.x,y:r.y,width:r.w,height:r.h},g);
+    el('text',{class:'nm',x:r.x+16,y:r.y+26},g).textContent=r.n;
+    if(r.m){
+      const gl=el('g',{class:'gl'},g); let x=r.x+16,y=r.y+r.h-38;
+      for(let k=0;k<r.pp;k++){el('circle',{class:'p',cx:x+k*11,cy:y,r:3.2},gl);}
+      for(let k=0;k<r.ag;k++){const cx=x+r.pp*11+8+k*14;el('path',{class:'a',d:`M${cx},${y-5} L${cx+5},${y} L${cx},${y+5} L${cx-5},${y} Z`},gl);}
+      el('text',{class:'ct',x:r.x+16,y:r.y+r.h-14},g).textContent=r.pp+' people · '+r.ag+(r.ag===1?' agent':' agents')+' · '+r.files+' read';
+    } else {
+      el('text',{class:'ct',x:r.x+16,y:r.y+50},g).textContent=r.note;
+      el('text',{class:'ct',x:r.x+16,y:r.y+68},g).textContent=r.who;
+    }
+    g.addEventListener('mouseenter',()=>showTip(i,g));g.addEventListener('mouseleave',hideTip);
+    g.addEventListener('click',e=>{e.stopPropagation();g.classList.contains('act')?hideTip():showTip(i,g);});
+    svg.insertBefore(g,fl);
+  });
+  const pkEls=POCKETS.map((p,j)=>{const r=ROOMS[p.r];const w=Math.min(r.w-32,Math.max(170,p.t.length*6.6+24));
+    const x=r.x+16,y=r.y+(p.r===3?120:44);
+    const g=el('g',{class:'pk',style:'--d:'+(3+j*.25)+'s','data-s':0});
+    el('rect',{x,y,width:w,height:p.v?50:36,rx:2},g);
+    el('text',{class:'st',x:x+10,y:y+14},g).textContent='GREYED';
+    el('text',{x:x+10,y:y+29},g).textContent=p.t;
+    if(p.v){const v=el('text',{x:x+10,y:y+44},g);v.textContent=p.v;v.setAttribute('font-weight','700');}
+    return g;});
+  // stuck mark on the order-to-cash hand-off
+  const st=el('g',{class:'stuck'});el('circle',{class:'rg',cx:687,cy:17,r:5},st);el('circle',{cx:687,cy:17,r:5},st);
+  const sl=el('text',{x:700,y:-20},st);sl.textContent='stuck: orders waiting on an invoice';
+  const ol=el('text',{x:330,y:-20,class:'ol'},fl);ol.textContent='ORDER TO CASH';
+  function showTip(i,g){const r=ROOMS[i];svg.querySelectorAll('.rm').forEach(x=>x.classList.remove('act'));g.classList.add('act');
+    tip.innerHTML=r.m?'<b>'+r.n+'</b><p><span>What we read:</span> '+r.read+'</p><p><span>What we found:</span> '+r.found+'</p>':'<b>'+r.n+'</b><p>'+r.note[0].toUpperCase()+r.note.slice(1)+', '+r.who+'.</p><p><span>It fills in the moment it arrives.</span></p>';
+    const sb=svg.getBoundingClientRect(),wb=wrap.getBoundingClientRect(),k=sb.width/1180;
+    let left=sb.left-wb.left+(r.x+r.w/2)*k-130, top=sb.top-wb.top+(r.y+44+r.h)*k-10;
+    left=Math.max(10,Math.min(wb.width-270,left)); if(top>wb.height-150) top=sb.top-wb.top+(r.y+44)*k-120;
+    tip.style.left=left+'px';tip.style.top=top+'px';tip.classList.add('on');}
+  function hideTip(){tip.classList.remove('on');svg.querySelectorAll('.rm').forEach(x=>x.classList.remove('act'));}
+  document.addEventListener('click',hideTip);
+  // the loop: pockets darken one by one, hold, then start again
+  const RM=matchMedia('(prefers-reduced-motion: reduce)').matches; let started=false;
+  function setS(g,s){g.dataset.s=s;g.querySelector('.st').textContent=SN[s];}
+  function cycle(){pkEls.forEach(g=>setS(g,0));let t=1200;
+    for(let s=1;s<=3;s++) POCKETS.forEach((p,j)=>{if(p.to>=s){setTimeout(()=>setS(pkEls[j],s),t);t+=700;}});
+    setTimeout(cycle,t+5200);}
+  function start(){if(started)return;started=true;
+    let n=0;const mapped=ROOMS.filter(r=>r.m).length;
+    ROOMS.forEach((r,i)=>{if(r.m)setTimeout(()=>{n++;cnt.textContent=n+' OF '+ROOMS.length+' FUNCTIONS MAPPED';},i*350+900);});
+    if(RM){pkEls.forEach((g,j)=>setS(g,POCKETS[j].to));cnt.textContent=mapped+' OF '+ROOMS.length+' FUNCTIONS MAPPED';return;}
+    setTimeout(cycle,3600);}
+  new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){wrap.classList.add('in');start();o.disconnect();}}),{threshold:.25}).observe(wrap);
+})();
+</script>
+
 </div></section>
 
 <!-- 6 · PROOF -->
