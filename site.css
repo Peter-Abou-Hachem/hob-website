@@ -41,6 +41,14 @@ nav .wrap{display:flex;align-items:center;height:76px;gap:40px}
 .links a:hover,.links a.on{color:var(--ink)}
 .links a.on{text-decoration:underline;text-underline-offset:8px;text-decoration-thickness:1px}
 .links .mo{display:none}
+/* Cockpit leads the nav: a small chromatic-metal dot (brandbook 1.0, silver at 1%, soft reflections, no gloss) */
+.links a.nck{display:inline-flex;align-items:center;gap:9px}
+.links a.nck::before{content:"";width:10px;height:10px;border-radius:50%;flex:none;
+  background:conic-gradient(from 210deg,#B8BDC2,#5E6266 22%,#DCE8EE 40%,#B9B3C9 58%,#E6DCC8 74%,#A6A9AA 88%,#B8BDC2);
+  box-shadow:inset 0 0 0 .5px rgba(13,28,44,.35),0 0 0 2px rgba(166,169,170,.18);animation:ckturn 9s linear infinite}
+@keyframes ckturn{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.links a.nck::before{animation:none}}
+
 @media (max-width:900px){nav.open .links .mo{display:block}}
 nav .btn{padding:11px 16px;font-size:14px}
 

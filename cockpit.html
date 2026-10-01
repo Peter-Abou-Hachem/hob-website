@@ -60,11 +60,29 @@
   .room{padding:50px 0}
   .ladder{grid-template-columns:1fr 1fr}.lg:nth-child(3){border-left:0}.lg:nth-child(n+3){border-top:1px solid var(--line)}
 }
+/* hero socket */
+.sock{position:relative;height:420px}
+.sock .port{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:240px;height:240px;border-radius:50%;background:var(--ink);display:grid;place-items:center;box-shadow:0 0 0 16px rgba(9,17,32,.05),0 0 0 34px rgba(9,17,32,.03)}
+.sock .port img{height:62px;animation:spin2 18s linear infinite;filter:brightness(1.4)}
+.sock .chip{position:absolute;background:var(--card);border:1px solid var(--ink);padding:10px 14px;font-size:14px;font-weight:700;display:flex;gap:10px;align-items:center;white-space:nowrap;box-shadow:0 14px 30px rgba(9,17,32,.08);animation:plug 6s var(--ease) infinite;animation-delay:var(--d)}
+.sock .chip i{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+@keyframes plug{0%{opacity:0;transform:translate(var(--x),var(--y)) scale(.9)}14%{opacity:1;transform:translate(var(--x),var(--y)) scale(1)}55%{opacity:1;transform:translate(var(--x),var(--y))}66%{opacity:0;transform:translate(calc(var(--x)*.6),calc(var(--y)*.6)) scale(.8)}75%{opacity:0;transform:translate(0,0) scale(.4)}100%{opacity:0;transform:translate(0,0) scale(.4)}}
+.sock .chip{left:calc(50% - 60px);top:calc(50% - 20px);animation-fill-mode:backwards}
+/* origins */
+.orig{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.og{border:1px solid var(--line);background:var(--card);padding:28px 26px}
+.og .dot{width:12px;height:12px;border-radius:50%;margin-bottom:18px}
+.og b{font-size:21px;font-weight:700;letter-spacing:-.015em}
+.og p{font-size:15.5px;line-height:1.55;color:var(--soft);margin-top:10px}
+.d-shelf{background:var(--silver)}.d-cockpit{background:var(--accent)}.d-venture{background:var(--ink)}
+.og{display:block;transition:transform .3s var(--ease),border-color .3s}.og:hover{transform:translateY(-3px);border-color:var(--ink)}
+.pgo{margin-top:22px;font-size:15px;font-weight:700}
+@media (max-width:900px){.orig{grid-template-columns:1fr}.sock{height:320px}.sock .port{width:170px;height:170px}.sock .port img{height:46px}}
 </style></head>
 <body>
 <nav id="nav"><div class="wrap">
   <a class="brand" href="index.html"><img src="img/perspace-mark-ink.png" alt="">Perspace</a>
-  <div class="links"><a href="philosophy.html">Philosophy</a><a href="method.html">Method</a><a class="on" href="cockpit.html">Cockpit</a><a href="plugins.html">Plug-ins</a><a href="venture.html">Venture clienting</a></div>
+  <div class="links"><a class="nck on" href="cockpit.html">Cockpit</a><a href="method.html">Method</a><a href="philosophy.html">Philosophy</a><a href="venture.html">Venture clienting</a></div>
   <a class="btn dark" href="mailto:hello@perspace.ai?subject=Walkthrough">Book a walkthrough →</a>
   <button class="mnu" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
 </div></nav>
@@ -160,6 +178,33 @@
   <div class="sources rv"><span>ERP</span><span>Accounting</span><span>CRM</span><span>Spreadsheets</span><span>Shared drives</span><span>Email</span><span>WhatsApp and Teams</span><span>Contracts and PDFs</span></div>
 </div></section>
 
+<!-- PLUG-INS: the opening of plugins.html, the full menu lives there -->
+<section class="pad" id="plugins" style="background:var(--card);border-top:1px solid var(--line)"><div class="wrap">
+  <div class="phero" style="padding:0"><div class="grid">
+    <div class="copy">
+      <div class="tag rv">Plug-ins</div>
+      <h2 class="rv d1">Plug in what <b>fixes your problem.</b></h2>
+      <p class="lede rv d2">The cockpit finds where you are losing money. You plug in the ones that fix it. Some are off the shelf, some are learned from a cockpit, some we source from the world.</p>
+      <div class="btns rv d3"><a class="btn dark" href="plugins.html">See all plug-ins →</a><a class="btn line" href="mailto:hello@perspace.ai?subject=Which%20plug-ins%20fit%20us">Which ones fit you? →</a></div>
+    </div>
+    <div class="sock rv d2" aria-hidden="true">
+      <div class="port"><img src="img/star-crop.png" alt=""></div>
+      <div class="chip" style="--x:-150px;--y:-150px;--d:0s"><i></i>Collections</div>
+      <div class="chip" style="--x:140px;--y:-120px;--d:1s"><i></i>Contract Reader</div>
+      <div class="chip" style="--x:150px;--y:120px;--d:2s"><i></i>Polynome</div>
+      <div class="chip" style="--x:-170px;--y:140px;--d:3s"><i></i>Cash Forecast</div>
+      <div class="chip" style="--x:-5px;--y:-205px;--d:4s"><i></i>Recruiter</div>
+      <div class="chip" style="--x:10px;--y:180px;--d:5s"><i></i>Dispatch</div>
+    </div>
+  </div></div>
+  <div class="tag rv" style="margin-top:60px">Every plug-in says where it came from</div>
+  <div class="orig" style="margin-top:30px">
+    <a class="og rv" href="plugins.html#menu"><div class="dot d-shelf"></div><b>Off the shelf</b><p>Standard work every company has, ready on day one.</p><div class="pgo">See them →</div></a>
+    <a class="og rv d1" href="plugins.html#menu"><div class="dot d-cockpit"></div><b>Learned from a cockpit</b><p>Built once for a real client problem, then offered to every client after.</p><div class="pgo">See them →</div></a>
+    <a class="og rv d2" href="plugins.html#menu"><div class="dot d-venture"></div><b>Sourced from the world</b><p>Proven technology we find through venture clienting, when that beats building it.</p><div class="pgo">See them →</div></a>
+  </div>
+</div></section>
+
 <section class="closeband"><div class="wrap">
   <div class="m rv"><img src="img/mark-left-c.png" alt=""><img class="s" src="img/star-crop.png" alt=""><img src="img/mark-right-c.png" alt=""></div>
   <h2 class="rv d1">See your company <b>on one screen.</b></h2>
@@ -169,7 +214,7 @@
 
 <footer><div class="wrap">
   <a class="brand" href="index.html"><img src="img/perspace-mark-ink.png" alt="">Perspace</a>
-  <div class="ft"><a href="philosophy.html">Philosophy</a><a href="method.html">Method</a><a href="cockpit.html">Cockpit</a><a href="plugins.html">Plug-ins</a><a href="venture.html">Venture clienting</a><a href="insights.html">Library</a></div>
+  <div class="ft"><a href="cockpit.html">Cockpit</a><a href="plugins.html">Plug-ins</a><a href="method.html">Method</a><a href="philosophy.html">Philosophy</a><a href="venture.html">Venture clienting</a><a href="insights.html">Library</a></div>
   <div class="tl">We operate the future · Dubai · Abu Dhabi · hello@perspace.ai</div>
 </div></footer>
 <script src="site.js"></script>
